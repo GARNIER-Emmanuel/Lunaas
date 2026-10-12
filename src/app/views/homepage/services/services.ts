@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { OfferCard } from '../../../components/offer-card/offer-card';
-import { OFFER_DATA, SITE_DATA } from '../../../shared/data';
+import { OFFER_DATA } from '../../../shared/data';
 
 @Component({
   selector: 'app-services',
@@ -11,5 +11,4 @@ import { OFFER_DATA, SITE_DATA } from '../../../shared/data';
 })
 export class Services {
   protected readonly offers = OFFER_DATA;
-  protected readonly email = SITE_DATA.email;
 }

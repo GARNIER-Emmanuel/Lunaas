@@ -11,7 +11,7 @@
     </div>
     <div class="offers-grid">
       @for (offer of offers; track offer.id) {
-        <app-offer-card [offer]="offer" [contactEmail]="email" />
+        <app-offer-card [offer]="offer" />
       }
     </div>
     <p class="pricing-note">

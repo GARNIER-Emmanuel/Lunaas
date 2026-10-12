@@ -11,7 +11,7 @@
       <h1 id="homepage-title">{{ site.homepage.title }}</h1>
       <p class="hero-description">{{ site.tagline }} {{ site.homepage.description }}</p>
       <div class="hero-actions">
-        <a [href]="'mailto:' + site.email" class="button button-primary"
+        <a routerLink="/contact" class="button button-primary"
           >Demander un devis gratuit <span aria-hidden="true">↗</span></a
         >
         <a routerLink="/" fragment="approche" class="button button-secondary"

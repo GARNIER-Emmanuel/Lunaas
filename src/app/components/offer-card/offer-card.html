@@ -29,7 +29,8 @@
   </details>
 
   <a
-    [href]="quoteLink()"
+    routerLink="/contact"
+    [queryParams]="{ offre: offer().id }"
     class="button button-secondary quote-link"
     [attr.aria-label]="'Demander un devis pour ' + offer().name"
   >

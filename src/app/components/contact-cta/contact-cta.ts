@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SITE_DATA } from '../../shared/data';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-contact-cta',
+  imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact-cta.html',
   styleUrl: './contact-cta.css',
 })
-export class ContactCta {
-  protected readonly email = SITE_DATA.email;
-}
+export class ContactCta {}

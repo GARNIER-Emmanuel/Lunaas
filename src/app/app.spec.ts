@@ -37,7 +37,7 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
     expect(compiled.querySelector('app-hero a.button-primary')?.getAttribute('href')).toBe(
-      'mailto:manu.boidun@gmail.com',
+      '/contact',
     );
     const approachLink = compiled.querySelector<HTMLAnchorElement>('app-hero a.button-secondary');
     expect(approachLink).not.toBeNull();
@@ -63,11 +63,8 @@ describe('App', () => {
       expect(card.querySelector('.offer-price > span')?.textContent).toContain('À partir de');
       const link = card.querySelector<HTMLAnchorElement>('.quote-link')!;
       const url = new URL(link.href);
-      expect(url.protocol).toBe('mailto:');
-      expect(url.pathname).toBe('manu.boidun@gmail.com');
-      expect(url.searchParams.get('subject')).toBe(
-        `Demande de devis — ${card.querySelector('h3')?.textContent}`,
-      );
+      expect(url.pathname).toBe('/contact');
+      expect(url.searchParams.get('offre')).toBeTruthy();
     }
     expect(cards[2].querySelector('h4')?.textContent).toContain('Prestations possibles, sur devis');
   });

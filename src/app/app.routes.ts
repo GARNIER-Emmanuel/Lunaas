@@ -11,6 +11,25 @@ export const routes: Routes = [
     title: 'Création de sites internet à Bordeaux | Lunaas',
   },
   {
+    path: 'contact',
+    loadComponent: () => import('./views/contact/contact').then((m) => m.Contact),
+    title: 'Contact et demande de devis | Lunaas',
+  },
+  {
+    path: 'mentions-legales',
+    loadComponent: () =>
+      import('./views/mentions-legales/mentions-legales').then((m) => m.MentionsLegales),
+    title: 'Mentions légales | Lunaas',
+    data: { noindex: true },
+  },
+  {
+    path: 'confidentialite',
+    loadComponent: () =>
+      import('./views/confidentialite/confidentialite').then((m) => m.Confidentialite),
+    title: 'Confidentialité | Lunaas',
+    data: { noindex: true },
+  },
+  {
     path: 'services',
     loadComponent: () => import('./views/services/services').then((m) => m.ServicePage),
     title: 'Création de sites web et tarifs | Lunaas',

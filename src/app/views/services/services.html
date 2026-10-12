@@ -8,7 +8,7 @@
 </section>
 <section class="page-container offer-list" aria-label="Offres de création de sites">
   @for (offer of offers; track offer.id) {
-    <app-offer-card [offer]="offer" [contactEmail]="email" />
+    <app-offer-card [offer]="offer" />
   }
 </section>
 <app-process-section /><app-faq /><app-contact-cta />
