@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 
+/* Les ancres natives conservent le # dans l’URL et l’historique du navigateur. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Le contenu légal prérendu reste lisible si JavaScript est désactivé. */
 html.no-js app-site-information dialog {
   display: block;
@@ -162,9 +173,8 @@ main:focus-visible {
   scroll-margin-top: 7rem;
 }
 
-#accueil,
-#approche,
-#offres {
+section[id],
+#main-content {
   scroll-margin-top: 7rem;
 }
 
