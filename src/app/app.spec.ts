@@ -83,6 +83,7 @@ describe('App', () => {
     expect([...projectChoice!.options].map((option) => option.value).sort()).toEqual([
       '',
       'autre',
+      'donnees-personnelles',
       'landing-page',
       'site-dynamique',
       'site-vitrine',

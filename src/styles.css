@@ -1,5 +1,17 @@
 @import 'tailwindcss';
 
+/* Le contenu légal prérendu reste lisible si JavaScript est désactivé. */
+html.no-js app-site-information dialog {
+  display: block;
+  position: static;
+  max-height: none;
+  margin-block: 2rem;
+}
+
+html.no-js app-site-information .dialog-close {
+  display: none;
+}
+
 @font-face {
   font-family: 'Manrope Variable';
   font-style: normal;

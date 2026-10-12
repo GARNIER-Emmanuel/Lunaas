@@ -12,3 +12,8 @@ export interface ContactConfiguration {
   readonly accessKey: string;
   readonly endpoint: string;
 }
+
+export interface ContactTopic {
+  readonly id: string;
+  readonly label: string;
+}

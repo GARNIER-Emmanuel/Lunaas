@@ -26,6 +26,18 @@ for (const [path, document] of pages) {
   const fail = (message) => errors.push(`${path}: ${message}`);
   if (document.querySelectorAll('form').length !== 1 || !document.querySelector('#contact app-contact-form'))
     fail('expected a single contact form in the contact section');
+  if (document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').length)
+    fail('unexpected public contact address: use the form until professional details are confirmed');
+  const privacy = document.querySelector('#confidentialite');
+  if (!privacy?.querySelector('a[href="https://www.cnil.fr/fr/adresser-une-plainte"]'))
+    fail('missing data-rights complaint information');
+  const view = document.defaultView;
+  if (!document.documentElement.classList.contains('no-js') ||
+      view.getComputedStyle(privacy).display !== 'block')
+    fail('legal information must remain readable without JavaScript');
+  document.documentElement.classList.remove('no-js');
+  if (view.getComputedStyle(privacy).display !== 'none')
+    fail('closed legal dialogs must be hidden when JavaScript is available');
   const description = document.querySelector('meta[name="description"]')?.content;
   if (document.documentElement.lang !== 'fr') fail('document language');
   if (document.querySelectorAll('h1').length !== 1) fail('expected one H1');
@@ -73,13 +85,22 @@ for (const [path, document] of pages) {
     'script[src],link[rel="stylesheet"],link[rel="icon"]',
   )) {
     const url = new URL(asset.src || asset.href);
-    if (url.origin !== origin) continue;
+    if (url.origin !== origin) {
+      fail(`unexpected external script or stylesheet ${url.origin}`);
+      continue;
+    }
     try {
       await access(resolve(output, `.${url.pathname}`));
     } catch {
       fail(`missing asset ${url.pathname}`);
     }
   }
+}
+const fontCss = await readFile(resolve(output, 'fonts/fonts.css'), 'utf8');
+for (const match of fontCss.matchAll(/url\(([^)]+)\)/g)) {
+  const url = new URL(match[1], origin);
+  if (url.origin !== origin) errors.push('Fonts must be hosted locally');
+  else await access(resolve(output, `.${url.pathname}`));
 }
 const sitemap = await readFile(resolve(output, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);

@@ -127,6 +127,46 @@ describe('Contact form', () => {
     expect(root.querySelector('app-contact-cta [role="status"]')?.textContent).toContain('envoyé');
   });
 
+  it('accepts a data-rights request with only an email and a message', async () => {
+    transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
+    const harness = await page();
+    const root = harness.routeNativeElement!;
+    enter(root, 'cta-contact-email', 'visiteur@example.com');
+    enter(root, 'cta-contact-project', 'donnees-personnelles');
+    enter(root, 'cta-contact-message', 'Je souhaite supprimer mon précédent message.');
+    await harness.fixture.whenStable();
+    submit(root);
+    await harness.fixture.whenStable();
+    expect(transport).toHaveBeenCalledOnce();
+    const payload = JSON.parse(String(transport.mock.calls[0][1].body));
+    expect(payload.project).toBe('Mes données personnelles');
+    expect(payload.subject).toContain('Demande de contact');
+    expect(payload).not.toHaveProperty('name');
+  });
+
+  it('allows a general request without a subject but rejects an unknown subject', async () => {
+    transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
+    const harness = await page();
+    const root = harness.routeNativeElement!;
+    enter(root, 'cta-contact-email', 'visiteur@example.com');
+    enter(root, 'cta-contact-message', 'Une question sur vos prestations.');
+    const select = root.querySelector<HTMLSelectElement>('#cta-contact-project')!;
+    const option = document.createElement('option');
+    option.value = 'inconnu';
+    select.append(option);
+    enter(root, 'cta-contact-project', 'inconnu');
+    await harness.fixture.whenStable();
+    submit(root);
+    await harness.fixture.whenStable();
+    expect(transport).not.toHaveBeenCalled();
+    enter(root, 'cta-contact-project', '');
+    await harness.fixture.whenStable();
+    submit(root);
+    await harness.fixture.whenStable();
+    expect(transport).toHaveBeenCalledOnce();
+    expect(JSON.parse(String(transport.mock.calls[0][1].body)).project).toBe('Demande générale');
+  });
+
   it('blocks a filled honeypot without a network request', async () => {
     const harness = await page();
     const root = await fill(harness);

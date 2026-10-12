@@ -9,7 +9,7 @@ import {
   validate,
 } from '@angular/forms/signals';
 import { ContactForm as ContactValues } from '../../../../shared/interfaces';
-import { OFFER_DATA } from '../../../../shared/data';
+import { CONTACT_TOPICS, OFFER_DATA } from '../../../../shared/data';
 import { ContactService } from '../../../../shared/services/contact-service';
 import { SiteInformationService } from '../../../../shared/services/site-information-service';
 
@@ -23,6 +23,7 @@ import { SiteInformationService } from '../../../../shared/services/site-informa
 export class ContactFormComponent {
   readonly idPrefix = input('contact');
   protected readonly offers = OFFER_DATA;
+  protected readonly topics = CONTACT_TOPICS;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
   protected readonly information = inject(SiteInformationService);
@@ -32,21 +33,15 @@ export class ContactFormComponent {
     this.model,
     (path) => {
       for (const field of [path.firstname, path.lastname]) {
-        required(field, { message: 'Ce champ est obligatoire.' });
         maxLength(field, 80, { message: '80 caractères maximum.' });
-        validate(field, ({ value }) =>
-          value().length > 0 && !value().trim()
-            ? { kind: 'required', message: 'Ce champ est obligatoire.' }
-            : undefined,
-        );
       }
       required(path.email, { message: 'Indiquez votre adresse e-mail.' });
       email(path.email, { message: 'Indiquez une adresse e-mail valide.' });
       maxLength(path.email, 254);
-      required(path.projectType, { message: 'Choisissez un type de projet.' });
       validate(path.projectType, ({ value }) =>
-        value() && value() !== 'autre' && !OFFER_DATA.some((offer) => offer.id === value())
-          ? { kind: 'project', message: 'Choisissez une prestation proposée.' }
+        value() && !CONTACT_TOPICS.some((topic) => topic.id === value()) &&
+          !OFFER_DATA.some((offer) => offer.id === value())
+          ? { kind: 'project', message: 'Choisissez un sujet proposé.' }
           : undefined,
       );
       maxLength(path.budget, 100, { message: '100 caractères maximum.' });

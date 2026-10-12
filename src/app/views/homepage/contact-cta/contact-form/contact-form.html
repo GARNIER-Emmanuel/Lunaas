@@ -2,6 +2,7 @@
   [formRoot]="contactForm"
   class="contact-form"
   [attr.aria-busy]="contactForm().submitting()"
+  [attr.aria-describedby]="fieldId('privacy-help')"
   novalidate
 >
   <fieldset class="form-fields" [disabled]="contactForm().submitting()">
@@ -17,7 +18,7 @@
     />
     <div class="form-row">
       <div>
-        <label [for]="fieldId('lastname')">Nom <span>(obligatoire)</span></label>
+        <label [for]="fieldId('lastname')">Nom <span>(facultatif)</span></label>
         <input
           [id]="fieldId('lastname')"
           autocomplete="family-name"
@@ -33,7 +34,7 @@
         </div>
       </div>
       <div>
-        <label [for]="fieldId('firstname')">Prénom <span>(obligatoire)</span></label>
+        <label [for]="fieldId('firstname')">Prénom <span>(facultatif)</span></label>
         <input
           [id]="fieldId('firstname')"
           autocomplete="given-name"
@@ -68,17 +69,19 @@
     </div>
     <div class="form-row">
       <div>
-        <label [for]="fieldId('project')">Votre projet <span>(obligatoire)</span></label>
+        <label [for]="fieldId('project')">Sujet de votre demande <span>(facultatif)</span></label>
         <select
           [id]="fieldId('project')"
           [formField]="contactForm.projectType"
           [attr.aria-describedby]="fieldId('project-errors')"
         >
-          <option value="">Choisir une prestation</option>
+          <option value="">Choisir un sujet</option>
           @for (offer of offers; track offer.id) {
             <option [value]="offer.id">{{ offer.name }}</option>
           }
-          <option value="autre">Autre projet de site internet</option>
+          @for (topic of topics; track topic.id) {
+            <option [value]="topic.id">{{ topic.label }}</option>
+          }
         </select>
         <div [id]="fieldId('project-errors')" class="field-errors">
           @if (contactForm.projectType().touched()) {
@@ -115,6 +118,7 @@
       ></textarea>
       <p [id]="fieldId('message-help')" class="form-help">
         Votre activité, votre besoin, vos questions. 2 000 caractères maximum.
+        Ne transmettez pas de mot de passe, de coordonnées bancaires ou de données sensibles.
       </p>
       <div [id]="fieldId('message-errors')" class="field-errors">
         @if (contactForm.message().touched()) {
@@ -125,8 +129,9 @@
       </div>
     </div>
   </fieldset>
-  <p class="form-help">
-    Les informations sont transmises via Web3Forms pour répondre à votre demande.
+  <p class="form-help" [id]="fieldId('privacy-help')">
+    Lunaas utilise votre e-mail et votre message pour répondre à votre demande, via Web3Forms.
+    Ces deux champs sont nécessaires à l’envoi ; les autres sont facultatifs.
     <a href="#confidentialite" (click)="$event.preventDefault(); information.open('confidentialite')">Utilisation de vos données</a>.
   </p>
   <button type="submit" class="button button-primary" [disabled]="contactForm().submitting()">

@@ -16,7 +16,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
   - Navigation par ancres entre les sections de la landing page.
 - **Styling** : Tailwind CSS v4.
   - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
-  - Essai typographique sur cette branche : Caacupe One pour les titres et Story Script pour les accents du hero et du contact, chargées depuis Google Fonts. Manrope reste utilisée pour les paragraphes et la navigation.
+  - Caacupe One pour les titres et Story Script pour les accents du hero et du contact, hébergées localement avec leurs licences SIL OFL. Manrope reste utilisée pour les paragraphes et la navigation, également en local.
   - Hero sobre : la souris révèle une photo de fond grâce à un masque CSS.
   - La section de contact révèle une image de Mars sur son fond lavande. Versions AVIF/WebP en 1920 et 960 px, chargement différé et dimensions explicites.
   - Révélation désactivée sur écran tactile et avec les préférences de mouvement réduit.
@@ -35,12 +35,12 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - **Prestations** : trois offres à partir de 490 €, 990 € et 1 790 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher et SupBro sont présentés comme projets personnels dans la landing page. Leurs liens ouvrent directement l’application ou le dépôt du projet.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
-- **Contact** : un seul formulaire Signal Forms dans la section `#contact`, avec nom, prénom, e-mail, projet, budget facultatif et message. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
+- **Contact** : un seul formulaire Signal Forms dans la section `#contact`. E-mail et message sont nécessaires ; nom, prénom, sujet et budget sont facultatifs. Le sujet « Mes données personnelles » permet une demande de droits sans renseignement commercial. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
   - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose un bouton pour réessayer.
   - Les coordonnées personnelles et le nom complet ne sont pas affichés. Les demandes et les questions sur les données passent par le formulaire ; Bordeaux reste la zone de prestation présentée.
 - **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers les sections. Les anciennes adresses reviennent à la landing dans Angular.
 - **SEO** : titre et description de la landing, canonical à la racine, Open Graph, image de partage, données structurées `WebSite`, sitemap avec une seule URL et robots.txt.
-- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire. Les contenus restent des versions de travail à finaliser.
+- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire, et affichées dans le document si JavaScript est désactivé. La confidentialité décrit les finalités, les bases légales proposées, les droits, le recours à la CNIL et les traitements de Web3Forms. L’identité légale, les coordonnées professionnelles, l’hébergement, la TVA, les durées de conservation et les contrats des prestataires restent à confirmer : aucune conformité complète n’est déclarée.
 - **Secours statique** : `404.html` contient la même landing ; aucune vue séparée « Page introuvable ».
 
 ---
