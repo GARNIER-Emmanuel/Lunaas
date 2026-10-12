@@ -7,6 +7,7 @@
   </p>
 </section>
 <section class="page-container offer-list" aria-label="Offres de création de sites">
+  <h2 class="sr-only">Offres de création de sites</h2>
   @for (offer of offers; track offer.id) {
     <app-offer-card [offer]="offer" />
   }

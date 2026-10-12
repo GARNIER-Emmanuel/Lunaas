@@ -44,16 +44,22 @@ export class Contact {
       required(path.name, { message: 'Indiquez votre nom.' });
       maxLength(path.name, 100, { message: 'Le nom doit contenir au maximum 100 caractères.' });
       validate(path.name, ({ value }) =>
-        value().length > 0 && !value().trim() ? { kind: 'required', message: 'Indiquez votre nom.' } : undefined,
+        value().length > 0 && !value().trim()
+          ? { kind: 'required', message: 'Indiquez votre nom.' }
+          : undefined,
       );
       required(path.email, { message: 'Indiquez votre adresse e-mail.' });
       email(path.email, { message: 'Indiquez une adresse e-mail valide.' });
       maxLength(path.email, 254);
       required(path.projectType, { message: 'Choisissez un type de projet.' });
-      maxLength(path.budget, 100);
+      maxLength(path.budget, 100, {
+        message: 'Le budget doit contenir au maximum 100 caractères.',
+      });
       required(path.message, { message: 'Décrivez votre besoin.' });
       validate(path.message, ({ value }) =>
-        value().length > 0 && !value().trim() ? { kind: 'required', message: 'Décrivez votre besoin.' } : undefined,
+        value().length > 0 && !value().trim()
+          ? { kind: 'required', message: 'Décrivez votre besoin.' }
+          : undefined,
       );
       maxLength(path.message, 2000, {
         message: 'Le message doit contenir au maximum 2 000 caractères.',

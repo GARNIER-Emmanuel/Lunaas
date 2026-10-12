@@ -21,7 +21,9 @@
   </aside>
   <form [formRoot]="contactForm" class="contact-form">
     @if (contactForm().touched() && contactForm().invalid()) {
-      <p class="field-errors" role="alert">Vérifiez les champs signalés avant de préparer votre demande.</p>
+      <p class="field-errors" role="alert">
+        Vérifiez les champs signalés avant de préparer votre demande.
+      </p>
     }
     <div class="form-row">
       <div>
@@ -86,7 +88,15 @@
           id="contact-budget"
           [formField]="contactForm.budget"
           placeholder="À préciser ensemble"
+          aria-describedby="budget-errors"
         />
+        <div id="budget-errors" class="field-errors">
+          @if (contactForm.budget().touched()) {
+            @for (error of contactForm.budget().errors(); track error) {
+              <p>{{ error.message }}</p>
+            }
+          }
+        </div>
       </div>
     </div>
     <div>

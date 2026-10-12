@@ -68,6 +68,6 @@ export class SeoService {
       name: SITE_DATA.name,
       url: SITE_DATA.url,
       inLanguage: 'fr-FR',
-    }).replace(/</g, '\\u003c');
+    }).replace(/</g, String.raw`\u003c`);
   }
 }

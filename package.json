@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build && node scripts/finalize-static.mjs",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "check:static": "node scripts/verify-static.mjs",
+    "preview:static": "node scripts/preview-static.mjs",
+    "verify": "npm test -- --watch=false && npm run build && npm run check:static"
   },
   "private": true,
   "packageManager": "npm@11.16.0",

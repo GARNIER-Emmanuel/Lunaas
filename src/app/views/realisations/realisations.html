@@ -7,6 +7,7 @@
   </p>
 </section>
 <section class="page-container projects-list" aria-label="Liste des réalisations">
+  <h2 class="sr-only">Projets présentés</h2>
   @for (project of projects; track project.slug) {
     <app-project-card [project]="project" />
   }
