@@ -1,5 +1,12 @@
-<footer class="border-t border-slate-200">
-  <div class="mx-auto max-w-6xl px-6 py-6 text-sm text-slate-600">
-    <p><strong class="font-semibold text-slate-900">{{ site.name }}</strong> — {{ site.tagline }}</p>
+<footer class="border-t border-line">
+  <div
+    class="page-container flex flex-wrap items-center justify-between gap-6 py-8 text-xs text-muted"
+  >
+    <p>
+      <strong class="font-semibold text-ink">{{ site.name }}</strong> — {{ site.tagline }}
+    </p>
+    <a [href]="'mailto:' + site.email" class="hover:text-ink"
+      >{{ site.email }} <span aria-hidden="true">↗</span></a
+    >
   </div>
 </footer>

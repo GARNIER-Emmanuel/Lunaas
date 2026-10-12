@@ -1,14 +1,83 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Manrope Variable';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2') format('woff2');
+}
+
+@theme {
+  --color-space: #080c18;
+  --color-surface: #111827;
+  --color-ink: #f8fafc;
+  --color-muted: #a3adc2;
+  --color-accent: #8b9dff;
+  --color-lavender: #b6a4ff;
+  --color-line: #263044;
+  --font-sans: 'Manrope Variable', system-ui, sans-serif;
+}
+
 body {
   margin: 0;
-  background: #fff;
-  color: #0f172a;
-  font-family: system-ui, sans-serif;
+  background: var(--color-space);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
 a:focus-visible,
+button:focus-visible,
 main:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--color-accent);
   outline-offset: 4px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-space);
+}
+.page-container {
+  width: min(100% - 3rem, 80rem);
+  margin-inline: auto;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 3.25rem;
+  padding: 0.9rem 1.35rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+.button-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-space);
+}
+.button-primary:hover {
+  background: #aab7ff;
+  border-color: #aab7ff;
+  transform: translateY(-2px);
+}
+.button-secondary:hover {
+  border-color: var(--color-muted);
+  background: var(--color-surface);
+}
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .button-primary:hover {
+    transform: none;
+  }
 }

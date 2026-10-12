@@ -27,6 +27,23 @@ describe('App', () => {
     expect(compiled.querySelector('footer')).not.toBeNull();
   });
 
+  it('provides an email contact and a working approach link', async () => {
+    const fixture = TestBed.createComponent(App);
+    const router = TestBed.inject(Router);
+    await router.navigateByUrl('/');
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('app-hero a.button-primary')?.getAttribute('href'))
+      .toBe('mailto:manu.boidun@gmail.com');
+    const approachLink = compiled.querySelector<HTMLAnchorElement>('app-hero a.button-secondary');
+    expect(approachLink).not.toBeNull();
+    approachLink!.click();
+    await fixture.whenStable();
+    expect(router.url).toBe('/#approche');
+    expect(compiled.querySelector('#approche')).not.toBeNull();
+  });
+
   it('handles an unknown route and lets the visitor return home', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);

@@ -67,7 +67,9 @@ Node compatible avec Angular CLI installé : `^22.22.3 || ^24.15.0 || >=26.0.0`.
 - Tester les comportements critiques modifiés ; vérifier le build après une modification du code ou du rendu.
 - Vérifier les liens locaux après une réorganisation documentaire.
 - Distinguer préparation du dépôt, fonctionnement local et validation en production.
-- Ne pas effectuer de commit, push, achat, changement DNS ou publication sans demande explicite.
+- À la fin de chaque phase validée, exécuter les vérifications pertinentes puis créer un commit propre, ciblé sur cette phase, avec un message décrivant le résultat. Cette consigne constitue l'autorisation de commit ; ne pas attendre une nouvelle demande pour chaque phase.
+- Ne pas inclure `docs/` dans les commits. Préserver les changements sans rapport avec la phase.
+- Ne pas effectuer de push, achat, changement DNS ou publication sans demande explicite.
 
 ## Graphify
 

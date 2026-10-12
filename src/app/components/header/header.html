@@ -1,6 +1,24 @@
-<header class="border-b border-slate-200">
-  <nav aria-label="Navigation principale" class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-5">
-    <a routerLink="/" class="text-xl font-semibold tracking-tight" aria-label="Lunaas — Accueil">{{ site.name }}</a>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Accueil</a>
+<header>
+  <nav aria-label="Navigation principale" class="page-container navigation">
+    <a routerLink="/" class="brand" aria-label="Lunaas — Accueil">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M25 24A13 13 0 0 1 10 4a13 13 0 1 0 15 20Z" fill="currentColor" />
+      </svg>
+      {{ site.name }}<span class="brand-dot">.</span>
+    </a>
+    <div class="nav-links">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="home-link"
+        >Accueil</a
+      >
+      <a routerLink="/" fragment="approche" class="approach-link">L'approche</a>
+      <a [href]="'mailto:' + site.email" class="button button-secondary nav-contact"
+        >Parlons de votre projet <span aria-hidden="true">↗</span></a
+      >
+    </div>
   </nav>
 </header>

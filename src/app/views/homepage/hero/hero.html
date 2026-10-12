@@ -1,0 +1,28 @@
+﻿<section
+  class="hero"
+  aria-labelledby="homepage-title"
+  (pointermove)="revealImage($event)"
+  (pointerleave)="hideImage($event)"
+>
+  <div class="hero-reveal" aria-hidden="true"></div>
+  <div class="page-container hero-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">Développement web indépendant · Bordeaux</p>
+      <h1 id="homepage-title">{{ site.homepage.title }}</h1>
+      <p class="hero-description">{{ site.tagline }} {{ site.homepage.description }}</p>
+      <div class="hero-actions">
+        <a [href]="'mailto:' + site.email" class="button button-primary"
+          >Demander un devis gratuit <span aria-hidden="true">↗</span></a
+        >
+        <a routerLink="/" fragment="approche" class="button button-secondary"
+          >Découvrir l'approche <span aria-hidden="true">↓</span></a
+        >
+      </div>
+      <p class="hero-note">Une idée, un besoin, un projet ? Commençons par en parler.</p>
+    </div>
+  </div>
+  <div class="page-container hero-bottom">
+    <span>Votre activité. Votre univers. Votre site.</span>
+    <a routerLink="/" fragment="approche">Explorer <span aria-hidden="true">↓</span></a>
+  </div>
+</section>

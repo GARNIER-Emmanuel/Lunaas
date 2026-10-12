@@ -4,7 +4,7 @@ Bienvenue sur le dépôt de Lunaas !
 
 Ce projet est la vitrine de mon activité de développement web freelance. Conçu pour présenter mes prestations et mes réalisations, il s'appuie sur une architecture **Angular** structurée et une identité visuelle inspirée de la Lune et de l'exploration spatiale.
 
-**Le projet est en phase de préparation.** Le socle Angular comporte un accueil minimal, un header, un footer et une page 404. Le design détaillé, les autres pages, les offres et le formulaire de contact restent à développer.
+**Le projet est en cours de développement.** L'accueil comporte un header responsive, un hero sobre avec une image révélée au passage du curseur et une présentation de l'approche Lunaas. Les offres, les réalisations, les autres pages et le formulaire de contact restent à développer.
 
 ---
 
@@ -15,9 +15,11 @@ Ce projet est la vitrine de mon activité de développement web freelance. Conç
   * Architecture prévue autour des **Signals** (`signal`, `computed`, `input()`, `output()`) et du Control Flow natif.
   * Séparation des pages, des composants réutilisables et des contenus typés.
 * **Styling** : Tailwind CSS v4.
-  * Identité spatiale, composants cohérents et responsive design prévus pour mobile, tablette et ordinateur.
-* **Animations** : GSAP installé, avec le plugin ScrollTrigger inclus. Effets visuels à développer.
-  * Micro-interactions et animations au défilement, avec respect des préférences de réduction des mouvements.
+  * Palette bleu nuit et lavande, tokens CSS partagés et police Manrope variable hébergée localement.
+  * Header et hero adaptés au mobile et à l'ordinateur, avec un fond noir et une illustration de fond à choisir.
+* **Interactions** : masque circulaire CSS pour révéler l'image de fond autour du curseur.
+  * Photo de fond dans `public/images/hero-background.jpg` (1920 × 617), révélée autour du curseur. Le fond occupe toute la largeur ; le contenu conserve ses marges.
+  * Effet désactivé sur écran tactile et en mode de mouvement réduit. GSAP & ScrollTrigger restent disponibles pour de futurs besoins.
 * **Rendu** : génération statique Angular avec prérendu et hydratation.
   * Le HTML est généré pendant le build ; les interactions restent gérées par Angular dans le navigateur.
   * Fichiers à héberger : `dist/lunaas/browser/`, sans serveur Node permanent.
@@ -70,7 +72,7 @@ npm ci
 npm start
 ```
 
-Ouvrir ensuite `http://localhost:4200/` pour l'accueil minimal, ou `/404` pour la page introuvable. Les URL inconnues affichent également cette page via Angular Router.
+Ouvrir ensuite `http://localhost:4200/` pour l'accueil, ou `/404` pour la page introuvable. Les URL inconnues affichent également cette page via Angular Router. Les boutons de contact ouvrent un e-mail ; ils ne remplacent pas le futur formulaire.
 
 ### Build & tests
 

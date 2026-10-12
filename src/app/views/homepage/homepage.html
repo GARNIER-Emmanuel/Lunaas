@@ -1,4 +1,18 @@
-<section aria-labelledby="homepage-title" class="mx-auto max-w-6xl px-6 py-20 sm:py-28">
-  <h1 id="homepage-title" class="max-w-3xl text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">{{ content.title }}</h1>
-  <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">{{ content.description }}</p>
+<app-hero />
+<section id="approche" aria-labelledby="approach-title" class="approach-section">
+  <div class="page-container">
+    <div class="section-heading">
+      <p>L'approche Lunaas</p>
+      <h2 id="approach-title">Votre projet, accompagné<br />de près.</h2>
+    </div>
+    <div class="approach-grid">
+      @for (item of approach; track item.title; let i = $index) {
+        <article>
+          <span class="step-number" aria-hidden="true">0{{ i + 1 }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
 </section>
