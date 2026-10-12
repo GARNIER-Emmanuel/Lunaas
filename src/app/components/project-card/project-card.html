@@ -1,40 +1,29 @@
 <article [style.--project-accent]="project().accent">
-  <a
-    [href]="project().live || project().repo || '#contact'" [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer"
-    class="project-cover"
-    [attr.aria-label]="'Découvrir le projet ' + project().name"
-  >
-    <span class="cover-label">{{ project().label }}</span>
-    <div class="project-art" aria-hidden="true" data-parallax>
-      <span class="art-name">{{ project().name }}<span>.</span></span>
-      <div class="art-stack">
-        @for (highlight of project().highlights; track highlight; let i = $index) {
-          <div class="art-row">
-            <span class="art-dot" [class.filled]="i === 0"></span><span>{{ highlight }}</span
-            ><span>↗</span>
-          </div>
-        }
-      </div>
-      <span class="art-caption">Illustration du projet</span>
-    </div>
-    <span class="cover-arrow" aria-hidden="true">↗</span>
-  </a>
+  <img
+    class="project-image"
+    [ngSrc]="project().image.src"
+    [alt]="project().image.alt"
+    [width]="project().image.width"
+    [height]="project().image.height"
+  />
   <div class="project-details">
     <p class="project-meta">{{ project().category }}</p>
     <h3>
-      <a [href]="project().live || project().repo || '#contact'" [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer">{{ project().name }}</a>
+      <a [href]="project().live || project().repo || '#contact'"
+        [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer">{{ project().name
+        }}</a>
     </h3>
     <p class="project-summary">{{ project().summary }}</p>
     @if (featured()) {
-      <p class="project-goal">{{ project().goal }}</p>
+    <p class="project-goal">{{ project().goal }}</p>
     }
     <ul class="tags" aria-label="Technologies">
       @for (technology of project().technologies.slice(0, 3); track technology) {
-        <li>{{ technology }}</li>
+      <li>{{ technology }}</li>
       }
     </ul>
-    <a [href]="project().live || project().repo || '#contact'" [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer" class="text-link project-link"
-      >Découvrir le projet <span aria-hidden="true">↗</span></a
-    >
+    <a [href]="project().live || project().repo || '#contact'"
+      [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer"
+      class="text-link project-link">Découvrir le projet <span aria-hidden="true">↗</span></a>
   </div>
 </article>

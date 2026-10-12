@@ -1,6 +1,12 @@
 export interface Project {
   readonly slug: string;
   readonly name: string;
+  readonly image: {
+    readonly src: string;
+    readonly alt: string;
+    readonly width: number;
+    readonly height: number;
+  };
   readonly category: 'Projet personnel' | 'Projet client' | 'Démonstration';
   readonly label: string;
   readonly summary: string;

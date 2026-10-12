@@ -4,6 +4,12 @@ export const PROJECT_DATA: readonly Project[] = [
   {
     slug: 'koacher',
     name: 'Koacher',
+    image: {
+      src: '/images/projects/Koacher.png',
+      alt: 'Aperçu de l’application Koacher',
+      width: 1418,
+      height: 1081,
+    },
     category: 'Projet personnel',
     label: 'Application web progressive',
     accent: '#91d6c3',

@@ -2,6 +2,13 @@
   display: block;
   min-width: 0;
 }
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+}
 article {
   min-width: 0;
 }
