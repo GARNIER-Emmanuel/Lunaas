@@ -8,10 +8,10 @@ import {
   required,
   validate,
 } from '@angular/forms/signals';
-import { ContactForm as ContactValues } from '../../shared/interfaces';
-import { OFFER_DATA, SITE_DATA } from '../../shared/data';
-import { ContactService } from '../../shared/services/contact-service';
-import { SiteInformationService } from '../../shared/services/site-information-service';
+import { ContactForm as ContactValues } from '../../../../shared/interfaces';
+import { OFFER_DATA, SITE_DATA } from '../../../../shared/data';
+import { ContactService } from '../../../../shared/services/contact-service';
+import { SiteInformationService } from '../../../../shared/services/site-information-service';
 
 @Component({
   selector: 'app-contact-form',

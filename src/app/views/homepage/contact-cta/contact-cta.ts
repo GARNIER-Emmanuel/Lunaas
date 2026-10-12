@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ContactFormComponent } from '../contact-form/contact-form';
-import { CONTACT_CONFIG, SITE_DATA } from '../../shared/data';
+import { ContactFormComponent } from './contact-form/contact-form';
+import { CONTACT_CONFIG, SITE_DATA } from '../../../shared/data';
 @Component({
   selector: 'app-contact-cta',
   imports: [ContactFormComponent],

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PROCESS_DATA } from '../../shared/data';
+import { PROCESS_DATA } from '../../../shared/data';
 @Component({
   selector: 'app-process-section',
   changeDetection: ChangeDetectionStrategy.OnPush,

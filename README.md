@@ -46,8 +46,9 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 
 ## 🧩 Architecture & Données
 
-- `src/app/views/homepage/` : landing page et ses sections.
-- `src/app/components/` : éléments réutilisables, dont les cartes d’offre, les projets, la FAQ, le menu, le formulaire et les fenêtres d’information.
+- `src/app/views/homepage/` : landing page et ses sections, dont la méthode, la FAQ et le contact.
+- `src/app/views/homepage/contact-cta/contact-form/` : formulaire propre à la section de contact, avec ses tests.
+- `src/app/components/` : cartes génériques, header, footer et fenêtres d’information du site.
 - `src/app/shared/interfaces/` : modèles TypeScript.
 - `src/app/shared/data/` : contenus publics centralisés.
 - `src/app/shared/services/` : envoi du contact, animations et gestion des métadonnées.

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FAQ_DATA } from '../../shared/data';
+import { FAQ_DATA } from '../../../shared/data';
 @Component({
   selector: 'app-faq',
   changeDetection: ChangeDetectionStrategy.OnPush,
