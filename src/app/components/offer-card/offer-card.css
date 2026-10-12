@@ -5,6 +5,7 @@
 .offer-card {
   --halo-light: #eceaf8;
   --halo-color: #e0ddf2;
+  --halo-border: #958ca8;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -16,14 +17,17 @@
   border-radius: 1.25rem;
   background: linear-gradient(135deg, #fff, #f3f4f7);
   box-shadow: 0 12px 40px rgb(27 33 72 / 3%);
+  transition: border-color 300ms ease;
 }
 .offer-card[data-halo='mars'] {
   --halo-light: #fae1d4;
   --halo-color: #f9d4be;
+  --halo-border: #cb7048;
 }
 .offer-card[data-halo='sun'] {
   --halo-light: #fff0cb;
   --halo-color: #ffe5ad;
+  --halo-border: #c39425;
 }
 /* Un fond coloré, révélé uniquement autour du pointeur. Le contenu reste au-dessus. */
 .offer-card::before {
@@ -44,7 +48,7 @@
   transition: opacity 300ms ease;
 }
 .offer-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--halo-border);
 }
 .offer-category {
   color: var(--color-accent);
@@ -141,5 +145,10 @@ summary:focus-visible {
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
   .offer-card::before {
     display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offer-card {
+    transition: none;
   }
 }
