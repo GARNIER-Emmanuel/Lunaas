@@ -47,7 +47,8 @@ h1 {
   display: block;
   font-size: clamp(3rem, 6.7vw, 6.4rem);
   line-height: 1.07;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.02em;
+  font-weight: 400;
 }
 .hero-title > span {
   display: block;
@@ -60,6 +61,7 @@ h1 {
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 450;
+  font-family: var(--font-sans);
 }
 .hero-summary {
   display: flex;

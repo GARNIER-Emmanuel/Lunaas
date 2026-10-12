@@ -16,6 +16,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
   - Pages secondaires chargées à la demande avec Angular Router.
 - **Styling** : Tailwind CSS v4.
   - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
+  - Essai typographique sur cette branche : Caacupe One pour les titres et Story Script pour les accents du hero et du contact, chargées depuis Google Fonts. Manrope reste utilisée pour les paragraphes et la navigation.
   - Hero sobre : la souris révèle une photo de fond grâce à un masque CSS.
   - Révélation désactivée sur écran tactile et avec les préférences de mouvement réduit.
   - GSAP et ScrollTrigger chargés à la demande pour les entrées des titres et des blocs. Parallaxe décorative limitée à l’ordinateur, scroll natif et nettoyage au changement de page.
