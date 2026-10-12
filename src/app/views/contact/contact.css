@@ -36,7 +36,7 @@ input,
 select,
 textarea {
   width: 100%;
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--color-control-line);
   border-radius: 0.6rem;
   padding: 0.85rem;
   background: var(--color-surface);
@@ -56,10 +56,10 @@ textarea:focus-visible {
 input[aria-invalid='true'],
 textarea[aria-invalid='true'],
 select[aria-invalid='true'] {
-  border-color: #f4a5a5;
+  border-color: var(--color-error);
 }
 .field-errors {
-  color: #f4a5a5;
+  color: var(--color-error);
   font-size: 0.75rem;
   margin-top: 0.5rem;
 }

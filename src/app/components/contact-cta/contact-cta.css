@@ -1,3 +1,6 @@
+.content-section {
+  background: var(--color-lavender);
+}
 .cta-layout {
   display: flex;
   align-items: center;

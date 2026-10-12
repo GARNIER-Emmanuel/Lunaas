@@ -9,13 +9,17 @@
 }
 
 @theme {
-  --color-space: #080c18;
-  --color-surface: #111827;
-  --color-ink: #f8fafc;
-  --color-muted: #a3adc2;
-  --color-accent: #8b9dff;
-  --color-lavender: #b6a4ff;
-  --color-line: #263044;
+  --color-space: #ffffff;
+  --color-surface: #f5f6fa;
+  --color-ink: #161923;
+  --color-muted: #566071;
+  --color-accent: #4b46b9;
+  --color-accent-hover: #39358f;
+  --color-lavender: #f2effa;
+  --color-line: #dce0e8;
+  --color-control-line: #808a9c;
+  --color-error: #a82736;
+  --color-button-ink: #ffffff;
   --font-sans: 'Manrope Variable', system-ui, sans-serif;
 }
 
@@ -24,7 +28,26 @@ body {
   background: var(--color-space);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
+}
+
+/* La palette sombre reste limitée au header et au hero. */
+.theme-dark {
+  --color-space: #050506;
+  --color-surface: #14151b;
+  --color-ink: #f8fafc;
+  --color-muted: #b2bbce;
+  --color-accent: #9fafff;
+  --color-accent-hover: #b7c3ff;
+  --color-lavender: #b6a4ff;
+  --color-line: #2d303a;
+  --color-control-line: #808a9c;
+  --color-error: #f4a5a5;
+  --color-button-ink: #050506;
+  background: var(--color-space);
+  color: var(--color-ink);
+  color-scheme: dark;
 }
 
 a:focus-visible,
@@ -36,7 +59,7 @@ main:focus-visible {
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-space);
+  color: var(--color-button-ink);
 }
 .page-container {
   width: min(100% - 3rem, 80rem);
@@ -62,11 +85,11 @@ main:focus-visible {
 .button-primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
-  color: var(--color-space);
+  color: var(--color-button-ink);
 }
 .button-primary:hover {
-  background: #aab7ff;
-  border-color: #aab7ff;
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
   transform: translateY(-2px);
 }
 .button-secondary:hover {

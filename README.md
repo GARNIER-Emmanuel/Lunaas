@@ -15,7 +15,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
   - Mode strict TypeScript et vérification stricte des templates.
   - Pages secondaires chargées à la demande avec Angular Router.
 - **Styling** : Tailwind CSS v4.
-  - Palette bleu nuit et lavande, tokens CSS partagés et Manrope variable hébergée localement.
+  - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
   - Hero sobre : la souris révèle une photo de fond grâce à un masque CSS.
   - Effet désactivé sur écran tactile et avec les préférences de mouvement réduit. GSAP reste installé pour d’éventuels besoins futurs.
 - **Rendu** : génération statique Angular avec hydratation.
