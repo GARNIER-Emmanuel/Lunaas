@@ -32,7 +32,9 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 
 ## ✨ Fonctionnalités
 
-- **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, offres, FAQ et appel à l’action.
+- **Accueil** : hero, méthode unifiée en quatre étapes, projet mis en avant, présentation, références professionnelles, offres, FAQ et appel à l’action.
+- **Méthode** : une seule section « Votre site à votre image / De l’idée à la mise en ligne », avec un interlocuteur unique et quatre étapes : comprendre, cadrer, concevoir et développer, vérifier et livrer.
+- **Ils m’ont fait confiance** : CGI, ElementRoot et Madness Escape Game, avec leurs logos, sans détail des missions. Les cartes suivent la souris avec une inclinaison 3D légère et un retour fluide au repos, désactivés sur écran tactile et avec la préférence de réduction des animations.
 - **Prestations** : trois offres à partir de 690 €, 1 490 € et 2 990 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher est présenté comme projet personnel dans la landing page. Son lien ouvre directement l’application.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
@@ -66,6 +68,7 @@ Les données vont du **modèle typé au fichier de contenu, puis au composant et
 | Identité et déclarations légales | `src/app/shared/data/legal-business.data.ts` |
 | Offres, tarifs et exclusions     | `src/app/shared/data/offer.data.ts`      |
 | Réalisations actives             | `src/app/shared/data/project.data.ts`    |
+| Références professionnelles      | `src/app/shared/data/company-reference.data.ts` |
 | Méthode, présentation et FAQ     | `src/app/shared/data/content.data.ts`    |
 | Navigation                       | `src/app/shared/data/navigation.data.ts` |
 | Descriptions SEO                 | `src/app/app.routes.ts`                  |
@@ -115,9 +118,11 @@ La configuration GitHub Actions exécute `npm run verify` après un push ou sur 
 | URL | Usage |
 | --- | --- |
 | `/` | Landing complète |
-| `/#approche` | Démarche de création |
+| `/#approche` | Méthode de création en quatre étapes |
+| `/#methode` | Même méthode, avec l’ancre conservée |
 | `/#realisations` | Présentation des projets |
 | `/#a-propos` | Présentation du développeur |
+| `/#confiance` | Entreprises du parcours professionnel |
 | `/#offres` | Prestations et tarifs |
 | `/#contact` | Formulaire principal |
 
@@ -155,7 +160,7 @@ _Lunaas — Donnez une autre dimension à votre présence en ligne._
 
 La composition retenue s’inspire de l’organisation et du rythme du site [LunaWeb](https://www.lunaweb.fr/). Les textes sont rédigés pour Lunaas et son activité indépendante.
 
-- L’approche et les expertises introduisent le projet avant les tarifs.
+- La méthode présente le déroulement du projet juste après le hero, en une seule section.
 - Les projets occupent une présentation large, accompagnée d’illustrations identifiées comme telles.
 - Les titres, les espaces et les alternances de fonds donnent un rythme distinct aux sections.
 - Les animations déplacent les éléments sans masquer les textes. Elles respectent les préférences de mouvement réduit et sont supprimées à la destruction des pages.

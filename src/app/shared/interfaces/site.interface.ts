@@ -8,5 +8,4 @@ export interface Site {
     readonly highlight: string;
     readonly description: string;
   };
-  readonly approach: readonly { readonly title: string; readonly description: string }[];
 }

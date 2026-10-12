@@ -1,33 +1,10 @@
 <app-hero />
-<section id="approche" aria-labelledby="approach-title" class="approach-section">
-  <div class="page-container">
-    <div class="editorial-heading">
-      <p class="section-label">01 / Une présence qui a du sens</p>
-      <div>
-        <h2 id="approach-title" class="section-title" data-motion>
-          Votre activité est unique.<br /><span class="font-script">Votre site aussi.</span>
-        </h2>
-        <p class="approach-introduction" data-motion>
-          Avant les couleurs et le code, il y a vous. Votre activité, les personnes que vous voulez
-          toucher et ce qu’elles viennent chercher. C’est là que commence votre site.
-        </p>
-      </div>
-    </div>
-    <div class="approach-grid">
-      @for (item of approach; track item.title; let i = $index) {
-        <article data-motion>
-          <span class="step-number" aria-hidden="true">0{{ i + 1 }}</span>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
-        </article>
-      }
-    </div>
-  </div>
-</section>
-<app-expertise />
-<app-projects />
-<app-process-section />
-<app-about />
+<app-process-section id="methode" />
+
+<app-trusted-companies />
 <app-services />
+<app-projects />
+
+<app-about />
 <app-faq />
 <app-contact-cta />

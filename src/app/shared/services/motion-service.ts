@@ -79,6 +79,11 @@ export class MotionService {
         }
       });
 
+      media.add(
+        '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)',
+        () => this.enableCardTilt(root, browser, gsap),
+      );
+
       void root.ownerDocument.fonts?.ready.then(() => {
         if (!disposed && !cancelled() && root.isConnected) ScrollTrigger.refresh();
       });
@@ -92,5 +97,58 @@ export class MotionService {
       this.library = undefined;
       return NO_MOTION;
     }
+  }
+
+  private enableCardTilt(
+    root: HTMLElement,
+    browser: Window,
+    gsap: MotionLibrary['gsap'],
+  ): DisposeMotion {
+    const cleanups: DisposeMotion[] = [];
+
+    for (const card of root.querySelectorAll<HTMLElement>('[data-tilt]')) {
+      // Le parent reste stable : mesurer la carte inclinée ferait trembler l'effet.
+      const surface = card.parentElement ?? card;
+      const rotateX = gsap.quickTo(card, 'rotationX', {
+        duration: 0.35,
+        ease: 'power3.out',
+        force3D: false,
+      });
+      const rotateY = gsap.quickTo(card, 'rotationY', {
+        duration: 0.35,
+        ease: 'power3.out',
+        force3D: false,
+      });
+      const reset = () => {
+        rotateX(0);
+        rotateY(0);
+      };
+      const tilt = (event: PointerEvent) => {
+        if (event.pointerType !== 'mouse') return;
+        const bounds = surface.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+
+        const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+        const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+        rotateX((0.5 - y) * 12);
+        rotateY((x - 0.5) * 12);
+      };
+
+      surface.addEventListener('pointerenter', tilt, { passive: true });
+      surface.addEventListener('pointermove', tilt, { passive: true });
+      surface.addEventListener('pointerleave', reset);
+      surface.addEventListener('pointercancel', reset);
+      browser.addEventListener('blur', reset);
+      cleanups.push(() => {
+        surface.removeEventListener('pointerenter', tilt);
+        surface.removeEventListener('pointermove', tilt);
+        surface.removeEventListener('pointerleave', reset);
+        surface.removeEventListener('pointercancel', reset);
+        browser.removeEventListener('blur', reset);
+      });
+    }
+
+    // Les tweens sont restaurés par le contexte GSAP ; on retire aussi les événements.
+    return () => cleanups.forEach((cleanup) => cleanup());
   }
 }

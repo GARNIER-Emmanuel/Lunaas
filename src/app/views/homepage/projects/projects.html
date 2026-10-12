@@ -1,22 +1,15 @@
 <section id="realisations" class="content-section" aria-labelledby="projects-title">
   <div class="page-container">
-    <div class="section-intro">
-      <p class="section-label">03 / Du concret</p>
-      <div>
-        <h2 id="projects-title" class="section-title" data-motion>Les idées prennent forme.<br /><span class="font-script">Les usages aussi.</span></h2>
-        <p class="section-description" data-motion>
-          Un projet personnel pour découvrir ma façon de concevoir une application, de relier ses
-          fonctionnalités et de la rendre utilisable au quotidien.
-        </p>
-      </div>
-    </div>
+    <h2 id="projects-title" class="section-title" data-motion>Les idées prennent forme<br /><span
+        class="font-script">Les usages aussi</span></h2>
+    <p class="section-description" data-motion>
+      Un projet personnel pour découvrir ma façon de concevoir une application, de relier ses
+      fonctionnalités et de la rendre utilisable au quotidien.
+    </p>
     <div class="project-grid">
       @for (project of projects; track project.slug) {
-        <app-project-card [project]="project" [featured]="true" data-motion />
+      <app-project-card [project]="project" [featured]="true" data-motion />
       }
     </div>
-    <a href="#contact" class="text-link"
-      >Parlons de votre projet <span aria-hidden="true">↗</span></a
-    >
   </div>
 </section>

@@ -1,11 +1,18 @@
+:host {
+  display: block;
+  scroll-margin-top: 7rem;
+}
 .process-section {
-  background: var(--color-surface);
+  background: var(--color-space);
 }
 .steps {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
   margin-top: 4rem;
+}
+.process-section .text-link {
+  margin-top: 2.5rem;
 }
 .steps li {
   border-top: 1px solid var(--color-line);
@@ -23,8 +30,22 @@
   letter-spacing: -0.025em;
   font-variant-numeric: tabular-nums;
 }
-.step-number > span {
-  font-size: 1.1rem;
+.moon-phase {
+  display: block;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+.moon-phase[data-phase='0'] {
+  mask-image: radial-gradient(circle 0.625rem at 30% 50%, transparent 97%, #000 100%);
+}
+.moon-phase[data-phase='1'] {
+  mask-image: linear-gradient(to right, transparent 50%, #000 50%);
+}
+.moon-phase[data-phase='2'] {
+  mask-image: radial-gradient(ellipse 30% 55% at 0% 50%, transparent 97%, #000 100%);
 }
 h3 {
   margin-block: 1.7rem 1rem;
