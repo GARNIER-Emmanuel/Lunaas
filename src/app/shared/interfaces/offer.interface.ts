@@ -7,4 +7,5 @@ export interface Offer {
   readonly exclusions: readonly string[];
   readonly scopeNote: string;
   readonly flexible: boolean;
+  readonly halo: 'moon' | 'mars' | 'sun';
 }

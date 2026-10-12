@@ -3,6 +3,7 @@ import { Offer } from '../interfaces';
 export const OFFER_DATA: readonly Offer[] = [
   {
     id: 'landing-page',
+    halo: 'moon',
     name: 'Landing page',
     description: 'Une page claire pour présenter votre activité et faciliter la prise de contact.',
     startingPrice: 490,
@@ -25,6 +26,7 @@ export const OFFER_DATA: readonly Offer[] = [
   },
   {
     id: 'site-vitrine',
+    halo: 'mars',
     name: 'Site vitrine multipage',
     description:
       'Un site complet pour présenter votre entreprise, vos services et vos réalisations.',
@@ -44,6 +46,7 @@ export const OFFER_DATA: readonly Offer[] = [
   },
   {
     id: 'site-dynamique',
+    halo: 'sun',
     name: 'Site web dynamique',
     description:
       'Un site qui répond à des besoins spécifiques, avec un périmètre défini sur devis.',

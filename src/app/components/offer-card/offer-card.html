@@ -1,4 +1,11 @@
-<article class="offer-card" [attr.aria-labelledby]="'offer-' + offer().id">
+<article
+  class="offer-card"
+  [attr.aria-labelledby]="'offer-' + offer().id"
+  [attr.data-halo]="offer().halo"
+  (pointermove)="revealHalo($event)"
+  (pointerleave)="hideHalo($event)"
+  (pointercancel)="hideHalo($event)"
+>
   <div class="offer-intro">
     <p class="offer-category">{{ offer().flexible ? 'Sur mesure' : 'Création de site' }}</p>
     <h3 [id]="'offer-' + offer().id">{{ offer().name }}</h3>
