@@ -6,7 +6,7 @@ export const LEGAL_BUSINESS_DATA: LegalBusiness = {
   displayName: 'Emmanuel Garnier Boidun',
   legalIdentity: 'Emmanuel Joël BOIDUN, nom d’usage GARNIER BOIDUN',
   tradeName: 'Lunaas',
-  contactEmail: 'manu.boidun@gmail.com',
+  contactEmail: 'contact@lunaas.site',
   postalAddress: '1 avenue Victor Hugo, 33110 Le Bouscat, France',
   contactPhone: '+33 6 61 74 29 19',
   plannedStatus: 'Entreprise individuelle (EI), régime micro-entreprise envisagé',
