@@ -11,6 +11,16 @@ export const routes: Routes = [
     title: 'Création de sites internet à Bordeaux | Lunaas',
   },
   {
+    path: 'services',
+    loadComponent: () => import('./views/services/services').then((m) => m.ServicePage),
+    title: 'Création de sites web et tarifs | Lunaas',
+  },
+  {
+    path: 'a-propos',
+    loadComponent: () => import('./views/a-propos/a-propos').then((m) => m.APropos),
+    title: 'Développeur web indépendant à Bordeaux | Lunaas',
+  },
+  {
     path: 'realisations',
     loadComponent: () => import('./views/realisations/realisations').then((m) => m.Realisations),
     title: 'Réalisations et projets personnels | Lunaas',

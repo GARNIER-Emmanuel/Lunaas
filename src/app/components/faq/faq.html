@@ -1,0 +1,17 @@
+<section id="faq" class="content-section" aria-labelledby="faq-title">
+  <div class="page-container faq-layout">
+    <div>
+      <p class="section-label">Questions fréquentes</p>
+      <h2 id="faq-title">Avant de<br />vous lancer.</h2>
+      <p class="section-description">Quelques repères pour préparer votre projet.</p>
+    </div>
+    <div class="questions">
+      @for (item of items; track item.question) {
+        <details>
+          <summary>{{ item.question }}</summary>
+          <p>{{ item.answer }}</p>
+        </details>
+      }
+    </div>
+  </div>
+</section>

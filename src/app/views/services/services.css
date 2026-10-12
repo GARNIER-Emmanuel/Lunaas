@@ -1,0 +1,11 @@
+.offer-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  padding-bottom: 4rem;
+}
+@media (max-width: 900px) {
+  .offer-list {
+    grid-template-columns: 1fr;
+  }
+}

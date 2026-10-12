@@ -1,0 +1,32 @@
+<section class="page-container page-heading">
+  <p class="section-label">À propos</p>
+  <h1>Le développement web,<br />avec un échange direct.</h1>
+  <p class="lead">{{ profile.introduction }}</p>
+</section>
+<section class="page-container profile-content" aria-labelledby="profile-name">
+  <div>
+    <h2 id="profile-name">{{ profile.name }}</h2>
+    <p class="section-label">{{ profile.role }}</p>
+    <p>
+      Lunaas est ma marque de création de sites internet. Vous échangez avec un développeur
+      indépendant, pas avec une agence ou une équipe présentée comme telle.
+    </p>
+    <p>
+      Mon objectif : traduire votre besoin en un site clair pour vos visiteurs, facile à consulter
+      et construit sur une base maintenable.
+    </p>
+  </div>
+  <div>
+    <h2>Des compétences au service du projet</h2>
+    <p>
+      Les technologies sont choisies selon le besoin. Elles servent la navigation, les interactions,
+      la gestion des données et la qualité du site.
+    </p>
+    <ul class="skill-list">
+      @for (skill of profile.skills; track skill) {
+        <li>{{ skill }}</li>
+      }
+    </ul>
+  </div>
+</section>
+<app-contact-cta />

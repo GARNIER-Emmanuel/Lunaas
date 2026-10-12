@@ -1,0 +1,23 @@
+<section id="methode" class="content-section" aria-labelledby="process-title">
+  <div class="page-container">
+    <div class="section-intro">
+      <p class="section-label">Méthode de travail</p>
+      <div>
+        <h2 id="process-title">Un chemin clair,<br />de l’idée au site.</h2>
+        <p class="section-description">
+          Des étapes compréhensibles et un échange direct pour garder le projet aligné avec votre
+          besoin.
+        </p>
+      </div>
+    </div>
+    <ol class="steps">
+      @for (step of steps; track step.id; let i = $index) {
+        <li>
+          <span class="step-number" aria-hidden="true">0{{ i + 1 }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
