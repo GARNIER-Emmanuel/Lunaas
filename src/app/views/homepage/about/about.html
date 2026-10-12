@@ -2,7 +2,9 @@
   <div class="page-container about-layout">
     <div class="profile-panel" data-motion>
       <p class="section-label">Derrière Lunaas</p>
-      <div class="profile-mark" aria-hidden="true" data-parallax>{{ initials }}<span>.</span></div>
+      <div class="profile-portrait">
+        <img ngSrc="/images/mypicture.png" width="1200" height="1601" [alt]="'Portrait de ' + profile.name" loading="lazy" />
+      </div>
       <p class="profile-name">
         {{ profile.name }}<span>{{ profile.role }}</span>
       </p>
