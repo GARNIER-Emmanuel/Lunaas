@@ -13,15 +13,23 @@
 <article class="legal-content">
   <h3>Éditeur et contact</h3>
   <p>
-    Lunaas est une marque de création de sites web. Vous pouvez transmettre une demande via le
-    <a href="#contact" (click)="dialog.close()">formulaire de contact</a>.
+    {{ business.tradeName }} est le nom commercial déclaré par {{ business.legalIdentity }}.
+    Statut déclaré : {{ business.declaredStatus }}. Une formalité de création a été déposée le
+    {{ business.filingDate }} ; sa validation et les identifiants d’immatriculation restent à confirmer.
+  </p>
+  <p>
+    Contact légal : <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a>.
+    Pour une demande de projet, utilisez le <a href="#contact" (click)="dialog.close()">formulaire de contact</a>.
+  </p>
+  <p>
+    Directeur de la publication : {{ business.displayName }}.
+    Régime de TVA déclaré : {{ business.declaredVatRegime }}, à confirmer après traitement de la formalité.
   </p>
   <h3>Informations à finaliser</h3>
   <ul>
-    <li>Identité légale de l’éditeur, statut et, pour une société, forme juridique et capital social.</li>
-    <li>Adresse légale requise, e-mail et téléphone professionnels.</li>
-    <li>Immatriculation et numéro de TVA lorsqu’ils sont applicables.</li>
-    <li>Nom du directeur de la publication.</li>
+    <li>Adresse légale requise et téléphone à publier pour l’activité.</li>
+    <li>Validation de la formalité, identifiants SIREN/SIRET et informations de registre applicables.</li>
+    <li>Confirmation du régime de TVA effectivement applicable.</li>
     <li>Nom ou dénomination, adresse et téléphone de l’hébergeur effectif du site.</li>
   </ul>
   <p>
@@ -67,8 +75,8 @@
 <article class="legal-content">
   <h3>Responsable du traitement</h3>
   <p>
-    Les demandes sont destinées à l’activité présentée sous la marque Lunaas. L’identité légale
-    et les coordonnées professionnelles du responsable du traitement restent à compléter.
+    Le responsable du traitement est {{ business.legalIdentity }}, pour l’activité
+    {{ business.tradeName }}. Son adresse légale et l’immatriculation de l’activité restent à compléter.
   </p>
   <h3>Données collectées et champs nécessaires</h3>
   <p>
@@ -149,7 +157,7 @@
     Une prolongation de deux mois est possible en cas de complexité ou de demandes nombreuses,
     avec information dans le premier mois. Si vous estimez que vos droits ne sont pas respectés,
     vous pouvez <a href="https://www.cnil.fr/fr/adresser-une-plainte" target="_blank" rel="noopener noreferrer">adresser une réclamation à la CNIL</a>.
-    Un autre moyen de contact professionnel reste à compléter.
+    Vous pouvez également écrire à <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a>.
   </p>
   <h3>Cookies et hébergement</h3>
   <p>

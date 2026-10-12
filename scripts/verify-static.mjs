@@ -26,8 +26,16 @@ for (const [path, document] of pages) {
   const fail = (message) => errors.push(`${path}: ${message}`);
   if (document.querySelectorAll('form').length !== 1 || !document.querySelector('#contact app-contact-form'))
     fail('expected a single contact form in the contact section');
-  if (document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').length)
-    fail('unexpected public contact address: use the form until professional details are confirmed');
+  for (const link of document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')) {
+    if (!link.closest('#mentions-legales, #confidentialite'))
+      fail('contact details must remain inside legal information, not in the landing presentation');
+  }
+  const presentation = document.body.cloneNode(true);
+  for (const dialog of presentation.querySelectorAll('dialog')) dialog.remove();
+  for (const link of document.querySelectorAll('dialog a[href^="mailto:"]')) {
+    const email = decodeURIComponent(link.getAttribute('href').slice('mailto:'.length));
+    if (presentation.textContent.includes(email)) fail('legal email is visible outside legal information');
+  }
   const privacy = document.querySelector('#confidentialite');
   if (!privacy?.querySelector('a[href="https://www.cnil.fr/fr/adresser-une-plainte"]'))
     fail('missing data-rights complaint information');

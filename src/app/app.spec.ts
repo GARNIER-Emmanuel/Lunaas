@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { provideRouter, Router } from '@angular/router';
 import { routes } from './app.routes';
-import { SITE_DATA } from './shared/data';
+import { LEGAL_BUSINESS_DATA } from './shared/data';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -46,14 +46,22 @@ describe('App', () => {
     expect(compiled.querySelector('#approche')).not.toBeNull();
   });
 
-  it('uses the contact form without exposing personal contact links', async () => {
+  it('keeps the registered email in legal information and the main contact in the form', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
-    expect(root.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')).toHaveLength(0);
+    const contactLinks = [...root.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')];
+    expect(contactLinks).toHaveLength(2);
+    for (const link of contactLinks) {
+      expect(link.closest('#mentions-legales, #confidentialite')).not.toBeNull();
+    }
+    expect(root.querySelector('#mentions-legales a[href^="mailto:"]')?.textContent).toContain(LEGAL_BUSINESS_DATA.contactEmail);
+    const presentation = root.cloneNode(true) as HTMLElement;
+    for (const dialog of presentation.querySelectorAll('dialog')) dialog.remove();
+    expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactEmail);
     expect(root.querySelector('#contact form')).not.toBeNull();
-    expect(root.querySelector('.profile-name')?.textContent).toContain(SITE_DATA.name);
+    expect(root.querySelector('.profile-name')?.textContent).toContain(LEGAL_BUSINESS_DATA.displayName);
     expect(root.querySelector('footer .text-link')?.getAttribute('href')).toBe('#contact');
   });
 

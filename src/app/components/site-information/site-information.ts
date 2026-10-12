@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SiteInformationService } from '../../shared/services/site-information-service';
+import { LEGAL_BUSINESS_DATA } from '../../shared/data';
 
 @Component({
   selector: 'app-site-information',
@@ -8,5 +9,6 @@ import { SiteInformationService } from '../../shared/services/site-information-s
   styleUrl: './site-information.css',
 })
 export class SiteInformation {
+  protected readonly business = LEGAL_BUSINESS_DATA;
   protected readonly information = inject(SiteInformationService);
 }

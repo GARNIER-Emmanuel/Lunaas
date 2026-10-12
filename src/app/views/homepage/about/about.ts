@@ -8,4 +8,5 @@ import { PROFILE_DATA } from '../../../shared/data';
 })
 export class About {
   protected readonly profile = PROFILE_DATA;
+  protected readonly initials = PROFILE_DATA.name.split(' ').map((part) => part[0]).join('');
 }

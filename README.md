@@ -37,10 +37,10 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
 - **Contact** : un seul formulaire Signal Forms dans la section `#contact`. E-mail et message sont nécessaires ; nom, prénom, sujet et budget sont facultatifs. Le sujet « Mes données personnelles » permet une demande de droits sans renseignement commercial. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
   - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose un bouton pour réessayer.
-  - Les coordonnées personnelles et le nom complet ne sont pas affichés. Les demandes et les questions sur les données passent par le formulaire ; Bordeaux reste la zone de prestation présentée.
+  - Le nom du développeur figure dans la présentation. L’e-mail déclaré est réservé aux fenêtres de mentions légales et de confidentialité ; les sections de la landing utilisent le formulaire. L’adresse et le téléphone restent en attente ; Bordeaux reste la zone de prestation présentée.
 - **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers les sections. Les anciennes adresses reviennent à la landing dans Angular.
 - **SEO** : titre et description de la landing, canonical à la racine, Open Graph, image de partage, données structurées `WebSite`, sitemap avec une seule URL et robots.txt.
-- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire, et affichées dans le document si JavaScript est désactivé. La confidentialité décrit les finalités, les bases légales proposées, les droits, le recours à la CNIL et les traitements de Web3Forms. L’identité légale, les coordonnées professionnelles, l’hébergement, la TVA, les durées de conservation et les contrats des prestataires restent à confirmer : aucune conformité complète n’est déclarée.
+- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire, et affichées dans le document si JavaScript est désactivé. L’identité et les informations déclarées au Guichet unique sont centralisées dans `legal-business.data.ts`. Une synthèse de dépôt ne prouve pas l’immatriculation validée : SIREN/SIRET, adresse et téléphone à publier, hébergement et application du régime de TVA restent à confirmer. La confidentialité décrit les finalités, les bases légales proposées, les droits, le recours à la CNIL et les traitements de Web3Forms. Les durées de conservation et les contrats des prestataires restent à finaliser ; aucune conformité complète n’est déclarée.
 - **Secours statique** : `404.html` contient la même landing ; aucune vue séparée « Page introuvable ».
 
 ---
@@ -62,6 +62,7 @@ Les données vont du **modèle typé au fichier de contenu, puis au composant et
 | Contenu                          | Fichier                                  |
 | -------------------------------- | ---------------------------------------- |
 | Marque, domaine et accroche      | `src/app/shared/data/site.data.ts`       |
+| Identité et déclarations légales | `src/app/shared/data/legal-business.data.ts` |
 | Offres, tarifs et exclusions     | `src/app/shared/data/offer.data.ts`      |
 | Réalisations actives             | `src/app/shared/data/project.data.ts`    |
 | Méthode, présentation et FAQ     | `src/app/shared/data/content.data.ts`    |
@@ -135,7 +136,7 @@ Le fichier `404.html` contient la landing et permet à Angular de ramener un che
 
 ### Éléments à confirmer avant publication
 
-- Identité légale, statut, immatriculation, coordonnées professionnelles et informations de l’hébergeur.
+- Validation de la formalité de création, immatriculation, adresse et téléphone à publier, régime fiscal applicable et informations de l’hébergeur.
 - Informations définitives relatives au traitement des demandes et à leur conservation.
 - Droits d’utilisation du visuel de fond et validation des contenus publics.
 - Réception réelle des messages Web3Forms, disponibilité du service et éventuelles restrictions de domaine de la configuration existante.
@@ -161,4 +162,4 @@ Cette version est validée pour intégration sur `main`. Les prochaines évoluti
 
 La vérification technique couvre la navigation vers les sections, le formulaire unique, ses erreurs et les contrôles de la landing statique. Les tests d’envoi simulent les réponses du service ; ils n’envoient pas de vrais messages. Le rendu, le rythme des animations et la réception réelle restent à valider dans un navigateur sur mobile et ordinateur.
 
-La configuration de contact est centralisée dans `src/app/shared/data/contact.data.ts`. La clé Web3Forms est une [clé publique de routage](https://docs.web3forms.com/getting-started/faq) qui oriente les messages vers la messagerie configurée chez le prestataire. L’adresse personnelle n’est pas exposée dans les données publiques du frontend.
+La configuration d’envoi est centralisée dans `src/app/shared/data/contact.data.ts`. La clé Web3Forms est une [clé publique de routage](https://docs.web3forms.com/getting-started/faq) qui oriente les messages vers la messagerie configurée chez le prestataire. L’e-mail de contact légal figure dans `legal-business.data.ts` et les fenêtres légales, sans être affiché dans les sections de présentation, le header ou le footer.

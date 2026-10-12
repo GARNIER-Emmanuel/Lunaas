@@ -4,3 +4,4 @@ export * from './project.data';
 export * from './content.data';
 export * from './navigation.data';
 export * from './contact.data';
+export * from './legal-business.data';
