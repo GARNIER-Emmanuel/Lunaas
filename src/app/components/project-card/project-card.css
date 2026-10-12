@@ -10,7 +10,7 @@ article {
 
 .project-preview {
   min-width: 0;
-  padding: clamp(0.75rem, 2vw, 1.5rem);
+  padding: clamp(0.75rem, 2vw, 0.2rem);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--project-accent) 28%, var(--color-line));
   border-radius: 1.75rem;

@@ -2,22 +2,15 @@
   <div class="page-container about-layout">
     <div class="about-copy">
       <h2 id="about-title" class="section-title" data-motion>
-        Un développeur.<br />Un échange direct.<br /><span class="font-script">Votre projet en commun.</span>
+        {{ profile.name }}<br /><span class="font-script"> {{ profile.role }}</span>
+        <!-- {{ profile.role }}<br /><span class="font-script"> {{ profile.name }}</span> -->
       </h2>
       <p class="section-description" data-motion>{{ profile.introduction }}</p>
-      <a href="#contact" class="text-link">Faire connaissance <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="profile-panel">
-      <div class="profile-heading">
-        <p class="section-label">Derrière Lunaas</p>
-        <p class="profile-name">
-          {{ profile.name }}<span>{{ profile.role }}</span>
-        </p>
-      </div>
-      <div class="profile-portrait">
-        <img ngSrc="/images/mypicture.png" width="1200" height="1601" [alt]="'Portrait de ' + profile.name"
-          loading="lazy" />
-      </div>
+    <div class="profile-portrait">
+      <img ngSrc="/images/mypicture.png" width="1200" height="1601" [alt]="'Portrait de ' + profile.name"
+        loading="lazy" />
     </div>
+
   </div>
 </section>

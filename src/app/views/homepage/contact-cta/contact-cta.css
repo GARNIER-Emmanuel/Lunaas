@@ -24,9 +24,9 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  mask-image: radial-gradient(circle 380px at var(--cta-reveal-x, 50%) var(--cta-reveal-y, 50%),
+  mask-image: radial-gradient(circle 360px at var(--cta-reveal-x, 50%) var(--cta-reveal-y, 50%),
       #000 0%,
-      #0009 85%,
+      #0009 90%,
       transparent 100%);
   opacity: var(--cta-reveal-opacity, 0);
   transition: opacity 250ms ease;

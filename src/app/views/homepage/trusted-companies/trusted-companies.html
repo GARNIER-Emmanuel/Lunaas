@@ -1,34 +1,26 @@
 <section id="confiance" class="content-section trust-section" aria-labelledby="trust-title">
   <div class="page-container">
     <div class="section-intro">
-      <p class="section-label">Parcours professionnel</p>
       <div>
         <h2 id="trust-title" class="section-title" data-motion>
-          Ils m’ont fait<br /><span class="font-script">confiance.</span>
+          Ils m’ont fait<br /> <span class="font-script">confiance</span>
         </h2>
         <p class="section-description" data-motion>
-          Des entreprises où j’ai travaillé en développement web et logiciel, en alternance ou en
-          stage.
+          Des entreprises où j’ai travaillé en développement web et logiciel.
         </p>
       </div>
-    </div>
-    <ul class="company-list" role="list">
-      @for (company of companies; track company.id) {
+
+      <ul class="company-list" role="list">
+        @for (company of companies; track company.id) {
         <li class="company-item" data-motion>
           <div class="company-card" data-tilt>
-            <img
-              class="company-logo"
-              [ngSrc]="company.logo.src"
-              [width]="company.logo.width"
-              [height]="company.logo.height"
-              alt=""
-              loading="lazy"
-            />
+            <img class="company-logo" [ngSrc]="company.logo.src" [width]="company.logo.width"
+              [height]="company.logo.height" alt="" loading="lazy" />
             <h3>{{ company.name }}</h3>
-            <p class="company-collaboration">{{ company.collaboration }}</p>
           </div>
         </li>
-      }
-    </ul>
+        }
+      </ul>
+    </div>
   </div>
 </section>
