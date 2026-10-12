@@ -125,7 +125,7 @@ Les fiches projet et le sitemap suivent les données actives : retirer un projet
 - Dossier de sortie : `dist/lunaas/browser/`.
 - `404.html`, sitemap et robots.txt sont produits automatiquement.
 - `_headers` contient les en-têtes de livraison pour Cloudflare Pages.
-- `lunaas.site` est l’URL canonique cible. Si le domaine change, mettre à jour `site.data.ts` et `scripts/finalize-static.mjs`.
+- `lunaas.site` est l’URL canonique cible. Si le domaine change, mettre à jour `site.data.ts` ; le sitemap reprend automatiquement l’URL générée.
 
 Le fichier `404.html` permet à Cloudflare Pages de traiter les chemins inconnus sans renvoyer systématiquement l’accueil. Ce comportement reste à vérifier une fois déployé. Voir la [documentation Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/).
 

@@ -6,7 +6,11 @@ const output = resolve('dist/lunaas/browser');
 const { routes } = JSON.parse(
   await readFile(resolve('dist/lunaas/prerendered-routes.json'), 'utf8'),
 );
-const origin = 'https://lunaas.site';
+const homeDocument = new JSDOM(await readFile(resolve(output, 'index.html'), 'utf8')).window
+  .document;
+const homeCanonical = homeDocument.querySelector('link[rel="canonical"]')?.href;
+if (!homeCanonical) throw new Error('Missing homepage canonical');
+const origin = new URL(homeCanonical).origin;
 const pages = new Map();
 const errors = [];
 const titles = new Set();

@@ -5,7 +5,10 @@ const output = resolve('dist/lunaas/browser');
 const { routes } = JSON.parse(
   await readFile(resolve('dist/lunaas/prerendered-routes.json'), 'utf8'),
 );
-const domain = 'https://lunaas.site';
+const homeHtml = await readFile(resolve(output, 'index.html'), 'utf8');
+const homeCanonical = homeHtml.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+if (!homeCanonical) throw new Error('Missing homepage canonical for sitemap generation');
+const domain = new URL(homeCanonical).origin;
 const publicPaths = [];
 for (const path of Object.keys(routes).sort()) {
   const html = await readFile(resolve(output, `.${path}`, 'index.html'), 'utf8');
