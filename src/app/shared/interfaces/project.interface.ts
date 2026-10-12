@@ -9,6 +9,7 @@ export interface Project {
   readonly solution: string;
   readonly technologies: readonly string[];
   readonly accent: string;
+  readonly highlights?: readonly string[];
   readonly repo?: string;
   readonly live?: string;
 }

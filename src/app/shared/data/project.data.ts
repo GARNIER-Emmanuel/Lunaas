@@ -7,6 +7,7 @@ export const PROJECT_DATA: readonly Project[] = [
     category: 'Projet personnel',
     label: 'Application web progressive',
     accent: '#91d6c3',
+    highlights: ['Programmes personnalisables', 'Séances guidées', 'Suivi des progrès'],
     summary: 'Une PWA pour organiser ses programmes de musculation et suivre ses séances.',
     context:
       'Un projet personnel autour du suivi de musculation et de la consultation des programmes sur mobile.',

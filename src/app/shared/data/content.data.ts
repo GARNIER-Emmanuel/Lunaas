@@ -1,4 +1,27 @@
-import { ContentItem, FaqItem, Profile } from '../interfaces';
+import { ContentItem, Expertise, FaqItem, Profile } from '../interfaces';
+export const EXPERTISE_DATA: readonly Expertise[] = [
+  {
+    id: 'cadrage',
+    title: 'Comprendre & cadrer',
+    description:
+      'Clarifier votre objectif, organiser les contenus et définir les pages utiles. Vous savez ce que l’on construit, pour qui et dans quel périmètre.',
+    keywords: ['Objectifs', 'Contenus', 'Périmètre'],
+  },
+  {
+    id: 'conception',
+    title: 'Concevoir & guider',
+    description:
+      'Donner une forme à votre identité et construire des parcours simples. Une navigation lisible, des informations au bon endroit et une prise de contact facile.',
+    keywords: ['Design', 'Navigation', 'Responsive'],
+  },
+  {
+    id: 'developpement',
+    title: 'Développer & livrer',
+    description:
+      'Transformer le design en un site utilisable, vérifier les interactions et préparer la mise en ligne. Une base organisée pour accompagner les évolutions du projet.',
+    keywords: ['Développement', 'Tests', 'Mise en ligne'],
+  },
+];
 export const PROCESS_DATA: readonly ContentItem[] = [
   {
     id: 'echanger',
@@ -29,7 +52,7 @@ export const PROFILE_DATA: Profile = {
   name: 'Emmanuel Garnier Boidun',
   role: 'Développeur web full-stack à Bordeaux',
   introduction:
-    'Diplômé Bac+5, je développe des interfaces web et des applications avec Angular, Java et Spring Boot. Avec Lunaas, je mets ces compétences au service d’une présence en ligne claire et adaptée à votre activité.',
+    'Je vous accompagne dans la création de votre site, du premier échange à la mise en ligne. Mon rôle : comprendre votre activité, donner une forme à vos idées et construire une présence en ligne claire pour vos visiteurs.',
   skills: [
     'Angular',
     'TypeScript',

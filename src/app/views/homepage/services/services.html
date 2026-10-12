@@ -1,17 +1,18 @@
 <section id="offres" aria-labelledby="offers-title" class="services-section">
   <div class="page-container">
-    <div class="section-heading">
-      <p>Prestations & tarifs</p>
+    <div class="section-intro">
+      <p class="section-label">Prestations & tarifs / Trouver le bon format</p>
       <div>
-        <h2 id="offers-title">Le bon format<br />pour votre projet.</h2>
-        <p class="section-description">
-          Une première présence en ligne ou un site plus complet : partons de votre besoin.
+        <h2 id="offers-title" data-motion>Un besoin précis.<br />Une réponse adaptée.</h2>
+        <p class="section-description" data-motion>
+          Une page pour vous lancer, un site pour présenter votre activité ou des fonctionnalités
+          pour aller plus loin. Le périmètre se décide ensemble.
         </p>
       </div>
     </div>
     <div class="offers-grid">
       @for (offer of offers; track offer.id) {
-        <app-offer-card [offer]="offer" />
+        <app-offer-card [offer]="offer" data-motion />
       }
     </div>
     <p class="pricing-note">

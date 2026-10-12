@@ -1,12 +1,17 @@
 <section id="a-propos" class="content-section" aria-labelledby="about-title">
-  <div class="page-container section-intro">
-    <p class="section-label">Derrière Lunaas</p>
-    <div>
-      <h2 id="about-title">Un développeur,<br />un interlocuteur.</h2>
-      <p class="section-description">{{ profile.introduction }}</p>
+  <div class="page-container about-layout">
+    <div class="profile-panel" data-motion>
+      <p class="section-label">Derrière Lunaas</p>
+      <div class="profile-mark" aria-hidden="true" data-parallax>EGB<span>.</span></div>
       <p class="profile-name">
-        {{ profile.name }} <span>{{ profile.role }}</span>
+        {{ profile.name }}<span>{{ profile.role }}</span>
       </p>
+    </div>
+    <div class="about-copy">
+      <h2 id="about-title" data-motion>
+        Un développeur.<br />Un échange direct.<br /><span>Votre projet en commun.</span>
+      </h2>
+      <p class="section-description" data-motion>{{ profile.introduction }}</p>
       <a routerLink="/a-propos" class="text-link"
         >Faire connaissance <span aria-hidden="true">↗</span></a
       >

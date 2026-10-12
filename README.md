@@ -28,9 +28,10 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 
 ## ✨ Fonctionnalités
 
-- **Accueil** : hero, offres, bénéfices, réalisation, méthode de travail, présentation, FAQ et appel à l’action.
+- **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, offres, FAQ et appel à l’action.
 - **Prestations** : trois offres à partir de 490 €, 990 € et 1 790 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher est actuellement le seul projet actif. Les fiches sont générées à partir des données et clairement identifiées comme projets personnels.
+  - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
 - **Contact** : formulaire Signal Forms, validation accessible, préselection de l’offre et préparation d’un brouillon e-mail. Aucun message n’est annoncé comme envoyé automatiquement.
 - **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers toutes les pages.
 - **SEO** : titres et descriptions par page, canonical, Open Graph, image de partage, données structurées `WebSite`, sitemap et robots.txt.

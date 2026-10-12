@@ -1,14 +1,21 @@
 <app-hero />
-<app-services />
 <section id="approche" aria-labelledby="approach-title" class="approach-section">
   <div class="page-container">
-    <div class="section-heading">
-      <p>L'approche Lunaas</p>
-      <h2 id="approach-title">Votre projet, accompagné<br />de près.</h2>
+    <div class="editorial-heading">
+      <p class="section-label">01 / Une présence qui a du sens</p>
+      <div>
+        <h2 id="approach-title" data-motion>
+          Votre activité est unique.<br /><span>Votre site aussi.</span>
+        </h2>
+        <p class="approach-introduction" data-motion>
+          Avant les couleurs et le code, il y a vous. Votre activité, les personnes que vous voulez
+          toucher et ce qu’elles viennent chercher. C’est là que commence votre site.
+        </p>
+      </div>
     </div>
     <div class="approach-grid">
       @for (item of approach; track item.title; let i = $index) {
-        <article>
+        <article data-motion>
           <span class="step-number" aria-hidden="true">0{{ i + 1 }}</span>
           <h3>{{ item.title }}</h3>
           <p>{{ item.description }}</p>
@@ -17,9 +24,10 @@
     </div>
   </div>
 </section>
+<app-expertise />
 <app-projects />
 <app-process-section />
 <app-about />
+<app-services />
 <app-faq />
-
 <app-contact-cta />

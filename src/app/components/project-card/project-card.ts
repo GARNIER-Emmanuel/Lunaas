@@ -8,7 +8,9 @@ import { Project } from '../../shared/interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './project-card.html',
   styleUrl: './project-card.css',
+  host: { '[class.featured]': 'featured()' },
 })
 export class ProjectCard {
   readonly project = input.required<Project>();
+  readonly featured = input(false);
 }

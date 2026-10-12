@@ -1,19 +1,19 @@
-<section id="methode" class="content-section" aria-labelledby="process-title">
+<section id="methode" class="content-section process-section" aria-labelledby="process-title">
   <div class="page-container">
     <div class="section-intro">
-      <p class="section-label">Méthode de travail</p>
+      <p class="section-label">La méthode / Avancer ensemble</p>
       <div>
-        <h2 id="process-title">Un chemin clair,<br />de l’idée au site.</h2>
-        <p class="section-description">
-          Des étapes compréhensibles et un échange direct pour garder le projet aligné avec votre
-          besoin.
+        <h2 id="process-title" data-motion>Vous savez où l’on va.<br />Et comment on y va.</h2>
+        <p class="section-description" data-motion>
+          Un projet cadré, des échanges réguliers et des décisions que vous comprenez. De la
+          première discussion à la mise en ligne.
         </p>
       </div>
     </div>
     <ol class="steps">
       @for (step of steps; track step.id; let i = $index) {
-        <li>
-          <span class="step-number" aria-hidden="true">0{{ i + 1 }}</span>
+        <li data-motion>
+          <span class="step-number" aria-hidden="true">0{{ i + 1 }}<span>↗</span></span>
           <h3>{{ step.title }}</h3>
           <p>{{ step.description }}</p>
         </li>

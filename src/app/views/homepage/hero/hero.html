@@ -1,4 +1,4 @@
-﻿<section
+<section
   class="hero theme-dark"
   aria-labelledby="homepage-title"
   (pointermove)="revealImage($event)"
@@ -7,22 +7,30 @@
   <div class="hero-reveal" aria-hidden="true"></div>
   <div class="page-container hero-layout">
     <div class="hero-copy">
-      <p class="eyebrow">Développement web indépendant · Bordeaux</p>
-      <h1 id="homepage-title">{{ site.homepage.title }}</h1>
-      <p class="hero-description">{{ site.tagline }} {{ site.homepage.description }}</p>
-      <div class="hero-actions">
-        <a routerLink="/contact" class="button button-primary"
-          >Demander un devis gratuit <span aria-hidden="true">↗</span></a
+      <p class="eyebrow" data-motion="hero">Lunaas / Développement web indépendant</p>
+      <h1 id="homepage-title" data-motion="hero">
+        <span class="hero-title"
+          >{{ site.homepage.headline }}<span>{{ site.homepage.highlight }}</span></span
         >
-        <a routerLink="/" fragment="approche" class="button button-secondary"
-          >Découvrir l'approche <span aria-hidden="true">↓</span></a
-        >
+        <span class="hero-location">{{ site.homepage.title }}</span>
+      </h1>
+      <div class="hero-summary" data-motion="hero">
+        <p class="hero-description">{{ site.homepage.description }}</p>
+        <div class="hero-actions">
+          <a routerLink="/contact" class="button button-primary"
+            >Parlons de votre projet <span aria-hidden="true">↗</span></a
+          >
+          <a routerLink="/" fragment="approche" class="button button-secondary"
+            >Découvrir l'approche <span aria-hidden="true">↓</span></a
+          >
+        </div>
       </div>
-      <p class="hero-note">Une idée, un besoin, un projet ? Commençons par en parler.</p>
     </div>
   </div>
   <div class="page-container hero-bottom">
-    <span>Votre activité. Votre univers. Votre site.</span>
-    <a routerLink="/" fragment="approche">Explorer <span aria-hidden="true">↓</span></a>
+    <span>De la première idée à la mise en ligne.</span>
+    <a routerLink="/" fragment="approche" class="explore-link"
+      >Faire défiler <span class="scroll-arrow" aria-hidden="true">↓</span></a
+    >
   </div>
 </section>

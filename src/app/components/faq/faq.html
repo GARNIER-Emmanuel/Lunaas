@@ -2,13 +2,20 @@
   <div class="page-container faq-layout">
     <div>
       <p class="section-label">Questions fréquentes</p>
-      <h2 id="faq-title">Avant de<br />vous lancer.</h2>
-      <p class="section-description">Quelques repères pour préparer votre projet.</p>
+      <h2 id="faq-title" data-motion>
+        Les bonnes questions.<br /><span>Avant de commencer.</span>
+      </h2>
+      <p class="section-description">
+        Budget, délais, contenus : quelques repères pour préparer notre échange.
+      </p>
     </div>
-    <div class="questions">
+    <div class="questions" data-motion>
       @for (item of items; track item.question) {
         <details>
-          <summary>{{ item.question }}</summary>
+          <summary>
+            <span>{{ item.question }}</span
+            ><span class="faq-toggle" aria-hidden="true"></span>
+          </summary>
           <p>{{ item.answer }}</p>
         </details>
       }

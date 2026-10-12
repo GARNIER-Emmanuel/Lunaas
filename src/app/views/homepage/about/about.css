@@ -1,10 +1,69 @@
-.profile-name {
-  margin-block: 1.5rem;
-  font-size: 0.85rem;
+.about-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
 }
-.profile-name span {
+.profile-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 31rem;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background: var(--color-lavender);
+}
+.profile-panel::after {
+  content: '';
+  position: absolute;
+  width: 23rem;
+  height: 23rem;
+  top: -9rem;
+  right: -12rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.25;
+}
+.profile-mark {
+  font-size: clamp(5rem, 9vw, 8rem);
+  line-height: 1;
+  font-weight: 550;
+  letter-spacing: -0.09em;
+}
+.profile-mark > span {
+  color: var(--color-accent);
+}
+.profile-name {
+  font-size: 0.95rem;
+}
+.profile-name > span {
   display: block;
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   color: var(--color-muted);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+}
+h2 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+  text-wrap: balance;
+}
+h2 > span {
+  color: var(--color-accent);
+}
+.about-copy .section-description {
+  margin-block: 2rem;
+  max-width: 45ch;
+}
+@media (max-width: 800px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .profile-panel {
+    min-height: 24rem;
+  }
 }

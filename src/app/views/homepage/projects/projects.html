@@ -1,22 +1,22 @@
 <section id="realisations" class="content-section" aria-labelledby="projects-title">
   <div class="page-container">
     <div class="section-intro">
-      <p class="section-label">Réalisations</p>
+      <p class="section-label">03 / Du concret</p>
       <div>
-        <h2 id="projects-title">Des idées mises<br />en pratique.</h2>
-        <p class="section-description">
-          Une sélection de projets personnels. Des usages différents, une même attention à la
-          qualité du web.
+        <h2 id="projects-title" data-motion>Les idées prennent forme.<br />Les usages aussi.</h2>
+        <p class="section-description" data-motion>
+          Un projet personnel pour découvrir ma façon de concevoir une application, de relier ses
+          fonctionnalités et de la rendre utilisable au quotidien.
         </p>
       </div>
     </div>
     <div class="project-grid">
       @for (project of projects; track project.slug) {
-        <app-project-card [project]="project" />
+        <app-project-card [project]="project" [featured]="true" data-motion />
       }
     </div>
     <a routerLink="/realisations" class="text-link"
-      >Explorer les projets <span aria-hidden="true">↗</span></a
+      >Voir les réalisations <span aria-hidden="true">↗</span></a
     >
   </div>
 </section>

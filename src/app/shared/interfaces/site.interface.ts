@@ -5,6 +5,8 @@ export interface Site {
   readonly url: string;
   readonly homepage: {
     readonly title: string;
+    readonly headline: string;
+    readonly highlight: string;
     readonly description: string;
   };
   readonly approach: readonly { readonly title: string; readonly description: string }[];

@@ -7,10 +7,11 @@ import { ProcessSection } from '../../components/process-section/process-section
 import { Faq } from '../../components/faq/faq';
 import { ContactCta } from '../../components/contact-cta/contact-cta';
 import { About } from './about/about';
+import { Expertise } from './expertise/expertise';
 
 @Component({
   selector: 'app-homepage',
-  imports: [Hero, Services, Projects, ProcessSection, Faq, About, ContactCta],
+  imports: [Hero, Services, Projects, ProcessSection, Faq, About, ContactCta, Expertise],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',

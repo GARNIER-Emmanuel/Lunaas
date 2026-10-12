@@ -1,14 +1,17 @@
 .faq-layout {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(3rem, 6vw, 6rem);
 }
 h2 {
-  margin-top: 1rem;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  line-height: 1.2;
-  letter-spacing: -0.05em;
+  margin-top: 1.5rem;
+  font-size: clamp(2.1rem, 3.5vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.055em;
   font-weight: 500;
+}
+h2 > span {
+  color: var(--color-accent);
 }
 details {
   border-top: 1px solid var(--color-line);
@@ -17,24 +20,61 @@ details:last-child {
   border-bottom: 1px solid var(--color-line);
 }
 summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
   cursor: pointer;
-  padding-block: 1.4rem;
-  font-size: 0.9rem;
+  padding-block: 1.5rem;
+  font-size: 1rem;
   line-height: 1.6;
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.faq-toggle {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.faq-toggle::before,
+.faq-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+}
+.faq-toggle::after {
+  rotate: 90deg;
+  transition: rotate 200ms ease;
+}
+details[open] .faq-toggle::after {
+  rotate: 0deg;
 }
 summary:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
 details p {
-  padding-bottom: 1.5rem;
+  padding-block: 0 1.5rem;
+  padding-right: 2.5rem;
   color: var(--color-muted);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.9;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .faq-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-toggle::after {
+    transition: none;
   }
 }
