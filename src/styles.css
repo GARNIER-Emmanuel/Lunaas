@@ -77,10 +77,12 @@ main:focus-visible {
   background: var(--color-accent);
   color: var(--color-button-ink);
 }
+
 .page-container {
   width: min(100% - 3rem, 80rem);
   margin-inline: auto;
 }
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -98,38 +100,46 @@ main:focus-visible {
     background-color 180ms ease,
     border-color 180ms ease;
 }
-.button > span,
-.text-link > span {
+
+.button>span,
+.text-link>span {
   display: inline-block;
   transition: transform 220ms ease;
 }
-.button:hover > span,
-.text-link:hover > span {
+
+.button:hover>span,
+.text-link:hover>span {
   transform: translate(2px, -2px);
 }
+
 .button-primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-button-ink);
 }
+
 .button-primary:hover {
   background: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
   transform: translateY(-2px);
 }
+
 .button-secondary:hover {
   border-color: var(--color-muted);
   background: var(--color-surface);
 }
+
 @media (prefers-reduced-motion: reduce) {
+
   .button,
-  .button > span,
-  .text-link > span {
+  .button>span,
+  .text-link>span {
     transition: none;
   }
+
   .button-primary:hover,
-  .button:hover > span,
-  .text-link:hover > span {
+  .button:hover>span,
+  .text-link:hover>span {
     transform: none;
   }
 }
@@ -150,38 +160,46 @@ main:focus-visible {
   max-width: 52rem;
   padding-bottom: 5rem;
 }
+
 .legal-content h2 {
   font-size: 1.3rem;
   font-weight: 550;
   margin-block: 2rem 1rem;
 }
+
 .legal-content p,
 .legal-content li {
   color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.9;
 }
-.legal-content p + p {
+
+.legal-content p+p {
   margin-top: 1rem;
 }
+
 .legal-content ul {
   padding-left: 1.5rem;
   list-style: disc;
 }
+
 .legal-content a {
   color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+
 .section-intro {
   display: grid;
   grid-template-columns: 1fr 2.2fr;
   align-items: start;
   gap: 3rem;
 }
-.section-intro > div {
+
+.section-intro>div {
   min-width: 0;
 }
+
 .section-label {
   color: var(--color-accent);
   font-size: 0.75rem;
@@ -189,6 +207,7 @@ main:focus-visible {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
 .section-intro h2 {
   font-size: clamp(2.3rem, 4.3vw, 4.4rem);
   line-height: 1.12;
@@ -196,6 +215,7 @@ main:focus-visible {
   font-weight: 500;
   text-wrap: balance;
 }
+
 .section-description,
 .lead {
   max-width: 50ch;
@@ -204,6 +224,7 @@ main:focus-visible {
   font-size: 1rem;
   line-height: 1.85;
 }
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -211,13 +232,16 @@ main:focus-visible {
   font-size: 0.9rem;
   color: var(--color-accent);
 }
+
 .text-link:hover {
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
+
 .page-heading {
   padding-block: clamp(3.5rem, 7vw, 7rem) 4rem;
 }
+
 .page-heading h1 {
   max-width: 18ch;
   font-size: clamp(2.7rem, 5.5vw, 5.5rem);
@@ -227,15 +251,18 @@ main:focus-visible {
   margin-top: 1.5rem;
   text-wrap: balance;
 }
+
 .page-heading .lead {
   max-width: 65ch;
 }
+
 @media (max-width: 800px) {
   .section-intro {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 }
+
 @media (max-width: 640px) {
   .content-section {
     padding-block: 4.5rem;

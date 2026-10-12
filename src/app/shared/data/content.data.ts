@@ -2,21 +2,21 @@ import { ContentItem, Expertise, FaqItem, Profile } from '../interfaces';
 export const EXPERTISE_DATA: readonly Expertise[] = [
   {
     id: 'cadrage',
-    title: 'Comprendre & cadrer',
+    title: 'Comprendre et cadrer',
     description:
       'Clarifier votre objectif, organiser les contenus et définir les pages utiles. Vous savez ce que l’on construit, pour qui et dans quel périmètre.',
     keywords: ['Objectifs', 'Contenus', 'Périmètre'],
   },
   {
     id: 'conception',
-    title: 'Concevoir & guider',
+    title: 'Concevoir et guider',
     description:
       'Donner une forme à votre identité et construire des parcours simples. Une navigation lisible, des informations au bon endroit et une prise de contact facile.',
     keywords: ['Design', 'Navigation', 'Responsive'],
   },
   {
     id: 'developpement',
-    title: 'Développer & livrer',
+    title: 'Développer et livrer',
     description:
       'Transformer le design en un site utilisable, vérifier les interactions et préparer la mise en ligne. Une base organisée pour accompagner les évolutions du projet.',
     keywords: ['Développement', 'Tests', 'Mise en ligne'],

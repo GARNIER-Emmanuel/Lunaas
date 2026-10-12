@@ -1,11 +1,5 @@
-<article
-  class="offer-card"
-  [attr.aria-labelledby]="'offer-' + offer().id"
-  [attr.data-halo]="offer().halo"
-  (pointermove)="revealHalo($event)"
-  (pointerleave)="hideHalo($event)"
-  (pointercancel)="hideHalo($event)"
->
+<article class="offer-card" [attr.aria-labelledby]="'offer-' + offer().id" [attr.data-halo]="offer().halo"
+  (pointermove)="revealHalo($event)" (pointerleave)="hideHalo($event)" (pointercancel)="hideHalo($event)">
   <div class="offer-intro">
     <p class="offer-category">{{ offer().flexible ? 'Sur mesure' : 'Création de site' }}</p>
     <h3 [id]="'offer-' + offer().id">{{ offer().name }}</h3>
@@ -20,7 +14,7 @@
   <h4>{{ offer().flexible ? 'Prestations possibles, sur devis' : 'Ce que comprend l’offre' }}</h4>
   <ul class="feature-list">
     @for (feature of offer().features; track feature) {
-      <li><span aria-hidden="true">✓</span>{{ feature }}</li>
+    <li><span aria-hidden="true">✓</span>{{ feature }}</li>
     }
   </ul>
 
@@ -30,16 +24,9 @@
     </summary>
     <ul class="exclusion-list">
       @for (exclusion of offer().exclusions; track exclusion) {
-        <li>{{ exclusion }}</li>
+      <li>{{ exclusion }}</li>
       }
     </ul>
   </details>
 
-  <a
-    href="#contact"
-    class="button button-secondary quote-link"
-    [attr.aria-label]="'Demander un devis pour ' + offer().name"
-  >
-    Parlons de ce projet <span aria-hidden="true">↗</span>
-  </a>
 </article>

@@ -33,7 +33,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 
 - **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, offres, FAQ et appel à l’action.
 - **Prestations** : trois offres à partir de 490 €, 990 € et 1 790 €, avec périmètres, exclusions et devis selon le besoin.
-- **Réalisations** : Koacher est actuellement le seul projet actif. Sa présentation reste dans la landing page et ses liens ouvrent le projet en ligne.
+- **Réalisations** : Koacher et SupBro sont présentés comme projets personnels dans la landing page. Leurs liens ouvrent directement l’application ou le dépôt du projet.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
 - **Contact** : un seul formulaire Signal Forms dans la section `#contact`, avec nom, prénom, e-mail, projet, budget facultatif et message. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
   - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose de réessayer ou d’écrire directement par e-mail.
@@ -147,18 +147,16 @@ Les exigences légales varient selon le statut réel ; les documents de travail 
 
 _Lunaas — Donnez une autre dimension à votre présence en ligne._
 
-## 🎨 Variante visuelle à comparer
+## 🎨 Direction visuelle retenue
 
-La branche `design/lunaweb-inspiration` propose une autre composition, inspirée de l’organisation et du rythme du site [LunaWeb](https://www.lunaweb.fr/). Les textes sont rédigés pour Lunaas et son activité indépendante.
+La composition retenue s’inspire de l’organisation et du rythme du site [LunaWeb](https://www.lunaweb.fr/). Les textes sont rédigés pour Lunaas et son activité indépendante.
 
 - L’approche et les expertises introduisent le projet avant les tarifs.
-- Koacher occupe une présentation plus large, accompagnée d’une illustration identifiée comme telle.
+- Les projets occupent une présentation large, accompagnée d’illustrations identifiées comme telles.
 - Les titres, les espaces et les alternances de fonds donnent un rythme distinct aux sections.
 - Les animations déplacent les éléments sans masquer les textes. Elles respectent les préférences de mouvement réduit et sont supprimées à la destruction des pages.
 
-Cette variante reste sur sa branche de comparaison. `main` conserve la version précédente.
-
-Pour la voir localement, lancer `npm start` sur cette branche. Après arrêt du serveur, `git switch main` puis `npm start` permet de revoir la version de base ; `git switch design/lunaweb-inspiration` permet de revenir à cette proposition.
+Cette version est validée pour intégration sur `main`. Les prochaines évolutions visuelles sont développées sur des branches dédiées.
 
 La vérification technique couvre la navigation vers les sections, le formulaire unique, ses erreurs et les contrôles de la landing statique. Les tests d’envoi simulent les réponses du service ; ils n’envoient pas de vrais messages. Le rendu, le rythme des animations et la réception réelle restent à valider dans un navigateur sur mobile et ordinateur.
 

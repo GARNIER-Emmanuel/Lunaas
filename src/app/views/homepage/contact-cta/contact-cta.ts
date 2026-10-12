@@ -18,7 +18,7 @@ export class ContactCta {
     section.style.setProperty('--cta-reveal-x', `${event.clientX - bounds.left}px`);
     section.style.setProperty('--cta-reveal-y', `${event.clientY - bounds.top}px`);
     // Le fond lavande reste assez clair pour les textes sombres.
-    section.style.setProperty('--cta-reveal-opacity', '0.25');
+    section.style.setProperty('--cta-reveal-opacity', '0.8');
   }
 
   protected hideImage(event: PointerEvent): void {

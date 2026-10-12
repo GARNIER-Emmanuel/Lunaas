@@ -1,13 +1,13 @@
 ﻿<footer class="footer">
   <div class="page-container footer-main">
     <div>
-      <a href="#accueil" class="footer-brand">{{ site.name }}.</a>
+      <a href="#accueil" class="footer-brand">{{ site.name }}</a>
       <p>{{ site.tagline }}</p>
       <a [href]="'mailto:' + site.email" class="text-link">{{ site.email }} ↗</a>
     </div>
     <nav aria-label="Navigation de pied de page">
       @for (link of links; track link.fragment) {
-        <a [href]="'#' + link.fragment">{{ link.label }}</a>
+      <a [href]="'#' + link.fragment">{{ link.label }}</a>
       }
       <a href="#contact">Contact</a>
     </nav>

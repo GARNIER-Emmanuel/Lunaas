@@ -1,7 +1,7 @@
 import { Site } from '../interfaces';
 
 export const SITE_DATA: Site = {
-  name: 'Lunaas',
+  name: 'Lunaas.site',
   email: 'manu.boidun@gmail.com',
   url: 'https://lunaas.site',
   tagline: 'Donnez une autre dimension à votre présence en ligne.',
