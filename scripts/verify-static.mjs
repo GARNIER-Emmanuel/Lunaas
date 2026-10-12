@@ -85,6 +85,14 @@ if (sitemapUrls.length !== indexable.length || !indexable.every((url) => sitemap
 await access(resolve(output, '404.html'));
 await access(resolve(output, 'images/share.png'));
 await access(resolve(output, 'images/hero-background.jpg'));
+for (const image of [
+  'contact-mars.avif',
+  'contact-mars.webp',
+  'contact-mars-960.avif',
+  'contact-mars-960.webp',
+]) {
+  await access(resolve(output, 'images', image));
+}
 if (errors.length) throw new Error(errors.join('\n'));
 console.log(
   `Static QA passed: ${pages.size} pages, unique metadata, internal links, anchors, labels, assets and ${sitemapUrls.length} sitemap URLs.`,

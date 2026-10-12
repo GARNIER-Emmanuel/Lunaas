@@ -1,4 +1,32 @@
-<section class="content-section cta-section" aria-labelledby="cta-title">
+<section
+  class="content-section cta-section"
+  aria-labelledby="cta-title"
+  (pointermove)="revealImage($event)"
+  (pointerleave)="hideImage($event)"
+  (pointercancel)="hideImage($event)"
+>
+  <div class="cta-reveal" aria-hidden="true">
+    <picture>
+      <source
+        type="image/avif"
+        srcset="/images/contact-mars-960.avif 960w, /images/contact-mars.avif 1920w"
+        sizes="100vw"
+      />
+      <source
+        type="image/webp"
+        srcset="/images/contact-mars-960.webp 960w, /images/contact-mars.webp 1920w"
+        sizes="100vw"
+      />
+      <img
+        src="/images/contact-mars.webp"
+        width="1920"
+        height="653"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  </div>
   <div class="cta-disc" aria-hidden="true" data-parallax></div>
   <div class="page-container cta-layout">
     <div>
