@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ContactFormComponent } from './contact-form/contact-form';
-import { CONTACT_CONFIG, SITE_DATA } from '../../../shared/data';
 @Component({
   selector: 'app-contact-cta',
   imports: [ContactFormComponent],
@@ -9,8 +8,6 @@ import { CONTACT_CONFIG, SITE_DATA } from '../../../shared/data';
   styleUrl: './contact-cta.css',
 })
 export class ContactCta {
-  protected readonly emailAddress = SITE_DATA.email;
-  protected readonly location = CONTACT_CONFIG.location;
   protected revealImage(event: PointerEvent): void {
     if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
     const section = event.currentTarget as HTMLElement;

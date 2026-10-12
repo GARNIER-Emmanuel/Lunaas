@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { provideRouter, Router } from '@angular/router';
 import { routes } from './app.routes';
+import { SITE_DATA } from './shared/data';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -29,7 +30,7 @@ describe('App', () => {
     expect(compiled.querySelector('footer')).not.toBeNull();
   });
 
-  it('provides an email contact and a working approach link', async () => {
+  it('links the hero to the form and the approach section', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
@@ -43,6 +44,17 @@ describe('App', () => {
     expect(approachLink).not.toBeNull();
     expect(approachLink!.getAttribute('href')).toBe('#approche');
     expect(compiled.querySelector('#approche')).not.toBeNull();
+  });
+
+  it('uses the contact form without exposing personal contact links', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')).toHaveLength(0);
+    expect(root.querySelector('#contact form')).not.toBeNull();
+    expect(root.querySelector('.profile-name')?.textContent).toContain(SITE_DATA.name);
+    expect(root.querySelector('footer .text-link')?.getAttribute('href')).toBe('#contact');
   });
 
   it('shows indicative prices and offers a project choice in the inline contact form', async () => {

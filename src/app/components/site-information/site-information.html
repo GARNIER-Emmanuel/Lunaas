@@ -13,9 +13,8 @@
 <article class="legal-content">
   <h3>Éditeur et contact</h3>
   <p>
-    Lunaas est une marque de création de sites web présentée par {{ profile.name }}. Contact :
-    <a [href]="'mailto:' + site.email">{{ site.email }}</a
-    >.
+    Lunaas est une marque de création de sites web. Vous pouvez transmettre une demande via le
+    <a href="#contact" (click)="dialog.close()">formulaire de contact</a>.
   </p>
   <h3>Informations à finaliser</h3>
   <ul>
@@ -72,8 +71,8 @@
     messagerie de contact. Le site ne conserve pas les champs dans un stockage local persistant.
   </p>
   <p>
-    Vous pouvez également écrire directement à {{ email }} depuis votre messagerie. Une confirmation
-    d’envoi est affichée dans le formulaire uniquement après la réponse positive du service.
+    Une confirmation d’envoi est affichée dans le formulaire uniquement après la réponse positive
+    du service.
   </p>
   <h3>Prestataire d’envoi</h3>
   <p>
@@ -96,9 +95,9 @@
   </p>
   <h3>Vos demandes concernant les données</h3>
   <p>
-    Vous pouvez écrire à <a [href]="'mailto:' + email">{{ email }}</a> pour toute question ou
-    demande concernant les informations que vous avez envoyées. Les droits applicables et leurs
-    modalités seront précisés avec les informations définitives du traitement.
+    Vous pouvez utiliser le <a href="#contact" (click)="privacyDialog.close()">formulaire de contact</a>
+    pour toute question ou demande concernant les informations que vous avez envoyées. Les droits
+    applicables et leurs modalités seront précisés avec les informations définitives du traitement.
   </p>
   <h3>Cookies et hébergement</h3>
   <p>

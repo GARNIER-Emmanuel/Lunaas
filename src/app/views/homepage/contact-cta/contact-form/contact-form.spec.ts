@@ -84,8 +84,8 @@ describe('Contact form', () => {
     expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')?.value).toContain(
       'mes créations',
     );
-    expect(root.querySelector('form a[href^="mailto:"]')).not.toBeNull();
-    submit(root);
+    expect(root.querySelector('form a[href^="mailto:"]')).toBeNull();
+    root.querySelector<HTMLButtonElement>('.form-feedback button')!.click();
     await harness.fixture.whenStable();
     harness.detectChanges();
     expect(transport).toHaveBeenCalledTimes(2);

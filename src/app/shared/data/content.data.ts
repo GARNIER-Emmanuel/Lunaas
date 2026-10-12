@@ -1,4 +1,5 @@
 import { ContentItem, Expertise, FaqItem, Profile } from '../interfaces';
+import { SITE_DATA } from './site.data';
 export const EXPERTISE_DATA: readonly Expertise[] = [
   {
     id: 'cadrage',
@@ -49,7 +50,7 @@ export const PROCESS_DATA: readonly ContentItem[] = [
   },
 ];
 export const PROFILE_DATA: Profile = {
-  name: 'Emmanuel Garnier Boidun',
+  name: SITE_DATA.name,
   role: 'Développeur web full-stack à Bordeaux',
   introduction:
     'Je vous accompagne dans la création de votre site, du premier échange à la mise en ligne. Mon rôle : comprendre votre activité, donner une forme à vos idées et construire une présence en ligne claire pour vos visiteurs.',

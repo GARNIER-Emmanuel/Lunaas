@@ -86,12 +86,6 @@ h2>span {
   flex-shrink: 0;
 }
 
-.cta-details a {
-  color: var(--color-ink);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
 .cta-form-panel {
   min-width: 0;
   padding: clamp(1.5rem, 3vw, 2.5rem);

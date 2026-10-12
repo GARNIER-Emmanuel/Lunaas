@@ -5,5 +5,4 @@ import { ContactConfiguration } from '../interfaces';
 export const CONTACT_CONFIG: ContactConfiguration = {
   accessKey: '9431e9d7-7363-444b-8ff7-ad044dfd12e3',
   endpoint: 'https://api.web3forms.com/submit',
-  location: 'Bordeaux — Le Bouscat',
 };

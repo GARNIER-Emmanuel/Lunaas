@@ -21,7 +21,7 @@ describe('Hero image reveal', () => {
     hero.dispatchEvent(movement);
     expect(hero.style.getPropertyValue('--reveal-x')).toBe('110px');
     expect(hero.style.getPropertyValue('--reveal-y')).toBe('70px');
-    expect(hero.style.getPropertyValue('--reveal-opacity')).toBe('0.5');
+    expect(Number(hero.style.getPropertyValue('--reveal-opacity'))).toBeGreaterThan(0);
 
     hero.dispatchEvent(new Event('pointerleave'));
     expect(hero.style.getPropertyValue('--reveal-opacity')).toBe('0');

@@ -141,7 +141,7 @@
     >
       <p>{{ feedback() }}</p>
       @if (failed()) {
-        <a [href]="'mailto:' + emailAddress">{{ emailAddress }}</a>
+        <button type="submit" class="text-link" [disabled]="contactForm().submitting()">Réessayer l’envoi</button>
       }
     </div>
   }

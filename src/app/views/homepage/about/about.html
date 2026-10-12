@@ -2,7 +2,7 @@
   <div class="page-container about-layout">
     <div class="profile-panel" data-motion>
       <p class="section-label">Derrière Lunaas</p>
-      <div class="profile-mark" aria-hidden="true" data-parallax>EGB<span>.</span></div>
+      <div class="profile-mark" aria-hidden="true" data-parallax>{{ profile.name.slice(0, 3).toUpperCase() }}<span>.</span></div>
       <p class="profile-name">
         {{ profile.name }}<span>{{ profile.role }}</span>
       </p>

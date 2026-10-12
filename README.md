@@ -36,7 +36,8 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - **Réalisations** : Koacher et SupBro sont présentés comme projets personnels dans la landing page. Leurs liens ouvrent directement l’application ou le dépôt du projet.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
 - **Contact** : un seul formulaire Signal Forms dans la section `#contact`, avec nom, prénom, e-mail, projet, budget facultatif et message. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
-  - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose de réessayer ou d’écrire directement par e-mail.
+  - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose un bouton pour réessayer.
+  - Les coordonnées personnelles et le nom complet ne sont pas affichés. Les demandes et les questions sur les données passent par le formulaire ; Bordeaux reste la zone de prestation présentée.
 - **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers les sections. Les anciennes adresses reviennent à la landing dans Angular.
 - **SEO** : titre et description de la landing, canonical à la racine, Open Graph, image de partage, données structurées `WebSite`, sitemap avec une seule URL et robots.txt.
 - **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire. Les contenus restent des versions de travail à finaliser.
@@ -60,7 +61,7 @@ Les données vont du **modèle typé au fichier de contenu, puis au composant et
 
 | Contenu                          | Fichier                                  |
 | -------------------------------- | ---------------------------------------- |
-| Nom, e-mail, domaine et accroche | `src/app/shared/data/site.data.ts`       |
+| Marque, domaine et accroche      | `src/app/shared/data/site.data.ts`       |
 | Offres, tarifs et exclusions     | `src/app/shared/data/offer.data.ts`      |
 | Réalisations actives             | `src/app/shared/data/project.data.ts`    |
 | Méthode, présentation et FAQ     | `src/app/shared/data/content.data.ts`    |
@@ -160,4 +161,4 @@ Cette version est validée pour intégration sur `main`. Les prochaines évoluti
 
 La vérification technique couvre la navigation vers les sections, le formulaire unique, ses erreurs et les contrôles de la landing statique. Les tests d’envoi simulent les réponses du service ; ils n’envoient pas de vrais messages. Le rendu, le rythme des animations et la réception réelle restent à valider dans un navigateur sur mobile et ordinateur.
 
-La configuration de contact est centralisée dans `src/app/shared/data/contact.data.ts`. La clé Web3Forms est une [clé publique de routage](https://docs.web3forms.com/getting-started/faq) ; modifier seulement l’adresse affichée ne change pas le destinataire associé à cette clé.
+La configuration de contact est centralisée dans `src/app/shared/data/contact.data.ts`. La clé Web3Forms est une [clé publique de routage](https://docs.web3forms.com/getting-started/faq) qui oriente les messages vers la messagerie configurée chez le prestataire. L’adresse personnelle n’est pas exposée dans les données publiques du frontend.

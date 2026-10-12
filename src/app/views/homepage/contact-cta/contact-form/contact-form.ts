@@ -9,7 +9,7 @@ import {
   validate,
 } from '@angular/forms/signals';
 import { ContactForm as ContactValues } from '../../../../shared/interfaces';
-import { OFFER_DATA, SITE_DATA } from '../../../../shared/data';
+import { OFFER_DATA } from '../../../../shared/data';
 import { ContactService } from '../../../../shared/services/contact-service';
 import { SiteInformationService } from '../../../../shared/services/site-information-service';
 
@@ -23,7 +23,6 @@ import { SiteInformationService } from '../../../../shared/services/site-informa
 export class ContactFormComponent {
   readonly idPrefix = input('contact');
   protected readonly offers = OFFER_DATA;
-  protected readonly emailAddress = SITE_DATA.email;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
   protected readonly information = inject(SiteInformationService);
@@ -76,7 +75,7 @@ export class ContactFormComponent {
           } catch {
             this.failed.set(true);
             this.feedback.set(
-              'L’envoi n’a pas abouti. Votre saisie est conservée : réessayez ou contactez-moi directement par e-mail.',
+              'L’envoi n’a pas abouti. Votre saisie est conservée : vous pouvez réessayer.',
             );
           }
         },

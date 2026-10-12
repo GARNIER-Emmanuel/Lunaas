@@ -11,5 +11,4 @@ export interface ContactForm {
 export interface ContactConfiguration {
   readonly accessKey: string;
   readonly endpoint: string;
-  readonly location: string;
 }
