@@ -140,6 +140,12 @@ main:focus-visible {
   scroll-margin-top: 7rem;
 }
 
+#accueil,
+#approche,
+#offres {
+  scroll-margin-top: 7rem;
+}
+
 .legal-content {
   max-width: 52rem;
   padding-bottom: 5rem;

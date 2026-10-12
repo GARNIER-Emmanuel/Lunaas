@@ -1,6 +1,6 @@
 <header class="theme-dark">
   <nav aria-label="Navigation principale" class="page-container navigation">
-    <a routerLink="/" class="brand" aria-label="Lunaas — Accueil" (click)="closeMenu()">
+    <a href="#accueil" class="brand" aria-label="Lunaas — Accueil" (click)="closeMenu()">
       <svg viewBox="0 0 32 32" aria-hidden="true">
         <path d="M25 24A13 13 0 0 1 10 4a13 13 0 1 0 15 20Z" fill="currentColor" />
       </svg>
@@ -18,18 +18,17 @@
       Menu <span aria-hidden="true">{{ menuOpen() ? '×' : '+' }}</span>
     </button>
     <div id="site-navigation" class="nav-links" [class.is-open]="menuOpen()">
-      @for (link of links; track link.path) {
+      @for (link of links; track link.fragment) {
         <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-          ariaCurrentWhenActive="page"
+          [href]="'#' + link.fragment"
+          [class.active]="activeSection() === link.fragment"
+          [attr.aria-current]="activeSection() === link.fragment ? 'location' : null"
           class="nav-link"
           (click)="closeMenu()"
           >{{ link.label }}</a
         >
       }
-      <a routerLink="/contact" class="button button-secondary nav-contact" (click)="closeMenu()"
+      <a href="#contact" class="button button-secondary nav-contact" (click)="closeMenu()"
         >Parlons de votre projet <span aria-hidden="true">↗</span></a
       >
     </div>

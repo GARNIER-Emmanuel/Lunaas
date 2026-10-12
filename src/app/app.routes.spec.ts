@@ -1,25 +1,26 @@
 import { TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from './app.routes';
-import { PROJECT_DATA } from './shared/data';
 
-describe('Project routes', () => {
+describe('Landing routes', () => {
   beforeEach(() => TestBed.configureTestingModule({ providers: [provideRouter(routes)] }));
 
-  it('loads each selected project', async () => {
+  it('redirects every former page to the landing and its unique form', async () => {
     const harness = await RouterTestingHarness.create();
-    for (const project of PROJECT_DATA) {
-      await harness.navigateByUrl(`/realisations/${project.slug}`);
-      expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(project.name);
+    for (const path of ['/services', '/realisations', '/realisations/koacher', '/a-propos', '/contact', '/mentions-legales', '/confidentialite', '/404']) {
+      await harness.navigateByUrl(path);
+      expect(TestBed.inject(Router).url).toBe('/');
+      expect(harness.routeNativeElement?.querySelectorAll('form')).toHaveLength(1);
+      expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain('Création de sites internet à Bordeaux');
     }
   });
 
-  it('redirects unknown projects to the not-found page', async () => {
+  it('redirects unknown paths to the landing', async () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/realisations/projet-inexistant');
     expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toContain(
-      'Page introuvable',
+      'Création de sites internet à Bordeaux',
     );
   });
 });

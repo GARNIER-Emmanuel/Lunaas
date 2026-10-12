@@ -11,22 +11,22 @@ describe('Page metadata', () => {
     TestBed.inject(SeoService);
   });
 
-  it('updates canonical and description without keeping quote query parameters', async () => {
+  it('keeps the landing canonical independent of query parameters and section fragments', async () => {
     const harness = await RouterTestingHarness.create();
-    await harness.navigateByUrl('/contact?offre=site-vitrine');
-    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/contact');
-    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('demande de devis');
-    await harness.navigateByUrl('/services');
+    await harness.navigateByUrl('/?offre=site-vitrine#contact');
+    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/');
+    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('parlons de votre projet');
+    await harness.navigateByUrl('/#offres');
     expect(document.querySelectorAll('link[rel="canonical"]')).toHaveLength(1);
-    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('prix de départ');
+    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('sites dynamiques');
   });
 
-  it('keeps legal drafts and missing pages out of indexing', async () => {
+  it('keeps former pages on the landing canonical after their redirect', async () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/mentions-legales');
-    expect(TestBed.inject(Meta).getTag('name="robots"')?.content).toBe('noindex, follow');
+    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/');
     await harness.navigateByUrl('/404');
-    expect(TestBed.inject(Meta).getTag('name="robots"')?.content).toBe('noindex, follow');
+    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/');
     await harness.navigateByUrl('/');
     expect(TestBed.inject(Meta).getTag('name="robots"')?.content).toBe('index, follow');
   });

@@ -1,6 +1,6 @@
 <article [style.--project-accent]="project().accent">
   <a
-    [routerLink]="['/realisations', project().slug]"
+    [href]="project().live || project().repo || '#contact'" [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer"
     class="project-cover"
     [attr.aria-label]="'Découvrir le projet ' + project().name"
   >
@@ -22,7 +22,7 @@
   <div class="project-details">
     <p class="project-meta">{{ project().category }}</p>
     <h3>
-      <a [routerLink]="['/realisations', project().slug]">{{ project().name }}</a>
+      <a [href]="project().live || project().repo || '#contact'" [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer">{{ project().name }}</a>
     </h3>
     <p class="project-summary">{{ project().summary }}</p>
     @if (featured()) {
@@ -33,7 +33,7 @@
         <li>{{ technology }}</li>
       }
     </ul>
-    <a [routerLink]="['/realisations', project().slug]" class="text-link project-link"
+    <a [href]="project().live || project().repo || '#contact'" [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer" class="text-link project-link"
       >Découvrir le projet <span aria-hidden="true">↗</span></a
     >
   </div>

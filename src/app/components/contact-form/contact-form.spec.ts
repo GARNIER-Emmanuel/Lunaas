@@ -12,7 +12,7 @@ describe('Contact form', () => {
   });
   afterEach(() => vi.unstubAllGlobals());
 
-  async function page(url = '/contact') {
+  async function page(url = '/') {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl(url);
     await harness.fixture.whenStable();
@@ -26,7 +26,7 @@ describe('Contact form', () => {
     control.dispatchEvent(new Event('input', { bubbles: true }));
     if (control.tagName === 'SELECT') control.dispatchEvent(new Event('change', { bubbles: true }));
   }
-  async function fill(harness: RouterTestingHarness, prefix = 'contact') {
+  async function fill(harness: RouterTestingHarness, prefix = 'cta-contact') {
     const root = harness.routeNativeElement!;
     enter(root, `${prefix}-lastname`, 'Durand');
     enter(root, `${prefix}-firstname`, 'Élodie');
@@ -43,22 +43,11 @@ describe('Contact form', () => {
       .dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
   }
 
-  it('preselects a requested offer and ignores an unknown offer', async () => {
-    const harness = await page('/contact?offre=site-vitrine');
-    expect(
-      harness.routeNativeElement?.querySelector<HTMLSelectElement>('#contact-project')?.value,
-    ).toBe('site-vitrine');
-    await harness.navigateByUrl('/contact?offre=inconnue');
-    await harness.fixture.whenStable();
-    expect(
-      harness.routeNativeElement?.querySelector<HTMLSelectElement>('#contact-project')?.value,
-    ).toBe('');
-  });
 
   it('rejects invalid input without sending a request', async () => {
     const harness = await page();
     const root = harness.routeNativeElement!;
-    enter(root, 'contact-email', 'invalide');
+    enter(root, 'cta-contact-email', 'invalide');
     submit(root);
     await harness.fixture.whenStable();
     harness.detectChanges();
@@ -77,8 +66,8 @@ describe('Contact form', () => {
     expect(root.querySelector('[role="status"]')?.textContent).toContain(
       'Votre message a été envoyé',
     );
-    expect(root.querySelector<HTMLInputElement>('#contact-lastname')?.value).toBe('');
-    expect(root.querySelector<HTMLTextAreaElement>('#contact-message')?.value).toBe('');
+    expect(root.querySelector<HTMLInputElement>('#cta-contact-lastname')?.value).toBe('');
+    expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')?.value).toBe('');
     expect(root.querySelector('form a[href^="mailto:"]')).toBeNull();
   });
 
@@ -92,7 +81,7 @@ describe('Contact form', () => {
     await harness.fixture.whenStable();
     harness.detectChanges();
     expect(root.querySelector('[role="alert"]')?.textContent).toContain('L’envoi n’a pas abouti');
-    expect(root.querySelector<HTMLTextAreaElement>('#contact-message')?.value).toContain(
+    expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')?.value).toContain(
       'mes créations',
     );
     expect(root.querySelector('form a[href^="mailto:"]')).not.toBeNull();
@@ -125,10 +114,11 @@ describe('Contact form', () => {
     });
   });
 
-  it('provides the same sending form directly in the homepage section', async () => {
+  it('provides exactly one sending form in the homepage section', async () => {
     transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
     const harness = await page('/');
-    const root = await fill(harness, 'cta-contact');
+    const root = await fill(harness);
+    expect(root.querySelectorAll('form')).toHaveLength(1);
     expect(root.querySelector('app-contact-cta label[for="cta-contact-email"]')).not.toBeNull();
     submit(root);
     await harness.fixture.whenStable();

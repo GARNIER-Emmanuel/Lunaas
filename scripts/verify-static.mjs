@@ -13,6 +13,8 @@ if (!homeCanonical) throw new Error('Missing homepage canonical');
 const origin = new URL(homeCanonical).origin;
 const pages = new Map();
 const errors = [];
+if (Object.keys(routes).length !== 1 || !routes['/'])
+  errors.push('Expected only the landing route in the static output');
 const titles = new Set();
 const descriptions = new Set();
 for (const path of Object.keys(routes)) {
@@ -22,6 +24,8 @@ for (const path of Object.keys(routes)) {
 }
 for (const [path, document] of pages) {
   const fail = (message) => errors.push(`${path}: ${message}`);
+  if (document.querySelectorAll('form').length !== 1 || !document.querySelector('#contact app-contact-form'))
+    fail('expected a single contact form in the contact section');
   const description = document.querySelector('meta[name="description"]')?.content;
   if (document.documentElement.lang !== 'fr') fail('document language');
   if (document.querySelectorAll('h1').length !== 1) fail('expected one H1');
@@ -54,6 +58,8 @@ for (const [path, document] of pages) {
   for (const link of document.querySelectorAll('a[href]')) {
     const url = new URL(link.href);
     if (url.origin !== origin) continue;
+    if (link.textContent.includes('Parlons') && url.hash !== '#contact')
+      fail('project CTA must target the main contact form');
     const destination = url.pathname === '/' ? '/' : url.pathname.replace(/\/$/, '');
     const target = pages.get(destination);
     if (!target) {
@@ -83,6 +89,8 @@ const indexable = [...pages]
 if (sitemapUrls.length !== indexable.length || !indexable.every((url) => sitemapUrls.includes(url)))
   errors.push('Sitemap does not match indexable pages');
 await access(resolve(output, '404.html'));
+if ((await readFile(resolve(output, '404.html'), 'utf8')) !== (await readFile(resolve(output, 'index.html'), 'utf8')))
+  errors.push('Fallback must contain the same landing, not another page');
 await access(resolve(output, 'images/share.png'));
 await access(resolve(output, 'images/hero-background.jpg'));
 for (const image of [

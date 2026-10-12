@@ -4,7 +4,7 @@ Bienvenue sur le dépôt de Lunaas !
 
 Ce projet est la vitrine de mon activité de développement web freelance. Il présente mes prestations, ma démarche et une sélection de projets personnels, avec une architecture **Angular** structurée et une identité visuelle sobre inspirée de l’espace.
 
-**La version locale est implémentée et vérifiée techniquement.** Les pages publiques sont prérendues. Les formulaires transmettent les demandes via Web3Forms avec la configuration de contact existante. La réception réelle des messages, les informations administratives et les conditions de publication restent à vérifier avant le lancement commercial.
+**Une seule landing page, avec un seul formulaire de contact.** La page est prérendue et les demandes sont transmises via Web3Forms avec la configuration de contact existante. La réception réelle des messages, les informations administratives et les conditions de publication restent à vérifier avant le lancement commercial.
 
 ---
 
@@ -13,7 +13,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - **Framework** : Angular 22.1.x & TypeScript 6.0.x.
   - Composants **Standalone**, `OnPush`, Signals et Control Flow natif.
   - Mode strict TypeScript et vérification stricte des templates.
-  - Pages secondaires chargées à la demande avec Angular Router.
+  - Navigation par ancres entre les sections de la landing page.
 - **Styling** : Tailwind CSS v4.
   - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
   - Essai typographique sur cette branche : Caacupe One pour les titres et Story Script pour les accents du hero et du contact, chargées depuis Google Fonts. Manrope reste utilisée pour les paragraphes et la navigation.
@@ -33,21 +33,21 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 
 - **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, offres, FAQ et appel à l’action.
 - **Prestations** : trois offres à partir de 490 €, 990 € et 1 790 €, avec périmètres, exclusions et devis selon le besoin.
-- **Réalisations** : Koacher est actuellement le seul projet actif. Les fiches sont générées à partir des données et clairement identifiées comme projets personnels.
+- **Réalisations** : Koacher est actuellement le seul projet actif. Sa présentation reste dans la landing page et ses liens ouvrent le projet en ligne.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
-- **Contact** : formulaire Signal Forms partagé entre la section de contact et `/contact`, avec nom, prénom, e-mail, projet, budget facultatif et message. Envoi Web3Forms, validation accessible, préselection de l’offre, champ anti-spam et blocage des doubles soumissions.
+- **Contact** : un seul formulaire Signal Forms dans la section `#contact`, avec nom, prénom, e-mail, projet, budget facultatif et message. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
   - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose de réessayer ou d’écrire directement par e-mail.
-- **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers toutes les pages.
-- **SEO** : titres et descriptions par page, canonical, Open Graph, image de partage, données structurées `WebSite`, sitemap et robots.txt.
-- **Pages légales** : versions de travail explicitement incomplètes et en `noindex`, avec les informations réelles à fournir.
-- **404** : route Angular de secours et fichier `404.html` pour l’hébergement statique.
+- **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers les sections. Les anciennes adresses reviennent à la landing dans Angular.
+- **SEO** : titre et description de la landing, canonical à la racine, Open Graph, image de partage, données structurées `WebSite`, sitemap avec une seule URL et robots.txt.
+- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire. Les contenus restent des versions de travail à finaliser.
+- **Secours statique** : `404.html` contient la même landing ; aucune vue séparée « Page introuvable ».
 
 ---
 
 ## 🧩 Architecture & Données
 
-- `src/app/views/` : pages et sections propres à une page.
-- `src/app/components/` : éléments réutilisables, dont les cartes d’offre, les projets, la FAQ et le menu.
+- `src/app/views/homepage/` : landing page et ses sections.
+- `src/app/components/` : éléments réutilisables, dont les cartes d’offre, les projets, la FAQ, le menu, le formulaire et les fenêtres d’information.
 - `src/app/shared/interfaces/` : modèles TypeScript.
 - `src/app/shared/data/` : contenus publics centralisés.
 - `src/app/shared/services/` : envoi du contact, animations et gestion des métadonnées.
@@ -106,21 +106,18 @@ La configuration GitHub Actions exécute `npm run verify` après un push ou sur 
 
 ---
 
-## 🗺️ Pages
+## 🗺️ Une seule page
 
-| URL                     | Usage                                                        |
-| ----------------------- | ------------------------------------------------------------ |
-| `/`                     | Accueil                                                      |
-| `/services`             | Prestations, périmètres, méthode et FAQ                      |
-| `/realisations`         | Liste des projets sélectionnés                               |
-| `/realisations/koacher` | Présentation de Koacher                                      |
-| `/a-propos`             | Présentation du développeur                                  |
-| `/contact`              | Envoi d’une demande de devis                                 |
-| `/mentions-legales`     | Informations légales à finaliser                             |
-| `/confidentialite`      | Fonctionnement actuel du contact et informations à compléter |
-| `/404`                  | Page introuvable                                             |
+| URL | Usage |
+| --- | --- |
+| `/` | Landing complète |
+| `/#approche` | Démarche de création |
+| `/#realisations` | Présentation des projets |
+| `/#a-propos` | Présentation du développeur |
+| `/#offres` | Prestations et tarifs |
+| `/#contact` | Formulaire principal |
 
-Les fiches projet et le sitemap suivent les données actives : retirer un projet du catalogue retire sa fiche du prochain build.
+Ces adresses désignent des sections de la même page. Les vues secondaires et leurs formulaires ont été supprimés. Le design et l’ordre des sections sont conservés.
 
 ---
 
@@ -132,7 +129,7 @@ Les fiches projet et le sitemap suivent les données actives : retirer un projet
 - `_headers` contient les en-têtes de livraison pour Cloudflare Pages.
 - `lunaas.site` est l’URL canonique cible. Si le domaine change, mettre à jour `site.data.ts` ; le sitemap reprend automatiquement l’URL générée.
 
-Le fichier `404.html` permet à Cloudflare Pages de traiter les chemins inconnus sans renvoyer systématiquement l’accueil. Ce comportement reste à vérifier une fois déployé. Voir la [documentation Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/).
+Le fichier `404.html` contient la landing et permet à Angular de ramener un chemin inconnu à la racine. La prévisualisation conserve un statut HTTP 404 pour ces chemins. Le comportement sur l’hébergement reste à vérifier après déploiement. Voir la [documentation Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/).
 
 ### Éléments à confirmer avant publication
 
@@ -143,7 +140,7 @@ Le fichier `404.html` permet à Cloudflare Pages de traiter les chemins inconnus
 - Domaine, DNS, HTTPS et comportement des routes sur l’hébergement.
 - Contrôle visuel mobile et desktop, audit Lighthouse et mesures de performances représentatives.
 
-Les exigences légales varient selon le statut réel ; les pages de travail renvoient à [Service Public Entreprendre](https://entreprendre.service-public.gouv.fr/vosdroits/F31228) et à la [CNIL](https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel). Aucune conformité juridique ni validation en production n’est déclarée sur la seule base des tests locaux.
+Les exigences légales varient selon le statut réel ; les documents de travail renvoient à [Service Public Entreprendre](https://entreprendre.service-public.gouv.fr/vosdroits/F31228) et à la [CNIL](https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel). Aucune conformité juridique ni validation en production n’est déclarée sur la seule base des tests locaux.
 
 ---
 
@@ -162,6 +159,6 @@ Cette variante reste sur sa branche de comparaison. `main` conserve la version p
 
 Pour la voir localement, lancer `npm start` sur cette branche. Après arrêt du serveur, `git switch main` puis `npm start` permet de revoir la version de base ; `git switch design/lunaweb-inspiration` permet de revenir à cette proposition.
 
-La vérification technique comprend 34 tests et les contrôles des neuf pages statiques. Les tests d’envoi simulent les réponses du service ; ils n’envoient pas de vrais messages. Le rendu, le rythme des animations et la réception réelle restent à valider dans un navigateur sur mobile et ordinateur.
+La vérification technique couvre la navigation vers les sections, le formulaire unique, ses erreurs et les contrôles de la landing statique. Les tests d’envoi simulent les réponses du service ; ils n’envoient pas de vrais messages. Le rendu, le rythme des animations et la réception réelle restent à valider dans un navigateur sur mobile et ordinateur.
 
 La configuration de contact est centralisée dans `src/app/shared/data/contact.data.ts`. La clé Web3Forms est une [clé publique de routage](https://docs.web3forms.com/getting-started/faq) ; modifier seulement l’adresse affichée ne change pas le destinataire associé à cette clé.

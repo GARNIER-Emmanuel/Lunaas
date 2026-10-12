@@ -5,7 +5,6 @@ import { Meta, Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, startWith } from 'rxjs';
 import { SITE_DATA } from '../data';
-import { Project } from '../interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
@@ -25,16 +24,13 @@ export class SeoService {
   private update(): void {
     let route = this.router.routerState.snapshot.root;
     while (route.firstChild) route = route.firstChild;
-    const project = route.data['project'] as Project | undefined;
     const title = route.title ?? 'Création de sites internet à Bordeaux | Lunaas';
     const description =
-      project?.summary ?? route.data['description'] ?? SITE_DATA.homepage.description;
-    const path = route.routeConfig?.path === '**' ? '/404' : this.router.url.split(/[?#]/)[0];
-    const url = new URL(path || '/', SITE_DATA.url).href;
-    const noindex = route.data['noindex'] === true || route.routeConfig?.path === '**';
+      route.data['description'] ?? SITE_DATA.homepage.description;
+    const url = new URL('/', SITE_DATA.url).href;
     this.title.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
-    this.meta.updateTag({ name: 'robots', content: noindex ? 'noindex, follow' : 'index, follow' });
+    this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: url });

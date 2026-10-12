@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
-import { RouterLink } from '@angular/router';
+import { SiteInformation } from '../site-information/site-information';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink],
+  imports: [SiteInformation],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.html',
   styleUrl: './footer.css',

@@ -127,7 +127,7 @@
   </fieldset>
   <p class="form-help">
     Les informations sont transmises via Web3Forms pour répondre à votre demande.
-    <a routerLink="/confidentialite">Utilisation de vos données</a>.
+    <a href="#confidentialite" (click)="$event.preventDefault(); information.open('confidentialite')">Utilisation de vos données</a>.
   </p>
   <button type="submit" class="button button-primary" [disabled]="contactForm().submitting()">
     {{ contactForm().submitting() ? 'Envoi en cours…' : 'Envoyer mon message' }}

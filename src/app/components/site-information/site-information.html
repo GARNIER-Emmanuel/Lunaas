@@ -1,0 +1,121 @@
+<a href="#mentions-legales" class="information-link" (click)="$event.preventDefault(); information.open('mentions-legales')">Mentions légales</a>
+<a href="#confidentialite" class="information-link" (click)="$event.preventDefault(); information.open('confidentialite')">Confidentialité</a>
+<dialog #dialog id="mentions-legales" aria-labelledby="mentions-legales-title">
+  <div class="dialog-close"><button type="button" class="button button-secondary" autofocus (click)="dialog.close()">Fermer <span aria-hidden="true">×</span></button></div>
+<section class="information-heading">
+  <p class="section-label">Informations légales</p>
+  <h2 id="mentions-legales-title">Mentions légales.</h2>
+  <p class="lead">
+    Version de travail : les informations administratives doivent être complétées et vérifiées avant
+    la publication commerciale du site.
+  </p>
+</section>
+<article class="legal-content">
+  <h3>Éditeur et contact</h3>
+  <p>
+    Lunaas est une marque de création de sites web présentée par {{ profile.name }}. Contact :
+    <a [href]="'mailto:' + site.email">{{ site.email }}</a
+    >.
+  </p>
+  <h3>Informations à finaliser</h3>
+  <ul>
+    <li>Identité légale exacte et forme juridique de l’activité.</li>
+    <li>Adresse professionnelle et téléphone.</li>
+    <li>Numéros d’immatriculation et informations fiscales applicables.</li>
+    <li>Identité, coordonnées et adresse de l’hébergeur effectivement choisi.</li>
+  </ul>
+  <p>
+    Ces éléments ne sont pas remplacés par des données fictives. Ce document devra être finalisée
+    avec les informations réelles de l’activité.
+  </p>
+  <h3>Contenus et visuels</h3>
+  <p>
+    Les réalisations sont identifiées selon leur nature. Les marques, outils et liens externes cités
+    appartiennent à leurs titulaires respectifs. Les droits d’utilisation des visuels doivent être
+    confirmés avant publication.
+  </p>
+  <h3>Données personnelles</h3>
+  <p>
+    Les modalités du contact et l’usage des données sont décrits dans la
+    <a href="#confidentialite" (click)="dialog.close(); $event.preventDefault(); information.open('confidentialite')">politique de confidentialité</a>.
+  </p>
+  <h3>Référence</h3>
+  <p>
+    Les informations requises dépendent du statut réel. Consulter les
+    <a
+      href="https://entreprendre.service-public.gouv.fr/vosdroits/F31228"
+      target="_blank"
+      rel="noopener noreferrer"
+      >mentions obligatoires présentées par Service Public Entreprendre</a
+    >.
+  </p>
+</article>
+
+</dialog>
+<dialog #privacyDialog id="confidentialite" aria-labelledby="confidentialite-title">
+  <div class="dialog-close"><button type="button" class="button button-secondary" autofocus (click)="privacyDialog.close()">Fermer <span aria-hidden="true">×</span></button></div>
+<section class="information-heading">
+  <p class="section-label">Vos données</p>
+  <h2 id="confidentialite-title">Confidentialité.</h2>
+  <p class="lead">
+    Ce document décrit l’envoi des demandes depuis le formulaire actuel du site. Les informations
+    administratives et les conditions définitives du traitement restent à compléter avant
+    publication.
+  </p>
+</section>
+<article class="legal-content">
+  <h3>Formulaire de contact</h3>
+  <p>
+    Le nom, le prénom, l’adresse e-mail, le type de projet, le budget facultatif et le message
+    servent à répondre à votre demande et à échanger sur votre projet. Lorsque vous cliquez sur le
+    bouton d’envoi, ces informations sont transmises à Web3Forms, qui les achemine vers la
+    messagerie de contact. Le site ne conserve pas les champs dans un stockage local persistant.
+  </p>
+  <p>
+    Vous pouvez également écrire directement à {{ email }} depuis votre messagerie. Une confirmation
+    d’envoi est affichée dans le formulaire uniquement après la réponse positive du service.
+  </p>
+  <h3>Prestataire d’envoi</h3>
+  <p>
+    Web3Forms traite les informations nécessaires à l’acheminement du message. Sa
+    <a
+      href="https://docs.web3forms.com/getting-started/faq"
+      target="_blank"
+      rel="noopener noreferrer"
+      >documentation sur la confidentialité</a
+    >
+    indique que ses serveurs sont situés aux États-Unis. Les conditions contractuelles et les
+    modalités applicables aux transferts doivent être vérifiées avant le lancement commercial.
+  </p>
+  <h3>Traitement après réception</h3>
+  <p>
+    Les messages reçus servent à répondre à la demande et à échanger sur le projet. Le responsable
+    légal du traitement, la base juridique, la durée de conservation et les destinataires techniques
+    doivent être précisés avant le lancement commercial. Aucun usage marketing automatique n’est
+    prévu dans cette version.
+  </p>
+  <h3>Vos demandes concernant les données</h3>
+  <p>
+    Vous pouvez écrire à <a [href]="'mailto:' + email">{{ email }}</a> pour toute question ou
+    demande concernant les informations que vous avez envoyées. Les droits applicables et leurs
+    modalités seront précisés avec les informations définitives du traitement.
+  </p>
+  <h3>Cookies et hébergement</h3>
+  <p>
+    Cette version n’installe pas de cookies d’analyse ou de suivi et n’utilise pas de stockage local
+    pour conserver les champs. Le fournisseur d’hébergement peut traiter des données techniques,
+    notamment dans ses journaux : ces modalités restent à préciser lors du choix de l’hébergement.
+  </p>
+  <h3>Information</h3>
+  <p>
+    La
+    <a
+      href="https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel"
+      target="_blank"
+      rel="noopener noreferrer"
+      >CNIL explique les informations à fournir lors d’une collecte de données</a
+    >. Ce document sera mise à jour si le fonctionnement du contact change.
+  </p>
+</article>
+
+</dialog>

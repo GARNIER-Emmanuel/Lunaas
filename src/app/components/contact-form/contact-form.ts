@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import {
   email,
   form,
@@ -8,25 +8,25 @@ import {
   required,
   validate,
 } from '@angular/forms/signals';
-import { RouterLink } from '@angular/router';
 import { ContactForm as ContactValues } from '../../shared/interfaces';
 import { OFFER_DATA, SITE_DATA } from '../../shared/data';
 import { ContactService } from '../../shared/services/contact-service';
+import { SiteInformationService } from '../../shared/services/site-information-service';
 
 @Component({
   selector: 'app-contact-form',
-  imports: [FormField, FormRoot, RouterLink],
+  imports: [FormField, FormRoot],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.css',
 })
 export class ContactFormComponent {
   readonly idPrefix = input('contact');
-  readonly initialOffer = input('');
   protected readonly offers = OFFER_DATA;
   protected readonly emailAddress = SITE_DATA.email;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
+  protected readonly information = inject(SiteInformationService);
   private readonly contactService = inject(ContactService);
   protected readonly model = signal<ContactValues>(this.emptyModel());
   protected readonly contactForm = form(
@@ -87,24 +87,15 @@ export class ContactFormComponent {
       },
     },
   );
-  constructor() {
-    effect(() => {
-      const offer = this.validOffer(this.initialOffer());
-      this.model.update((value) => ({ ...value, projectType: offer }));
-    });
-  }
   protected fieldId(name: string): string {
     return `${this.idPrefix()}-${name}`;
-  }
-  private validOffer(value: string): string {
-    return OFFER_DATA.some((offer) => offer.id === value) ? value : '';
   }
   private emptyModel(): ContactValues {
     return {
       firstname: '',
       lastname: '',
       email: '',
-      projectType: this.validOffer(this.initialOffer()),
+      projectType: '',
       budget: '',
       message: '',
       botcheck: false,

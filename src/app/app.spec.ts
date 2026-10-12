@@ -37,13 +37,11 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
     expect(compiled.querySelector('app-hero a.button-primary')?.getAttribute('href')).toBe(
-      '/contact',
+      '#contact',
     );
     const approachLink = compiled.querySelector<HTMLAnchorElement>('app-hero a.button-secondary');
     expect(approachLink).not.toBeNull();
-    approachLink!.click();
-    await fixture.whenStable();
-    expect(router.url).toBe('/#approche');
+    expect(approachLink!.getAttribute('href')).toBe('#approche');
     expect(compiled.querySelector('#approche')).not.toBeNull();
   });
 
@@ -83,18 +81,56 @@ describe('App', () => {
     );
   });
 
-  it('navigates from the header to the services page', async () => {
+  it('links the menu to landing sections and closes it after choosing one', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    const offersLink = compiled.querySelector<HTMLAnchorElement>('header a[href="/services"]');
+    const offersLink = compiled.querySelector<HTMLAnchorElement>('header a[href="#offres"]');
     expect(offersLink).not.toBeNull();
+    const toggle = compiled.querySelector<HTMLButtonElement>('.menu-toggle')!;
+    toggle.click();
+    await fixture.whenStable();
+    offersLink!.addEventListener('click', (event) => event.preventDefault());
     offersLink!.click();
     await fixture.whenStable();
-    expect(router.url).toBe('/services');
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(router.url).toBe('/');
+    expect(compiled.querySelector('#offres')).not.toBeNull();
     expect(compiled.querySelectorAll('app-offer-card')).toHaveLength(3);
+  });
+
+  it('keeps every internal link on the landing with one contact form', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelectorAll('form')).toHaveLength(1);
+    expect(root.querySelector('#contact app-contact-form')).not.toBeNull();
+    for (const link of root.querySelectorAll<HTMLAnchorElement>('a[href]')) {
+      const href = link.getAttribute('href')!;
+      if (/^(https?:|mailto:)/.test(href)) continue;
+      expect(href.startsWith('#')).toBe(true);
+      expect(root.querySelector(href)).not.toBeNull();
+      if (link.textContent?.includes('Parlons')) expect(href).toBe('#contact');
+    }
+  });
+
+  it('opens privacy information from the form without changing page', async () => {
+    const fixture = TestBed.createComponent(App);
+    const router = TestBed.inject(Router);
+    await router.navigateByUrl('/');
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const dialog = root.querySelector<HTMLDialogElement>('#confidentialite')!;
+    dialog.showModal = vi.fn();
+    const link = root.querySelector<HTMLAnchorElement>('app-contact-form a[href="#confidentialite"]')!;
+    link.click();
+    await fixture.whenStable();
+    expect(dialog.showModal).toHaveBeenCalledOnce();
+    expect(router.url).toBe('/');
+    expect(dialog.getAttribute('aria-labelledby')).toBe('confidentialite-title');
   });
 
   it('opens the menu and closes it with Escape, returning keyboard focus', async () => {
@@ -111,18 +147,12 @@ describe('App', () => {
     expect(document.activeElement).toBe(button);
   });
 
-  it('handles an unknown route and lets the visitor return home', async () => {
+  it('returns an unknown route to the only landing page', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/page-inexistante');
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Page introuvable');
-
-    const returnLink = compiled.querySelector<HTMLAnchorElement>('app-notfound a');
-    expect(returnLink).not.toBeNull();
-    returnLink!.click();
-    await fixture.whenStable();
     expect(router.url).toBe('/');
     expect(compiled.querySelector('h1')?.textContent).toContain(
       'Création de sites internet à Bordeaux',

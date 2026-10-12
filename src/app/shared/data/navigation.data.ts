@@ -1,6 +1,6 @@
 export const NAVIGATION_DATA = [
-  { label: 'Accueil', path: '/' },
-  { label: 'Prestations', path: '/services' },
-  { label: 'Réalisations', path: '/realisations' },
-  { label: 'À propos', path: '/a-propos' },
+  { label: 'Accueil', fragment: 'accueil' },
+  { label: 'Prestations', fragment: 'offres' },
+  { label: 'Réalisations', fragment: 'realisations' },
+  { label: 'À propos', fragment: 'a-propos' },
 ] as const;
