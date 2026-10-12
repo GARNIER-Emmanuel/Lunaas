@@ -10,7 +10,9 @@
     <ol class="steps" role="list">
       @for (step of steps; track step.id; let i = $index) {
         <li data-motion>
-          <span class="step-number" aria-hidden="true">0{{ i + 1 }}<span>↗</span></span>
+          <span class="step-number" aria-hidden="true">
+            0{{ i + 1 }}<span class="moon-phase" [attr.data-phase]="i"></span>
+          </span>
           <h3>{{ step.title }}</h3>
           <p>{{ step.description }}</p>
         </li>
