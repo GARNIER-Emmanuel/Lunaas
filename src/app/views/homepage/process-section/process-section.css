@@ -25,10 +25,8 @@
 }
 h3 {
   margin-block: 1.7rem 1rem;
-  font-weight: 600;
   font-size: 1.15rem;
   line-height: 1.4;
-  letter-spacing: -0.03em;
 }
 .steps p {
   color: var(--color-muted);

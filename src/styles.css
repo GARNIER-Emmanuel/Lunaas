@@ -46,6 +46,8 @@ html.no-js app-site-information .dialog-close {
   --font-sans: 'Manrope Variable', system-ui, sans-serif;
   --font-display: 'Caacupe One', 'Manrope Variable', system-ui, sans-serif;
   --font-script: 'Story Script', cursive;
+  --text-section-title: clamp(2.3rem, 4.3vw, 4.4rem);
+  --text-section-title-compact: clamp(2.1rem, 3.5vw, 3.5rem);
 }
 
 body {
@@ -57,18 +59,42 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Polices de titre testées sur la branche de refonte. */
+/* Le duo expressif est réservé aux grands titres ; les sous-titres restent sobres. */
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-display);
+  font-weight: 400;
   font-synthesis: none;
+}
+
+h3,
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 .font-script {
   font-family: var(--font-script);
   font-weight: 400;
   letter-spacing: 0;
+  font-synthesis: none;
+}
+
+.section-title {
+  font-size: var(--text-section-title);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.section-title--compact {
+  font-size: var(--text-section-title-compact);
+}
+
+.section-title .font-script {
+  font-size: 1.08em;
+  color: var(--color-accent);
 }
 
 /* La palette sombre reste limitée au header et au hero. */
@@ -226,16 +252,9 @@ section[id],
   color: var(--color-accent);
   font-size: 0.75rem;
   line-height: 1.6;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.section-intro h2 {
-  font-size: clamp(2.3rem, 4.3vw, 4.4rem);
-  line-height: 1.12;
-  letter-spacing: -0.055em;
-  font-weight: 500;
-  text-wrap: balance;
 }
 
 .section-description,

@@ -44,16 +44,6 @@
   color: var(--color-muted);
   font-size: 0.8rem;
 }
-h2 {
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  line-height: 1.12;
-  letter-spacing: -0.055em;
-  font-weight: 500;
-  text-wrap: balance;
-}
-h2 > span {
-  color: var(--color-accent);
-}
 .about-copy .section-description {
   margin-block: 2rem;
   max-width: 45ch;

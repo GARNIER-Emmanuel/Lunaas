@@ -17,6 +17,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - **Styling** : Tailwind CSS v4.
   - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
   - Caacupe One pour les titres et Story Script pour les accents du hero et du contact, hébergées localement avec leurs licences SIL OFL. Manrope reste utilisée pour les paragraphes et la navigation, également en local.
+  - Même signature pour les grands titres de section : Caacupe One pour la phrase principale, Story Script pour une phrase courte en accent. Tailles, interlignage et espacement centralisés, avec une variante compacte dans les colonnes étroites. Les sous-titres, cartes, étapes et informations légales utilisent Manrope pour rester lisibles.
   - Hero sobre : la souris révèle une photo de fond grâce à un masque CSS.
   - La section de contact révèle une image de Mars sur son fond lavande. Versions AVIF/WebP en 1920 et 960 px, chargement différé et dimensions explicites.
   - Révélation désactivée sur écran tactile et avec les préférences de mouvement réduit.

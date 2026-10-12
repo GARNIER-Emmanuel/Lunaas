@@ -29,6 +29,9 @@ dialog::backdrop {
   padding-top: 1rem;
 }
 .information-heading h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
   font-size: clamp(2rem, 5vw, 3rem);
   margin-top: 1rem;
 }
@@ -37,6 +40,5 @@ dialog::backdrop {
 }
 .legal-content h3 {
   font-size: 1.3rem;
-  font-weight: 550;
   margin-block: 2rem 1rem;
 }

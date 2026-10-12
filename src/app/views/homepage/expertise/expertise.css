@@ -23,8 +23,6 @@
 }
 h3 {
   font-size: clamp(1.5rem, 2.3vw, 2.1rem);
-  font-weight: 550;
-  letter-spacing: -0.045em;
   line-height: 1.2;
 }
 .expertise-row p {
