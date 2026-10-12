@@ -1,0 +1,148 @@
+<form
+  [formRoot]="contactForm"
+  class="contact-form"
+  [attr.aria-busy]="contactForm().submitting()"
+  novalidate
+>
+  <fieldset class="form-fields" [disabled]="contactForm().submitting()">
+    <legend class="sr-only">Votre demande de contact</legend>
+    <input
+      class="honeypot"
+      type="checkbox"
+      [formField]="contactForm.botcheck"
+      tabindex="-1"
+      autocomplete="off"
+      aria-label="Laisser ce champ vide"
+      aria-hidden="true"
+    />
+    <div class="form-row">
+      <div>
+        <label [for]="fieldId('lastname')">Nom <span>(obligatoire)</span></label>
+        <input
+          [id]="fieldId('lastname')"
+          autocomplete="family-name"
+          [formField]="contactForm.lastname"
+          [attr.aria-describedby]="fieldId('lastname-errors')"
+        />
+        <div [id]="fieldId('lastname-errors')" class="field-errors">
+          @if (contactForm.lastname().touched()) {
+            @for (error of contactForm.lastname().errors(); track error) {
+              <p>{{ error.message }}</p>
+            }
+          }
+        </div>
+      </div>
+      <div>
+        <label [for]="fieldId('firstname')">Prénom <span>(obligatoire)</span></label>
+        <input
+          [id]="fieldId('firstname')"
+          autocomplete="given-name"
+          [formField]="contactForm.firstname"
+          [attr.aria-describedby]="fieldId('firstname-errors')"
+        />
+        <div [id]="fieldId('firstname-errors')" class="field-errors">
+          @if (contactForm.firstname().touched()) {
+            @for (error of contactForm.firstname().errors(); track error) {
+              <p>{{ error.message }}</p>
+            }
+          }
+        </div>
+      </div>
+    </div>
+    <div>
+      <label [for]="fieldId('email')">E-mail <span>(obligatoire)</span></label>
+      <input
+        [id]="fieldId('email')"
+        type="email"
+        autocomplete="email"
+        [formField]="contactForm.email"
+        [attr.aria-describedby]="fieldId('email-errors')"
+      />
+      <div [id]="fieldId('email-errors')" class="field-errors">
+        @if (contactForm.email().touched()) {
+          @for (error of contactForm.email().errors(); track error) {
+            <p>{{ error.message }}</p>
+          }
+        }
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label [for]="fieldId('project')">Votre projet <span>(obligatoire)</span></label>
+        <select
+          [id]="fieldId('project')"
+          [formField]="contactForm.projectType"
+          [attr.aria-describedby]="fieldId('project-errors')"
+        >
+          <option value="">Choisir une prestation</option>
+          @for (offer of offers; track offer.id) {
+            <option [value]="offer.id">{{ offer.name }}</option>
+          }
+          <option value="autre">Autre projet de site internet</option>
+        </select>
+        <div [id]="fieldId('project-errors')" class="field-errors">
+          @if (contactForm.projectType().touched()) {
+            @for (error of contactForm.projectType().errors(); track error) {
+              <p>{{ error.message }}</p>
+            }
+          }
+        </div>
+      </div>
+      <div>
+        <label [for]="fieldId('budget')">Budget indicatif <span>(facultatif)</span></label>
+        <input
+          [id]="fieldId('budget')"
+          [formField]="contactForm.budget"
+          placeholder="À préciser ensemble"
+          [attr.aria-describedby]="fieldId('budget-errors')"
+        />
+        <div [id]="fieldId('budget-errors')" class="field-errors">
+          @if (contactForm.budget().touched()) {
+            @for (error of contactForm.budget().errors(); track error) {
+              <p>{{ error.message }}</p>
+            }
+          }
+        </div>
+      </div>
+    </div>
+    <div>
+      <label [for]="fieldId('message')">Votre message <span>(obligatoire)</span></label>
+      <textarea
+        [id]="fieldId('message')"
+        rows="5"
+        [formField]="contactForm.message"
+        [attr.aria-describedby]="fieldId('message-help') + ' ' + fieldId('message-errors')"
+      ></textarea>
+      <p [id]="fieldId('message-help')" class="form-help">
+        Votre activité, votre besoin, vos questions. 2 000 caractères maximum.
+      </p>
+      <div [id]="fieldId('message-errors')" class="field-errors">
+        @if (contactForm.message().touched()) {
+          @for (error of contactForm.message().errors(); track error) {
+            <p>{{ error.message }}</p>
+          }
+        }
+      </div>
+    </div>
+  </fieldset>
+  <p class="form-help">
+    Les informations sont transmises via Web3Forms pour répondre à votre demande.
+    <a routerLink="/confidentialite">Utilisation de vos données</a>.
+  </p>
+  <button type="submit" class="button button-primary" [disabled]="contactForm().submitting()">
+    {{ contactForm().submitting() ? 'Envoi en cours…' : 'Envoyer mon message' }}
+    <span aria-hidden="true">↗</span>
+  </button>
+  @if (feedback()) {
+    <div
+      class="form-feedback"
+      [class.is-error]="failed()"
+      [attr.role]="failed() ? 'alert' : 'status'"
+    >
+      <p>{{ feedback() }}</p>
+      @if (failed()) {
+        <a [href]="'mailto:' + emailAddress">{{ emailAddress }}</a>
+      }
+    </div>
+  }
+</form>

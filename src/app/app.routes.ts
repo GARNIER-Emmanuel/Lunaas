@@ -20,7 +20,7 @@ export const routes: Routes = [
     title: 'Contact et demande de devis | Lunaas',
     data: {
       description:
-        'Préparez votre demande de devis pour un site internet à Bordeaux. Précisez votre besoin et contactez directement Lunaas.',
+        'Envoyez votre demande de devis pour un site internet à Bordeaux. Précisez votre besoin et contactez directement Lunaas.',
     },
   },
   {
@@ -41,7 +41,7 @@ export const routes: Routes = [
     title: 'Confidentialité | Lunaas',
     data: {
       description:
-        'Comprenez comment le formulaire Lunaas prépare votre e-mail et comment les informations de contact sont utilisées.',
+        'Comprenez comment les formulaires Lunaas transmettent votre demande via Web3Forms et comment les informations de contact sont utilisées.',
       noindex: true,
     },
   },

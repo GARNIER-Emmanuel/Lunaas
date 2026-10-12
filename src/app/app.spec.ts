@@ -47,26 +47,40 @@ describe('App', () => {
     expect(compiled.querySelector('#approche')).not.toBeNull();
   });
 
-  it('shows indicative prices and prepares a quote for the selected offer', async () => {
+  it('shows indicative prices and offers a project choice in the inline contact form', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     const cards = [...compiled.querySelectorAll('app-offer-card')];
     expect(cards).toHaveLength(3);
-    const prices = cards.map((card) =>
-      card.querySelector('.offer-price strong')?.textContent?.replace(/\s/g, ''),
-    );
-    expect(prices).toEqual(['490€', '990€', '1790€']);
+    for (const [id, expectedPrice] of [
+      ['landing-page', '490€'],
+      ['site-vitrine', '990€'],
+      ['site-dynamique', '1790€'],
+    ]) {
+      const card = compiled.querySelector(`#offer-${id}`)?.closest('app-offer-card');
+      expect(card?.querySelector('.offer-price strong')?.textContent?.replace(/\s/g, '')).toBe(
+        expectedPrice,
+      );
+    }
 
     for (const card of cards) {
       expect(card.querySelector('.offer-price > span')?.textContent).toContain('À partir de');
-      const link = card.querySelector<HTMLAnchorElement>('.quote-link')!;
-      const url = new URL(link.href);
-      expect(url.pathname).toBe('/contact');
-      expect(url.searchParams.get('offre')).toBeTruthy();
     }
-    expect(cards[2].querySelector('h4')?.textContent).toContain('Prestations possibles, sur devis');
+    const projectChoice = compiled.querySelector<HTMLSelectElement>('#cta-contact-project');
+    expect(projectChoice).not.toBeNull();
+    expect([...projectChoice!.options].map((option) => option.value).sort()).toEqual([
+      '',
+      'autre',
+      'landing-page',
+      'site-dynamique',
+      'site-vitrine',
+    ]);
+    const dynamicOffer = compiled.querySelector('#offer-site-dynamique')?.closest('app-offer-card');
+    expect(dynamicOffer?.querySelector('h4')?.textContent).toContain(
+      'Prestations possibles, sur devis',
+    );
   });
 
   it('navigates from the header to the services page', async () => {

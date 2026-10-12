@@ -3,3 +3,4 @@ export * from './offer.data';
 export * from './project.data';
 export * from './content.data';
 export * from './navigation.data';
+export * from './contact.data';

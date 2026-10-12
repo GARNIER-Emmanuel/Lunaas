@@ -38,9 +38,11 @@
         Vous avez une idée, un besoin ou simplement une question ?<br />Prenons le temps d’en
         parler.
       </p>
+      <p class="cta-details">
+        <a [href]="'mailto:' + emailAddress">{{ emailAddress }}</a
+        ><br />{{ location }}
+      </p>
     </div>
-    <a routerLink="/contact" class="button button-primary" data-motion
-      >Parlons de votre projet <span aria-hidden="true">↗</span></a
-    >
+    <div class="cta-form-panel"><app-contact-form idPrefix="cta-contact" /></div>
   </div>
 </section>

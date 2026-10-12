@@ -4,7 +4,7 @@ Bienvenue sur le dépôt de Lunaas !
 
 Ce projet est la vitrine de mon activité de développement web freelance. Il présente mes prestations, ma démarche et une sélection de projets personnels, avec une architecture **Angular** structurée et une identité visuelle sobre inspirée de l’espace.
 
-**La version locale est implémentée et vérifiée.** Les pages publiques sont prérendues. Le contact prépare un e-mail depuis le navigateur ; l’envoi direct par un fournisseur de formulaire n’est pas configuré. Les informations administratives et les conditions de publication restent à finaliser avant le lancement commercial.
+**La version locale est implémentée et vérifiée techniquement.** Les pages publiques sont prérendues. Les formulaires transmettent les demandes via Web3Forms avec la configuration de contact existante. La réception réelle des messages, les informations administratives et les conditions de publication restent à vérifier avant le lancement commercial.
 
 ---
 
@@ -18,6 +18,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
   - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
   - Essai typographique sur cette branche : Caacupe One pour les titres et Story Script pour les accents du hero et du contact, chargées depuis Google Fonts. Manrope reste utilisée pour les paragraphes et la navigation.
   - Hero sobre : la souris révèle une photo de fond grâce à un masque CSS.
+  - La section de contact révèle une image de Mars sur son fond lavande. Versions AVIF/WebP en 1920 et 960 px, chargement différé et dimensions explicites.
   - Révélation désactivée sur écran tactile et avec les préférences de mouvement réduit.
   - GSAP et ScrollTrigger chargés à la demande pour les entrées des titres et des blocs. Parallaxe décorative limitée à l’ordinateur, scroll natif et nettoyage au changement de page.
 - **Rendu** : génération statique Angular avec hydratation.
@@ -34,7 +35,8 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - **Prestations** : trois offres à partir de 490 €, 990 € et 1 790 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher est actuellement le seul projet actif. Les fiches sont générées à partir des données et clairement identifiées comme projets personnels.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
-- **Contact** : formulaire Signal Forms, validation accessible, préselection de l’offre et préparation d’un brouillon e-mail. Aucun message n’est annoncé comme envoyé automatiquement.
+- **Contact** : formulaire Signal Forms partagé entre la section de contact et `/contact`, avec nom, prénom, e-mail, projet, budget facultatif et message. Envoi Web3Forms, validation accessible, préselection de l’offre, champ anti-spam et blocage des doubles soumissions.
+  - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose de réessayer ou d’écrire directement par e-mail.
 - **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers toutes les pages.
 - **SEO** : titres et descriptions par page, canonical, Open Graph, image de partage, données structurées `WebSite`, sitemap et robots.txt.
 - **Pages légales** : versions de travail explicitement incomplètes et en `noindex`, avec les informations réelles à fournir.
@@ -48,7 +50,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - `src/app/components/` : éléments réutilisables, dont les cartes d’offre, les projets, la FAQ et le menu.
 - `src/app/shared/interfaces/` : modèles TypeScript.
 - `src/app/shared/data/` : contenus publics centralisés.
-- `src/app/shared/services/` : préparation du contact et gestion des métadonnées.
+- `src/app/shared/services/` : envoi du contact, animations et gestion des métadonnées.
 - `scripts/` : finalisation, contrôle et prévisualisation du build statique.
 
 Les données vont du **modèle typé au fichier de contenu, puis au composant et au template**. Le site ne nécessite ni CMS ni base de données au lancement. Une modification de contenu nécessite un nouveau build et un nouveau déploiement.
@@ -113,7 +115,7 @@ La configuration GitHub Actions exécute `npm run verify` après un push ou sur 
 | `/realisations`         | Liste des projets sélectionnés                               |
 | `/realisations/koacher` | Présentation de Koacher                                      |
 | `/a-propos`             | Présentation du développeur                                  |
-| `/contact`              | Préparation d’une demande de devis                           |
+| `/contact`              | Envoi d’une demande de devis                                 |
 | `/mentions-legales`     | Informations légales à finaliser                             |
 | `/confidentialite`      | Fonctionnement actuel du contact et informations à compléter |
 | `/404`                  | Page introuvable                                             |
@@ -137,7 +139,7 @@ Le fichier `404.html` permet à Cloudflare Pages de traiter les chemins inconnus
 - Identité légale, statut, immatriculation, coordonnées professionnelles et informations de l’hébergeur.
 - Informations définitives relatives au traitement des demandes et à leur conservation.
 - Droits d’utilisation du visuel de fond et validation des contenus publics.
-- Fournisseur et réception réelle du formulaire si un envoi direct est souhaité.
+- Réception réelle des messages Web3Forms, disponibilité du service et éventuelles restrictions de domaine de la configuration existante.
 - Domaine, DNS, HTTPS et comportement des routes sur l’hébergement.
 - Contrôle visuel mobile et desktop, audit Lighthouse et mesures de performances représentatives.
 
@@ -160,4 +162,6 @@ Cette variante reste sur sa branche de comparaison. `main` conserve la version p
 
 Pour la voir localement, lancer `npm start` sur cette branche. Après arrêt du serveur, `git switch main` puis `npm start` permet de revoir la version de base ; `git switch design/lunaweb-inspiration` permet de revenir à cette proposition.
 
-La vérification technique comprend 23 tests et les contrôles des neuf pages statiques. Le rendu et le rythme des animations restent à valider dans un navigateur sur mobile et ordinateur.
+La vérification technique comprend 34 tests et les contrôles des neuf pages statiques. Les tests d’envoi simulent les réponses du service ; ils n’envoient pas de vrais messages. Le rendu, le rythme des animations et la réception réelle restent à valider dans un navigateur sur mobile et ordinateur.
+
+La configuration de contact est centralisée dans `src/app/shared/data/contact.data.ts`. La clé Web3Forms est une [clé publique de routage](https://docs.web3forms.com/getting-started/faq) ; modifier seulement l’adresse affichée ne change pas le destinataire associé à cette clé.
