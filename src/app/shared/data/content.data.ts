@@ -1,52 +1,25 @@
-import { ContentItem, Expertise, FaqItem, Profile } from '../interfaces';
+import { ContentItem, FaqItem, Profile } from '../interfaces';
 import { LEGAL_BUSINESS_DATA } from './legal-business.data';
-export const EXPERTISE_DATA: readonly Expertise[] = [
-  {
-    id: 'cadrage',
-    title: 'Comprendre et cadrer',
-    description:
-      'Clarifier votre objectif, organiser les contenus et définir les pages utiles. Vous savez ce que l’on construit, pour qui et dans quel périmètre.',
-    keywords: ['Objectifs', 'Contenus', 'Périmètre'],
-  },
-  {
-    id: 'conception',
-    title: 'Concevoir et guider',
-    description:
-      'Donner une forme à votre identité et construire des parcours simples. Une navigation lisible, des informations au bon endroit et une prise de contact facile.',
-    keywords: ['Design', 'Navigation', 'Responsive'],
-  },
-  {
-    id: 'developpement',
-    title: 'Développer et livrer',
-    description:
-      'Transformer le design en un site utilisable, vérifier les interactions et préparer la mise en ligne. Une base organisée pour accompagner les évolutions du projet.',
-    keywords: ['Développement', 'Tests', 'Mise en ligne'],
-  },
-];
 export const PROCESS_DATA: readonly ContentItem[] = [
   {
     id: 'echanger',
-    title: 'Comprendre votre besoin',
-    description:
-      'Nous parlons de votre activité, de vos visiteurs et de ce que vous attendez du site.',
+    title: 'Comprendre',
+    description: 'Votre activité, vos visiteurs et l’objectif du site.',
   },
   {
     id: 'cadrer',
-    title: 'Définir le bon périmètre',
-    description:
-      'Les pages, les fonctionnalités et les contenus nécessaires sont précisés dans un devis adapté au projet.',
+    title: 'Cadrer',
+    description: 'Les contenus, les fonctionnalités, le devis et le calendrier.',
   },
   {
     id: 'construire',
     title: 'Concevoir et développer',
-    description:
-      'Le design et le développement avancent à partir du besoin défini, avec des échanges pour affiner le résultat.',
+    description: 'Le design et la réalisation d’un site adapté aux différents écrans.',
   },
   {
     id: 'livrer',
-    title: 'Vérifier et mettre en ligne',
-    description:
-      'Nous vérifions les parcours et le rendu sur les différents écrans avant la mise en ligne prévue au devis.',
+    title: 'Vérifier et livrer',
+    description: 'Les contrôles et la mise en ligne prévus dans le devis.',
   },
 ];
 export const PROFILE_DATA: Profile = {

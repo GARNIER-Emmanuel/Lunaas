@@ -1,16 +1,13 @@
-<section id="methode" class="content-section process-section" aria-labelledby="process-title">
+<section id="approche" class="content-section process-section" aria-labelledby="approach-title">
   <div class="page-container">
-    <div class="section-intro">
-      <p class="section-label">La méthode / Avancer ensemble</p>
-      <div>
-        <h2 id="process-title" class="section-title" data-motion>Vous savez où l’on va.<br /><span class="font-script">Et comment on y va.</span></h2>
-        <p class="section-description" data-motion>
-          Un projet cadré, des échanges réguliers et des décisions que vous comprenez. De la
-          première discussion à la mise en ligne.
-        </p>
-      </div>
-    </div>
-    <ol class="steps">
+    <h2 id="approach-title" class="section-title" data-motion>
+      Votre site à votre image<br /><span class="font-script">De l’idée à la mise en ligne</span>
+    </h2>
+    <p class="section-description" data-motion>
+      Un interlocuteur unique, un périmètre défini ensemble et des échanges réguliers pour avancer
+      clairement.
+    </p>
+    <ol class="steps" role="list">
       @for (step of steps; track step.id; let i = $index) {
         <li data-motion>
           <span class="step-number" aria-hidden="true">0{{ i + 1 }}<span>↗</span></span>
@@ -19,5 +16,8 @@
         </li>
       }
     </ol>
+    <a href="#offres" class="text-link" data-motion>
+      Explorer les prestations <span aria-hidden="true">↗</span>
+    </a>
   </div>
 </section>

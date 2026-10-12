@@ -30,7 +30,7 @@ describe('App', () => {
     expect(compiled.querySelector('footer')).not.toBeNull();
   });
 
-  it('links the hero to the form and the approach section', async () => {
+  it('links the hero to a single four-step method immediately after the hero', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
@@ -43,7 +43,11 @@ describe('App', () => {
     const approachLink = compiled.querySelector<HTMLAnchorElement>('app-hero a.button-secondary');
     expect(approachLink).not.toBeNull();
     expect(approachLink!.getAttribute('href')).toBe('#approche');
-    expect(compiled.querySelector('#approche')).not.toBeNull();
+    const approach = compiled.querySelector('#approche');
+    expect(compiled.querySelectorAll('#approche')).toHaveLength(1);
+    expect(compiled.querySelector('app-homepage')?.children[1]?.contains(approach)).toBe(true);
+    expect(approach?.querySelectorAll('ol > li')).toHaveLength(4);
+    expect(compiled.querySelector('#methode')?.contains(approach)).toBe(true);
   });
 
   it('keeps personal contact details in legal information and the main contact in the form', async () => {
@@ -64,7 +68,7 @@ describe('App', () => {
     expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.postalAddress);
     expect(root.querySelector('#contact form')).not.toBeNull();
     expect(root.querySelector('.profile-name')?.textContent).toContain(LEGAL_BUSINESS_DATA.displayName);
-    expect(root.querySelector('footer .text-link')?.getAttribute('href')).toBe('#contact');
+    expect(root.querySelector('footer a[href="#contact"]')?.getAttribute('href')).toBe('#contact');
   });
 
   it('does not present unconfirmed creation steps or tax status as completed', async () => {

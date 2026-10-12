@@ -3,9 +3,6 @@ export interface ContentItem {
   readonly title: string;
   readonly description: string;
 }
-export interface Expertise extends ContentItem {
-  readonly keywords: readonly string[];
-}
 export interface FaqItem {
   readonly question: string;
   readonly answer: string;
