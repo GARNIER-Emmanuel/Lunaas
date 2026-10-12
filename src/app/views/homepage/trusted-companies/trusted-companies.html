@@ -15,16 +15,18 @@
     <ul class="company-list" role="list">
       @for (company of companies; track company.id) {
         <li class="company-item" data-motion>
-          <img
-            class="company-logo"
-            [ngSrc]="company.logo.src"
-            [width]="company.logo.width"
-            [height]="company.logo.height"
-            alt=""
-            loading="lazy"
-          />
-          <h3>{{ company.name }}</h3>
-          <p class="company-collaboration">{{ company.collaboration }}</p>
+          <div class="company-card" data-tilt>
+            <img
+              class="company-logo"
+              [ngSrc]="company.logo.src"
+              [width]="company.logo.width"
+              [height]="company.logo.height"
+              alt=""
+              loading="lazy"
+            />
+            <h3>{{ company.name }}</h3>
+            <p class="company-collaboration">{{ company.collaboration }}</p>
+          </div>
         </li>
       }
     </ul>

@@ -33,7 +33,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 ## ✨ Fonctionnalités
 
 - **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, références professionnelles, offres, FAQ et appel à l’action.
-- **Ils m’ont fait confiance** : CGI, ElementRoot et Madness Escape Game, avec leurs logos et le contexte de l’expérience (alternance ou stage), sans détail des missions.
+- **Ils m’ont fait confiance** : CGI, ElementRoot et Madness Escape Game, avec leurs logos, sans détail des missions. Les cartes suivent la souris avec une inclinaison 3D légère et un retour fluide au repos, désactivés sur écran tactile et avec la préférence de réduction des animations.
 - **Prestations** : trois offres à partir de 690 €, 1 490 € et 2 990 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher est présenté comme projet personnel dans la landing page. Son lien ouvre directement l’application.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
