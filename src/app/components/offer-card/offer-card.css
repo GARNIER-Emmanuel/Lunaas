@@ -78,10 +78,13 @@ h3 {
   font-size: 0.7rem;
 }
 .offer-price strong {
+  font-family: var(--font-script);
+  color: var(--color-accent);
   font-size: 2.65rem;
   line-height: 1.2;
-  font-weight: 500;
-  letter-spacing: -0.055em;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-synthesis: none;
 }
 .scope-note {
   margin-block: 1.1rem 1.5rem;
