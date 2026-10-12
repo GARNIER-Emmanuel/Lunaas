@@ -1,8 +1,8 @@
 <section class="page-container page-heading">
   <a routerLink="/realisations" class="text-link">← Toutes les réalisations</a>
   <p class="section-label mt-8">{{ project().category }} · {{ project().label }}</p>
-  <h1>{{ project().name }}</h1>
-  <p class="lead">{{ project().summary }}</p>
+  <h1 data-motion>{{ project().name }}</h1>
+  <p class="lead" data-motion>{{ project().summary }}</p>
   <div class="project-actions">
     @if (project().live) {
       <a

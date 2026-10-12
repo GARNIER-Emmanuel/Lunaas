@@ -17,7 +17,8 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 - **Styling** : Tailwind CSS v4.
   - Fond blanc, texte sombre et accents violets, avec header noir, hero sombre et appel à l’action lavande. Tokens CSS partagés et Manrope variable hébergée localement.
   - Hero sobre : la souris révèle une photo de fond grâce à un masque CSS.
-  - Effet désactivé sur écran tactile et avec les préférences de mouvement réduit. GSAP reste installé pour d’éventuels besoins futurs.
+  - Révélation désactivée sur écran tactile et avec les préférences de mouvement réduit.
+  - GSAP et ScrollTrigger chargés à la demande pour les entrées des titres et des blocs. Parallaxe décorative limitée à l’ordinateur, scroll natif et nettoyage au changement de page.
 - **Rendu** : génération statique Angular avec hydratation.
   - Le HTML est généré au build ; Angular gère ensuite les interactions dans le navigateur.
   - Le dossier à héberger est `dist/lunaas/browser/`, sans serveur Node permanent.
@@ -144,3 +145,18 @@ Les exigences légales varient selon le statut réel ; les pages de travail renv
 ---
 
 _Lunaas — Donnez une autre dimension à votre présence en ligne._
+
+## 🎨 Variante visuelle à comparer
+
+La branche `design/lunaweb-inspiration` propose une autre composition, inspirée de l’organisation et du rythme du site [LunaWeb](https://www.lunaweb.fr/). Les textes sont rédigés pour Lunaas et son activité indépendante.
+
+- L’approche et les expertises introduisent le projet avant les tarifs.
+- Koacher occupe une présentation plus large, accompagnée d’une illustration identifiée comme telle.
+- Les titres, les espaces et les alternances de fonds donnent un rythme distinct aux sections.
+- Les animations déplacent les éléments sans masquer les textes. Elles respectent les préférences de mouvement réduit et sont supprimées à la destruction des pages.
+
+Cette variante reste sur sa branche de comparaison. `main` conserve la version précédente.
+
+Pour la voir localement, lancer `npm start` sur cette branche. Après arrêt du serveur, `git switch main` puis `npm start` permet de revoir la version de base ; `git switch design/lunaweb-inspiration` permet de revenir à cette proposition.
+
+La vérification technique comprend 23 tests et les contrôles des neuf pages statiques. Le rendu et le rythme des animations restent à valider dans un navigateur sur mobile et ordinateur.

@@ -1,7 +1,7 @@
 <section class="page-container page-heading">
   <p class="section-label">Prestations</p>
-  <h1>Un site adapté<br />à votre activité.</h1>
-  <p class="lead">
+  <h1 data-motion>Un site adapté<br />à votre activité.</h1>
+  <p class="lead" data-motion>
     Landing page, site vitrine ou site dynamique : le bon format dépend du besoin. Les prix de
     départ sont indicatifs ; le périmètre et le tarif final sont précisés au devis.
   </p>
@@ -9,7 +9,7 @@
 <section class="page-container offer-list" aria-label="Offres de création de sites">
   <h2 class="sr-only">Offres de création de sites</h2>
   @for (offer of offers; track offer.id) {
-    <app-offer-card [offer]="offer" />
+    <app-offer-card [offer]="offer" data-motion />
   }
 </section>
 <app-process-section /><app-faq /><app-contact-cta />

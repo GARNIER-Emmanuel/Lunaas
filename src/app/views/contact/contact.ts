@@ -12,9 +12,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ContactForm } from '../../shared/interfaces';
 import { OFFER_DATA, SITE_DATA } from '../../shared/data';
 import { ContactService } from '../../shared/services/contact-service';
+import { PageMotion } from '../../shared/directives/page-motion';
 
 @Component({
   selector: 'app-contact',
+  hostDirectives: [PageMotion],
   imports: [FormField, FormRoot, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact.html',
