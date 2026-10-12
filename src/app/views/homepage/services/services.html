@@ -1,0 +1,21 @@
+<section id="offres" aria-labelledby="offers-title" class="services-section">
+  <div class="page-container">
+    <div class="section-heading">
+      <p>Prestations & tarifs</p>
+      <div>
+        <h2 id="offers-title">Le bon format<br />pour votre projet.</h2>
+        <p class="section-description">
+          Une première présence en ligne ou un site plus complet : partons de votre besoin.
+        </p>
+      </div>
+    </div>
+    <div class="offers-grid">
+      @for (offer of offers; track offer.id) {
+        <app-offer-card [offer]="offer" [contactEmail]="email" />
+      }
+    </div>
+    <p class="pricing-note">
+      Prix de départ indicatifs. Le tarif final dépend du périmètre défini ensemble, sur devis.
+    </p>
+  </div>
+</section>

@@ -49,6 +49,14 @@ header {
   min-height: 2.9rem;
   font-size: 0.75rem;
 }
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 1.25rem;
+  }
+  .home-link {
+    display: none;
+  }
+}
 @media (max-width: 640px) {
   .navigation {
     min-height: 5.5rem;

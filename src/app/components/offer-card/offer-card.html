@@ -1,0 +1,38 @@
+<article class="offer-card" [attr.aria-labelledby]="'offer-' + offer().id">
+  <div class="offer-intro">
+    <p class="offer-category">{{ offer().flexible ? 'Sur mesure' : 'Création de site' }}</p>
+    <h3 [id]="'offer-' + offer().id">{{ offer().name }}</h3>
+    <p class="offer-description">{{ offer().description }}</p>
+  </div>
+
+  <div class="offer-price">
+    <span>À partir de</span><strong>{{ price() }}</strong>
+  </div>
+  <p class="scope-note">{{ offer().scopeNote }}</p>
+
+  <h4>{{ offer().flexible ? 'Prestations possibles, sur devis' : 'Ce que comprend l’offre' }}</h4>
+  <ul class="feature-list">
+    @for (feature of offer().features; track feature) {
+      <li><span aria-hidden="true">✓</span>{{ feature }}</li>
+    }
+  </ul>
+
+  <details>
+    <summary>
+      {{ offer().flexible ? 'Précisions sur le périmètre' : 'Ce qui n’est pas inclus' }}
+    </summary>
+    <ul class="exclusion-list">
+      @for (exclusion of offer().exclusions; track exclusion) {
+        <li>{{ exclusion }}</li>
+      }
+    </ul>
+  </details>
+
+  <a
+    [href]="quoteLink()"
+    class="button button-secondary quote-link"
+    [attr.aria-label]="'Demander un devis pour ' + offer().name"
+  >
+    Parlons de ce projet <span aria-hidden="true">↗</span>
+  </a>
+</article>

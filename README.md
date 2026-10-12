@@ -4,7 +4,7 @@ Bienvenue sur le dépôt de Lunaas !
 
 Ce projet est la vitrine de mon activité de développement web freelance. Conçu pour présenter mes prestations et mes réalisations, il s'appuie sur une architecture **Angular** structurée et une identité visuelle inspirée de la Lune et de l'exploration spatiale.
 
-**Le projet est en cours de développement.** L'accueil comporte un header responsive, un hero sobre avec une image révélée au passage du curseur et une présentation de l'approche Lunaas. Les offres, les réalisations, les autres pages et le formulaire de contact restent à développer.
+**Le projet est en cours de développement.** L'accueil comporte un header responsive, un hero sobre avec une image révélée au passage du curseur, les trois offres avec leurs tarifs indicatifs et une présentation de l'approche Lunaas. Les réalisations, les autres pages et le formulaire de contact restent à développer.
 
 ---
 
@@ -28,10 +28,10 @@ Ce projet est la vitrine de mon activité de développement web freelance. Conç
 
 ---
 
-## ✨ Fonctionnalités prévues
+## ✨ Fonctionnalités & Évolutions
 
 - **Hero & Présentation** : expliquer clairement mon activité et inviter à demander un devis.
-- **Prestations** : présenter les offres Landing Page, Site vitrine multipage et Site web dynamique, avec leurs prix de départ indicatifs.
+- **Prestations** : Landing page à partir de 490 €, Site vitrine multipage à partir de 990 € et Site web dynamique à partir de 1 790 €. Périmètres détaillés et boutons de devis par e-mail avec l'offre dans l'objet.
 - **Réalisations** : valoriser les projets en distinguant missions clients, projets personnels et démonstrations.
 - **Méthode de travail** : expliquer les étapes de conception, de développement et de mise en ligne.
 - **À propos & FAQ** : présenter mon parcours et répondre aux questions des clients.
