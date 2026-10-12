@@ -1,12 +1,22 @@
-<footer class="border-t border-line">
-  <div
-    class="page-container flex flex-wrap items-center justify-between gap-6 py-8 text-xs text-muted"
-  >
-    <p>
-      <strong class="font-semibold text-ink">{{ site.name }}</strong> — {{ site.tagline }}
-    </p>
-    <a [href]="'mailto:' + site.email" class="hover:text-ink"
-      >{{ site.email }} <span aria-hidden="true">↗</span></a
-    >
+﻿<footer class="footer">
+  <div class="page-container footer-main">
+    <div>
+      <a routerLink="/" class="footer-brand">{{ site.name }}.</a>
+      <p>{{ site.tagline }}</p>
+      <a [href]="'mailto:' + site.email" class="text-link">{{ site.email }} ↗</a>
+    </div>
+    <nav aria-label="Navigation de pied de page">
+      @for (link of links; track link.path) {
+        <a [routerLink]="link.path">{{ link.label }}</a>
+      }
+      <a routerLink="/contact">Contact</a>
+    </nav>
+  </div>
+  <div class="page-container footer-bottom">
+    <span>Développement web indépendant · Bordeaux</span>
+    <div>
+      <a routerLink="/mentions-legales">Mentions légales</a
+      ><a routerLink="/confidentialite">Confidentialité</a>
+    </div>
   </div>
 </footer>

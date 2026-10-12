@@ -69,18 +69,32 @@ describe('App', () => {
     expect(cards[2].querySelector('h4')?.textContent).toContain('Prestations possibles, sur devis');
   });
 
-  it('navigates from the header to the offers section', async () => {
+  it('navigates from the header to the services page', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    const offersLink = compiled.querySelector<HTMLAnchorElement>('header a[href="/#offres"]');
+    const offersLink = compiled.querySelector<HTMLAnchorElement>('header a[href="/services"]');
     expect(offersLink).not.toBeNull();
     offersLink!.click();
     await fixture.whenStable();
-    expect(router.url).toBe('/#offres');
-    expect(compiled.querySelector('#offres')).not.toBeNull();
+    expect(router.url).toBe('/services');
+    expect(compiled.querySelectorAll('app-offer-card')).toHaveLength(3);
+  });
+
+  it('opens the menu and closes it with Escape, returning keyboard focus', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
+    await fixture.whenStable();
+    const button = fixture.nativeElement.querySelector('.menu-toggle') as HTMLButtonElement;
+    button.click();
+    await fixture.whenStable();
+    expect(button.getAttribute('aria-expanded')).toBe('true');
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    await fixture.whenStable();
+    expect(button.getAttribute('aria-expanded')).toBe('false');
+    expect(document.activeElement).toBe(button);
   });
 
   it('handles an unknown route and lets the visitor return home', async () => {

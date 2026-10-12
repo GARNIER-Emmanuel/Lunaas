@@ -1,3 +1,61 @@
-:host {
+﻿:host {
   display: block;
+}
+.footer {
+  border-top: 1px solid var(--color-line);
+}
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-block: 3rem;
+}
+.footer-brand {
+  font-size: 1.7rem;
+  font-weight: 650;
+  letter-spacing: -0.06em;
+}
+.footer-main p {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.8;
+  margin-block: 1rem;
+  max-width: 35ch;
+}
+.footer-main nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 1rem 1.7rem;
+  max-width: 25rem;
+  font-size: 0.75rem;
+}
+.footer-main nav a,
+.footer-bottom a {
+  color: var(--color-muted);
+}
+.footer-main nav a:hover,
+.footer-bottom a:hover {
+  color: var(--color-ink);
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--color-line);
+  padding-block: 1.4rem;
+  font-size: 0.65rem;
+  color: var(--color-muted);
+}
+.footer-bottom div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+@media (max-width: 640px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }
