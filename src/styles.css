@@ -1,3 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #0f172a;
+  font-family: system-ui, sans-serif;
+}
+
+a:focus-visible,
+main:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}

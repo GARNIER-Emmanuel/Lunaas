@@ -43,7 +43,7 @@ Site vitrine Angular pour la création de sites web freelance à Bordeaux, en fr
 - Tailwind CSS v4 et identité visuelle Lunaas.
 - GSAP et ScrollTrigger pour les effets avancés demandés : initialisation navigateur, nettoyage et respect de `prefers-reduced-motion`.
 - Ajouter des dépendances, l'internationalisation ou une configuration d'hébergement uniquement selon les besoins du projet.
-- Objectif de sortie statique prérendue. La configuration initiale est encore en `outputMode: "server"` ; ne pas prétendre que la migration est faite.
+- Conserver la sortie statique prérendue (`outputMode: "static"`) et les routes publiques en `RenderMode.Prerender`. `src/main.server.ts` sert au build et ne constitue pas un serveur à déployer. Les fichiers à héberger sont dans `dist/lunaas/browser/`.
 - Protéger les API navigateur pendant le rendu serveur et l'hydratation. Le contenu reste visible sans animation.
 - Aucun secret dans le code, les données, le dépôt ou les variables compilées côté navigateur. Utiliser une configuration de contact propre au projet.
 

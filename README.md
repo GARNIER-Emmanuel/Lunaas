@@ -4,7 +4,7 @@ Bienvenue sur le dépôt de Lunaas !
 
 Ce projet est la vitrine de mon activité de développement web freelance. Conçu pour présenter mes prestations et mes réalisations, il s'appuie sur une architecture **Angular** structurée et une identité visuelle inspirée de la Lune et de l'exploration spatiale.
 
-**Le projet est en phase de préparation.** Le socle Angular est initialisé et la documentation définit le site à construire. Les pages, les offres et le formulaire de contact restent à développer.
+**Le projet est en phase de préparation.** Le socle Angular comporte un accueil minimal, un header, un footer et une page 404. Le design détaillé, les autres pages, les offres et le formulaire de contact restent à développer.
 
 ---
 
@@ -16,10 +16,11 @@ Ce projet est la vitrine de mon activité de développement web freelance. Conç
   * Séparation des pages, des composants réutilisables et des contenus typés.
 * **Styling** : Tailwind CSS v4.
   * Identité spatiale, composants cohérents et responsive design prévus pour mobile, tablette et ordinateur.
-* **Animations prévues** : GSAP & ScrollTrigger, à intégrer.
+* **Animations** : GSAP installé, avec le plugin ScrollTrigger inclus. Effets visuels à développer.
   * Micro-interactions et animations au défilement, avec respect des préférences de réduction des mouvements.
-* **Rendu** : socle SSR Angular avec hydratation et configuration de prérendu.
-  * Objectif : une sortie statique pour les pages publiques. La configuration serveur initiale reste à adapter.
+* **Rendu** : génération statique Angular avec prérendu et hydratation.
+  * Le HTML est généré pendant le build ; les interactions restent gérées par Angular dans le navigateur.
+  * Fichiers à héberger : `dist/lunaas/browser/`, sans serveur Node permanent.
 * **Tests** : Vitest & jsdom.
 * **Hébergement envisagé** : Cloudflare Pages, avec le domaine cible `lunaas.site`. Configuration à confirmer.
 
@@ -47,7 +48,7 @@ Le code est organisé par responsabilité :
 * `src/app/shared/data/` : offres, réalisations et FAQ dans des fichiers typés.
 * `src/app/shared/services/` : intégrations externes, notamment le contact.
 
-Cette structure est la cible du développement ; elle n'est pas encore créée dans le socle initial. Les contenus publics seront modifiables directement dans le code, sans CMS ni base de données au lancement.
+Les dossiers `views/`, `components/`, `shared/interfaces/` et `shared/data/` sont en place. Le nom, l'accroche et le texte d'accueil sont centralisés dans `shared/data/site.data.ts`, avec leur interface TypeScript. `shared/services/` sera ajouté lors de la première intégration externe. Aucun CMS ni base de données au lancement.
 
 Les conventions de développement sont précisées dans [AGENTS.md](AGENTS.md).
 
@@ -69,7 +70,7 @@ npm ci
 npm start
 ```
 
-Ouvrir ensuite `http://localhost:4200/`. À ce stade, le serveur affiche encore le socle Angular de départ.
+Ouvrir ensuite `http://localhost:4200/` pour l'accueil minimal, ou `/404` pour la page introuvable. Les URL inconnues affichent également cette page via Angular Router.
 
 ### Build & tests
 
@@ -78,7 +79,7 @@ npm run build
 npm test -- --watch=false
 ```
 
-Le build produit les fichiers dans `dist/lunaas/`. La validation du site métier et du déploiement viendra avec leur implémentation.
+Le build produit le site statique dans `dist/lunaas/browser/`, avec l'accueil et `/404` prérendus. Le comportement HTTP 404 des URL inconnues devra être configuré et vérifié sur l'hébergement retenu. La validation des futures pages métier et du déploiement viendra avec leur implémentation.
 
 ---
 
