@@ -20,6 +20,8 @@ summary {
   cursor: pointer;
   padding-block: 1.5rem;
   font-size: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
   line-height: 1.6;
   list-style: none;
 }
