@@ -109,8 +109,16 @@ export class MotionService {
     for (const card of root.querySelectorAll<HTMLElement>('[data-tilt]')) {
       // Le parent reste stable : mesurer la carte inclinée ferait trembler l'effet.
       const surface = card.parentElement ?? card;
-      const rotateX = gsap.quickTo(card, 'rotationX', { duration: 0.35, ease: 'power3.out' });
-      const rotateY = gsap.quickTo(card, 'rotationY', { duration: 0.35, ease: 'power3.out' });
+      const rotateX = gsap.quickTo(card, 'rotationX', {
+        duration: 0.35,
+        ease: 'power3.out',
+        force3D: false,
+      });
+      const rotateY = gsap.quickTo(card, 'rotationY', {
+        duration: 0.35,
+        ease: 'power3.out',
+        force3D: false,
+      });
       const reset = () => {
         rotateX(0);
         rotateY(0);

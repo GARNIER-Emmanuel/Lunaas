@@ -15,6 +15,7 @@
 }
 
 .company-card {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +25,8 @@
   border-radius: 1rem;
   background: var(--color-space);
   text-align: center;
-  transform-style: preserve-3d;
+  transform-style: flat;
+  backface-visibility: hidden;
   transition: box-shadow 250ms ease;
 }
 
@@ -53,16 +55,6 @@
   .company-card:hover {
     box-shadow: 0 16px 32px rgb(27 33 72 / 9%);
   }
-
-  .company-logo,
-  .company-card h3 {
-    transition: transform 300ms ease;
-  }
-
-  .company-card:hover .company-logo,
-  .company-card:hover h3 {
-    transform: translateZ(18px);
-  }
 }
 
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
@@ -70,9 +62,7 @@
     perspective: none;
   }
 
-  .company-card,
-  .company-logo,
-  .company-card h3 {
+  .company-card {
     transform: none !important;
     transition: none;
   }
