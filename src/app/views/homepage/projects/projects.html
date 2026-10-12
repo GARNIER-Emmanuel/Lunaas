@@ -1,0 +1,22 @@
+<section id="realisations" class="content-section" aria-labelledby="projects-title">
+  <div class="page-container">
+    <div class="section-intro">
+      <p class="section-label">Réalisations</p>
+      <div>
+        <h2 id="projects-title">Des idées mises<br />en pratique.</h2>
+        <p class="section-description">
+          Une sélection de projets personnels. Des usages différents, une même attention à la
+          qualité du web.
+        </p>
+      </div>
+    </div>
+    <div class="project-grid">
+      @for (project of projects; track project.slug) {
+        <app-project-card [project]="project" />
+      }
+    </div>
+    <a routerLink="/realisations" class="text-link"
+      >Explorer les projets <span aria-hidden="true">↗</span></a
+    >
+  </div>
+</section>

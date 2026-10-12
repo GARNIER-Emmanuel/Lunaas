@@ -1,0 +1,51 @@
+<section class="page-container page-heading">
+  <a routerLink="/realisations" class="text-link">← Toutes les réalisations</a>
+  <p class="section-label mt-8">{{ project().category }} · {{ project().label }}</p>
+  <h1>{{ project().name }}</h1>
+  <p class="lead">{{ project().summary }}</p>
+  <div class="project-actions">
+    @if (project().live) {
+      <a
+        [href]="project().live"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-primary"
+        >Voir le site <span aria-hidden="true">↗</span></a
+      >
+    }
+    @if (project().repo) {
+      <a
+        [href]="project().repo"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button button-secondary"
+        >Voir le code <span aria-hidden="true">↗</span></a
+      >
+    }
+  </div>
+</section>
+<section class="page-container case-study" aria-label="Présentation du projet">
+  <div>
+    <h2>Le contexte</h2>
+    <p>{{ project().context }}</p>
+  </div>
+  <div>
+    <h2>L’objectif</h2>
+    <p>{{ project().goal }}</p>
+  </div>
+  <div>
+    <h2>La solution</h2>
+    <p>{{ project().solution }}</p>
+  </div>
+  <div>
+    <h2>Technologies</h2>
+    <ul class="technology-list">
+      @for (technology of project().technologies; track technology) {
+        <li>{{ technology }}</li>
+      }
+    </ul>
+  </div>
+  <a [href]="'mailto:' + contactEmail" class="button button-primary"
+    >Parlons de votre projet <span aria-hidden="true">↗</span></a
+  >
+</section>
