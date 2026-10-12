@@ -1,11 +1,13 @@
 <article [style.--project-accent]="project().accent">
-  <img
-    class="project-image"
-    [ngSrc]="project().image.src"
-    [alt]="project().image.alt"
-    [width]="project().image.width"
-    [height]="project().image.height"
-  />
+  <div class="project-preview">
+    <img
+      class="project-image"
+      [ngSrc]="project().image.src"
+      [alt]="project().image.alt"
+      [width]="project().image.width"
+      [height]="project().image.height"
+    />
+  </div>
   <div class="project-details">
     <p class="project-meta">{{ project().category }}</p>
     <h3>
