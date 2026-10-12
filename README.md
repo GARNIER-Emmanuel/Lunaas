@@ -33,7 +33,7 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 ## ✨ Fonctionnalités
 
 - **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, offres, FAQ et appel à l’action.
-- **Prestations** : trois offres à partir de 490 €, 990 € et 1 790 €, avec périmètres, exclusions et devis selon le besoin.
+- **Prestations** : trois offres à partir de 690 €, 1 490 € et 2 990 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher est présenté comme projet personnel dans la landing page. Son lien ouvre directement l’application.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
 - **Contact** : un seul formulaire Signal Forms dans la section `#contact`. E-mail et message sont nécessaires ; nom, prénom, sujet et budget sont facultatifs. Le sujet « Mes données personnelles » permet une demande de droits sans renseignement commercial. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.

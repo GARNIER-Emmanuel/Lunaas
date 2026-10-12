@@ -87,9 +87,9 @@ describe('App', () => {
     const cards = [...compiled.querySelectorAll('app-offer-card')];
     expect(cards).toHaveLength(3);
     for (const [id, expectedPrice] of [
-      ['landing-page', '490€'],
-      ['site-vitrine', '990€'],
-      ['site-dynamique', '1790€'],
+      ['landing-page', '690€'],
+      ['site-vitrine', '1490€'],
+      ['site-dynamique', '2990€'],
     ]) {
       const card = compiled.querySelector(`#offer-${id}`)?.closest('app-offer-card');
       expect(card?.querySelector('.offer-price strong')?.textContent?.replace(/\s/g, '')).toBe(

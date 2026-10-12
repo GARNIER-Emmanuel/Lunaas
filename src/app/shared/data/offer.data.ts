@@ -8,7 +8,7 @@ export const OFFER_DATA: readonly Offer[] = [
     name: 'Site web dynamique',
     description:
       'Un site qui répond à des besoins spécifiques, avec un périmètre défini sur devis.',
-    startingPrice: 1790,
+    startingPrice: 2990,
     flexible: true,
     features: [
       'Site multipage',
@@ -24,7 +24,7 @@ export const OFFER_DATA: readonly Offer[] = [
       'Authentification, administration et base de données non incluses systématiquement',
     ],
     scopeNote:
-      'Les fonctionnalités ci-dessous sont des possibilités, à confirmer selon votre besoin.',
+      'Les fonctionnalités, le backend, les API et la gestion des données dépendent des besoins et du périmètre validé. Les fonctionnalités complexes font l’objet d’un devis personnalisé.',
   },
   {
     id: 'site-vitrine',
@@ -32,7 +32,7 @@ export const OFFER_DATA: readonly Offer[] = [
     name: 'Site vitrine multipage',
     description:
       'Un site complet pour présenter votre entreprise, vos services et vos réalisations.',
-    startingPrice: 990,
+    startingPrice: 1490,
     flexible: false,
     features: [
       'Trois à six pages',
@@ -50,7 +50,7 @@ export const OFFER_DATA: readonly Offer[] = [
     halo: 'moon',
     name: 'Landing page',
     description: 'Une page claire pour présenter votre activité et faciliter la prise de contact.',
-    startingPrice: 490,
+    startingPrice: 690,
     flexible: false,
     features: [
       'Une page avec plusieurs sections',
