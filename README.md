@@ -1,0 +1,93 @@
+﻿# 🚀 Lunaas - Création de sites internet à Bordeaux
+
+Bienvenue sur le dépôt de Lunaas !
+
+Ce projet est la vitrine de mon activité de développement web freelance. Conçu pour présenter mes prestations et mes réalisations, il s'appuie sur une architecture **Angular** structurée et une identité visuelle inspirée de la Lune et de l'exploration spatiale.
+
+**Le projet est en phase de préparation.** Le socle Angular est initialisé et la documentation définit le site à construire. Les pages, les offres et le formulaire de contact restent à développer.
+
+---
+
+## 🛠️ Stack Technique
+
+* **Framework** : Angular 22.1.x & TypeScript 6.0.x.
+  * Composants **Standalone** et Angular Router.
+  * Architecture prévue autour des **Signals** (`signal`, `computed`, `input()`, `output()`) et du Control Flow natif.
+  * Séparation des pages, des composants réutilisables et des contenus typés.
+* **Styling** : Tailwind CSS v4.
+  * Identité spatiale, composants cohérents et responsive design prévus pour mobile, tablette et ordinateur.
+* **Animations prévues** : GSAP & ScrollTrigger, à intégrer.
+  * Micro-interactions et animations au défilement, avec respect des préférences de réduction des mouvements.
+* **Rendu** : socle SSR Angular avec hydratation et configuration de prérendu.
+  * Objectif : une sortie statique pour les pages publiques. La configuration serveur initiale reste à adapter.
+* **Tests** : Vitest & jsdom.
+* **Hébergement envisagé** : Cloudflare Pages, avec le domaine cible `lunaas.site`. Configuration à confirmer.
+
+---
+
+## ✨ Fonctionnalités prévues
+
+- **Hero & Présentation** : expliquer clairement mon activité et inviter à demander un devis.
+- **Prestations** : présenter les offres Landing Page, Site vitrine multipage et Site web dynamique, avec leurs prix de départ indicatifs.
+- **Réalisations** : valoriser les projets en distinguant missions clients, projets personnels et démonstrations.
+- **Méthode de travail** : expliquer les étapes de conception, de développement et de mise en ligne.
+- **À propos & FAQ** : présenter mon parcours et répondre aux questions des clients.
+- **Contact** : formulaire de devis avec validation, protection anti-spam et confirmation après envoi réel.
+- **SEO local** : pages publiques prérendues, métadonnées et contenus adaptés à l'activité à Bordeaux.
+
+---
+
+## 🧩 Architecture & Données
+
+Le code est organisé par responsabilité :
+
+* `src/app/views/` : pages et sections propres à chaque page.
+* `src/app/components/` : composants réutilisables.
+* `src/app/shared/interfaces/` : modèles TypeScript.
+* `src/app/shared/data/` : offres, réalisations et FAQ dans des fichiers typés.
+* `src/app/shared/services/` : intégrations externes, notamment le contact.
+
+Cette structure est la cible du développement ; elle n'est pas encore créée dans le socle initial. Les contenus publics seront modifiables directement dans le code, sans CMS ni base de données au lancement.
+
+Les conventions de développement sont précisées dans [AGENTS.md](AGENTS.md).
+
+---
+
+## 💻 Démarrage en local
+
+### Prérequis
+
+* **Node.js** : `^22.22.3`, `^24.15.0` ou `>=26.0.0`, selon Angular CLI installé.
+* **npm** : le projet indique la version `11.16.0`.
+
+### Installation & lancement
+
+Depuis le dossier du projet :
+
+```bash
+npm ci
+npm start
+```
+
+Ouvrir ensuite `http://localhost:4200/`. À ce stade, le serveur affiche encore le socle Angular de départ.
+
+### Build & tests
+
+```bash
+npm run build
+npm test -- --watch=false
+```
+
+Le build produit les fichiers dans `dist/lunaas/`. La validation du site métier et du déploiement viendra avec leur implémentation.
+
+---
+
+## 📚 Documentation
+
+La documentation de travail est conservée localement dans `docs/`, hors du dépôt Git.
+
+Les [instructions de contribution](AGENTS.md) précisent les conventions Angular et les règles à suivre avant de modifier le projet.
+
+---
+
+*Lunaas — Donnez une autre dimension à votre présence en ligne.*
