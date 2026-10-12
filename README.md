@@ -32,7 +32,8 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
 
 ## ✨ Fonctionnalités
 
-- **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, offres, FAQ et appel à l’action.
+- **Accueil** : hero, approche, expertises, projet mis en avant, méthode, présentation, références professionnelles, offres, FAQ et appel à l’action.
+- **Ils m’ont fait confiance** : CGI, ElementRoot et Madness Escape Game, avec leurs logos et le contexte de l’expérience (alternance ou stage), sans détail des missions.
 - **Prestations** : trois offres à partir de 690 €, 1 490 € et 2 990 €, avec périmètres, exclusions et devis selon le besoin.
 - **Réalisations** : Koacher est présenté comme projet personnel dans la landing page. Son lien ouvre directement l’application.
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
@@ -66,6 +67,7 @@ Les données vont du **modèle typé au fichier de contenu, puis au composant et
 | Identité et déclarations légales | `src/app/shared/data/legal-business.data.ts` |
 | Offres, tarifs et exclusions     | `src/app/shared/data/offer.data.ts`      |
 | Réalisations actives             | `src/app/shared/data/project.data.ts`    |
+| Références professionnelles      | `src/app/shared/data/company-reference.data.ts` |
 | Méthode, présentation et FAQ     | `src/app/shared/data/content.data.ts`    |
 | Navigation                       | `src/app/shared/data/navigation.data.ts` |
 | Descriptions SEO                 | `src/app/app.routes.ts`                  |
@@ -118,6 +120,7 @@ La configuration GitHub Actions exécute `npm run verify` après un push ou sur 
 | `/#approche` | Démarche de création |
 | `/#realisations` | Présentation des projets |
 | `/#a-propos` | Présentation du développeur |
+| `/#confiance` | Entreprises du parcours professionnel |
 | `/#offres` | Prestations et tarifs |
 | `/#contact` | Formulaire principal |
 

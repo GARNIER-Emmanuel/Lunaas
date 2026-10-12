@@ -8,12 +8,23 @@ import { Faq } from './faq/faq';
 import { ContactCta } from './contact-cta/contact-cta';
 import { About } from './about/about';
 import { Expertise } from './expertise/expertise';
+import { TrustedCompanies } from './trusted-companies/trusted-companies';
 import { PageMotion } from '../../shared/directives/page-motion';
 
 @Component({
   selector: 'app-homepage',
   hostDirectives: [PageMotion],
-  imports: [Hero, Services, Projects, ProcessSection, Faq, About, ContactCta, Expertise],
+  imports: [
+    Hero,
+    Services,
+    Projects,
+    ProcessSection,
+    Faq,
+    About,
+    ContactCta,
+    Expertise,
+    TrustedCompanies,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
