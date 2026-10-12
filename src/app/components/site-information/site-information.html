@@ -13,22 +13,28 @@
 <article class="legal-content">
   <h3>Éditeur et contact</h3>
   <p>
-    {{ business.tradeName }} est le nom commercial déclaré par {{ business.legalIdentity }}.
-    Statut déclaré : {{ business.declaredStatus }}. Une formalité de création a été déposée le
-    {{ business.filingDate }} ; sa validation et les identifiants d’immatriculation restent à confirmer.
+    {{ business.tradeName }} est le nom utilisé pour le projet d’activité porté par
+    {{ business.legalIdentity }}. Statut envisagé : {{ business.plannedStatus }}.
+  </p>
+  <p class="registration-status">
+    La signature, la transmission et la validation de la formalité de création ne sont pas
+    confirmées. L’immatriculation de l’activité reste à confirmer.
   </p>
   <p>
     Contact légal : <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a>.
     Pour une demande de projet, utilisez le <a href="#contact" (click)="dialog.close()">formulaire de contact</a>.
   </p>
   <p>
+    Adresse de l’éditeur : <span class="editor-address">{{ business.postalAddress }}</span>.<br />
+    Téléphone : <a [href]="'tel:' + business.contactPhone.replaceAll(' ', '')">{{ business.contactPhone }}</a>.
+  </p>
+  <p>
     Directeur de la publication : {{ business.displayName }}.
-    Régime de TVA déclaré : {{ business.declaredVatRegime }}, à confirmer après traitement de la formalité.
+    Régime de TVA envisagé : {{ business.requestedVatRegime }}.
   </p>
   <h3>Informations à finaliser</h3>
   <ul>
-    <li>Adresse légale requise et téléphone à publier pour l’activité.</li>
-    <li>Validation de la formalité, identifiants SIREN/SIRET et informations de registre applicables.</li>
+    <li>Situation réelle de la formalité, identifiants attribués et informations de registre applicables.</li>
     <li>Confirmation du régime de TVA effectivement applicable.</li>
     <li>Nom ou dénomination, adresse et téléphone de l’hébergeur effectif du site.</li>
   </ul>
@@ -58,6 +64,10 @@
       >mentions obligatoires présentées par Service Public Entreprendre</a
     >.
   </p>
+  <p>
+    Pour une activité individuelle, le nom commercial ne remplace pas l’identité de l’entrepreneur.
+    Le capital social et les mentions propres aux sociétés ne s’appliquent pas à une entreprise individuelle.
+  </p>
 </article>
 
 </dialog>
@@ -76,7 +86,9 @@
   <h3>Responsable du traitement</h3>
   <p>
     Le responsable du traitement est {{ business.legalIdentity }}, pour l’activité
-    {{ business.tradeName }}. Son adresse légale et l’immatriculation de l’activité restent à compléter.
+    {{ business.tradeName }}. Ses coordonnées figurent dans les
+    <a href="#mentions-legales" (click)="privacyDialog.close(); $event.preventDefault(); information.open('mentions-legales')">mentions légales</a>.
+    Le statut de l’activité et son immatriculation restent à confirmer.
   </p>
   <h3>Données collectées et champs nécessaires</h3>
   <p>

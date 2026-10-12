@@ -36,6 +36,13 @@ for (const [path, document] of pages) {
     const email = decodeURIComponent(link.getAttribute('href').slice('mailto:'.length));
     if (presentation.textContent.includes(email)) fail('legal email is visible outside legal information');
   }
+  const postalAddress = document.querySelector('.editor-address')?.textContent.trim();
+  if (postalAddress && presentation.textContent.includes(postalAddress))
+    fail('postal address is visible outside legal information');
+  for (const link of document.querySelectorAll('dialog a[href^="tel:"]')) {
+    if (presentation.textContent.includes(link.textContent.trim()))
+      fail('contact phone is visible outside legal information');
+  }
   const privacy = document.querySelector('#confidentialite');
   if (!privacy?.querySelector('a[href="https://www.cnil.fr/fr/adresser-une-plainte"]'))
     fail('missing data-rights complaint information');

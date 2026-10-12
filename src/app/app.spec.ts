@@ -46,13 +46,13 @@ describe('App', () => {
     expect(compiled.querySelector('#approche')).not.toBeNull();
   });
 
-  it('keeps the registered email in legal information and the main contact in the form', async () => {
+  it('keeps personal contact details in legal information and the main contact in the form', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const contactLinks = [...root.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')];
-    expect(contactLinks).toHaveLength(2);
+    expect(contactLinks).toHaveLength(3);
     for (const link of contactLinks) {
       expect(link.closest('#mentions-legales, #confidentialite')).not.toBeNull();
     }
@@ -60,9 +60,23 @@ describe('App', () => {
     const presentation = root.cloneNode(true) as HTMLElement;
     for (const dialog of presentation.querySelectorAll('dialog')) dialog.remove();
     expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactEmail);
+    expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactPhone);
+    expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.postalAddress);
     expect(root.querySelector('#contact form')).not.toBeNull();
     expect(root.querySelector('.profile-name')?.textContent).toContain(LEGAL_BUSINESS_DATA.displayName);
     expect(root.querySelector('footer .text-link')?.getAttribute('href')).toBe('#contact');
+  });
+
+  it('does not present unconfirmed creation steps or tax status as completed', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const status = root.querySelector('.registration-status')?.textContent?.replace(/\s+/g, ' ');
+    expect(status).toContain('La signature, la transmission et la validation');
+    expect(status).toContain('ne sont pas confirmées');
+    expect(root.querySelector('#mentions-legales')?.textContent).toContain('application non confirmée');
+    expect(root.querySelector('.pricing-note')?.textContent).not.toContain('a été déclarée');
   });
 
   it('shows indicative prices and offers a project choice in the inline contact form', async () => {
@@ -131,7 +145,7 @@ describe('App', () => {
     expect(root.querySelector('#contact app-contact-form')).not.toBeNull();
     for (const link of root.querySelectorAll<HTMLAnchorElement>('a[href]')) {
       const href = link.getAttribute('href')!;
-      if (/^(https?:|mailto:)/.test(href)) continue;
+      if (/^(https?:|mailto:|tel:)/.test(href)) continue;
       expect(href.startsWith('#')).toBe(true);
       expect(root.querySelector(href)).not.toBeNull();
       if (link.textContent?.includes('Parlons')) expect(href).toBe('#contact');

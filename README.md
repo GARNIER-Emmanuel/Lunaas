@@ -37,10 +37,10 @@ Ce projet est la vitrine de mon activité de développement web freelance. Il pr
   - Une illustration de son fonctionnement accompagne la présentation ; elle est identifiée comme telle.
 - **Contact** : un seul formulaire Signal Forms dans la section `#contact`. E-mail et message sont nécessaires ; nom, prénom, sujet et budget sont facultatifs. Le sujet « Mes données personnelles » permet une demande de droits sans renseignement commercial. Tous les boutons « Parlons de votre projet » conduisent à ce formulaire. Envoi Web3Forms, validation accessible, champ anti-spam et blocage des doubles soumissions.
   - La confirmation suit une réponse positive du service. Une erreur conserve la saisie et propose un bouton pour réessayer.
-  - Le nom du développeur figure dans la présentation. L’e-mail déclaré est réservé aux fenêtres de mentions légales et de confidentialité ; les sections de la landing utilisent le formulaire. L’adresse et le téléphone restent en attente ; Bordeaux reste la zone de prestation présentée.
+  - Le nom du développeur figure dans la présentation. E-mail, téléphone et adresse postale restent dans les informations légales ; les sections commerciales utilisent le formulaire. Bordeaux reste la zone de prestation présentée.
 - **Navigation** : menu mobile, fermeture avec Échap et retour du focus, footer et liens vers les sections. Les anciennes adresses reviennent à la landing dans Angular.
 - **SEO** : titre et description de la landing, canonical à la racine, Open Graph, image de partage, données structurées `WebSite`, sitemap avec une seule URL et robots.txt.
-- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire, et affichées dans le document si JavaScript est désactivé. L’identité et les informations déclarées au Guichet unique sont centralisées dans `legal-business.data.ts`. Une synthèse de dépôt ne prouve pas l’immatriculation validée : SIREN/SIRET, adresse et téléphone à publier, hébergement et application du régime de TVA restent à confirmer. La confidentialité décrit les finalités, les bases légales proposées, les droits, le recours à la CNIL et les traitements de Web3Forms. Les durées de conservation et les contrats des prestataires restent à finaliser ; aucune conformité complète n’est déclarée.
+- **Informations légales** : mentions légales et confidentialité consultables dans des fenêtres sur la landing, sans page supplémentaire, et affichées dans le document si JavaScript est désactivé. `legal-business.data.ts` contient uniquement l’identité, les coordonnées nécessaires et les choix envisagés du projet. Le document de synthèse ne confirme ni la signature, ni la transmission, ni la validation de la création. Aucun SIREN/SIRET, date de dépôt ou régime fiscal définitif n’est inventé ou annoncé. L’hébergeur effectif et les mentions d’immatriculation applicables restent à compléter. La confidentialité décrit les finalités, les bases légales proposées, les droits, le recours à la CNIL et les traitements de Web3Forms. Les durées de conservation et les contrats des prestataires restent à finaliser ; aucune conformité complète n’est déclarée.
 - **Secours statique** : `404.html` contient la même landing ; aucune vue séparée « Page introuvable ».
 
 ---
@@ -136,12 +136,13 @@ Le fichier `404.html` contient la landing et permet à Angular de ramener un che
 
 ### Éléments à confirmer avant publication
 
-- Validation de la formalité de création, immatriculation, adresse et téléphone à publier, régime fiscal applicable et informations de l’hébergeur.
-- Informations définitives relatives au traitement des demandes et à leur conservation.
-- Droits d’utilisation du visuel de fond et validation des contenus publics.
-- Réception réelle des messages Web3Forms, disponibilité du service et éventuelles restrictions de domaine de la configuration existante.
-- Domaine, DNS, HTTPS et comportement des routes sur l’hébergement.
-- Contrôle visuel mobile et desktop, audit Lighthouse et mesures de performances représentatives.
+- Situation réelle de la création et identifiants attribués, régime de TVA applicable et identité complète de l’hébergeur effectif.
+- Conservation des demandes, destinataires et garanties des prestataires du formulaire et de la messagerie.
+- Prix et frais définitifs ; conditions contractuelles et médiateur si les offres sont ouvertes aux consommateurs.
+- Droits d’utilisation des photographies de fond ou remplacement par des visuels autorisés.
+- Livraison technique : HTTPS, domaine canonique, navigation et réception réelle d’un message du formulaire.
+
+Les contrôles visuels, les mesures de performance et l’évaluation de l’assujettissement aux règles d’accessibilité restent à faire. Aucun score Lighthouse arbitraire ni document RGAA non justifié n’est imposé comme condition juridique de publication.
 
 Les exigences légales varient selon le statut réel ; les documents de travail renvoient à [Service Public Entreprendre](https://entreprendre.service-public.gouv.fr/vosdroits/F31228) et à la [CNIL](https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel). Aucune conformité juridique ni validation en production n’est déclarée sur la seule base des tests locaux.
 

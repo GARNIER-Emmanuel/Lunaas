@@ -3,7 +3,8 @@ export interface LegalBusiness {
   readonly legalIdentity: string;
   readonly tradeName: string;
   readonly contactEmail: string;
-  readonly declaredStatus: string;
-  readonly declaredVatRegime: string;
-  readonly filingDate: string;
+  readonly postalAddress: string;
+  readonly contactPhone: string;
+  readonly plannedStatus: string;
+  readonly requestedVatRegime: string;
 }
