@@ -13,8 +13,9 @@ if (!homeCanonical) throw new Error('Missing homepage canonical');
 const origin = new URL(homeCanonical).origin;
 const pages = new Map();
 const errors = [];
-if (Object.keys(routes).length !== 1 || !routes['/'])
-  errors.push('Expected only the landing route in the static output');
+const expectedRoutes = ['/', '/mentions-legales', '/confidentialite'];
+if (Object.keys(routes).length !== expectedRoutes.length || !expectedRoutes.every((path) => routes[path]))
+  errors.push('Expected the landing and the two legal pages in the static output');
 const titles = new Set();
 const descriptions = new Set();
 for (const path of Object.keys(routes)) {
@@ -24,35 +25,33 @@ for (const path of Object.keys(routes)) {
 }
 for (const [path, document] of pages) {
   const fail = (message) => errors.push(`${path}: ${message}`);
-  if (document.querySelectorAll('form').length !== 1 || !document.querySelector('#contact app-contact-form'))
-    fail('expected a single contact form in the contact section');
+  const isHome = path === '/';
+  if (isHome) {
+    if (document.querySelectorAll('form').length !== 1 || !document.querySelector('#contact app-contact-form'))
+      fail('expected a single contact form in the contact section');
+  } else if (document.querySelector('form')) {
+    fail('legal pages must not duplicate the contact form');
+  }
+  if (document.querySelector('dialog')) fail('legal dialogs must be replaced by pages');
   for (const link of document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')) {
     if (!link.closest('#mentions-legales, #confidentialite'))
       fail('contact details must remain inside legal information, not in the landing presentation');
   }
-  const presentation = document.body.cloneNode(true);
-  for (const dialog of presentation.querySelectorAll('dialog')) dialog.remove();
-  for (const link of document.querySelectorAll('dialog a[href^="mailto:"]')) {
-    const email = decodeURIComponent(link.getAttribute('href').slice('mailto:'.length));
-    if (presentation.textContent.includes(email)) fail('legal email is visible outside legal information');
+  if (isHome) {
+    const legal = pages.get('/mentions-legales');
+    for (const selector of ['a[href^="mailto:"]', 'a[href^="tel:"]', '.editor-address']) {
+      const value = legal?.querySelector(selector)?.textContent.trim();
+      if (value && document.body.textContent.includes(value))
+        fail('legal contact details are visible on the landing');
+    }
+  } else {
+    const legalPage = document.getElementById(path.slice(1));
+    if (!legalPage || document.defaultView.getComputedStyle(legalPage).display === 'none')
+      fail('legal information must be visible in the prerendered page without JavaScript');
+    if (!document.querySelector('main a[href="/"]')) fail('legal page needs a return link to the homepage');
+    if (path === '/confidentialite' && !document.querySelector('a[href="https://www.cnil.fr/fr/adresser-une-plainte"]'))
+      fail('missing data-rights complaint information');
   }
-  const postalAddress = document.querySelector('.editor-address')?.textContent.trim();
-  if (postalAddress && presentation.textContent.includes(postalAddress))
-    fail('postal address is visible outside legal information');
-  for (const link of document.querySelectorAll('dialog a[href^="tel:"]')) {
-    if (presentation.textContent.includes(link.textContent.trim()))
-      fail('contact phone is visible outside legal information');
-  }
-  const privacy = document.querySelector('#confidentialite');
-  if (!privacy?.querySelector('a[href="https://www.cnil.fr/fr/adresser-une-plainte"]'))
-    fail('missing data-rights complaint information');
-  const view = document.defaultView;
-  if (!document.documentElement.classList.contains('no-js') ||
-      view.getComputedStyle(privacy).display !== 'block')
-    fail('legal information must remain readable without JavaScript');
-  document.documentElement.classList.remove('no-js');
-  if (view.getComputedStyle(privacy).display !== 'none')
-    fail('closed legal dialogs must be hidden when JavaScript is available');
   const description = document.querySelector('meta[name="description"]')?.content;
   if (document.documentElement.lang !== 'fr') fail('document language');
   if (document.querySelectorAll('h1').length !== 1) fail('expected one H1');

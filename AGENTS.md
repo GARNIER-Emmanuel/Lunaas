@@ -17,7 +17,7 @@ Site vitrine Angular pour la création de sites web freelance à Bordeaux, en fr
 ## Architecture et organisation du code
 
 - Pages et sections spécifiques dans `src/app/views/`.
-- Le site actuel est une landing page unique : ses sections sont dans `src/app/views/homepage/`. Ne pas créer de page secondaire sans demande explicite.
+- Le site actuel comporte une landing page, dont les sections sont dans `src/app/views/homepage/`, et uniquement deux pages secondaires : mentions légales et confidentialité. Ne pas créer d’autre page secondaire sans demande explicite.
 - Les sous-composants propres à une section restent dans son dossier, comme `contact-cta/contact-form/`. Les cartes génériques et les éléments du layout restent dans `components/`.
 - Composants partagés dans `src/app/components/`.
 - Modèles dans `src/app/shared/interfaces/*.interface.ts`.

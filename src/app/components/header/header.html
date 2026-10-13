@@ -1,6 +1,6 @@
 <header class="theme-dark">
   <nav aria-label="Navigation principale" class="page-container navigation">
-    <a href="#accueil" class="brand" aria-label="Lunaas — Accueil" (click)="closeMenu()">
+    <a routerLink="/" fragment="accueil" class="brand" aria-label="Lunaas — Accueil" (click)="closeMenu()">
       <img ngSrc="/images/brand/lunaas-logo-dark.png" width="960" height="320" [alt]="site.name" priority />
     </a>
     <button #menuToggle class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()"
@@ -10,10 +10,10 @@
     </button>
     <div id="site-navigation" class="nav-links" [class.is-open]="menuOpen()">
       @for (link of links; track link.fragment) {
-      <a [href]="'#' + link.fragment" [class.active]="activeSection() === link.fragment"
+      <a routerLink="/" [fragment]="link.fragment" [class.active]="activeSection() === link.fragment"
         [attr.aria-current]="activeSection() === link.fragment ? 'location' : null" class="nav-link" (click)="closeMenu()">{{ link.label }}</a>
       }
-      <a href="#contact" class="button button-secondary nav-contact" (click)="closeMenu()">Parlons de votre projet
+      <a routerLink="/" fragment="contact" class="button button-secondary nav-contact" (click)="closeMenu()">Parlons de votre projet
         <span aria-hidden="true">↗</span></a>
     </div>
   </nav>

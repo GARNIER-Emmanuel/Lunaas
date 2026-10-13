@@ -56,30 +56,29 @@ describe('App', () => {
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const contactLinks = [...root.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]')];
-    expect(contactLinks).toHaveLength(3);
-    for (const link of contactLinks) {
-      expect(link.closest('#mentions-legales, #confidentialite')).not.toBeNull();
-    }
-    expect(root.querySelector('#mentions-legales a[href^="mailto:"]')?.textContent).toContain(LEGAL_BUSINESS_DATA.contactEmail);
-    const presentation = root.cloneNode(true) as HTMLElement;
-    for (const dialog of presentation.querySelectorAll('dialog')) dialog.remove();
-    expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactEmail);
-    expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactPhone);
-    expect(presentation.textContent).not.toContain(LEGAL_BUSINESS_DATA.postalAddress);
+    expect(contactLinks).toHaveLength(0);
+    expect(root.querySelector('dialog')).toBeNull();
+    expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactEmail);
+    expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactPhone);
+    expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.postalAddress);
     expect(root.querySelector('#contact form')).not.toBeNull();
-    expect(root.querySelector('.profile-name')?.textContent).toContain(LEGAL_BUSINESS_DATA.displayName);
-    expect(root.querySelector('footer a[href="#contact"]')?.getAttribute('href')).toBe('#contact');
+    expect(root.querySelector('#about-title')?.textContent).toContain(LEGAL_BUSINESS_DATA.displayName);
+    expect(root.querySelector('footer a[href="/#contact"]')).not.toBeNull();
   });
 
   it('does not present unconfirmed creation steps or tax status as completed', async () => {
     const fixture = TestBed.createComponent(App);
-    await TestBed.inject(Router).navigateByUrl('/');
+    const router = TestBed.inject(Router);
+    await router.navigateByUrl('/mentions-legales');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const status = root.querySelector('.registration-status')?.textContent?.replace(/\s+/g, ' ');
     expect(status).toContain('La signature, la transmission et la validation');
     expect(status).toContain('ne sont pas confirmées');
     expect(root.querySelector('#mentions-legales')?.textContent).toContain('application non confirmée');
+    expect(root.querySelector('a[href^="mailto:"]')?.textContent).toContain(LEGAL_BUSINESS_DATA.contactEmail);
+    await router.navigateByUrl('/');
+    await fixture.whenStable();
     expect(root.querySelector('.pricing-note')?.textContent).not.toContain('a été déclarée');
   });
 
@@ -126,21 +125,21 @@ describe('App', () => {
     await router.navigateByUrl('/');
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    const offersLink = compiled.querySelector<HTMLAnchorElement>('header a[href="#offres"]');
+    const offersLink = compiled.querySelector<HTMLAnchorElement>('header a[href="/#offres"]');
     expect(offersLink).not.toBeNull();
     const toggle = compiled.querySelector<HTMLButtonElement>('.menu-toggle')!;
     toggle.click();
     await fixture.whenStable();
-    offersLink!.addEventListener('click', (event) => event.preventDefault());
     offersLink!.click();
     await fixture.whenStable();
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(router.url).toBe('/');
+    expect(router.url).toBe('/#offres');
+    expect(offersLink!.getAttribute('aria-current')).toBe('location');
     expect(compiled.querySelector('#offres')).not.toBeNull();
     expect(compiled.querySelectorAll('app-offer-card')).toHaveLength(3);
   });
 
-  it('keeps every internal link on the landing with one contact form', async () => {
+  it('keeps the landing sections and contact inline with links to the two legal pages', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
@@ -150,26 +149,34 @@ describe('App', () => {
     for (const link of root.querySelectorAll<HTMLAnchorElement>('a[href]')) {
       const href = link.getAttribute('href')!;
       if (/^(https?:|mailto:|tel:)/.test(href)) continue;
-      expect(href.startsWith('#')).toBe(true);
-      expect(root.querySelector(href)).not.toBeNull();
-      if (link.textContent?.includes('Parlons')) expect(href).toBe('#contact');
+      const url = new URL(href, 'https://lunaas.site/');
+      if (url.pathname === '/') {
+        if (url.hash) expect(root.querySelector(url.hash)).not.toBeNull();
+      } else {
+        expect(['/mentions-legales', '/confidentialite']).toContain(url.pathname);
+      }
+      if (link.textContent?.includes('Parlons')) expect(url.hash).toBe('#contact');
     }
   });
 
-  it('opens privacy information from the form without changing page', async () => {
+  it('navigates from the form to privacy and back to a landing section through the header', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
-    const dialog = root.querySelector<HTMLDialogElement>('#confidentialite')!;
-    dialog.showModal = vi.fn();
-    const link = root.querySelector<HTMLAnchorElement>('app-contact-form a[href="#confidentialite"]')!;
+    const link = root.querySelector<HTMLAnchorElement>('app-contact-form a[href="/confidentialite"]')!;
     link.click();
     await fixture.whenStable();
-    expect(dialog.showModal).toHaveBeenCalledOnce();
-    expect(router.url).toBe('/');
-    expect(dialog.getAttribute('aria-labelledby')).toBe('confidentialite-title');
+    expect(router.url).toBe('/confidentialite');
+    expect(root.querySelector('h1')?.textContent).toContain('Confidentialité');
+    expect(root.querySelector('form, dialog')).toBeNull();
+    expect(root.querySelector('header [aria-current="location"]')).toBeNull();
+    root.querySelector<HTMLAnchorElement>('header a[href="/#offres"]')!.click();
+    await fixture.whenStable();
+    expect(router.url).toBe('/#offres');
+    expect(root.querySelector('#offres')).not.toBeNull();
+    expect(root.querySelector('header a[href="/#offres"]')?.getAttribute('aria-current')).toBe('location');
   });
 
   it('opens the menu and closes it with Escape, returning keyboard focus', async () => {

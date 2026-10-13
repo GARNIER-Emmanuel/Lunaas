@@ -1,0 +1,78 @@
+<div id="mentions-legales" class="page-container legal-page">
+  <a routerLink="/" class="text-link"><span aria-hidden="true">←</span> Retour à l’accueil</a>
+  <section class="page-heading">
+    <p class="section-label">Informations légales</p>
+    <h1 id="mentions-legales-title">Mentions légales.</h1>
+    <p class="lead">
+      Version de travail : les informations administratives doivent être complétées et vérifiées
+      avant la publication commerciale du site.
+    </p>
+  </section>
+  <article class="legal-content">
+    <h2>Éditeur et contact</h2>
+    <p>
+      {{ business.tradeName }} est le nom utilisé pour le projet d’activité porté par
+      {{ business.legalIdentity }}. Statut envisagé : {{ business.plannedStatus }}.
+    </p>
+    <p class="registration-status">
+      La signature, la transmission et la validation de la formalité de création ne sont pas
+      confirmées. L’immatriculation de l’activité reste à confirmer.
+    </p>
+    <p>
+      Contact légal : <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a
+      >. Pour une demande de projet, utilisez le
+      <a routerLink="/" fragment="contact">formulaire de contact</a>.
+    </p>
+    <p>
+      Adresse de l’éditeur : <span class="editor-address">{{ business.postalAddress }}</span
+      >.<br />
+      Téléphone :
+      <a [href]="'tel:' + business.contactPhone.replaceAll(' ', '')">{{ business.contactPhone }}</a
+      >.
+    </p>
+    <p>
+      Directeur de la publication : {{ business.displayName }}. Régime de TVA envisagé :
+      {{ business.requestedVatRegime }}.
+    </p>
+    <h2>Informations à finaliser</h2>
+    <ul>
+      <li>
+        Situation réelle de la formalité, identifiants attribués et informations de registre
+        applicables.
+      </li>
+      <li>Confirmation du régime de TVA effectivement applicable.</li>
+      <li>Nom ou dénomination, adresse et téléphone de l’hébergeur effectif du site.</li>
+    </ul>
+    <p>
+      Ces informations restent à renseigner avant publication. La marque et le formulaire de contact
+      ne remplacent pas l’identification légale de l’éditeur.
+    </p>
+    <h2>Contenus et visuels</h2>
+    <p>
+      Les réalisations sont présentées selon leur nature. Les marques et outils cités appartiennent
+      à leurs titulaires respectifs. Les autorisations d’utilisation des photographies de Lune et de
+      Mars restent à confirmer avant publication commerciale. Les licences des polices hébergées
+      localement sont conservées avec leurs fichiers.
+    </p>
+    <h2>Données personnelles</h2>
+    <p>
+      Les modalités du contact et l’usage des données sont décrits dans la
+      <a routerLink="/confidentialite">politique de confidentialité</a>.
+    </p>
+    <h2>Référence</h2>
+    <p>
+      Les informations requises dépendent du statut réel. Consulter les
+      <a
+        href="https://entreprendre.service-public.gouv.fr/vosdroits/F31228"
+        target="_blank"
+        rel="noopener noreferrer"
+        >mentions obligatoires présentées par Service Public Entreprendre</a
+      >.
+    </p>
+    <p>
+      Pour une activité individuelle, le nom commercial ne remplace pas l’identité de
+      l’entrepreneur. Le capital social et les mentions propres aux sociétés ne s’appliquent pas à
+      une entreprise individuelle.
+    </p>
+  </article>
+</div>

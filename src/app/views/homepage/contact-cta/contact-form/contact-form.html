@@ -96,7 +96,7 @@
   <p class="form-help" [id]="fieldId('privacy-help')">
     Lunaas utilise votre e-mail et votre message pour répondre à votre demande, via Web3Forms.<br />
     Ces deux champs sont nécessaires à l’envoi, les autres sont facultatifs.<br />
-    <a href="#confidentialite" (click)="$event.preventDefault(); information.open('confidentialite')">Utilisation de vos
+    <a routerLink="/confidentialite">Utilisation de vos
       données</a>.
   </p>
   <button type="submit" class="button button-primary" [disabled]="contactForm().submitting()">

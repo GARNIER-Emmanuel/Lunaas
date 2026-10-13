@@ -11,18 +11,6 @@ html {
   }
 }
 
-/* Le contenu légal prérendu reste lisible si JavaScript est désactivé. */
-html.no-js app-site-information dialog {
-  display: block;
-  position: static;
-  max-height: none;
-  margin-block: 2rem;
-}
-
-html.no-js app-site-information .dialog-close {
-  display: none;
-}
-
 @font-face {
   font-family: 'Manrope Variable';
   font-style: normal;
@@ -204,14 +192,21 @@ section[id],
   scroll-margin-top: 7rem;
 }
 
+.legal-page {
+  max-width: 56rem;
+  padding-top: 2rem;
+  overflow-wrap: anywhere;
+}
+
 .legal-content {
   max-width: 52rem;
   padding-bottom: 5rem;
 }
 
 .legal-content h2 {
+  font-family: var(--font-sans);
   font-size: 1.3rem;
-  font-weight: 550;
+  font-weight: 600;
   margin-block: 2rem 1rem;
 }
 

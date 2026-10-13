@@ -21,10 +21,16 @@ describe('Page metadata', () => {
     expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('sites dynamiques');
   });
 
-  it('keeps former pages on the landing canonical after their redirect', async () => {
+  it('gives legal pages their own canonical and metadata without queries or fragments', async () => {
     const harness = await RouterTestingHarness.create();
-    await harness.navigateByUrl('/mentions-legales');
-    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/');
+    await harness.navigateByUrl('/mentions-legales?source=footer#mentions-legales-title');
+    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/mentions-legales');
+    expect(document.title).toBe('Mentions légales | Lunaas');
+    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('éditeur');
+    await harness.navigateByUrl('/confidentialite');
+    expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/confidentialite');
+    expect(document.title).toBe('Confidentialité | Lunaas');
+    expect(TestBed.inject(Meta).getTag('property="og:url"')?.content).toBe('https://lunaas.site/confidentialite');
     await harness.navigateByUrl('/404');
     expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/');
     await harness.navigateByUrl('/');

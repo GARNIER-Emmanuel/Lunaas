@@ -24,4 +24,4 @@ await writeFile(
   resolve(output, 'robots.txt'),
   `User-agent: *\nAllow: /\nSitemap: ${domain}/sitemap.xml\n`,
 );
-console.log(`Static delivery finalized: ${publicPaths.length} sitemap URL and a landing fallback.`);
+console.log(`Static delivery finalized: ${publicPaths.length} sitemap URLs and a landing fallback.`);

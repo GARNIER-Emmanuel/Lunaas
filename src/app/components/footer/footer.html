@@ -1,22 +1,23 @@
 ﻿<footer class="footer theme-dark">
   <div class="page-container footer-main">
     <div>
-      <a href="#accueil" class="footer-brand" aria-label="Lunaas — Accueil">
+      <a routerLink="/" fragment="accueil" class="footer-brand" aria-label="Lunaas — Accueil">
         <img ngSrc="/images/brand/lunaas-logo-dark.png" width="960" height="320" [alt]="site.name" loading="lazy" />
       </a>
       <p>{{ site.tagline }}</p>
     </div>
     <nav aria-label="Navigation de pied de page">
       @for (link of links; track link.fragment) {
-      <a [href]="'#' + link.fragment">{{ link.label }}</a>
+      <a routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
       }
-      <a href="#contact">Contact</a>
+      <a routerLink="/" fragment="contact">Contact</a>
     </nav>
   </div>
   <div class="page-container footer-bottom">
     <span>Développement web indépendant · Bordeaux</span>
     <div>
-      <app-site-information />
+      <a routerLink="/mentions-legales">Mentions légales</a>
+      <a routerLink="/confidentialite">Confidentialité</a>
     </div>
   </div>
 </footer>

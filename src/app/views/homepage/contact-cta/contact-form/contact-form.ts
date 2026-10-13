@@ -11,11 +11,11 @@ import {
 import { ContactForm as ContactValues } from '../../../../shared/interfaces';
 import { CONTACT_TOPICS, OFFER_DATA } from '../../../../shared/data';
 import { ContactService } from '../../../../shared/services/contact-service';
-import { SiteInformationService } from '../../../../shared/services/site-information-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
-  imports: [FormField, FormRoot],
+  imports: [FormField, FormRoot, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.css',
@@ -26,7 +26,6 @@ export class ContactFormComponent {
   protected readonly topics = CONTACT_TOPICS;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
-  protected readonly information = inject(SiteInformationService);
   private readonly contactService = inject(ContactService);
   protected readonly model = signal<ContactValues>(this.emptyModel());
   protected readonly contactForm = form(

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
-import { SiteInformation } from '../site-information/site-information';
 
 @Component({
   selector: 'app-footer',
-  imports: [NgOptimizedImage, SiteInformation],
+  imports: [NgOptimizedImage, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.html',
   styleUrl: './footer.css',

@@ -1,35 +1,42 @@
-import { DOCUMENT, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   ElementRef,
   inject,
   signal,
   viewChild,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs';
 import { NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
 
 @Component({
   selector: 'app-header',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.html',
   styleUrl: './header.css',
   host: {
     '(document:keydown.escape)': 'closeMenu(true)',
-    '(window:hashchange)': 'updateActiveSection()',
   },
 })
 export class Header {
   protected readonly site = SITE_DATA;
   protected readonly links = NAVIGATION_DATA;
   protected readonly menuOpen = signal(false);
-  private readonly document = inject(DOCUMENT);
-  protected readonly activeSection = signal(this.document.location?.hash.slice(1) || 'accueil');
+  private readonly router = inject(Router);
+  private readonly navigationEnd = toSignal(
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)),
+  );
+  protected readonly activeSection = computed(() => {
+    this.navigationEnd();
+    if (this.router.url.split(/[?#]/)[0] !== '/') return '';
+    return this.router.parseUrl(this.router.url).fragment || 'accueil';
+  });
   private readonly toggleButton = viewChild<ElementRef<HTMLButtonElement>>('menuToggle');
-  protected updateActiveSection(): void {
-    this.activeSection.set(this.document.location?.hash.slice(1) || 'accueil');
-  }
   protected toggleMenu(): void {
     this.menuOpen.update((open) => !open);
   }

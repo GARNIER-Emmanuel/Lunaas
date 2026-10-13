@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
@@ -13,4 +14,9 @@ import { SeoService } from './shared/services/seo-service';
 })
 export class App {
   private readonly seo = inject(SeoService);
+
+  constructor() {
+    // Même marge de 7 rem que les ancres CSS, pour laisser le header visible.
+    inject(ViewportScroller).setOffset([0, 112]);
+  }
 }

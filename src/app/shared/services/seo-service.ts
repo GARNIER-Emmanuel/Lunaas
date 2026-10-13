@@ -27,7 +27,8 @@ export class SeoService {
     const title = route.title ?? 'Création de sites internet à Bordeaux | Lunaas';
     const description =
       route.data['description'] ?? SITE_DATA.homepage.description;
-    const url = new URL('/', SITE_DATA.url).href;
+    const path = this.router.url.split(/[?#]/)[0];
+    const url = new URL(path, SITE_DATA.url).href;
     this.title.setTitle(title);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
