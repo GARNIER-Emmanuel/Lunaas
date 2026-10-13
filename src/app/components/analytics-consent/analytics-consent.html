@@ -1,14 +1,28 @@
 @if (consent.visible()) {
   <section id="analytics-consent-panel" class="consent-panel" aria-labelledby="analytics-choice-title">
-    <div>
-      <h2 id="analytics-choice-title">Statistiques de visite</h2>
-      <p>Autorisez-vous Cloudflare Web Analytics à mesurer les visites et les performances du site ?
-        Votre choix ne change pas l’accès au site.
-        <a routerLink="/confidentialite">En savoir plus</a></p>
+    <div class="consent-content">
+      <div class="consent-heading">
+        <span class="consent-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3 4.5 6v5.5c0 4.4 3.1 7.4 7.5 9.5 4.4-2.1 7.5-5.1 7.5-9.5V6L12 3Z" />
+            <path d="m8.5 12 2.3 2.3 4.7-4.6" />
+          </svg>
+        </span>
+        <div>
+          <p class="consent-label">Lunaas <span aria-hidden="true">/</span> Confidentialité</p>
+          <h2 id="analytics-choice-title">Votre navigation, votre choix</h2>
+        </div>
+      </div>
+      <p class="consent-description">Autorisez-vous Cloudflare Web Analytics à mesurer les visites et les performances du site ?
+        Vous pouvez refuser et continuer à naviguer librement.</p>
+      <a class="consent-policy" routerLink="/confidentialite">Politique de confidentialité <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="consent-actions">
-      <button type="button" class="button" (click)="consent.choose('refused')">Refuser</button>
-      <button type="button" class="button" (click)="consent.choose('accepted')">Accepter</button>
+    <div class="consent-decision">
+      <div class="consent-actions">
+        <button type="button" (click)="consent.choose('refused')">Refuser</button>
+        <button type="button" (click)="consent.choose('accepted')">Accepter</button>
+      </div>
+      <p class="consent-note">Modifiez votre choix à tout moment<br />dans le pied de page.</p>
     </div>
   </section>
 }
