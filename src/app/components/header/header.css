@@ -16,6 +16,7 @@ header {
   gap: 1.5rem;
 }
 .brand {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   font-size: 1.85rem;
@@ -34,10 +35,11 @@ header {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.1rem;
   font-size: 0.8rem;
 }
 .nav-link {
+  white-space: nowrap;
   position: relative;
   padding-block: 0.6rem;
   color: var(--color-muted);
@@ -64,6 +66,7 @@ header {
   color: var(--color-ink);
 }
 .nav-contact {
+  white-space: nowrap;
   min-height: 2.9rem;
   font-size: 0.75rem;
 }
@@ -83,7 +86,7 @@ header {
   font-size: 1.25rem;
   line-height: 1;
 }
-@media (max-width: 1050px) {
+@media (max-width: 1200px) {
   .navigation {
     min-height: 5rem;
   }

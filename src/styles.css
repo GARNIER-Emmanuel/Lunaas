@@ -97,7 +97,7 @@ h4 {
   color: var(--color-accent);
 }
 
-/* La palette sombre reste limitée au header et au hero. */
+/* La palette sombre est partagée par le header, le hero et le footer. */
 .theme-dark {
   --color-space: #050506;
   --color-surface: #14151b;
