@@ -6,6 +6,9 @@
   padding-block: var(--section-padding);
   scroll-margin-top: 7rem;
 }
+.section-description {
+  max-width: none;
+}
 .offers-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -26,7 +29,7 @@
   }
 }
 .pricing-note {
-  max-width: 60ch;
+  max-width: none;
   margin-top: 2rem;
   color: var(--color-muted);
   font-size: 0.85rem;
