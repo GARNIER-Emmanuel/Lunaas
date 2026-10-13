@@ -2,7 +2,6 @@
   display: block;
 }
 .services-section {
-  border-top: 1px solid var(--color-line);
   padding-block: var(--section-padding);
   scroll-margin-top: 7rem;
 }
