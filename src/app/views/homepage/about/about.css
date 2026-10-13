@@ -92,3 +92,13 @@
     width: min(85%, 19rem);
   }
 }
+
+@media (width < 768px) {
+  .about-copy {
+    padding-bottom: clamp(4.5rem, 9vw, 9rem);
+  }
+
+  .profile-portrait {
+    display: none;
+  }
+}
