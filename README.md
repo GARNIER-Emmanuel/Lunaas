@@ -1,4 +1,4 @@
-﻿# 🚀 Lunaas — Création de sites internet à Bordeaux
+﻿# 🚀 Lunaas - Création de sites internet à Bordeaux
 
 Bienvenue sur le dépôt de Lunaas !
 

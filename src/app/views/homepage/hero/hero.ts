@@ -18,7 +18,7 @@ export class Hero {
     // Position de la souris dans le hero, transmise au masque CSS.
     hero.style.setProperty('--reveal-x', `${event.clientX - bounds.left}px`);
     hero.style.setProperty('--reveal-y', `${event.clientY - bounds.top}px`);
-    hero.style.setProperty('--reveal-opacity', '0.2');
+    hero.style.setProperty('--reveal-opacity', '0.5');
   }
 
   protected hideImage(event: PointerEvent): void {

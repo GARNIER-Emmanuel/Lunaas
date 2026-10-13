@@ -62,7 +62,7 @@ describe('App', () => {
     expect(compiled.querySelector('a[href$="#realisations"], a[href$="#a-propos"], a[href$="#confiance"]')).toBeNull();
     expect(
       [...compiled.querySelectorAll('#site-navigation a')].map((link) => link.textContent?.trim()),
-    ).toEqual(['Tarifs', 'Méthode', 'Contact']);
+    ).toEqual(['Tarifs', 'Maintenance', 'Méthode', 'FAQ', 'Contact']);
     expect(approach?.querySelectorAll('ol > li')).toHaveLength(4);
     expect(compiled.querySelector('#methode')?.contains(approach)).toBe(true);
   });
