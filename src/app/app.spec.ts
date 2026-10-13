@@ -102,8 +102,8 @@ describe('App', () => {
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const status = root.querySelector('.registration-status')?.textContent?.replace(/\s+/g, ' ');
-    expect(status).toContain('La signature, la transmission et la validation');
-    expect(status).toContain('ne sont pas confirmées');
+    expect(status).toContain('a été déposée');
+    expect(status).toContain('en attente de validation');
     expect(root.querySelector('#mentions-legales')?.textContent).toContain(
       'application non confirmée',
     );
@@ -112,10 +112,11 @@ describe('App', () => {
     );
     await router.navigateByUrl('/');
     await fixture.whenStable();
-    expect(root.querySelector('.pricing-note')?.textContent).not.toContain('a été déclarée');
+    expect(root.querySelector('.pricing-note')?.textContent).toContain('Franchise en base de TVA déclarée');
+    expect(root.querySelector('.pricing-note')?.textContent).toContain('application à confirmer');
   });
 
-  it('shows indicative prices and offers a project choice in the inline contact form', async () => {
+  it('shows launch packages and keeps the custom project on quote in the contact form', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/');
     await fixture.whenStable();
@@ -123,8 +124,8 @@ describe('App', () => {
     const cards = [...compiled.querySelectorAll('app-offer-card')];
     expect(cards).toHaveLength(3);
     for (const [id, expectedPrice] of [
-      ['landing-page', '690€'],
-      ['site-vitrine', '1490€'],
+      ['landing-page', '800€'],
+      ['site-vitrine', '1400€'],
       ['site-dynamique', 'Surdevis'],
     ]) {
       const card = compiled.querySelector(`#offer-${id}`)?.closest('app-offer-card');

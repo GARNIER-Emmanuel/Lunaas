@@ -15,8 +15,8 @@
       {{ business.legalIdentity }}. Statut envisagé : {{ business.plannedStatus }}.
     </p>
     <p class="registration-status">
-      La signature, la transmission et la validation de la formalité de création ne sont pas
-      confirmées. L’immatriculation de l’activité reste à confirmer.
+      La formalité de création a été déposée et reste en attente de validation par l’Urssaf.
+      La validation finale de l’immatriculation reste à confirmer.
     </p>
     <p>
       Contact légal : <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a
@@ -31,7 +31,7 @@
       >.
     </p>
     <p>
-      Directeur de la publication : {{ business.displayName }}. Régime de TVA envisagé :
+      Directeur de la publication : {{ business.displayName }}. Régime de TVA déclaré :
       {{ business.requestedVatRegime }}.
     </p>
     <h2>Informations à finaliser</h2>

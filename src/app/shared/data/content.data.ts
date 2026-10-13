@@ -43,7 +43,7 @@ export const FAQ_DATA: readonly FaqItem[] = [
   {
     question: 'Combien coûte la création d’un site internet ?',
     answer:
-      'Les prix de départ sont de 690 € pour une landing page et 1 490 € pour un site vitrine multipage ; les projets sur mesure sont chiffrés sur devis après cadrage. Ils sont indicatifs : le tarif final est précisé dans un devis selon les pages, les fonctionnalités et les contenus nécessaires.',
+      'Les forfaits de lancement sont de 800 € pour une page commerciale jusqu’à six sections et de 1 400 € pour un site vitrine de trois pages commerciales. Les périmètres sont précisés au devis ; les pages et fonctionnalités supplémentaires ainsi que les projets sur mesure sont chiffrés séparément après cadrage. Domaine, hébergement et maintenance ne sont pas inclus dans ces forfaits.',
   },
   {
     question: 'Combien de temps faut-il pour créer un site ?',
@@ -58,12 +58,12 @@ export const FAQ_DATA: readonly FaqItem[] = [
   {
     question: 'Le nom de domaine et l’hébergement sont-ils inclus ?',
     answer:
-      'Les besoins de domaine et d’hébergement sont étudiés au cadrage. Leur fournisseur, leurs coûts et les éventuels abonnements sont précisés au devis ; ils ne sont pas présentés comme automatiquement inclus dans le prix de départ.',
+      'Non, le nom de domaine et l’hébergement sont séparés du forfait de création. Leur fournisseur, leurs coûts et les éventuels abonnements sont définis au cadrage et précisés au devis.',
   },
   {
     question: 'Qui prépare les textes et les photos ?',
     answer:
-      'Vous fournissez les textes, les photos et vos préférences de couleurs. Je vous accompagne si besoin dans leur préparation ; l’aide à la rédaction est incluse.',
+      'Vous fournissez les textes, les photos, le logo et vos préférences de couleurs. Je vous accompagne dans leur préparation et leur reformulation ; la rédaction complète des contenus est une prestation distincte. Les pages de mentions légales et de confidentialité sont intégrées à partir de textes fournis ou validés par vos soins ; leur rédaction juridique n’est pas incluse.',
   },
   {
     question: 'Puis-je demander des modifications ?',
