@@ -162,7 +162,7 @@ describe('Contact form', () => {
   it('offers help without assigning an offer or a budget', async () => {
     const harness = await page();
     const root = harness.routeNativeElement!;
-    const link = root.querySelector<HTMLAnchorElement>('.offer-help')!;
+    const link = root.querySelector<HTMLAnchorElement>('.offer-actions a[href="#contact"]')!;
     expect(link.getAttribute('href')).toBe('#contact');
     link.click();
     await harness.fixture.whenStable();
