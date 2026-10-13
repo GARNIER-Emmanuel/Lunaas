@@ -1,25 +1,54 @@
 ﻿<footer class="footer theme-dark">
   <div class="page-container footer-main">
-    <div>
+    <div class="footer-identity">
       <a routerLink="/" fragment="accueil" class="footer-brand" aria-label="Lunaas — Accueil">
-        <img ngSrc="/images/brand/lunaas-logo-dark.webp" width="960" height="320" [alt]="site.name" loading="lazy" />
+        <img
+          ngSrc="/images/brand/lunaas-logo-dark.webp"
+          width="960"
+          height="320"
+          [alt]="site.name"
+          loading="lazy"
+        />
       </a>
-      <p>{{ site.tagline }}</p>
+      <p class="footer-tagline">{{ site.tagline }}</p>
+      <p class="footer-location">Développement web indépendant · Bordeaux</p>
     </div>
-    <nav aria-label="Navigation de pied de page">
-      @for (link of links; track link.fragment) {
-      <a routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
-      }
-      <a routerLink="/" fragment="contact">Contact</a>
+    <nav aria-label="Navigation de pied de page" class="footer-navigation">
+      <h2 class="footer-heading">Navigation</h2>
+      <ul class="footer-links">
+        @for (link of links; track link.fragment) {
+          <li>
+            <a routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
     </nav>
+    <div class="footer-contact">
+      <h2 class="footer-heading">Contact</h2>
+      <p>Un projet de site web en tête ?</p>
+      <a routerLink="/" fragment="contact" class="button button-secondary footer-contact-link">
+        Parlons de votre projet <span aria-hidden="true">↗</span>
+      </a>
+    </div>
   </div>
   <div class="page-container footer-bottom">
-    <span>Développement web indépendant · Bordeaux</span>
-    <div>
-      <a routerLink="/mentions-legales">Mentions légales</a>
-      <a routerLink="/confidentialite">Confidentialité</a>
-      <button type="button" class="analytics-preferences" aria-controls="analytics-consent-panel"
-        [attr.aria-expanded]="consent.visible()" (click)="consent.open()">Gérer mes statistiques</button>
-    </div>
+    <p class="footer-copyright">© {{ currentYear }} {{ site.name }}. Tous droits réservés.</p>
+    <nav aria-label="Informations légales et préférences">
+      <ul class="footer-legal">
+        <li><a routerLink="/mentions-legales">Mentions légales</a></li>
+        <li><a routerLink="/confidentialite">Confidentialité</a></li>
+        <li>
+          <button
+            type="button"
+            class="analytics-preferences"
+            aria-controls="analytics-consent-panel"
+            [attr.aria-expanded]="consent.visible()"
+            (click)="consent.open()"
+          >
+            Gérer mes statistiques
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </footer>

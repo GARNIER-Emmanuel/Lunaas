@@ -15,4 +15,5 @@ export class Footer {
   protected readonly consent = inject(AnalyticsConsentService);
   protected readonly site = SITE_DATA;
   protected readonly links = NAVIGATION_DATA;
+  protected readonly currentYear = new Date().getFullYear();
 }
