@@ -15,9 +15,16 @@
   gap: 1.25rem;
   margin-top: 3.5rem;
 }
-.offer-help {
+.offer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 2rem;
-  min-height: 2.75rem;
+}
+.offer-actions a {
+  border-color: var(--color-accent);
+  background: var(--color-lavender);
+  color: var(--color-accent);
   line-height: 1.6;
 }
 
@@ -38,5 +45,11 @@
 @media (max-width: 1000px) {
   .offers-grid {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .offer-actions a {
+    width: 100%;
+    text-align: center;
   }
 }
