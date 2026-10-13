@@ -18,9 +18,6 @@
   min-width: 0;
 }
 
-.about-copy .font-script {
-  font-size: clamp(1.6rem, 2.6vw, 2.5rem);
-}
 
 .about-copy .section-description {
   margin-top: 1.5rem;
