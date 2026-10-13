@@ -18,6 +18,28 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
+  it.each(['/', '/mentions-legales', '/confidentialite'])(
+    'skips to the main content of %s without leaving the current page',
+    async (path) => {
+      const fixture = TestBed.createComponent(App);
+      const router = TestBed.inject(Router);
+      await router.navigateByUrl(path);
+      await fixture.whenStable();
+      const root = fixture.nativeElement as HTMLElement;
+      const main = root.querySelector<HTMLElement>('#main-content')!;
+      const heading = main.querySelector('h1')!.textContent;
+      const link = root.querySelector<HTMLAnchorElement>('a[fragment="main-content"]')!;
+
+      expect(link.getAttribute('href')).toBe(`${path}#main-content`);
+      link.click();
+      await fixture.whenStable();
+
+      expect(router.url).toBe(`${path}#main-content`);
+      expect(main.querySelector('h1')!.textContent).toBe(heading);
+      expect(document.activeElement).toBe(main);
+    },
+  );
+
   it('renders the homepage inside the shared layout', async () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/');

@@ -11,7 +11,7 @@
     </div>
     <div class="questions" data-motion>
       @for (item of items; track item.question) {
-        <details [attr.id]="item.id">
+        <details name="homepage-faq" [attr.id]="item.id">
           <summary>
             <span>{{ item.question }}</span
             ><span class="faq-toggle" aria-hidden="true"></span>
