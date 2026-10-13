@@ -1,0 +1,30 @@
+<div class="skills-banner theme-dark" role="region" aria-labelledby="skills-banner-label">
+  <div class="page-container skills-heading">
+    <p id="skills-banner-label">Les technologies que je pratique</p>
+    <button type="button" class="pause-button" (click)="togglePause()"
+      [attr.aria-label]="paused() ? 'Reprendre le défilement des compétences' : 'Mettre en pause le défilement des compétences'">
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        @if (paused()) {
+          <path d="M5 3 13 8 5 13Z" fill="currentColor" />
+        } @else {
+          <path d="M4 3H6V13H4ZM10 3H12V13H10Z" fill="currentColor" />
+        }
+      </svg>
+      {{ paused() ? 'Reprendre' : 'Pause' }}
+    </button>
+  </div>
+  <div class="skills-viewport">
+    <div class="skills-track" [class.is-paused]="paused()">
+      <ul class="skills-list" role="list">
+        @for (skill of skills(); track skill) {
+          <li><span class="skill-dot" aria-hidden="true"></span>{{ skill }}</li>
+        }
+      </ul>
+      <ul class="skills-list skills-copy" aria-hidden="true">
+        @for (skill of skills(); track skill) {
+          <li><span class="skill-dot"></span>{{ skill }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
