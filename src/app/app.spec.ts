@@ -59,7 +59,21 @@ describe('App', () => {
       'app-contact-cta',
     ]);
     expect(compiled.querySelector('#a-propos #confiance')).not.toBeNull();
-    expect(compiled.querySelector('app-skills-marquee')).toBeNull();
+    const about = compiled.querySelector('#a-propos')!;
+    const marquee = about.querySelector('app-skills-marquee')!;
+    expect(marquee).not.toBeNull();
+    expect(about.children[1]).toBe(marquee);
+    expect(about.children[0].querySelector('.profile-portrait')).not.toBeNull();
+    expect(about.children[2].querySelector('#confiance')).not.toBeNull();
+    expect(about.querySelector('.profile-skills')).toBeNull();
+    const pauseButton = marquee.querySelector<HTMLButtonElement>('.pause-button')!;
+    pauseButton.click();
+    await fixture.whenStable();
+    expect(marquee.querySelector('.skills-track')?.classList.contains('is-paused')).toBe(true);
+    expect(pauseButton.textContent).toContain('Reprendre');
+    pauseButton.click();
+    await fixture.whenStable();
+    expect(marquee.querySelector('.skills-track')?.classList.contains('is-paused')).toBe(false);
     expect(
       [...compiled.querySelectorAll('#site-navigation a')].map((link) => link.textContent?.trim()),
     ).toEqual(['Réalisations', 'Tarifs', 'Méthode', 'Contact']);

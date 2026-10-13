@@ -4,18 +4,9 @@
       <div class="about-copy">
         <p class="section-label" data-motion>À propos</p>
         <h2 id="about-title" class="section-title section-title--compact" data-motion>
-          {{ profile.name }}
+          {{ profile.name }}<br /><span class="font-script">{{ profile.role }}</span>
         </h2>
-        <p class="profile-role" data-motion>{{ profile.role }}</p>
         <p class="section-description" data-motion>{{ profile.introduction }}</p>
-        <div class="profile-skills">
-          <h3>Les technologies que je pratique</h3>
-          <ul role="list">
-            @for (skill of profile.skills; track skill) {
-              <li>{{ skill }}</li>
-            }
-          </ul>
-        </div>
       </div>
       <div class="profile-portrait">
         <img
@@ -27,6 +18,9 @@
         />
       </div>
     </div>
+  </div>
+  <app-skills-marquee [skills]="profile.skills" />
+  <div class="page-container">
     <app-trusted-companies />
   </div>
 </section>

@@ -1,9 +1,11 @@
 :host {
   display: block;
 }
+
 #a-propos {
   overflow: hidden;
 }
+
 .about-layout {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -11,40 +13,20 @@
   gap: clamp(3rem, 7vw, 7rem);
   margin-bottom: 3rem;
 }
+
 .about-copy {
   min-width: 0;
 }
-.profile-role {
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.6;
+
+.about-copy .font-script {
+  font-size: clamp(1.6rem, 2.6vw, 2.5rem);
 }
+
 .about-copy .section-description {
   margin-top: 1.5rem;
   max-width: 45ch;
 }
-.profile-skills {
-  margin-top: 2rem;
-}
-.profile-skills h3 {
-  color: var(--color-muted);
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-.profile-skills ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-.profile-skills li {
-  padding: 0.35rem 0.65rem;
-  border: 1px solid var(--color-line);
-  border-radius: 0.4rem;
-  color: var(--color-muted);
-  font-size: 0.75rem;
-}
+
 .profile-portrait {
   position: relative;
   width: min(100%, 19rem);
@@ -52,6 +34,7 @@
   justify-self: center;
   overflow: hidden;
 }
+
 /* Recadrage des pixels opaques de la photo existante. */
 .profile-portrait img {
   position: absolute;
@@ -61,11 +44,13 @@
   max-width: none;
   height: auto;
 }
+
 @media (max-width: 800px) {
   .about-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .profile-portrait {
     width: 8rem;
     aspect-ratio: 1;
@@ -74,6 +59,7 @@
     justify-self: start;
     background: var(--color-surface);
   }
+
   .profile-portrait img {
     bottom: auto;
     top: -20%;
