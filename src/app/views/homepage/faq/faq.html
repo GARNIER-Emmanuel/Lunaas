@@ -16,7 +16,7 @@
             <span>{{ item.question }}</span
             ><span class="faq-toggle" aria-hidden="true"></span>
           </summary>
-          <p>{{ item.answer }}</p>
+          <p>{{ item.answer | sentenceLines }}</p>
         </details>
       }
     </div>

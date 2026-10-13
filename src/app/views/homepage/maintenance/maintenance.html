@@ -6,7 +6,7 @@
     </h2>
     <p class="section-description" data-motion>
       Deux abonnements facultatifs pour surveiller votre site et, selon vos besoins, actualiser
-      ses contenus. Sans engagement de durée.
+      ses contenus.<br />Sans engagement de durée.
     </p>
 
     <div class="maintenance-grid">
@@ -52,14 +52,14 @@
     </div>
 
     <div class="maintenance-terms" aria-label="Conditions des abonnements">
-      <p>{{ terms.eligibility }}</p>
-      <p>{{ terms.cancellation }}</p>
-      <p>{{ terms.payment }}</p>
-      <p>{{ terms.support }}</p>
-      <p>{{ terms.response }}</p>
-      <p>{{ terms.extraCosts }}</p>
-      <p>{{ business.pricingTaxNote }}</p>
-      <p class="statistics-note">{{ terms.statistics }}</p>
+      <p>{{ terms.eligibility | sentenceLines }}</p>
+      <p>{{ terms.cancellation | sentenceLines }}</p>
+      <p>{{ terms.payment | sentenceLines }}</p>
+      <p>{{ terms.support | sentenceLines }}</p>
+      <p>{{ terms.response | sentenceLines }}</p>
+      <p>{{ terms.extraCosts | sentenceLines }}</p>
+      <p>{{ business.pricingTaxNote | sentenceLines }}</p>
+      <p class="statistics-note">{{ terms.statistics | sentenceLines }}</p>
       <a href="#maintenance-faq" class="text-link">Questions sur la maintenance et la résiliation</a>
     </div>
   </div>

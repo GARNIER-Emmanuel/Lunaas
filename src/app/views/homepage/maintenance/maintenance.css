@@ -119,6 +119,9 @@ li > span:first-child {
   font-size: 0.9rem;
   line-height: 1.8;
 }
+.maintenance-terms p {
+  white-space: pre-line;
+}
 
 .statistics-note {
   border-left: 2px solid var(--color-accent);

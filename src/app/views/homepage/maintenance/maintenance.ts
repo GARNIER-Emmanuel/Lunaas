@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { LEGAL_BUSINESS_DATA, MAINTENANCE_PLAN_DATA, MAINTENANCE_TERMS_DATA } from '../../../shared/data';
 import { MaintenancePlanId } from '../../../shared/interfaces';
+import { SentenceLines } from '../../../shared/pipes/sentence-lines';
 
 @Component({
   selector: 'app-maintenance',
+  imports: [SentenceLines],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './maintenance.html',
   styleUrl: './maintenance.css',

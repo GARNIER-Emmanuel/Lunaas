@@ -57,6 +57,7 @@ summary:focus-visible {
   outline-offset: 4px;
 }
 details p {
+  white-space: pre-line;
   padding-block: 0 1.5rem;
   padding-right: 2.5rem;
   color: var(--color-muted);
