@@ -283,10 +283,10 @@ section[id],
 
 .page-heading h1 {
   max-width: 18ch;
-  font-size: clamp(2.7rem, 5.5vw, 5.5rem);
-  letter-spacing: -0.06em;
+  font-size: clamp(3rem, 5.7vw, 5.6rem);
+  letter-spacing: -0.02em;
   line-height: 1.1;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 1.5rem;
   text-wrap: balance;
 }
@@ -303,6 +303,10 @@ section[id],
 }
 
 @media (max-width: 640px) {
+  .page-heading h1 {
+    font-size: clamp(2.6rem, 10.5vw, 4rem);
+  }
+
   .content-section {
     padding-block: 4.5rem;
   }
