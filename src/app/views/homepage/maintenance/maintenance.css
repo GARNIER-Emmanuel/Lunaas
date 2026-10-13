@@ -1,0 +1,143 @@
+:host {
+  display: block;
+}
+
+.maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+
+.maintenance-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 2.2rem;
+  border: 1px solid var(--color-line);
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #fff, #f3f4f7);
+  box-shadow: 0 12px 40px rgb(27 33 72 / 3%);
+}
+
+.plan-category {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin-block: 1rem 0.85rem;
+  font-family: var(--font-script);
+  color: var(--color-accent);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-synthesis: none;
+}
+
+.plan-description,
+.plan-note {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-block: 1.8rem 1.5rem;
+}
+
+.plan-price strong {
+  font-size: 2.65rem;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+.plan-price > span {
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+.plan-features {
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.5rem;
+  flex: 1;
+}
+
+h4 {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+ul {
+  display: grid;
+  gap: 0.85rem;
+  margin-block: 1.2rem 1.5rem;
+}
+
+li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+li > span:first-child {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.plan-limits {
+  display: grid;
+  gap: 0.75rem;
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.maintenance-contact {
+  width: 100%;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.maintenance-terms {
+  display: grid;
+  gap: 1rem;
+  max-width: 85ch;
+  margin-top: 2rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.statistics-note {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1rem;
+}
+
+.maintenance-terms .text-link {
+  justify-self: start;
+  min-height: 2.75rem;
+}
+
+@media (max-width: 1000px) {
+  .maintenance-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .maintenance-card {
+    padding: 1.5rem;
+  }
+}

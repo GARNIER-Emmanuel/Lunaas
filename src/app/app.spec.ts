@@ -53,6 +53,7 @@ describe('App', () => {
       'app-hero',
       'app-projects',
       'app-services',
+      'app-maintenance',
       'app-process-section',
       'app-about',
       'app-faq',
@@ -144,6 +145,8 @@ describe('App', () => {
       'autre',
       'donnees-personnelles',
       'landing-page',
+      'maintenance-essentiel',
+      'maintenance-suivi',
       'site-dynamique',
       'site-vitrine',
     ]);
@@ -151,6 +154,32 @@ describe('App', () => {
     expect(dynamicOffer?.querySelector('h4')?.textContent).toContain(
       'Prestations possibles, sur devis',
     );
+  });
+
+  it('presents optional monthly maintenance with visible limits and working anchors', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const section = root.querySelector('#maintenance')!;
+    const cards = section.querySelectorAll('article');
+    expect(cards).toHaveLength(2);
+    expect(cards[0].querySelector('.plan-price')!.textContent!.replace(/\s/g, '')).toBe('39€/mois');
+    expect(cards[1].querySelector('.plan-price')!.textContent!.replace(/\s/g, '')).toBe('79€/mois');
+    expect(cards[0].textContent).toContain('2 jours ouvrés');
+    expect(cards[1].textContent).toContain('1 jour ouvré');
+    expect(cards[1].textContent).toContain('30 minutes');
+    for (const card of cards) {
+      expect(card.textContent).toContain('15 minutes par mois');
+      expect(card.textContent).toContain('Abonnement facultatif');
+    }
+    expect(section.textContent).toContain('sans engagement de durée');
+    expect(section.textContent).toContain('70 €/heure');
+    expect(section.textContent).toContain('sans abonnement');
+    expect(section.textContent).toContain('Aucune garantie de disponibilité à 100 %');
+    expect(root.querySelector('footer a[href="/#maintenance"]')).not.toBeNull();
+    expect(root.querySelector('#maintenance-faq')).not.toBeNull();
+    expect(root.querySelectorAll('form')).toHaveLength(1);
   });
 
   it('links the menu to landing sections and closes it after choosing one', async () => {

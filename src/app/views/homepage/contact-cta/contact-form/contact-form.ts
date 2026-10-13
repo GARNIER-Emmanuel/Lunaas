@@ -97,7 +97,13 @@ export class ContactFormComponent {
   constructor() {
     effect(() => {
       const selection = this.offerSelection();
-      if (!selection || !OFFER_DATA.some((offer) => offer.id === selection.offerId)) return;
+      if (
+        !selection ||
+        (!OFFER_DATA.some((offer) => offer.id === selection.offerId) &&
+          !CONTACT_TOPICS.some((topic) => topic.id === selection.offerId))
+      ) {
+        return;
+      }
       untracked(() => {
         if (this.contactForm().submitting()) return;
         this.model.update((values) => ({ ...values, projectType: selection.offerId }));

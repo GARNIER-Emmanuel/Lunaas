@@ -4,6 +4,7 @@ export interface ContentItem {
   readonly description: string;
 }
 export interface FaqItem {
+  readonly id?: string;
   readonly question: string;
   readonly answer: string;
 }

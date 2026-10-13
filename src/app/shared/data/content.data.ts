@@ -76,8 +76,29 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Le site est organisé pour permettre des mises à jour de contenus et de nouvelles pages. Les fonctionnalités supplémentaires sont étudiées selon les besoins et le socle technique du projet.',
   },
   {
+    id: 'maintenance-faq',
     question: 'Proposez-vous une maintenance ?',
     answer:
-      'Les besoins de maintenance peuvent être étudiés ensemble. Le périmètre, les modalités et le coût restent à définir dans une proposition dédiée ; aucun abonnement n’est inclus par défaut.',
+      'Oui, deux abonnements facultatifs sont proposés après la mise en ligne : Essentiel à 39 €/mois pour la surveillance et les contrôles mensuels, et Suivi à 79 €/mois avec jusqu’à 30 minutes de modifications simples, un bilan de fréquentation et un suivi basique de la visibilité dans Google. Aucun abonnement n’est inclus par défaut dans la création. La souscription passe par un échange et un accord distinct ; envoyer le formulaire ne souscrit aucun abonnement.',
+  },
+  {
+    question: 'Puis-je résilier et conserver mon site ?',
+    answer:
+      'Oui. Les abonnements sont sans engagement de durée. Vous pouvez résilier à tout moment ; l’arrêt prend effet à la fin de la période payée. Vous conservez votre site conformément au contrat de création.',
+  },
+  {
+    question: 'Quelles modifications sont comprises dans Suivi ?',
+    answer:
+      'Jusqu’à 30 minutes par mois pour des modifications simples de textes, d’images ou de coordonnées. Les minutes non utilisées ne sont pas reportables. Les nouvelles pages, fonctionnalités et refontes font l’objet d’un devis. Le suivi basique de Google consiste à consulter la visibilité du site dans les résultats disponibles ; il ne garantit aucun positionnement.',
+  },
+  {
+    question: 'Que se passe-t-il si un incident dépasse le forfait ?',
+    answer:
+      'Le diagnostic d’incident inclus dans les deux abonnements est limité à 15 minutes par mois. Les interventions hors forfait sont proposées à 70 €/heure après votre validation. Les contrôles mensuels, le diagnostic et les 30 minutes de modifications de l’offre Suivi sont des prestations distinctes. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement. Aucun délai de résolution ni disponibilité à 100 % n’est garanti.',
+  },
+  {
+    question: 'Ces abonnements conviennent-ils aux applications complexes ?',
+    answer:
+      'Les applications web complexes nécessitent une maintenance sur devis, adaptée à leurs fonctionnalités et à leur infrastructure.',
   },
 ];

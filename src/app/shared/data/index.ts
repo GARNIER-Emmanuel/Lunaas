@@ -6,3 +6,4 @@ export * from './navigation.data';
 export * from './contact.data';
 export * from './legal-business.data';
 export * from './company-reference.data';
+export * from './maintenance-plan.data';

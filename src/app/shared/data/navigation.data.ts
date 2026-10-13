@@ -8,6 +8,7 @@ export const NAVIGATION_DATA = [
   { label: 'Accueil', fragment: 'accueil' },
   PRIMARY_NAVIGATION_DATA[0],
   PRIMARY_NAVIGATION_DATA[1],
+  { label: 'Maintenance', fragment: 'maintenance' },
   PRIMARY_NAVIGATION_DATA[2],
   { label: 'À propos', fragment: 'a-propos' },
   { label: 'Expérience', fragment: 'confiance' },

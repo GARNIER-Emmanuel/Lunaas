@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from '../../../../app.routes';
+import { SITE_DATA } from '../../../../shared/data';
 
 describe('Contact form', () => {
   const transport = vi.fn();
@@ -115,6 +116,47 @@ describe('Contact form', () => {
       'site-dynamique',
     );
     expect(transport).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['maintenance-essentiel', 'Maintenance — Essentiel'],
+    ['maintenance-suivi', 'Maintenance — Suivi'],
+  ])('selects and sends %s without losing the draft or subscribing automatically', async (planId, label) => {
+    transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
+    const harness = await page();
+    const root = await fill(harness);
+    enter(root, 'cta-contact-budget', 'À discuter');
+    await harness.fixture.whenStable();
+    const link = root.querySelector<HTMLAnchorElement>(
+      `article[aria-labelledby="${planId}-title"] .maintenance-contact`,
+    )!;
+    expect(link.getAttribute('href')).toBe('#contact');
+    link.click();
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(planId);
+    expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')!.value).toBe(
+      'Un site pour mon atelier & mes créations.',
+    );
+    expect(root.querySelector<HTMLInputElement>('#cta-contact-budget')!.value).toBe('À discuter');
+    expect(transport).not.toHaveBeenCalled();
+
+    enter(root, 'cta-contact-project', 'autre');
+    await harness.fixture.whenStable();
+    link.dispatchEvent(new MouseEvent('click', { bubbles: true, ctrlKey: true, cancelable: true }));
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe('autre');
+    link.click();
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(planId);
+
+    submit(root);
+    await harness.fixture.whenStable();
+    expect(transport).toHaveBeenCalledOnce();
+    const payload = JSON.parse(String(transport.mock.calls[0][1].body));
+    expect(payload.project).toBe(label);
+    expect(payload.subject).toBe(`Demande de contact — ${label} | ${SITE_DATA.name}`);
+    expect(payload.budget).toBe('À discuter');
+    expect(payload.message).toBe('Un site pour mon atelier & mes créations.');
   });
 
   it('offers help without assigning an offer or a budget', async () => {

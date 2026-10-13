@@ -1,0 +1,62 @@
+<section id="maintenance" class="content-section maintenance-section" aria-labelledby="maintenance-title">
+  <div class="page-container">
+    <p class="section-label" data-motion>Maintenance et suivi</p>
+    <h2 id="maintenance-title" class="section-title" data-motion>
+      Votre site, dans la durée<br /><span class="font-script">Après la mise en ligne</span>
+    </h2>
+    <p class="section-description" data-motion>
+      Deux abonnements facultatifs pour surveiller votre site et, selon vos besoins, actualiser
+      ses contenus. Sans engagement de durée.
+    </p>
+
+    <div class="maintenance-grid">
+      @for (plan of plans; track plan.id) {
+        <article class="maintenance-card" [attr.aria-labelledby]="plan.id + '-title'" data-motion>
+          <div>
+            <p class="plan-category">Abonnement facultatif</p>
+            <h3 [id]="plan.id + '-title'">{{ plan.name }}</h3>
+            <p class="plan-description">{{ plan.description }}</p>
+          </div>
+          <p class="plan-price"><strong>{{ price(plan.monthlyPrice) }}</strong><span>/mois</span></p>
+          <div class="plan-features">
+            <h4>
+              {{ plan.includesEssential ? 'Toutes les prestations Essentiel, avec :' : 'Ce que comprend l’offre' }}
+            </h4>
+            <ul>
+              @if (plan.contentMinutesPerMonth) {
+                <li>
+                  <span aria-hidden="true">✓</span>
+                  <span>Jusqu’à <strong>{{ plan.contentMinutesPerMonth }} minutes</strong> de
+                    modifications simples par mois : textes, images et coordonnées</span>
+                </li>
+              }
+              @for (feature of plan.features; track feature) {
+                <li><span aria-hidden="true">✓</span><span>{{ feature }}</span></li>
+              }
+            </ul>
+          </div>
+          <div class="plan-limits">
+            <p>Diagnostic d’incident :
+              <strong>jusqu’à {{ plan.diagnosticMinutesPerMonth }} minutes par mois.</strong>
+            </p>
+            <p>Accusé de réception des demandes :
+              <strong>sous {{ plan.acknowledgementBusinessDays }}
+                {{ plan.acknowledgementBusinessDays === 1 ? 'jour ouvré' : 'jours ouvrés' }}.</strong>
+            </p>
+            <p class="plan-note">{{ plan.limitationNote }}</p>
+          </div>
+          <a href="#contact" class="button button-primary maintenance-contact"
+            (click)="selectPlan($event, plan.id)">Discuter de l’offre {{ plan.name }}</a>
+        </article>
+      }
+    </div>
+
+    <div class="maintenance-terms" aria-label="Conditions des abonnements">
+      <p>{{ terms.cancellation }}</p>
+      <p>{{ terms.response }}</p>
+      <p>{{ terms.extraCosts }}</p>
+      <p class="statistics-note">{{ terms.statistics }}</p>
+      <a href="#maintenance-faq" class="text-link">Questions sur la maintenance et la résiliation</a>
+    </div>
+  </div>
+</section>
