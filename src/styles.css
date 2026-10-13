@@ -209,7 +209,7 @@ section[id],
 }
 
 #contact {
-  scroll-margin-top: calc(var(--anchor-offset) - var(--cta-title-offset, calc(clamp(5rem, 10vw, 10rem) + 1.5rem)));
+  scroll-margin-top: var(--anchor-offset);
 }
 
 .legal-page {
