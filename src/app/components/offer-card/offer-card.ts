@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { Offer } from '../../shared/interfaces';
 
 @Component({
@@ -9,6 +9,13 @@ import { Offer } from '../../shared/interfaces';
 })
 export class OfferCard {
   readonly offer = input.required<Offer>();
+  readonly offerSelected = output<string>();
+
+  protected selectOffer(event: MouseEvent): void {
+    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)
+      return;
+    this.offerSelected.emit(this.offer().id);
+  }
 
   protected revealHalo(event: PointerEvent): void {
     if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;

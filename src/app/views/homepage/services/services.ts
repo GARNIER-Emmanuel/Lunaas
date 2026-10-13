@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { OfferCard } from '../../../components/offer-card/offer-card';
 import { OFFER_DATA } from '../../../shared/data';
 
@@ -10,5 +10,6 @@ import { OFFER_DATA } from '../../../shared/data';
   styleUrl: './services.css',
 })
 export class Services {
+  readonly offerSelected = output<string>();
   protected readonly offers = OFFER_DATA;
 }

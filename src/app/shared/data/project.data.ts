@@ -5,7 +5,7 @@ export const PROJECT_DATA: readonly Project[] = [
     slug: 'koacher',
     name: 'Koacher',
     image: {
-      src: '/images/projects/Koacher.png',
+      src: '/images/projects/koacher.webp',
       alt: 'Aperçu de l’application Koacher',
       width: 1418,
       height: 1081,

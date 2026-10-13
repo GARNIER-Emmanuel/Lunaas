@@ -95,3 +95,7 @@ h2>span {
     grid-template-columns: 1fr;
   }
 }
+.cta-section:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -4px;
+}

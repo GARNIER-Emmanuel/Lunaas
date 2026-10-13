@@ -43,6 +43,98 @@ describe('Contact form', () => {
       .dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
   }
 
+  it('selects each offer without losing the draft and allows manual or repeated choices', async () => {
+    const harness = await page();
+    const root = await fill(harness);
+    enter(root, 'cta-contact-budget', '1 500 € maximum');
+    await harness.fixture.whenStable();
+
+    for (const offerId of ['landing-page', 'site-vitrine', 'site-dynamique']) {
+      const link = root
+        .querySelector<HTMLAnchorElement>(`#offer-${offerId}`)!
+        .closest('app-offer-card')!
+        .querySelector<HTMLAnchorElement>('.quote-link')!;
+      expect(link.getAttribute('href')).toBe('#contact');
+      link.click();
+      await harness.fixture.whenStable();
+      harness.detectChanges();
+      expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(offerId);
+      expect(root.querySelector<HTMLInputElement>('#cta-contact-email')!.value).toBe(
+        'elodie@example.com',
+      );
+      expect(root.querySelector<HTMLInputElement>('#cta-contact-budget')!.value).toBe(
+        '1 500 € maximum',
+      );
+      expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')!.value).toContain(
+        'mes créations',
+      );
+    }
+
+    enter(root, 'cta-contact-project', 'autre');
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe('autre');
+    root
+      .querySelector('#offer-site-dynamique')!
+      .closest('app-offer-card')!
+      .querySelector<HTMLAnchorElement>('.quote-link')!
+      .click();
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(
+      'site-dynamique',
+    );
+    expect(transport).not.toHaveBeenCalled();
+  });
+
+  it('offers help without assigning an offer or a budget', async () => {
+    const harness = await page();
+    const root = harness.routeNativeElement!;
+    const link = root.querySelector<HTMLAnchorElement>('.offer-help')!;
+    expect(link.getAttribute('href')).toBe('#contact');
+    link.click();
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe('');
+    expect(root.querySelector<HTMLInputElement>('#cta-contact-budget')!.value).toBe('');
+    expect(root.querySelector('#contact')?.getAttribute('tabindex')).toBe('-1');
+    expect(transport).not.toHaveBeenCalled();
+  });
+
+  it('preserves the draft while reading either legal page and returning to the offers', async () => {
+    const harness = await page();
+    await fill(harness);
+    for (const url of ['/confidentialite', '/mentions-legales']) {
+      await harness.navigateByUrl(url);
+      await harness.fixture.whenStable();
+      expect(harness.routeNativeElement!.querySelector('form')).toBeNull();
+      await harness.navigateByUrl('/#offres');
+      await harness.fixture.whenStable();
+      const root = harness.routeNativeElement!;
+      expect(root.querySelector<HTMLInputElement>('#cta-contact-email')!.value).toBe(
+        'elodie@example.com',
+      );
+      expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')!.value).toContain(
+        'mes créations',
+      );
+      expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(
+        'landing-page',
+      );
+    }
+    expect(transport).not.toHaveBeenCalled();
+  });
+
+  it('does not change the draft when opening an offer link in another tab', async () => {
+    const harness = await page();
+    const root = await fill(harness);
+    root
+      .querySelector('#offer-site-vitrine')!
+      .closest('app-offer-card')!
+      .querySelector<HTMLAnchorElement>('.quote-link')!
+      .dispatchEvent(new MouseEvent('click', { bubbles: true, ctrlKey: true, cancelable: true }));
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(
+      'landing-page',
+    );
+    expect(transport).not.toHaveBeenCalled();
+  });
 
   it('rejects invalid input without sending a request', async () => {
     const harness = await page();
@@ -69,6 +161,12 @@ describe('Contact form', () => {
     expect(root.querySelector<HTMLInputElement>('#cta-contact-lastname')?.value).toBe('');
     expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')?.value).toBe('');
     expect(root.querySelector('form a[href^="mailto:"]')).toBeNull();
+    await harness.navigateByUrl('/confidentialite');
+    await harness.navigateByUrl('/#contact');
+    await harness.fixture.whenStable();
+    expect(
+      harness.routeNativeElement!.querySelector<HTMLTextAreaElement>('#cta-contact-message')!.value,
+    ).toBe('');
   });
 
   it('preserves the message after a failure and allows a retry', async () => {
@@ -107,6 +205,15 @@ describe('Contact form', () => {
     harness.detectChanges();
     expect(root.querySelector<HTMLButtonElement>('form button')?.disabled).toBe(true);
     expect(root.querySelector<HTMLFieldSetElement>('form fieldset')?.disabled).toBe(true);
+    root
+      .querySelector('#offer-site-vitrine')!
+      .closest('app-offer-card')!
+      .querySelector<HTMLAnchorElement>('.quote-link')!
+      .click();
+    await harness.fixture.whenStable();
+    expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(
+      'landing-page',
+    );
     complete(new Response(JSON.stringify({ success: true })));
     await vi.waitFor(() => {
       harness.detectChanges();

@@ -1,7 +1,7 @@
 <article [style.--project-accent]="project().accent">
   <div class="project-preview">
     <img class="project-image" [ngSrc]="project().image.src" [alt]="project().image.alt" [width]="project().image.width"
-      [height]="project().image.height" />
+      [height]="project().image.height" loading="lazy" />
   </div>
   <div class="project-details">
     <p class="project-meta">{{ project().category }}</p>

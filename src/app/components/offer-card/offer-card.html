@@ -12,9 +12,9 @@
   <p class="scope-note">{{ offer().scopeNote }}</p>
 
   <h4>{{ offer().flexible ? 'Prestations possibles, sur devis' : 'Ce que comprend l’offre' }}</h4>
-  <ul class="feature-list">
+  <ul class="feature-list" [class.possible-features]="offer().flexible">
     @for (feature of offer().features; track feature) {
-    <li><span aria-hidden="true">✓</span>{{ feature }}</li>
+    <li><span aria-hidden="true">{{ offer().flexible ? '•' : '✓' }}</span>{{ feature }}</li>
     }
   </ul>
 
@@ -28,5 +28,8 @@
       }
     </ul>
   </details>
-
+  <a href="#contact" class="button button-primary quote-link"
+    [attr.aria-label]="'Discuter de ce projet : ' + offer().name" (click)="selectOffer($event)">
+    Discuter de ce projet <span aria-hidden="true">↗</span>
+  </a>
 </article>

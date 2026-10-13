@@ -252,6 +252,10 @@ section[id],
   text-transform: uppercase;
 }
 
+.section-label + .section-title {
+  margin-top: 0.85rem;
+}
+
 .section-description,
 .lead {
   max-width: 50ch;

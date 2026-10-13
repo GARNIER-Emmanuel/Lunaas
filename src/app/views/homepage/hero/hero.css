@@ -64,18 +64,18 @@ h1 {
 .hero-location {
   display: block;
   margin-top: 1.75rem;
-  color: var(--color-muted);
-  font-size: 1rem;
+  color: var(--color-ink);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.5;
-  font-weight: 450;
+  font-weight: 550;
   font-family: var(--font-sans);
 }
 
 .hero-summary {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 3rem;
+  justify-content: flex-start;
+  gap: clamp(2rem, 4vw, 4rem);
 }
 
 .hero-description {
@@ -152,7 +152,7 @@ h1 {
   }
 
   .hero-location {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
   }
 
   .hero-actions {

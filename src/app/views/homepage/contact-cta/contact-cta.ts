@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ContactFormComponent } from './contact-form/contact-form';
+import { OfferSelection } from '../../../shared/interfaces';
 @Component({
   selector: 'app-contact-cta',
   imports: [ContactFormComponent],
@@ -8,6 +9,8 @@ import { ContactFormComponent } from './contact-form/contact-form';
   styleUrl: './contact-cta.css',
 })
 export class ContactCta {
+  readonly offerSelection = input<OfferSelection | null>(null);
+
   protected revealImage(event: PointerEvent): void {
     if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
     const section = event.currentTarget as HTMLElement;

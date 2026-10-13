@@ -79,8 +79,17 @@ for (const [path, document] of pages) {
     if (!control.labels?.length && !control.getAttribute('aria-label'))
       fail('form control without label');
   }
-  for (const image of document.querySelectorAll('img'))
+  for (const image of document.querySelectorAll('img')) {
     if (!image.hasAttribute('alt')) fail('image without alt');
+    const url = new URL(image.src);
+    if (url.origin === origin) {
+      try {
+        await access(resolve(output, `.${url.pathname}`));
+      } catch {
+        fail(`missing image ${url.pathname}`);
+      }
+    }
+  }
   for (const link of document.querySelectorAll('a[href]')) {
     const url = new URL(link.href);
     if (url.origin !== origin) continue;

@@ -17,3 +17,7 @@ export interface ContactTopic {
   readonly id: string;
   readonly label: string;
 }
+
+export interface OfferSelection {
+  readonly offerId: string;
+}

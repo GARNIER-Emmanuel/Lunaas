@@ -1,4 +1,4 @@
-<section id="contact" class="content-section cta-section" aria-labelledby="cta-title"
+<section id="contact" class="content-section cta-section" aria-labelledby="cta-title" tabindex="-1"
   (pointermove)="revealImage($event)" (pointerleave)="hideImage($event)" (pointercancel)="hideImage($event)">
   <div class="cta-reveal" aria-hidden="true">
     <picture>
@@ -19,6 +19,8 @@
         parler.
       </p>
     </div>
-    <div class="cta-form-panel"><app-contact-form idPrefix="cta-contact" /></div>
+    <div class="cta-form-panel">
+      <app-contact-form idPrefix="cta-contact" [offerSelection]="offerSelection()" />
+    </div>
   </div>
 </section>

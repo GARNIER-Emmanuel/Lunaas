@@ -1,5 +1,6 @@
 <section id="offres" aria-labelledby="offers-title" class="services-section">
   <div class="page-container">
+    <p class="section-label" data-motion>Prestations et tarifs</p>
     <h2 id="offers-title" class="section-title" data-motion>Un besoin précis<br /><span class="font-script">Une
         réponse adaptée</span></h2>
     <p class="section-description" data-motion>
@@ -8,9 +9,12 @@
     </p>
     <div class="offers-grid">
       @for (offer of offers; track offer.id) {
-      <app-offer-card [offer]="offer" data-motion />
+      <app-offer-card [offer]="offer" (offerSelected)="offerSelected.emit($event)" data-motion />
       }
     </div>
+    <a href="#contact" class="text-link offer-help">
+      Je ne sais pas quelle offre choisir <span aria-hidden="true">↗</span>
+    </a>
     <p class="pricing-note">
       Prix de départ indicatifs. Le tarif final dépend du périmètre défini ensemble, sur devis.
       Le régime de TVA applicable et les éventuels frais de domaine, d’hébergement ou de maintenance

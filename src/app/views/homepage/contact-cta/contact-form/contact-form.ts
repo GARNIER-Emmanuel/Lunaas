@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  input,
+  signal,
+  untracked,
+} from '@angular/core';
 import {
   email,
   form,
@@ -8,9 +16,10 @@ import {
   required,
   validate,
 } from '@angular/forms/signals';
-import { ContactForm as ContactValues } from '../../../../shared/interfaces';
+import { OfferSelection } from '../../../../shared/interfaces';
 import { CONTACT_TOPICS, OFFER_DATA } from '../../../../shared/data';
 import { ContactService } from '../../../../shared/services/contact-service';
+import { ContactDraftService } from '../../../../shared/services/contact-draft-service';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -22,12 +31,14 @@ import { RouterLink } from '@angular/router';
 })
 export class ContactFormComponent {
   readonly idPrefix = input('contact');
+  readonly offerSelection = input<OfferSelection | null>(null);
   protected readonly offers = OFFER_DATA;
   protected readonly topics = CONTACT_TOPICS;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
   private readonly contactService = inject(ContactService);
-  protected readonly model = signal<ContactValues>(this.emptyModel());
+  private readonly draft = inject(ContactDraftService);
+  protected readonly model = this.draft.values;
   protected readonly contactForm = form(
     this.model,
     (path) => {
@@ -38,8 +49,9 @@ export class ContactFormComponent {
       email(path.email, { message: 'Indiquez une adresse e-mail valide.' });
       maxLength(path.email, 254);
       validate(path.projectType, ({ value }) =>
-        value() && !CONTACT_TOPICS.some((topic) => topic.id === value()) &&
-          !OFFER_DATA.some((offer) => offer.id === value())
+        value() &&
+        !CONTACT_TOPICS.some((topic) => topic.id === value()) &&
+        !OFFER_DATA.some((offer) => offer.id === value())
           ? { kind: 'project', message: 'Choisissez un sujet proposé.' }
           : undefined,
       );
@@ -62,7 +74,7 @@ export class ContactFormComponent {
           this.failed.set(false);
           try {
             await this.contactService.sendEmail(field().value());
-            field().reset(this.emptyModel());
+            field().reset(this.draft.emptyValues());
             this.feedback.set(
               'Votre message a été envoyé. Merci, je reviendrai vers vous pour échanger sur votre projet.',
             );
@@ -80,18 +92,19 @@ export class ContactFormComponent {
       },
     },
   );
+
+  constructor() {
+    effect(() => {
+      const selection = this.offerSelection();
+      if (!selection || !OFFER_DATA.some((offer) => offer.id === selection.offerId)) return;
+      untracked(() => {
+        if (this.contactForm().submitting()) return;
+        this.model.update((values) => ({ ...values, projectType: selection.offerId }));
+      });
+    });
+  }
+
   protected fieldId(name: string): string {
     return `${this.idPrefix()}-${name}`;
-  }
-  private emptyModel(): ContactValues {
-    return {
-      firstname: '',
-      lastname: '',
-      email: '',
-      projectType: '',
-      budget: '',
-      message: '',
-      botcheck: false,
-    };
   }
 }
