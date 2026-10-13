@@ -14,3 +14,7 @@
   border-top: 0;
   padding-block: clamp(5rem, 10vw, 10rem);
 }
+
+.section-description {
+  color: var(--color-ink);
+}
