@@ -11,10 +11,12 @@
     <div id="site-navigation" class="nav-links" [class.is-open]="menuOpen()">
       @for (link of links; track link.fragment) {
       <a routerLink="/" [fragment]="link.fragment" [class.active]="activeSection() === link.fragment"
-        [attr.aria-current]="activeSection() === link.fragment ? 'location' : null" class="nav-link" (click)="closeMenu()">{{ link.label }}</a>
+        [attr.aria-current]="activeSection() === link.fragment ? 'location' : null" class="nav-link"
+        (click)="closeMenu()">{{ link.label }}</a>
       }
-      <a routerLink="/" fragment="contact" class="button button-secondary nav-contact" (click)="closeMenu()">Parlons de votre projet
-        <span aria-hidden="true">↗</span></a>
+      <a routerLink="/" fragment="contact" class="button button-secondary nav-contact" (click)="closeMenu()">Parlons de
+        votre projet
+      </a>
     </div>
   </nav>
 </header>

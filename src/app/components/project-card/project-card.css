@@ -12,7 +12,7 @@ article {
   min-width: 0;
   padding: 0;
   overflow: hidden;
-  border: 4mm solid #000;
+  border: 1mm solid #000;
   border-radius: 1.75rem;
   background: #000;
 }

@@ -1,12 +1,7 @@
 <article [style.--project-accent]="project().accent">
   <div class="project-preview">
-    <img
-      class="project-image"
-      [ngSrc]="project().image.src"
-      [alt]="project().image.alt"
-      [width]="project().image.width"
-      [height]="project().image.height"
-    />
+    <img class="project-image" [ngSrc]="project().image.src" [alt]="project().image.alt" [width]="project().image.width"
+      [height]="project().image.height" />
   </div>
   <div class="project-details">
     <p class="project-meta">{{ project().category }}</p>
@@ -26,6 +21,6 @@
     </ul>
     <a [href]="project().live || project().repo || '#contact'"
       [attr.target]="project().live || project().repo ? '_blank' : null" rel="noopener noreferrer"
-      class="text-link project-link">Découvrir le projet <span aria-hidden="true">↗</span></a>
+      class="text-link project-link">Découvrir le projet</a>
   </div>
 </article>

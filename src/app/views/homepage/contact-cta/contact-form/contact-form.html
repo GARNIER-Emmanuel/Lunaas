@@ -101,7 +101,7 @@
   </p>
   <button type="submit" class="button button-primary" [disabled]="contactForm().submitting()">
     {{ contactForm().submitting() ? 'Envoi en cours…' : 'Envoyer mon message' }}
-    <span aria-hidden="true">↗</span>
+
   </button>
   @if (feedback()) {
   <div class="form-feedback" [class.is-error]="failed()" [attr.role]="failed() ? 'alert' : 'status'">

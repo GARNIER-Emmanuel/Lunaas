@@ -35,10 +35,7 @@ export const PROFILE_DATA: Profile = {
     'Spring Boot',
     'React',
     'Next.js',
-    'NestJS',
     'PostgreSQL',
-    'Symfony',
-    'PHP',
     'MySQL',
   ],
 };
