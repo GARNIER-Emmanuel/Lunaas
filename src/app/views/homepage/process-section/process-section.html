@@ -10,17 +10,17 @@
     </p>
     <ol class="steps" role="list">
       @for (step of steps; track step.id; let i = $index) {
-        <li data-motion>
-          <span class="step-number" aria-hidden="true">
-            0{{ i + 1 }}<span class="moon-phase" [attr.data-phase]="i"></span>
-          </span>
-          <h3>{{ step.title }}</h3>
-          <p>{{ step.description }}</p>
-        </li>
+      <li data-motion>
+        <span class="step-number" aria-hidden="true">
+          0{{ i + 1 }}<span class="moon-phase" [attr.data-phase]="i"></span>
+        </span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.description }}</p>
+      </li>
       }
     </ol>
     <a href="#offres" class="text-link" data-motion>
-      Explorer les prestations <span aria-hidden="true">↗</span>
+      Explorer les prestations
     </a>
   </div>
 </section>

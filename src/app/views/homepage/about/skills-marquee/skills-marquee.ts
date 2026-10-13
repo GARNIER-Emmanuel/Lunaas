@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-skills-marquee',
@@ -8,9 +8,4 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
 })
 export class SkillsMarquee {
   readonly skills = input.required<readonly string[]>();
-  protected readonly paused = signal(false);
-
-  protected togglePause(): void {
-    this.paused.update((paused) => !paused);
-  }
 }

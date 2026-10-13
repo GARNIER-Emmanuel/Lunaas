@@ -6,47 +6,6 @@
   padding-block: 1.25rem 1.75rem;
 }
 
-.skills-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-.skills-heading p {
-  color: var(--color-muted);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.pause-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding-inline: 0.75rem;
-  flex-shrink: 0;
-  border: 1px solid var(--color-line);
-  border-radius: 999px;
-  color: var(--color-muted);
-  font-size: 0.7rem;
-  cursor: pointer;
-}
-
-.pause-button:hover {
-  color: var(--color-ink);
-  border-color: var(--color-muted);
-}
-
-.pause-button svg {
-  width: 0.85rem;
-  height: 0.85rem;
-}
-
 .skills-viewport {
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 4rem, black calc(100% - 4rem), transparent);
@@ -84,8 +43,13 @@
   background: var(--color-accent);
 }
 
-.skills-track.is-paused {
+.skills-banner:focus-within .skills-track {
   animation-play-state: paused;
+}
+
+.skills-banner:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -116,7 +80,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pause-button,
   .skills-copy {
     display: none;
   }

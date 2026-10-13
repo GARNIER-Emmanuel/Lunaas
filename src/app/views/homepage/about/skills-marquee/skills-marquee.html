@@ -1,12 +1,6 @@
-<div class="skills-banner theme-dark" role="region" aria-labelledby="skills-banner-label">
-  <div class="page-container skills-heading">
-    <p id="skills-banner-label">Les technologies que je pratique</p>
-    <button type="button" class="pause-button" aria-controls="skills-track"
-      [attr.aria-label]="paused() ? 'Reprendre le défilement des compétences' : 'Mettre en pause le défilement des compétences'"
-      (click)="togglePause()">{{ paused() ? 'Reprendre' : 'Pause' }}</button>
-  </div>
+<div class="skills-banner theme-dark" role="region" aria-label="Les technologies que je pratique" tabindex="0">
   <div class="skills-viewport">
-    <div id="skills-track" class="skills-track" [class.is-paused]="paused()">
+    <div id="skills-track" class="skills-track">
       <ul class="skills-list" role="list">
         @for (skill of skills(); track skill) {
         <li><span class="skill-dot" aria-hidden="true"></span>{{ skill }}</li>
