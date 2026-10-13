@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
-import { MAINTENANCE_PLAN_DATA, MAINTENANCE_TERMS_DATA } from '../../../shared/data';
+import { LEGAL_BUSINESS_DATA, MAINTENANCE_PLAN_DATA, MAINTENANCE_TERMS_DATA } from '../../../shared/data';
 import { MaintenancePlanId } from '../../../shared/interfaces';
 
 @Component({
@@ -12,6 +12,7 @@ export class Maintenance {
   readonly offerSelected = output<MaintenancePlanId>();
   protected readonly plans = MAINTENANCE_PLAN_DATA;
   protected readonly terms = MAINTENANCE_TERMS_DATA;
+  protected readonly business = LEGAL_BUSINESS_DATA;
 
   protected price(amount: number): string {
     return new Intl.NumberFormat('fr-FR', {

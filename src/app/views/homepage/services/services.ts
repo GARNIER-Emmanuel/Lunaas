@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { OfferCard } from '../../../components/offer-card/offer-card';
-import { OFFER_DATA } from '../../../shared/data';
+import { LEGAL_BUSINESS_DATA, OFFER_DATA } from '../../../shared/data';
 
 @Component({
   selector: 'app-services',
@@ -12,4 +12,5 @@ import { OFFER_DATA } from '../../../shared/data';
 export class Services {
   readonly offerSelected = output<string>();
   protected readonly offers = OFFER_DATA;
+  protected readonly business = LEGAL_BUSINESS_DATA;
 }

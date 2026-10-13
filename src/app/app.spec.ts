@@ -89,6 +89,8 @@ describe('App', () => {
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactEmail);
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactPhone);
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.postalAddress);
+    expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.siren);
+    expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.siret);
     expect(root.querySelector('#contact form')).not.toBeNull();
     expect(root.querySelector('#about-title')?.textContent).toContain(
       LEGAL_BUSINESS_DATA.displayName,
@@ -96,25 +98,38 @@ describe('App', () => {
     expect(root.querySelector('footer a[href="/#contact"]')).not.toBeNull();
   });
 
-  it('does not present unconfirmed creation steps or tax status as completed', async () => {
+  it('shows validated registration while keeping declared VAT and unresolved hosting explicit', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/mentions-legales');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
     const status = root.querySelector('.registration-status')?.textContent?.replace(/\s+/g, ' ');
-    expect(status).toContain('a été déposée');
-    expect(status).toContain('en attente de validation');
-    expect(root.querySelector('#mentions-legales')?.textContent).toContain(
-      'application non confirmée',
-    );
+    expect(status).toContain('immatriculée au Registre national des entreprises (RNE)');
+    expect(status).toContain('13 octobre 2026');
+    expect(status).toContain('La formalité de création est validée');
+    expect(root.querySelector('.business-siren')?.textContent).toBe('131438228');
+    expect(root.querySelector('.business-siret')?.textContent).toBe('13143822800010');
+    const legalText = root.querySelector('#mentions-legales')?.textContent;
+    expect(legalText).toContain('Entrepreneur individuel (EI), micro-entreprise');
+    expect(legalText).toContain('6201Z');
+    expect(legalText).toContain('12 octobre 2026');
+    expect(legalText).toContain('Régime de TVA indiqué dans');
+    expect(legalText).toContain('Franchise en base de TVA');
+    expect(legalText).toContain('l’hébergeur effectif');
+    expect(legalText).not.toMatch(/en attente de validation|Statut envisagé/);
+    expect(legalText).not.toMatch(/Date de naissance|sécurité sociale|Micro BIC|Micro BNC|@gmail\.com/);
     expect(root.querySelector('a[href^="mailto:"]')?.textContent).toContain(
       LEGAL_BUSINESS_DATA.contactEmail,
     );
+    await router.navigateByUrl('/confidentialite');
+    await fixture.whenStable();
+    expect(root.querySelector('#confidentialite')?.textContent).toContain('entreprise');
+    expect(root.querySelector('#confidentialite')?.textContent).not.toContain('immatriculation restent à confirmer');
     await router.navigateByUrl('/');
     await fixture.whenStable();
-    expect(root.querySelector('.pricing-note')?.textContent).toContain('Franchise en base de TVA déclarée');
-    expect(root.querySelector('.pricing-note')?.textContent).toContain('application à confirmer');
+    expect(root.querySelector('.pricing-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
+    expect(root.querySelector('.maintenance-terms')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
   });
 
   it('shows launch packages and keeps the custom project on quote in the contact form', async () => {

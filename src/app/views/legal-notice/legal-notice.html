@@ -4,19 +4,28 @@
     <p class="section-label">Informations légales</p>
     <h1 id="mentions-legales-title">Mentions légales.</h1>
     <p class="lead">
-      Version de travail : les informations administratives doivent être complétées et vérifiées
-      avant la publication commerciale du site.
+      Identification de l’entreprise et coordonnées de l’éditeur. Les informations de l’hébergeur
+      restent à compléter avant publication commerciale.
     </p>
   </section>
   <article class="legal-content">
     <h2>Éditeur et contact</h2>
     <p>
-      {{ business.tradeName }} est le nom utilisé pour le projet d’activité porté par
-      {{ business.legalIdentity }}. Statut envisagé : {{ business.plannedStatus }}.
+      {{ business.tradeName }} est le nom commercial de {{ business.legalIdentity }},
+      entrepreneur individuel (EI). Statut : {{ business.legalStatus }}.
     </p>
     <p class="registration-status">
-      La formalité de création a été déposée et reste en attente de validation par l’Urssaf.
-      La validation finale de l’immatriculation reste à confirmer.
+      L’entreprise est immatriculée au Registre national des entreprises (RNE) depuis le
+      {{ business.registrationDate }}. La formalité de création est validée.
+    </p>
+    <ul class="business-identifiers">
+      <li>SIREN : <span class="business-siren">{{ business.siren }}</span>.</li>
+      <li>SIRET de l’établissement principal : <span class="business-siret">{{ business.siret }}</span>.</li>
+      <li>Code APE : {{ business.apeCode }}.</li>
+    </ul>
+    <p>
+      {{ business.activityNature }} : conception, développement, intégration et maintenance
+      de sites internet. Début d’activité : {{ business.activityStartDate }}.
     </p>
     <p>
       Contact légal : <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a
@@ -31,21 +40,16 @@
       >.
     </p>
     <p>
-      Directeur de la publication : {{ business.displayName }}. Régime de TVA déclaré :
-      {{ business.requestedVatRegime }}.
+      Directeur de la publication : {{ business.displayName }}. Régime de TVA indiqué dans
+      la formalité validée : {{ business.vatRegime }}.
     </p>
     <h2>Informations à finaliser</h2>
     <ul>
-      <li>
-        Situation réelle de la formalité, identifiants attribués et informations de registre
-        applicables.
-      </li>
-      <li>Confirmation du régime de TVA effectivement applicable.</li>
       <li>Nom ou dénomination, adresse et téléphone de l’hébergeur effectif du site.</li>
     </ul>
     <p>
-      Ces informations restent à renseigner avant publication. La marque et le formulaire de contact
-      ne remplacent pas l’identification légale de l’éditeur.
+      Ces coordonnées restent à renseigner avant publication. L’immatriculation de l’entreprise
+      ne confirme pas le choix ou la configuration de l’hébergement.
     </p>
     <h2>Contenus et visuels</h2>
     <p>
