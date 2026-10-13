@@ -125,7 +125,7 @@ describe('App', () => {
     expect(privacyText).not.toMatch(/@gmail\.com|messagerie reste à définir|restent à identifier/);
     await router.navigateByUrl('/');
     await fixture.whenStable();
-    expect(root.querySelector('.pricing-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
+    expect(root.querySelector('.pricing-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.vatRegime);
     expect(root.querySelector('.maintenance-tax-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
   });
 
