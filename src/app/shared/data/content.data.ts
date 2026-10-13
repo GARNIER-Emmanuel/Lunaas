@@ -41,11 +41,6 @@ export const PROFILE_DATA: Profile = {
 };
 export const FAQ_DATA: readonly FaqItem[] = [
   {
-    question: 'Combien coûte un site internet à Bordeaux ?',
-    answer:
-      'Les forfaits de lancement sont de 800 € pour une page commerciale jusqu’à six sections et de 1 400 € pour un site vitrine de trois pages commerciales. Les périmètres sont précisés au devis ; les pages et fonctionnalités supplémentaires ainsi que les projets sur mesure sont chiffrés séparément après cadrage. Domaine, hébergement et maintenance ne sont pas inclus dans ces forfaits.',
-  },
-  {
     question: 'Comment créer un site professionnel avec un petit budget ?',
     answer:
       'Pour démarrer avec un budget maîtrisé, un site d’une page peut suffire à présenter votre activité, vos prestations et vos coordonnées. Le forfait à 800 € couvre une page commerciale jusqu’à six sections. Vous fournissez les textes, les photos et le logo ; nous définissons ensemble les contenus essentiels et le périmètre au devis. Le domaine, l’hébergement, la maintenance et les fonctionnalités supplémentaires sont facturés séparément.',
@@ -77,9 +72,9 @@ export const FAQ_DATA: readonly FaqItem[] = [
   },
   {
     id: 'maintenance-faq',
-    question: 'Proposez-vous une maintenance ?',
+    question: 'Comment souscrire et démarrer un abonnement de maintenance ?',
     answer:
-      'Oui, deux abonnements facultatifs sont proposés aux professionnels pour les sites créés et livrés par Lunaas : Essentiel à 39 €/mois pour la surveillance et les contrôles mensuels, et Suivi à 79 €/mois avec jusqu’à 30 minutes de modifications simples, un bilan de fréquentation et un suivi basique de la visibilité dans Google. Aucun abonnement n’est inclus par défaut dans la création. La souscription passe par un échange et un accord distinct ; envoyer le formulaire ne souscrit aucun abonnement.',
+      'La souscription passe par un échange et un accord distinct ; envoyer le formulaire ne souscrit aucun abonnement. L’abonnement commence à la date convenue, après accord et réception du premier paiement. Aucun abonnement n’est inclus par défaut dans la création du site.',
   },
   {
     question: 'Puis-je résilier et conserver mon site ?',
@@ -87,18 +82,23 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Oui. Les abonnements sont sans engagement de durée. Vous pouvez résilier par e-mail à tout moment ; l’arrêt prend effet à la fin de la période payée. Vous conservez votre site conformément au contrat de création et la maîtrise de vos comptes de domaine et d’hébergement.',
   },
   {
-    question: 'Comment démarre et se paie un abonnement ?',
+    question: 'Comment demander une intervention et sous quel délai ?',
     answer:
-      'La facturation est mensuelle, payable à l’avance par virement. L’abonnement commence à la date convenue, après accord et réception du premier paiement. Les demandes d’intervention se font par e-mail à l’adresse professionnelle figurant dans les mentions légales.',
+      'Envoyez votre demande par e-mail à l’adresse professionnelle figurant dans les mentions légales. L’assistance est assurée les jours ouvrés, avec un accusé de réception sous deux jours ouvrés pour Essentiel et un jour ouvré pour Suivi. Ce délai concerne la prise en compte de votre demande ; le délai de résolution dépend de l’incident.',
   },
   {
-    question: 'Quelles modifications sont comprises dans Suivi ?',
+    question: 'Comment les minutes d’intervention sont-elles comptées ?',
     answer:
-      'Jusqu’à 30 minutes par mois pour des modifications simples de textes, d’images ou de coordonnées. Le temps effectif consacré à la demande comprend les vérifications et la publication ; il est compté séparément du diagnostic d’incident. Les minutes non utilisées ne sont pas reportables. Les nouvelles pages, fonctionnalités et refontes font l’objet d’un devis. Le suivi basique de Google consiste à consulter la visibilité du site dans les résultats disponibles ; il ne garantit aucun positionnement.',
+      'Le temps réellement consacré à une demande comprend les vérifications et la publication. Le diagnostic d’incident et les modifications de contenu de Suivi sont comptés séparément. Les minutes de modifications non utilisées ne sont pas reportables ; les nouvelles pages, fonctionnalités et refontes font l’objet d’un devis.',
   },
   {
     question: 'Que se passe-t-il si un incident dépasse le forfait ?',
     answer:
-      'Le diagnostic d’incident inclus dans les deux abonnements est limité à 15 minutes par mois. Les interventions hors forfait sont proposées à 70 €/heure après votre validation. Les contrôles mensuels, le diagnostic et les 30 minutes de modifications de l’offre Suivi sont des prestations distinctes. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement. Aucun délai de résolution ni disponibilité à 100 % n’est garanti.',
+      'Une intervention hors forfait est proposée après votre validation, sans correction illimitée ni garantie de disponibilité à 100 %. Les contrôles mensuels, le diagnostic et les modifications de contenu sont des prestations distinctes. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement.',
+  },
+  {
+    question: 'Faut-il un abonnement pour consulter les statistiques de mon site ?',
+    answer:
+      'Non, les statistiques de base peuvent être configurées et accessibles dès la livraison de votre site, sans abonnement. Suivi apporte leur analyse et un bilan mensuel. Son suivi basique de Google consiste à consulter la visibilité du site dans les résultats disponibles ; il ne garantit aucun positionnement.',
   },
 ];

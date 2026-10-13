@@ -123,9 +123,10 @@ li > span:first-child {
   white-space: pre-line;
 }
 
-.statistics-note {
-  border-left: 2px solid var(--color-accent);
-  padding-left: 1rem;
+.maintenance-tax-note {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 
 .maintenance-terms .text-link {

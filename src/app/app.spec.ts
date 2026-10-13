@@ -126,7 +126,7 @@ describe('App', () => {
     await router.navigateByUrl('/');
     await fixture.whenStable();
     expect(root.querySelector('.pricing-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
-    expect(root.querySelector('.maintenance-terms')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
+    expect(root.querySelector('.maintenance-tax-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
   });
 
   it('shows launch packages and keeps the custom project on quote in the contact form', async () => {
@@ -185,13 +185,13 @@ describe('App', () => {
       expect(card.textContent).toContain('15 minutes par mois');
       expect(card.textContent).toContain('Abonnement facultatif');
     }
-    expect(section.textContent).toContain('sans engagement de durée');
+    expect(section.textContent?.toLowerCase()).toContain('sans engagement de durée');
     expect(section.textContent).toContain('70 €/heure');
-    expect(section.textContent).toContain('sans abonnement');
+    expect(root.querySelector('app-faq')?.textContent).toContain('sans abonnement');
     expect(section.textContent).toContain('sites créés et livrés par Lunaas');
     expect(section.textContent).toContain('payable à l’avance par virement');
-    expect(section.textContent).toContain('après accord et premier paiement');
-    expect(section.textContent).toContain('Aucune garantie de disponibilité à 100 %');
+    expect(root.querySelector('#maintenance-faq')?.textContent).toContain('après accord et réception du premier paiement');
+    expect(root.querySelector('app-faq')?.textContent).toContain('sans correction illimitée ni garantie de disponibilité à 100 %');
     expect(root.querySelector('footer a[href="/#maintenance"]')).not.toBeNull();
     expect(root.querySelector('#maintenance-faq')).not.toBeNull();
     expect(root.querySelectorAll('form')).toHaveLength(1);
