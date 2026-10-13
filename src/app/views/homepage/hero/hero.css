@@ -78,6 +78,7 @@ h1 {
 
 .hero-description {
   max-width: 42ch;
+  white-space: pre-line;
   color: var(--color-muted);
   font-size: 1rem;
   line-height: 1.85;
