@@ -30,7 +30,7 @@ describe('App', () => {
     expect(compiled.querySelector('footer')).not.toBeNull();
   });
 
-  it('keeps the approved section order, nested experience and a single four-step method', async () => {
+  it('keeps the active section order and hides projects and about until their content is ready', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
@@ -51,29 +51,18 @@ describe('App', () => {
       ),
     ).toEqual([
       'app-hero',
-      'app-projects',
       'app-services',
       'app-maintenance',
       'app-process-section',
-      'app-about',
       'app-faq',
       'app-contact-cta',
     ]);
-    expect(compiled.querySelector('#a-propos #confiance')).not.toBeNull();
-    const about = compiled.querySelector('#a-propos')!;
-    const marquee = about.querySelector('app-skills-marquee')!;
-    expect(marquee).not.toBeNull();
-    expect(about.children[1]).toBe(marquee);
-    expect(about.children[0].querySelector('.profile-portrait')).not.toBeNull();
-    expect(about.children[2].querySelector('#confiance')).not.toBeNull();
-    expect(about.querySelector('.profile-skills')).toBeNull();
-    const skillsBanner = marquee.querySelector<HTMLElement>('.skills-banner')!;
-    expect(skillsBanner.getAttribute('aria-label')).toBe('Les technologies que je pratique');
-    expect(skillsBanner.tabIndex).toBe(0);
-    expect(marquee.querySelector('.skills-copy')?.getAttribute('aria-hidden')).toBe('true');
+    expect(compiled.querySelector('app-projects, app-about')).toBeNull();
+    expect(compiled.querySelector('#realisations, #a-propos, #confiance')).toBeNull();
+    expect(compiled.querySelector('a[href$="#realisations"], a[href$="#a-propos"], a[href$="#confiance"]')).toBeNull();
     expect(
       [...compiled.querySelectorAll('#site-navigation a')].map((link) => link.textContent?.trim()),
-    ).toEqual(['Réalisations', 'Tarifs', 'Méthode', 'Contact']);
+    ).toEqual(['Tarifs', 'Méthode', 'Contact']);
     expect(approach?.querySelectorAll('ol > li')).toHaveLength(4);
     expect(compiled.querySelector('#methode')?.contains(approach)).toBe(true);
   });
@@ -92,9 +81,6 @@ describe('App', () => {
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.siren);
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.siret);
     expect(root.querySelector('#contact form')).not.toBeNull();
-    expect(root.querySelector('#about-title')?.textContent).toContain(
-      LEGAL_BUSINESS_DATA.displayName,
-    );
     expect(root.querySelector('footer a[href="/#contact"]')).not.toBeNull();
   });
 

@@ -2,18 +2,18 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Hero } from './hero/hero';
 import { Services } from './services/services';
 import { Maintenance } from './maintenance/maintenance';
-import { Projects } from './projects/projects';
+// import { Projects } from './projects/projects';
 import { ProcessSection } from './process-section/process-section';
 import { Faq } from './faq/faq';
 import { ContactCta } from './contact-cta/contact-cta';
-import { About } from './about/about';
+// import { About } from './about/about';
 import { PageMotion } from '../../shared/directives/page-motion';
 import { OfferSelection } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-homepage',
   hostDirectives: [PageMotion],
-  imports: [Hero, Services, Maintenance, Projects, ProcessSection, Faq, About, ContactCta],
+  imports: [Hero, Services, Maintenance, ProcessSection, Faq, ContactCta],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
