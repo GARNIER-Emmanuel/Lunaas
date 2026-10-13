@@ -241,6 +241,13 @@ section[id],
   margin-top: 1rem;
 }
 
+.legal-page .lead,
+.legal-content p,
+.legal-content li {
+  text-align: justify;
+  hyphens: auto;
+}
+
 .legal-content ul {
   padding-left: 1.5rem;
   list-style: disc;
