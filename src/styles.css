@@ -3,6 +3,14 @@
 /* Les ancres natives conservent le # dans l’URL et l’historique du navigateur. */
 html {
   scroll-behavior: smooth;
+  --anchor-offset: 6.75rem;
+  --section-padding: clamp(4.5rem, 9vw, 9rem);
+}
+
+@media (max-width: 1200px) {
+  html {
+    --anchor-offset: 6rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -181,14 +189,27 @@ main:focus-visible {
 }
 
 .content-section {
-  padding-block: clamp(4.5rem, 9vw, 9rem);
+  padding-block: var(--section-padding);
   border-top: 1px solid var(--color-line);
   scroll-margin-top: 7rem;
 }
 
 section[id],
 #main-content {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: var(--anchor-offset);
+}
+
+/* Les URL restent inchangées ; l'arrivée s'aligne sur le petit libellé. */
+#offres,
+#maintenance,
+#approche,
+#methode,
+#faq {
+  scroll-margin-top: calc(var(--anchor-offset) - var(--section-padding) - 1px);
+}
+
+#contact {
+  scroll-margin-top: calc(var(--anchor-offset) - var(--cta-title-offset, calc(clamp(5rem, 10vw, 10rem) + 1.5rem)));
 }
 
 .legal-page {
@@ -303,11 +324,14 @@ section[id],
 }
 
 @media (max-width: 640px) {
+  html {
+    --section-padding: 4.5rem;
+  }
   .page-heading h1 {
     font-size: clamp(2.6rem, 10.5vw, 4rem);
   }
 
   .content-section {
-    padding-block: 4.5rem;
+    padding-block: var(--section-padding);
   }
 }

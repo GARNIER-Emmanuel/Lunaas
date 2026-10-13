@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { Router, RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 import { SeoService } from './shared/services/seo-service';
@@ -16,7 +16,14 @@ export class App {
   private readonly seo = inject(SeoService);
 
   constructor() {
-    // Même marge de 7 rem que les ancres CSS, pour laisser le header visible.
-    inject(ViewportScroller).setOffset([0, 112]);
+    const document = inject(DOCUMENT);
+    const router = inject(Router);
+    // Angular et les liens natifs utilisent le même décalage responsive.
+    inject(ViewportScroller).setOffset(() => {
+      const fragment = router.parseUrl(router.url).fragment;
+      const target = fragment ? document.getElementById(fragment) : null;
+      const view = document.defaultView;
+      return [0, target && view ? parseFloat(view.getComputedStyle(target).scrollMarginTop) || 0 : 0];
+    });
   }
 }
