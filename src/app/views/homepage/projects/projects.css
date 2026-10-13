@@ -2,4 +2,15 @@
   display: grid;
   gap: 3rem;
   margin-block: 3.5rem 2rem;
+
+}
+
+
+.content-section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--color-lavender);
+  border-top: 0;
+  padding-block: clamp(5rem, 10vw, 10rem);
 }
