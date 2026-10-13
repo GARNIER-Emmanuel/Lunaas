@@ -77,3 +77,13 @@
     gap: 2rem;
   }
 }
+.analytics-preferences {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-align: left;
+}
+.analytics-preferences:hover { text-decoration: underline; }

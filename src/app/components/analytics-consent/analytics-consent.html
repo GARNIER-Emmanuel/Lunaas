@@ -1,0 +1,14 @@
+@if (consent.visible()) {
+  <section id="analytics-consent-panel" class="consent-panel" aria-labelledby="analytics-choice-title">
+    <div>
+      <h2 id="analytics-choice-title">Statistiques de visite</h2>
+      <p>Autorisez-vous Cloudflare Web Analytics à mesurer les visites et les performances du site ?
+        Votre choix ne change pas l’accès au site.
+        <a routerLink="/confidentialite">En savoir plus</a></p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" class="button" (click)="consent.choose('refused')">Refuser</button>
+      <button type="button" class="button" (click)="consent.choose('accepted')">Accepter</button>
+    </div>
+  </section>
+}

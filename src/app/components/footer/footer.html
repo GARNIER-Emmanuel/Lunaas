@@ -18,6 +18,8 @@
     <div>
       <a routerLink="/mentions-legales">Mentions légales</a>
       <a routerLink="/confidentialite">Confidentialité</a>
+      <button type="button" class="analytics-preferences" aria-controls="analytics-consent-panel"
+        [attr.aria-expanded]="consent.visible()" (click)="consent.open()">Gérer mes statistiques</button>
     </div>
   </div>
 </footer>
