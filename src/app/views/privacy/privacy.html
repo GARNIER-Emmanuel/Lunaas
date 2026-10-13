@@ -4,10 +4,8 @@
     <p class="section-label">Vos données</p>
     <h1 id="confidentialite-title">Confidentialité.</h1>
     <p class="lead">
-      Ce document décrit l’envoi des demandes depuis le formulaire actuel du site. Les informations
-      relatives à la conservation dans la messagerie et à la configuration des prestataires
-      restent à confirmer avant publication. L’identification de l’entreprise a été actualisée
-      le 13 octobre 2026 ; les informations techniques ont été vérifiées le 12 octobre 2026.
+      Cette politique décrit le traitement des demandes de contact et les règles de conservation
+      retenues pour l’activité Lunaas. Mise à jour le 13 octobre 2026.
     </p>
   </section>
   <article class="legal-content">
@@ -48,16 +46,22 @@
     </ul>
     <p>
       Le formulaire n’inscrit pas à une newsletter et ne déclenche pas de prospection automatique.
-      L’évaluation de l’intérêt légitime et les pratiques de traitement doivent être confirmées par
-      le responsable de l’activité avant publication.
+      Les données sont utilisées pour traiter les demandes reçues et gérer les relations avec
+      les clients professionnels, ainsi que pour respecter les obligations légales et conserver
+      les justificatifs nécessaires aux engagements contractuels.
     </p>
     <h2>Destinataires et prestataires</h2>
     <p>
       Les demandes sont destinées au responsable de l’activité. Web3Forms, opéré par Web3Creative,
       les traite pour les acheminer vers la messagerie configurée. Le prestataire utilise des
       sous-traitants pour l’hébergement, la livraison des e-mails et la lutte contre le spam. Ces
-      traitements peuvent inclure l’adresse IP et l’e-mail de l’expéditeur. Le fournisseur de la
-      messagerie et l’hébergeur du site restent à identifier.
+      traitements peuvent inclure l’adresse IP et l’e-mail de l’expéditeur.
+    </p>
+    <p>
+      Le site est hébergé par {{ business.hosting.name }}. Les messages adressés à
+      <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a> sont redirigés
+      par {{ business.emailRoutingProvider }} vers une boîte {{ business.mailProvider }} utilisée
+      pour gérer les demandes. L’adresse de destination reste privée et n’est pas publiée.
     </p>
     <h2>Transferts internationaux</h2>
     <p>
@@ -70,11 +74,34 @@
       garanties à la configuration utilisée doit encore être vérifiée ; leur présence ne constitue
       pas une validation de conformité de ce site.
     </p>
+    <p>
+      Cloudflare et Google peuvent également traiter des données hors de l’Espace économique
+      européen. Leurs informations sont consultables dans les
+      <a [href]="business.hosting.privacyPolicy" target="_blank" rel="noopener noreferrer">règles de confidentialité de Cloudflare</a>
+      et les <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener noreferrer">règles de confidentialité de Google</a>.
+      Les garanties applicables dépendent des services et comptes utilisés.
+    </p>
     <h2>Conservation</h2>
     <p>
       Dans le navigateur, la saisie est effacée après un envoi confirmé ou le rechargement de la
-      page. La durée de conservation des demandes reçues dans la messagerie reste à définir, ainsi
-      que les règles distinctes applicables aux devis et aux dossiers clients.
+      page. Les règles suivantes s’appliquent aux copies conservées par Lunaas dans sa messagerie
+      et ses archives :
+    </p>
+    <ul class="retention-policy">
+      <li>Simple demande de contact sans suite et sans devis établi :
+        {{ business.dataRetention.unansweredEnquiryMonths }} mois après le dernier échange, puis suppression.</li>
+      <li>Dossier client en cours : pendant la réalisation et le suivi du contrat.</li>
+      <li>Devis, contrats et échanges nécessaires pour prouver les engagements : archivage séparé
+        pendant {{ business.dataRetention.commercialDocumentYears }} ans, selon la nature du document
+        et le délai applicable.</li>
+      <li>Factures et pièces comptables : {{ business.dataRetention.accountingDocumentYears }} ans
+        à compter de la clôture de l’exercice concerné.</li>
+    </ul>
+    <p>
+      Un tri mensuel est prévu pour supprimer les anciennes demandes sans suite et séparer les
+      documents contractuels et comptables des échanges courants. Les archives sont réservées
+      aux besoins légaux et à la preuve des engagements ; leur conservation peut être adaptée
+      lorsqu’une obligation particulière ou un litige le justifie.
     </p>
     <p>
       Le DPA de Web3Forms décrit une conservation technique des soumissions de trois ans. Sa
@@ -83,6 +110,8 @@
       >
       précise que le forfait ou une suppression peuvent entraîner une durée plus courte. La durée
       effective du compte utilisé et les modalités de suppression restent à confirmer.
+      La suppression d’un e-mail dans la messagerie ne supprime pas automatiquement la soumission
+      chez Web3Forms. La conservation du prestataire est distincte des délais appliqués par Lunaas.
     </p>
     <h2>Vos demandes concernant les données</h2>
     <p>
@@ -115,7 +144,7 @@
     <h2>Cookies et hébergement</h2>
     <p>
       Le code actuel n’intègre pas de cookies d’analyse, de publicité ou de suivi. Les polices et
-      les images sont servies localement. L’hébergeur et les prestataires peuvent traiter des
+      les images sont servies localement. Cloudflare et les prestataires peuvent traiter des
       données techniques, notamment dans leurs journaux ; leurs modalités et les éventuels traceurs
       de l’environnement hébergé restent à vérifier avant publication.
     </p>
@@ -127,8 +156,7 @@
         target="_blank"
         rel="noopener noreferrer"
         >CNIL explique les informations à fournir lors d’une collecte de données</a
-      >. Ce document sera mis à jour lorsque les informations manquantes seront confirmées ou si le
-      fonctionnement du contact change.
+      >. Ce document sera mis à jour si les traitements ou les services utilisés évoluent.
     </p>
   </article>
 </div>

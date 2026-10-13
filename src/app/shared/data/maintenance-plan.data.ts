@@ -38,7 +38,12 @@ export const MAINTENANCE_PLAN_DATA: readonly MaintenancePlan[] = [
 
 export const MAINTENANCE_TERMS_DATA = {
   cancellation:
-    'Abonnements facultatifs, sans engagement de durée. Résiliation à tout moment, effective à la fin de la période payée. Assistance les jours ouvrés uniquement.',
+    'Abonnements facultatifs, sans engagement de durée. Résiliation par e-mail à tout moment, effective à la fin de la période payée. Assistance les jours ouvrés uniquement.',
+  eligibility: 'Pour les clients professionnels et les sites créés et livrés par Lunaas.',
+  payment:
+    'Facturation mensuelle, payable à l’avance par virement. Démarrage à la date convenue, après accord et premier paiement.',
+  support:
+    'Demandes d’intervention par e-mail à l’adresse professionnelle indiquée dans les mentions légales. Le temps effectif comprend les vérifications et la publication ; diagnostic et modifications sont comptés séparément.',
   response:
     'Les délais annoncés concernent l’accusé de réception de votre demande. Le délai de résolution dépend de l’incident. Aucune garantie de disponibilité à 100 % ni intervention ou correction illimitée.',
   extraCosts:

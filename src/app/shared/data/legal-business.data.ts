@@ -19,4 +19,22 @@ export const LEGAL_BUSINESS_DATA: LegalBusiness = {
   vatRegime: 'Franchise en base de TVA',
   pricingTaxNote:
     'Franchise en base de TVA indiquée dans la formalité validée ; modalités fiscales précisées au devis.',
+  audience: 'Prestations réservées aux clients professionnels.',
+  clientInfrastructureNote:
+    'Le domaine et l’hébergement sont souscrits par le client sur ses propres comptes. Lunaas accompagne leur création et leur configuration. Le client conserve la maîtrise de ses comptes après la livraison et après l’arrêt éventuel de la maintenance.',
+  mailProvider: 'Gmail',
+  emailRoutingProvider: 'Cloudflare Email Routing',
+  // Coordonnées publiques vérifiées dans les conditions et la politique de Cloudflare.
+  hosting: {
+    name: 'Cloudflare, Inc.',
+    address: '101 Townsend Street, San Francisco, CA 94107, États-Unis',
+    phone: '+1 650 319 8930',
+    website: 'https://www.cloudflare.com/',
+    privacyPolicy: 'https://www.cloudflare.com/privacypolicy/',
+  },
+  dataRetention: {
+    unansweredEnquiryMonths: 12,
+    commercialDocumentYears: 5,
+    accountingDocumentYears: 10,
+  },
 };

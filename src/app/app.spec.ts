@@ -84,7 +84,7 @@ describe('App', () => {
     expect(root.querySelector('footer a[href="/#contact"]')).not.toBeNull();
   });
 
-  it('shows validated registration while keeping declared VAT and unresolved hosting explicit', async () => {
+  it('shows validated registration, declared VAT and the confirmed hosting and privacy rules', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/mentions-legales');
@@ -102,7 +102,10 @@ describe('App', () => {
     expect(legalText).toContain('12 octobre 2026');
     expect(legalText).toContain('Régime de TVA indiqué dans');
     expect(legalText).toContain('Franchise en base de TVA');
-    expect(legalText).toContain('l’hébergeur effectif');
+    expect(legalText).toContain('Cloudflare, Inc.');
+    expect(legalText).toContain('101 Townsend Street');
+    expect(legalText).toContain('Prestations réservées aux clients professionnels');
+    expect(legalText).toContain('ses propres comptes');
     expect(legalText).not.toMatch(/en attente de validation|Statut envisagé/);
     expect(legalText).not.toMatch(/Date de naissance|sécurité sociale|Micro BIC|Micro BNC|@gmail\.com/);
     expect(root.querySelector('a[href^="mailto:"]')?.textContent).toContain(
@@ -112,6 +115,14 @@ describe('App', () => {
     await fixture.whenStable();
     expect(root.querySelector('#confidentialite')?.textContent).toContain('entreprise');
     expect(root.querySelector('#confidentialite')?.textContent).not.toContain('immatriculation restent à confirmer');
+    const privacyText = root.querySelector('#confidentialite')?.textContent?.replace(/\s+/g, ' ');
+    expect(privacyText).toContain('Cloudflare Email Routing');
+    expect(privacyText).toContain('Gmail');
+    expect(privacyText).toContain('12 mois après le dernier échange');
+    expect(privacyText).toContain('pendant 5 ans');
+    expect(privacyText).toContain('10 ans à compter de la clôture');
+    expect(privacyText).toContain('conservation du prestataire est distincte');
+    expect(privacyText).not.toMatch(/@gmail\.com|messagerie reste à définir|restent à identifier/);
     await router.navigateByUrl('/');
     await fixture.whenStable();
     expect(root.querySelector('.pricing-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
@@ -177,6 +188,9 @@ describe('App', () => {
     expect(section.textContent).toContain('sans engagement de durée');
     expect(section.textContent).toContain('70 €/heure');
     expect(section.textContent).toContain('sans abonnement');
+    expect(section.textContent).toContain('sites créés et livrés par Lunaas');
+    expect(section.textContent).toContain('payable à l’avance par virement');
+    expect(section.textContent).toContain('après accord et premier paiement');
     expect(section.textContent).toContain('Aucune garantie de disponibilité à 100 %');
     expect(root.querySelector('footer a[href="/#maintenance"]')).not.toBeNull();
     expect(root.querySelector('#maintenance-faq')).not.toBeNull();

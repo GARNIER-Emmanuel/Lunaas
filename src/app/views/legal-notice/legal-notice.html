@@ -4,8 +4,7 @@
     <p class="section-label">Informations légales</p>
     <h1 id="mentions-legales-title">Mentions légales.</h1>
     <p class="lead">
-      Identification de l’entreprise et coordonnées de l’éditeur. Les informations de l’hébergeur
-      restent à compléter avant publication commerciale.
+      Identification de l’entreprise, coordonnées de l’éditeur et informations sur l’hébergement.
     </p>
   </section>
   <article class="legal-content">
@@ -43,14 +42,21 @@
       Directeur de la publication : {{ business.displayName }}. Régime de TVA indiqué dans
       la formalité validée : {{ business.vatRegime }}.
     </p>
-    <h2>Informations à finaliser</h2>
-    <ul>
-      <li>Nom ou dénomination, adresse et téléphone de l’hébergeur effectif du site.</li>
-    </ul>
-    <p>
-      Ces coordonnées restent à renseigner avant publication. L’immatriculation de l’entreprise
-      ne confirme pas le choix ou la configuration de l’hébergement.
+    <h2>Hébergement</h2>
+    <p class="hosting-information">
+      Hébergeur : {{ business.hosting.name }}.<br />
+      Adresse : {{ business.hosting.address }}.<br />
+      Téléphone :
+      <a [href]="'tel:' + business.hosting.phone.replaceAll(' ', '')">{{ business.hosting.phone }}</a>.<br />
+      Site : <a [href]="business.hosting.website" target="_blank" rel="noopener noreferrer">Cloudflare</a>.
     </p>
+    <p>
+      La politique de confidentialité de l’hébergeur est disponible sur
+      <a [href]="business.hosting.privacyPolicy" target="_blank" rel="noopener noreferrer">le site de Cloudflare</a>.
+    </p>
+    <h2>Clientèle et comptes des sites livrés</h2>
+    <p>{{ business.audience }}</p>
+    <p>{{ business.clientInfrastructureNote }}</p>
     <h2>Contenus et visuels</h2>
     <p>
       Les réalisations sont présentées selon leur nature. Les marques et outils cités appartiennent

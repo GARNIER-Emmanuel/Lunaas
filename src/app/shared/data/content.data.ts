@@ -56,9 +56,14 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Oui, le design responsive est prévu dans les offres. Le site est conçu pour s’adapter aux écrans mobiles, aux tablettes et aux ordinateurs.',
   },
   {
+    question: 'À qui s’adressent les prestations Lunaas ?',
+    answer:
+      'Les prestations sont réservées aux clients professionnels : artisans, indépendants et entreprises qui commandent un site pour leur activité. Le formulaire reste accessible pour toute question ou demande concernant les données personnelles.',
+  },
+  {
     question: 'Le nom de domaine et l’hébergement sont-ils inclus ?',
     answer:
-      'Non, le nom de domaine et l’hébergement sont séparés du forfait de création. Leur fournisseur, leurs coûts et les éventuels abonnements sont définis au cadrage et précisés au devis.',
+      `Non, le nom de domaine et l’hébergement sont séparés du forfait de création. Leur fournisseur, leurs coûts et les éventuels abonnements sont définis au cadrage et précisés au devis. ${LEGAL_BUSINESS_DATA.clientInfrastructureNote}`,
   },
   {
     question: 'Qui prépare les textes et les photos ?',
@@ -79,17 +84,22 @@ export const FAQ_DATA: readonly FaqItem[] = [
     id: 'maintenance-faq',
     question: 'Proposez-vous une maintenance ?',
     answer:
-      'Oui, deux abonnements facultatifs sont proposés après la mise en ligne : Essentiel à 39 €/mois pour la surveillance et les contrôles mensuels, et Suivi à 79 €/mois avec jusqu’à 30 minutes de modifications simples, un bilan de fréquentation et un suivi basique de la visibilité dans Google. Aucun abonnement n’est inclus par défaut dans la création. La souscription passe par un échange et un accord distinct ; envoyer le formulaire ne souscrit aucun abonnement.',
+      'Oui, deux abonnements facultatifs sont proposés aux professionnels pour les sites créés et livrés par Lunaas : Essentiel à 39 €/mois pour la surveillance et les contrôles mensuels, et Suivi à 79 €/mois avec jusqu’à 30 minutes de modifications simples, un bilan de fréquentation et un suivi basique de la visibilité dans Google. Aucun abonnement n’est inclus par défaut dans la création. La souscription passe par un échange et un accord distinct ; envoyer le formulaire ne souscrit aucun abonnement.',
   },
   {
     question: 'Puis-je résilier et conserver mon site ?',
     answer:
-      'Oui. Les abonnements sont sans engagement de durée. Vous pouvez résilier à tout moment ; l’arrêt prend effet à la fin de la période payée. Vous conservez votre site conformément au contrat de création.',
+      'Oui. Les abonnements sont sans engagement de durée. Vous pouvez résilier par e-mail à tout moment ; l’arrêt prend effet à la fin de la période payée. Vous conservez votre site conformément au contrat de création et la maîtrise de vos comptes de domaine et d’hébergement.',
+  },
+  {
+    question: 'Comment démarre et se paie un abonnement ?',
+    answer:
+      'La facturation est mensuelle, payable à l’avance par virement. L’abonnement commence à la date convenue, après accord et réception du premier paiement. Les demandes d’intervention se font par e-mail à l’adresse professionnelle figurant dans les mentions légales.',
   },
   {
     question: 'Quelles modifications sont comprises dans Suivi ?',
     answer:
-      'Jusqu’à 30 minutes par mois pour des modifications simples de textes, d’images ou de coordonnées. Les minutes non utilisées ne sont pas reportables. Les nouvelles pages, fonctionnalités et refontes font l’objet d’un devis. Le suivi basique de Google consiste à consulter la visibilité du site dans les résultats disponibles ; il ne garantit aucun positionnement.',
+      'Jusqu’à 30 minutes par mois pour des modifications simples de textes, d’images ou de coordonnées. Le temps effectif consacré à la demande comprend les vérifications et la publication ; il est compté séparément du diagnostic d’incident. Les minutes non utilisées ne sont pas reportables. Les nouvelles pages, fonctionnalités et refontes font l’objet d’un devis. Le suivi basique de Google consiste à consulter la visibilité du site dans les résultats disponibles ; il ne garantit aucun positionnement.',
   },
   {
     question: 'Que se passe-t-il si un incident dépasse le forfait ?',
