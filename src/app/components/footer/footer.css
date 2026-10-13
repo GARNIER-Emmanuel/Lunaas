@@ -15,9 +15,15 @@
 }
 
 .footer-brand {
-  font-size: clamp(2.75rem, 6vw, 5.5rem);
-  font-weight: 550;
-  letter-spacing: -0.06em;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.footer-brand img {
+  display: block;
+  width: min(100%, 25rem);
+  height: auto;
+  mix-blend-mode: lighten;
 }
 
 .footer-main p {

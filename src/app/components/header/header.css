@@ -19,18 +19,12 @@ header {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  font-size: 1.85rem;
-  font-weight: 750;
-  letter-spacing: -0.08em;
 }
-.brand svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 0.65rem;
-  color: var(--color-accent);
-}
-.brand-dot {
-  color: var(--color-accent);
+.brand img {
+  display: block;
+  width: 11.5rem;
+  height: auto;
+  mix-blend-mode: lighten;
 }
 .nav-links {
   display: flex;
@@ -118,6 +112,11 @@ header {
   }
   .nav-contact {
     margin-top: 0.8rem;
+  }
+}
+@media (max-width: 640px) {
+  .brand img {
+    width: 9.5rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {

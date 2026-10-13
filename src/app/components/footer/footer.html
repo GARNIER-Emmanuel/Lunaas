@@ -1,7 +1,9 @@
 ﻿<footer class="footer theme-dark">
   <div class="page-container footer-main">
     <div>
-      <a href="#accueil" class="footer-brand">{{ site.name }}</a>
+      <a href="#accueil" class="footer-brand" aria-label="Lunaas — Accueil">
+        <img ngSrc="/images/brand/lunaas-logo-dark.png" width="960" height="320" [alt]="site.name" loading="lazy" />
+      </a>
       <p>{{ site.tagline }}</p>
     </div>
     <nav aria-label="Navigation de pied de page">

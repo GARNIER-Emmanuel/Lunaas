@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,6 +11,7 @@ import { NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
 
 @Component({
   selector: 'app-header',
+  imports: [NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.html',
   styleUrl: './header.css',

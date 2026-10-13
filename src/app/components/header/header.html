@@ -1,10 +1,7 @@
 <header class="theme-dark">
   <nav aria-label="Navigation principale" class="page-container navigation">
     <a href="#accueil" class="brand" aria-label="Lunaas — Accueil" (click)="closeMenu()">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M25 24A13 13 0 0 1 10 4a13 13 0 1 0 15 20Z" fill="currentColor" />
-      </svg>
-      {{ site.name }}<span class="brand-dot"></span>
+      <img ngSrc="/images/brand/lunaas-logo-dark.png" width="960" height="320" [alt]="site.name" priority />
     </a>
     <button #menuToggle class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()"
       aria-controls="site-navigation" [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
