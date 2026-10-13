@@ -212,3 +212,7 @@ summary:focus-visible {
     transition: none;
   }
 }
+.quote-link {
+  justify-content: center;
+  text-align: center;
+}
