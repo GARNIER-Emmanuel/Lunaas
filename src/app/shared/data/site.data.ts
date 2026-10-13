@@ -9,6 +9,6 @@ export const SITE_DATA: Site = {
     headline: 'Votre activité',
     highlight: 'Votre nouvelle dimension',
     description:
-      'Un site clair pour présenter votre activité et faciliter la prise de contact. Je vous accompagne du premier échange à la mise en ligne.',
+      'Développeur web freelance à Bordeaux, je crée des sites pour les artisans, indépendants et petites entreprises. Site une page dès 800 €, site vitrine dès 1 400 €.',
   },
 };

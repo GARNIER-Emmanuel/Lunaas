@@ -41,9 +41,14 @@ export const PROFILE_DATA: Profile = {
 };
 export const FAQ_DATA: readonly FaqItem[] = [
   {
-    question: 'Combien coûte la création d’un site internet ?',
+    question: 'Combien coûte un site internet à Bordeaux ?',
     answer:
       'Les forfaits de lancement sont de 800 € pour une page commerciale jusqu’à six sections et de 1 400 € pour un site vitrine de trois pages commerciales. Les périmètres sont précisés au devis ; les pages et fonctionnalités supplémentaires ainsi que les projets sur mesure sont chiffrés séparément après cadrage. Domaine, hébergement et maintenance ne sont pas inclus dans ces forfaits.',
+  },
+  {
+    question: 'Comment créer un site professionnel avec un petit budget ?',
+    answer:
+      'Pour démarrer avec un budget maîtrisé, un site d’une page peut suffire à présenter votre activité, vos prestations et vos coordonnées. Le forfait à 800 € couvre une page commerciale jusqu’à six sections. Vous fournissez les textes, les photos et le logo ; nous définissons ensemble les contenus essentiels et le périmètre au devis. Le domaine, l’hébergement, la maintenance et les fonctionnalités supplémentaires sont facturés séparément.',
   },
   {
     question: 'Combien de temps faut-il pour créer un site ?',
@@ -61,9 +66,9 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Les prestations sont réservées aux clients professionnels : artisans, indépendants et entreprises qui commandent un site pour leur activité. Le formulaire reste accessible pour toute question ou demande concernant les données personnelles.',
   },
   {
-    question: 'Le nom de domaine et l’hébergement sont-ils inclus ?',
+    question: 'Le domaine, l’hébergement et la maintenance sont-ils inclus ?',
     answer:
-      `Non, le nom de domaine et l’hébergement sont séparés du forfait de création. Leur fournisseur, leurs coûts et les éventuels abonnements sont définis au cadrage et précisés au devis. ${LEGAL_BUSINESS_DATA.clientInfrastructureNote}`,
+      `Non, le domaine, l’hébergement et la maintenance sont séparés du forfait de création. Le fournisseur et les coûts du domaine et de l’hébergement sont définis au cadrage et précisés au devis. La maintenance est facultative et fait l’objet d’un accord distinct ; aucun abonnement n’est souscrit par défaut. ${LEGAL_BUSINESS_DATA.clientInfrastructureNote}`,
   },
   {
     question: 'Qui prépare les textes et les photos ?',
