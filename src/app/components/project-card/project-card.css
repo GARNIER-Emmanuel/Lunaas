@@ -31,7 +31,7 @@ article {
 }
 
 .project-meta {
-  color: var(--color-accent);
+  color: var(--color-ink);
   font-size: 0.75rem;
 }
 
@@ -64,11 +64,12 @@ h3 {
   padding: 0.4rem 0.75rem;
   border: 1px solid var(--color-line);
   border-radius: 999px;
-  color: var(--color-muted);
+  color: var(--color-ink);
   font-size: 0.75rem;
 }
 
 .project-link {
+  color: var(--color-ink);
   margin-top: 2rem;
 }
 
