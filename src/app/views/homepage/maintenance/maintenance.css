@@ -113,7 +113,7 @@ li > span:first-child {
 .maintenance-terms {
   display: grid;
   gap: 1rem;
-  max-width: 85ch;
+  max-width: none;
   margin-top: 2rem;
   color: var(--color-muted);
   font-size: 0.9rem;
@@ -143,4 +143,7 @@ li > span:first-child {
   .maintenance-card {
     padding: 1.5rem;
   }
+}
+.section-description {
+  max-width: none;
 }
