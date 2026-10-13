@@ -63,10 +63,10 @@
 
 h3 {
   margin-block: 1rem 0.85rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-script);
   color: var(--color-accent);
-  font-size: 1.5rem;
-  font-weight: 650;
+  font-size: 2rem;
+  font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
   font-synthesis: none;
