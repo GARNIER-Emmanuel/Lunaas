@@ -27,6 +27,10 @@
   color: var(--color-accent);
   line-height: 1.6;
 }
+.offer-actions a:hover {
+  background: var(--color-accent);
+  color: var(--color-button-ink);
+}
 
 @supports (grid-template-rows: subgrid) {
   @media (min-width: 1001px) {
