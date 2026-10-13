@@ -56,16 +56,6 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Le délai dépend du périmètre et de la disponibilité des contenus. Un calendrier est défini après un premier échange ; aucun délai unique n’est annoncé pour tous les projets.',
   },
   {
-    question: 'Le site fonctionnera-t-il sur mobile ?',
-    answer:
-      'Oui, le design responsive est prévu dans les offres. Le site est conçu pour s’adapter aux écrans mobiles, aux tablettes et aux ordinateurs.',
-  },
-  {
-    question: 'À qui s’adressent les prestations Lunaas ?',
-    answer:
-      'Les prestations sont réservées aux clients professionnels : artisans, indépendants et entreprises qui commandent un site pour leur activité. Le formulaire reste accessible pour toute question ou demande concernant les données personnelles.',
-  },
-  {
     question: 'Le domaine, l’hébergement et la maintenance sont-ils inclus ?',
     answer:
       `Non, le domaine, l’hébergement et la maintenance sont séparés du forfait de création. Le fournisseur et les coûts du domaine et de l’hébergement sont définis au cadrage et précisés au devis. La maintenance est facultative et fait l’objet d’un accord distinct ; aucun abonnement n’est souscrit par défaut. ${LEGAL_BUSINESS_DATA.clientInfrastructureNote}`,
@@ -110,10 +100,5 @@ export const FAQ_DATA: readonly FaqItem[] = [
     question: 'Que se passe-t-il si un incident dépasse le forfait ?',
     answer:
       'Le diagnostic d’incident inclus dans les deux abonnements est limité à 15 minutes par mois. Les interventions hors forfait sont proposées à 70 €/heure après votre validation. Les contrôles mensuels, le diagnostic et les 30 minutes de modifications de l’offre Suivi sont des prestations distinctes. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement. Aucun délai de résolution ni disponibilité à 100 % n’est garanti.',
-  },
-  {
-    question: 'Ces abonnements conviennent-ils aux applications complexes ?',
-    answer:
-      'Les applications web complexes nécessitent une maintenance sur devis, adaptée à leurs fonctionnalités et à leur infrastructure.',
   },
 ];
