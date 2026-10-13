@@ -1,16 +1,32 @@
 <section id="a-propos" class="content-section" aria-labelledby="about-title">
-  <div class="page-container about-layout">
-    <div class="about-copy">
-      <h2 id="about-title" class="section-title" data-motion>
-        {{ profile.name }}<br /><span class="font-script"> {{ profile.role }}</span>
-        <!-- {{ profile.role }}<br /><span class="font-script"> {{ profile.name }}</span> -->
-      </h2>
-      <p class="section-description" data-motion>{{ profile.introduction }}</p>
+  <div class="page-container">
+    <div class="about-layout">
+      <div class="about-copy">
+        <p class="section-label" data-motion>À propos</p>
+        <h2 id="about-title" class="section-title section-title--compact" data-motion>
+          {{ profile.name }}
+        </h2>
+        <p class="profile-role" data-motion>{{ profile.role }}</p>
+        <p class="section-description" data-motion>{{ profile.introduction }}</p>
+        <div class="profile-skills">
+          <h3>Les technologies que je pratique</h3>
+          <ul role="list">
+            @for (skill of profile.skills; track skill) {
+              <li>{{ skill }}</li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="profile-portrait">
+        <img
+          ngSrc="/images/mypicture.webp"
+          width="1200"
+          height="1601"
+          [alt]="'Portrait de ' + profile.name"
+          loading="lazy"
+        />
+      </div>
     </div>
-    <div class="profile-portrait">
-      <img ngSrc="/images/mypicture.webp" width="1200" height="1601" [alt]="'Portrait de ' + profile.name"
-        loading="lazy" />
-    </div>
+    <app-trusted-companies />
   </div>
-  <app-skills-marquee [skills]="profile.skills" />
 </section>

@@ -9,6 +9,6 @@ export const SITE_DATA: Site = {
     headline: 'Votre activité',
     highlight: 'Votre nouvelle dimension',
     description:
-      'Je conçois et développe des sites web qui présentent clairement votre activité et donnent à vos visiteurs envie de vous contacter.',
+      'Un site clair pour présenter votre activité et faciliter la prise de contact. Je vous accompagne du premier échange à la mise en ligne.',
   },
 };

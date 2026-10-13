@@ -110,3 +110,25 @@ select[aria-invalid='true'] {
     width: 100%;
   }
 }
+
+.extra-details {
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding-block: 0.8rem;
+}
+.extra-details summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.extra-details summary span {
+  color: var(--color-muted);
+  font-size: 0.7rem;
+}
+.extra-details summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+.extra-details[open] > div {
+  margin-top: 1rem;
+}

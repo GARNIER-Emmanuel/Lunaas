@@ -32,11 +32,14 @@ export class OfferCard {
     (event.currentTarget as HTMLElement).style.setProperty('--halo-opacity', '0');
   }
 
-  protected readonly price = computed(() =>
-    new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      maximumFractionDigits: 0,
-    }).format(this.offer().startingPrice),
-  );
+  protected readonly price = computed(() => {
+    const amount = this.offer().startingPrice;
+    return amount === null
+      ? null
+      : new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR',
+          maximumFractionDigits: 0,
+        }).format(amount);
+  });
 }

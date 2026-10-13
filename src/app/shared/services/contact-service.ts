@@ -7,8 +7,11 @@ export class ContactService {
   async sendEmail(data: ContactForm): Promise<void> {
     if (data.botcheck) throw new Error('Envoi impossible.');
     const offer = OFFER_DATA.find((item) => item.id === data.projectType);
-    const project = offer?.name ?? CONTACT_TOPICS.find((topic) => topic.id === data.projectType)?.label ?? 'Demande générale';
-    const name = `${data.firstname.trim()} ${data.lastname.trim()}`.trim();
+    const project =
+      offer?.name ??
+      CONTACT_TOPICS.find((topic) => topic.id === data.projectType)?.label ??
+      'Demande générale';
+    const name = data.name.trim();
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
     try {

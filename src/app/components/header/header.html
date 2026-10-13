@@ -1,22 +1,50 @@
 <header class="theme-dark">
   <nav aria-label="Navigation principale" class="page-container navigation">
-    <a routerLink="/" fragment="accueil" class="brand" aria-label="Lunaas — Accueil" (click)="closeMenu()">
-      <img ngSrc="/images/brand/lunaas-logo-dark.webp" width="960" height="320" [alt]="site.name" priority />
+    <a
+      routerLink="/"
+      fragment="accueil"
+      class="brand"
+      aria-label="Lunaas — Accueil"
+      (click)="closeMenu()"
+    >
+      <img
+        ngSrc="/images/brand/lunaas-logo-dark.webp"
+        width="960"
+        height="320"
+        [alt]="site.name"
+        priority
+      />
     </a>
-    <button #menuToggle class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()"
-      aria-controls="site-navigation" [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
-      (click)="toggleMenu()">
+    <button
+      #menuToggle
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-navigation"
+      [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
+      (click)="toggleMenu()"
+    >
       Menu <span aria-hidden="true">{{ menuOpen() ? '×' : '+' }}</span>
     </button>
     <div id="site-navigation" class="nav-links" [class.is-open]="menuOpen()">
       @for (link of links; track link.fragment) {
-      <a routerLink="/" [fragment]="link.fragment" [class.active]="activeSection() === link.fragment"
-        [attr.aria-current]="activeSection() === link.fragment ? 'location' : null" class="nav-link"
-        (click)="closeMenu()">{{ link.label }}</a>
+        <a
+          routerLink="/"
+          [fragment]="link.fragment"
+          [class.active]="activeSection() === link.fragment"
+          [attr.aria-current]="activeSection() === link.fragment ? 'location' : null"
+          class="nav-link"
+          (click)="closeMenu()"
+          >{{ link.label }}</a
+        >
       }
-      <a routerLink="/" fragment="contact" class="button button-secondary nav-contact" (click)="closeMenu()">Parlons de
-        votre projet
-      </a>
+      <a
+        routerLink="/"
+        fragment="contact"
+        class="button button-secondary nav-contact"
+        (click)="closeMenu()"
+        >Contact</a
+      >
     </div>
   </nav>
 </header>

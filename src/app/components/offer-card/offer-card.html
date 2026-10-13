@@ -7,7 +7,11 @@
   </div>
 
   <div class="offer-price">
-    <span>À partir de</span><strong>{{ price() }}</strong>
+    @if (price(); as startingPrice) {
+    <span>À partir de</span><strong>{{ startingPrice }}</strong>
+    } @else {
+    <span>Après cadrage du projet</span><strong>Sur devis</strong>
+    }
   </div>
   <p class="scope-note">{{ offer().scopeNote }}</p>
 

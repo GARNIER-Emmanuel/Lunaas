@@ -36,15 +36,14 @@ export class ContactFormComponent {
   protected readonly topics = CONTACT_TOPICS;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
+  protected readonly extraDetailsOpen = signal(false);
   private readonly contactService = inject(ContactService);
   private readonly draft = inject(ContactDraftService);
   protected readonly model = this.draft.values;
   protected readonly contactForm = form(
     this.model,
     (path) => {
-      for (const field of [path.firstname, path.lastname]) {
-        maxLength(field, 80, { message: '80 caractères maximum.' });
-      }
+      maxLength(path.name, 160, { message: '160 caractères maximum.' });
       required(path.email, { message: 'Indiquez votre adresse e-mail.' });
       email(path.email, { message: 'Indiquez une adresse e-mail valide.' });
       maxLength(path.email, 254);
@@ -75,6 +74,7 @@ export class ContactFormComponent {
           try {
             await this.contactService.sendEmail(field().value());
             field().reset(this.draft.emptyValues());
+            this.extraDetailsOpen.set(false);
             this.feedback.set(
               'Votre message a été envoyé. Merci, je reviendrai vers vous pour échanger sur votre projet.',
             );
@@ -86,6 +86,7 @@ export class ContactFormComponent {
           }
         },
         onInvalid: () => {
+          if (this.contactForm.budget().invalid()) this.extraDetailsOpen.set(true);
           this.failed.set(true);
           this.feedback.set('Vérifiez les champs signalés avant d’envoyer votre message.');
         },
@@ -102,6 +103,10 @@ export class ContactFormComponent {
         this.model.update((values) => ({ ...values, projectType: selection.offerId }));
       });
     });
+  }
+
+  protected toggleExtraDetails(event: Event): void {
+    this.extraDetailsOpen.set((event.currentTarget as HTMLDetailsElement).open);
   }
 
   protected fieldId(name: string): string {

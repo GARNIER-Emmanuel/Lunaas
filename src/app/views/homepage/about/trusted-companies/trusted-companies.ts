@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { COMPANY_REFERENCE_DATA } from '../../../shared/data';
+import { COMPANY_REFERENCE_DATA } from '../../../../shared/data';
 
 @Component({
   selector: 'app-trusted-companies',

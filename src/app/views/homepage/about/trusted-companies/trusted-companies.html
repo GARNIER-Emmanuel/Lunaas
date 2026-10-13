@@ -1,0 +1,30 @@
+<div id="confiance" class="trust-section" aria-labelledby="trust-title">
+  <div>
+    <div class="section-intro">
+      <div>
+        <h3 id="trust-title" class="experience-title" data-motion>Mon expérience en entreprise</h3>
+        <p class="section-description" data-motion>
+          Des entreprises où j’ai travaillé en développement web et logiciel.
+        </p>
+      </div>
+
+      <ul class="company-list" role="list">
+        @for (company of companies; track company.id) {
+          <li class="company-item" data-motion>
+            <div class="company-card" data-tilt>
+              <img
+                class="company-logo"
+                [ngSrc]="company.logo.src"
+                [width]="company.logo.width"
+                [height]="company.logo.height"
+                alt=""
+                loading="lazy"
+              />
+              <h4>{{ company.name }}</h4>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>

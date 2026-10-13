@@ -47,7 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Le duo expressif est réservé aux grands titres ; les sous-titres restent sobres. */
+/* Titres en Caacupe ; le manuscrit reste un accent ponctuel. */
 h1,
 h2 {
   font-family: var(--font-display);
@@ -78,6 +78,11 @@ h4 {
 
 .section-title--compact {
   font-size: var(--text-section-title-compact);
+}
+
+.section-subtitle {
+  font-size: 0.75em;
+  color: var(--color-muted);
 }
 
 .section-title .font-script {
@@ -138,14 +143,14 @@ main:focus-visible {
     border-color 180ms ease;
 }
 
-.button>span,
-.text-link>span {
+.button > span,
+.text-link > span {
   display: inline-block;
   transition: transform 220ms ease;
 }
 
-.button:hover>span,
-.text-link:hover>span {
+.button:hover > span,
+.text-link:hover > span {
   transform: translate(2px, -2px);
 }
 
@@ -167,16 +172,15 @@ main:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .button,
-  .button>span,
-  .text-link>span {
+  .button > span,
+  .text-link > span {
     transition: none;
   }
 
   .button-primary:hover,
-  .button:hover>span,
-  .text-link:hover>span {
+  .button:hover > span,
+  .text-link:hover > span {
     transform: none;
   }
 }
@@ -217,7 +221,7 @@ section[id],
   line-height: 1.9;
 }
 
-.legal-content p+p {
+.legal-content p + p {
   margin-top: 1rem;
 }
 
@@ -239,7 +243,7 @@ section[id],
   gap: 3rem;
 }
 
-.section-intro>div {
+.section-intro > div {
   min-width: 0;
 }
 

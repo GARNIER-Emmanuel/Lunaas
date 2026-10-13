@@ -6,14 +6,13 @@ import { ProcessSection } from './process-section/process-section';
 import { Faq } from './faq/faq';
 import { ContactCta } from './contact-cta/contact-cta';
 import { About } from './about/about';
-import { TrustedCompanies } from './trusted-companies/trusted-companies';
 import { PageMotion } from '../../shared/directives/page-motion';
 import { OfferSelection } from '../../shared/interfaces';
 
 @Component({
   selector: 'app-homepage',
   hostDirectives: [PageMotion],
-  imports: [Hero, Services, Projects, ProcessSection, Faq, About, ContactCta, TrustedCompanies],
+  imports: [Hero, Services, Projects, ProcessSection, Faq, About, ContactCta],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',

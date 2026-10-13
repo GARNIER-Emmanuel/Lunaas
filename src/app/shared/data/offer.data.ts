@@ -47,10 +47,10 @@ export const OFFER_DATA: readonly Offer[] = [
   {
     id: 'site-dynamique',
     halo: 'sun',
-    name: 'Site web dynamique',
+    name: 'Projet sur mesure',
     description:
       'Un site qui répond à des besoins spécifiques, avec un périmètre défini sur devis.',
-    startingPrice: 2990,
+    startingPrice: null,
     flexible: true,
     features: [
       'Site multipage',

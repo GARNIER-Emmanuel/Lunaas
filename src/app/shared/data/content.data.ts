@@ -43,7 +43,7 @@ export const FAQ_DATA: readonly FaqItem[] = [
   {
     question: 'Combien coûte la création d’un site internet ?',
     answer:
-      'Les prix de départ sont de 690 € pour une landing page, 1 490 € pour un site vitrine multipage et 2 990 € pour un site dynamique. Ils sont indicatifs : le tarif final est précisé dans un devis selon les pages, les fonctionnalités et les contenus nécessaires.',
+      'Les prix de départ sont de 690 € pour une landing page et 1 490 € pour un site vitrine multipage ; les projets sur mesure sont chiffrés sur devis après cadrage. Ils sont indicatifs : le tarif final est précisé dans un devis selon les pages, les fonctionnalités et les contenus nécessaires.',
   },
   {
     question: 'Combien de temps faut-il pour créer un site ?',
@@ -61,9 +61,14 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Les besoins de domaine et d’hébergement sont étudiés au cadrage. Leur fournisseur, leurs coûts et les éventuels abonnements sont précisés au devis ; ils ne sont pas présentés comme automatiquement inclus dans le prix de départ.',
   },
   {
+    question: 'Qui prépare les textes et les photos ?',
+    answer:
+      'Vous fournissez les textes, les photos et vos préférences de couleurs. Je vous accompagne si besoin dans leur préparation ; l’aide à la rédaction est incluse.',
+  },
+  {
     question: 'Puis-je demander des modifications ?',
     answer:
-      'Les offres landing page et site vitrine prévoient deux séries de retouches. Leur périmètre est défini au devis. Les demandes supplémentaires ou les changements importants sont discutés et chiffrés séparément.',
+      'Deux séries de retouches sont incluses, dans le périmètre défini au devis. Les demandes supplémentaires et les changements de périmètre font l’objet d’un devis.',
   },
   {
     question: 'Pourrai-je faire évoluer mon site ?',

@@ -28,8 +28,7 @@ describe('Contact form', () => {
   }
   async function fill(harness: RouterTestingHarness, prefix = 'cta-contact') {
     const root = harness.routeNativeElement!;
-    enter(root, `${prefix}-lastname`, 'Durand');
-    enter(root, `${prefix}-firstname`, 'Élodie');
+    enter(root, `${prefix}-name`, 'Élodie Durand');
     enter(root, `${prefix}-email`, 'elodie@example.com');
     enter(root, `${prefix}-project`, 'landing-page');
     enter(root, `${prefix}-message`, 'Un site pour mon atelier & mes créations.');
@@ -42,6 +41,39 @@ describe('Contact form', () => {
       .querySelector('form')!
       .dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
   }
+
+  it('accepts an unnamed enquiry with only email and message and keeps budget optional', async () => {
+    transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
+    const harness = await page();
+    const root = harness.routeNativeElement!;
+    expect(root.querySelector<HTMLDetailsElement>('.extra-details')!.open).toBe(false);
+    expect(root.querySelector('#cta-contact-firstname')).toBeNull();
+    enter(root, 'cta-contact-email', 'atelier@example.com');
+    enter(root, 'cta-contact-message', 'Je souhaite discuter de mon projet.');
+    await harness.fixture.whenStable();
+    submit(root);
+    await harness.fixture.whenStable();
+    expect(transport).toHaveBeenCalledOnce();
+    const payload = JSON.parse(String(transport.mock.calls[0][1].body));
+    expect(payload).not.toHaveProperty('name');
+    expect(payload.project).toBe('Demande générale');
+  });
+
+  it('reveals a budget error when additional details were closed and preserves the draft', async () => {
+    const harness = await page();
+    const root = await fill(harness);
+    enter(root, 'cta-contact-budget', 'x'.repeat(101));
+    await harness.fixture.whenStable();
+    submit(root);
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(root.querySelector<HTMLDetailsElement>('.extra-details')!.open).toBe(true);
+    expect(root.querySelector('#cta-contact-budget-errors')?.textContent).toContain(
+      '100 caractères',
+    );
+    expect(root.querySelector<HTMLInputElement>('#cta-contact-name')!.value).toBe('Élodie Durand');
+    expect(transport).not.toHaveBeenCalled();
+  });
 
   it('selects each offer without losing the draft and allows manual or repeated choices', async () => {
     const harness = await page();
@@ -158,7 +190,7 @@ describe('Contact form', () => {
     expect(root.querySelector('[role="status"]')?.textContent).toContain(
       'Votre message a été envoyé',
     );
-    expect(root.querySelector<HTMLInputElement>('#cta-contact-lastname')?.value).toBe('');
+    expect(root.querySelector<HTMLInputElement>('#cta-contact-name')?.value).toBe('');
     expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')?.value).toBe('');
     expect(root.querySelector('form a[href^="mailto:"]')).toBeNull();
     await harness.navigateByUrl('/confidentialite');

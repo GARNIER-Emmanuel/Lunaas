@@ -1,6 +1,5 @@
 export interface ContactForm {
-  firstname: string;
-  lastname: string;
+  name: string;
   email: string;
   projectType: string;
   budget: string;

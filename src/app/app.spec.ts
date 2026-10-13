@@ -30,7 +30,7 @@ describe('App', () => {
     expect(compiled.querySelector('footer')).not.toBeNull();
   });
 
-  it('links the hero to a single four-step method immediately after the hero', async () => {
+  it('keeps the approved section order, nested experience and a single four-step method', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     await router.navigateByUrl('/');
@@ -45,7 +45,24 @@ describe('App', () => {
     expect(approachLink!.getAttribute('href')).toBe('#approche');
     const approach = compiled.querySelector('#approche');
     expect(compiled.querySelectorAll('#approche')).toHaveLength(1);
-    expect(compiled.querySelector('app-homepage')?.children[1]?.contains(approach)).toBe(true);
+    expect(
+      [...compiled.querySelector('app-homepage')!.children].map((element) =>
+        element.tagName.toLowerCase(),
+      ),
+    ).toEqual([
+      'app-hero',
+      'app-projects',
+      'app-services',
+      'app-process-section',
+      'app-about',
+      'app-faq',
+      'app-contact-cta',
+    ]);
+    expect(compiled.querySelector('#a-propos #confiance')).not.toBeNull();
+    expect(compiled.querySelector('app-skills-marquee')).toBeNull();
+    expect(
+      [...compiled.querySelectorAll('#site-navigation a')].map((link) => link.textContent?.trim()),
+    ).toEqual(['Réalisations', 'Tarifs', 'Méthode', 'Contact']);
     expect(approach?.querySelectorAll('ol > li')).toHaveLength(4);
     expect(compiled.querySelector('#methode')?.contains(approach)).toBe(true);
   });
@@ -62,7 +79,9 @@ describe('App', () => {
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.contactPhone);
     expect(root.textContent).not.toContain(LEGAL_BUSINESS_DATA.postalAddress);
     expect(root.querySelector('#contact form')).not.toBeNull();
-    expect(root.querySelector('#about-title')?.textContent).toContain(LEGAL_BUSINESS_DATA.displayName);
+    expect(root.querySelector('#about-title')?.textContent).toContain(
+      LEGAL_BUSINESS_DATA.displayName,
+    );
     expect(root.querySelector('footer a[href="/#contact"]')).not.toBeNull();
   });
 
@@ -75,8 +94,12 @@ describe('App', () => {
     const status = root.querySelector('.registration-status')?.textContent?.replace(/\s+/g, ' ');
     expect(status).toContain('La signature, la transmission et la validation');
     expect(status).toContain('ne sont pas confirmées');
-    expect(root.querySelector('#mentions-legales')?.textContent).toContain('application non confirmée');
-    expect(root.querySelector('a[href^="mailto:"]')?.textContent).toContain(LEGAL_BUSINESS_DATA.contactEmail);
+    expect(root.querySelector('#mentions-legales')?.textContent).toContain(
+      'application non confirmée',
+    );
+    expect(root.querySelector('a[href^="mailto:"]')?.textContent).toContain(
+      LEGAL_BUSINESS_DATA.contactEmail,
+    );
     await router.navigateByUrl('/');
     await fixture.whenStable();
     expect(root.querySelector('.pricing-note')?.textContent).not.toContain('a été déclarée');
@@ -92,7 +115,7 @@ describe('App', () => {
     for (const [id, expectedPrice] of [
       ['landing-page', '690€'],
       ['site-vitrine', '1490€'],
-      ['site-dynamique', '2990€'],
+      ['site-dynamique', 'Surdevis'],
     ]) {
       const card = compiled.querySelector(`#offer-${id}`)?.closest('app-offer-card');
       expect(card?.querySelector('.offer-price strong')?.textContent?.replace(/\s/g, '')).toBe(
@@ -100,9 +123,9 @@ describe('App', () => {
       );
     }
 
-    for (const card of cards) {
-      expect(card.querySelector('.offer-price > span')?.textContent).toContain('À partir de');
-    }
+    expect(cards[2].textContent).toContain('Projet sur mesure');
+    expect(cards[2].textContent).not.toMatch(/2[\s\u00a0\u202f]?990/);
+    expect(compiled.textContent).not.toContain('2 990');
     const projectChoice = compiled.querySelector<HTMLSelectElement>('#cta-contact-project');
     expect(projectChoice).not.toBeNull();
     expect([...projectChoice!.options].map((option) => option.value).sort()).toEqual([
@@ -165,7 +188,9 @@ describe('App', () => {
     await router.navigateByUrl('/');
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
-    const link = root.querySelector<HTMLAnchorElement>('app-contact-form a[href="/confidentialite"]')!;
+    const link = root.querySelector<HTMLAnchorElement>(
+      'app-contact-form a[href="/confidentialite"]',
+    )!;
     link.click();
     await fixture.whenStable();
     expect(router.url).toBe('/confidentialite');
@@ -176,7 +201,9 @@ describe('App', () => {
     await fixture.whenStable();
     expect(router.url).toBe('/#offres');
     expect(root.querySelector('#offres')).not.toBeNull();
-    expect(root.querySelector('header a[href="/#offres"]')?.getAttribute('aria-current')).toBe('location');
+    expect(root.querySelector('header a[href="/#offres"]')?.getAttribute('aria-current')).toBe(
+      'location',
+    );
   });
 
   it('opens the menu and closes it with Escape, returning keyboard focus', async () => {

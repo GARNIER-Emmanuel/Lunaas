@@ -5,8 +5,7 @@ import { ContactForm } from '../interfaces';
 
 describe('Contact delivery', () => {
   const request: ContactForm = {
-    firstname: ' Élodie ',
-    lastname: ' Durand ',
+    name: ' Élodie Durand ',
     email: 'elodie@example.com',
     projectType: 'site-vitrine',
     budget: '',

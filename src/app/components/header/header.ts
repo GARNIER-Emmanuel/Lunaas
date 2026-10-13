@@ -11,7 +11,7 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
-import { NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
+import { PRIMARY_NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +25,7 @@ import { NAVIGATION_DATA, SITE_DATA } from '../../shared/data';
 })
 export class Header {
   protected readonly site = SITE_DATA;
-  protected readonly links = NAVIGATION_DATA;
+  protected readonly links = PRIMARY_NAVIGATION_DATA;
   protected readonly menuOpen = signal(false);
   private readonly router = inject(Router);
   private readonly navigationEnd = toSignal(

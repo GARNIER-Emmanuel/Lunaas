@@ -1,5 +1,7 @@
 .trust-section {
-  background: var(--color-surface);
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-line);
+  scroll-margin-top: 7rem;
 }
 
 .section-description {
@@ -12,7 +14,7 @@
   max-width: 56rem;
   gap: 1rem;
   margin-inline: auto;
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
 }
 
 .company-item {
@@ -43,7 +45,7 @@
   object-fit: contain;
 }
 
-.company-card h3 {
+.company-card h4 {
   margin-top: 0.75rem;
   font-size: 1.125rem;
   line-height: 1.5;
@@ -62,9 +64,7 @@
   }
 }
 
-@media (hover: none),
-(pointer: coarse),
-(prefers-reduced-motion: reduce) {
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
   .company-item {
     perspective: none;
   }
@@ -79,6 +79,15 @@
   .company-list {
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
   }
+}
+
+.experience-title {
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+.trust-section .section-description {
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
 }

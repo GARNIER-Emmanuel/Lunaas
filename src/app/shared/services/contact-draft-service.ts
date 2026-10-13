@@ -8,8 +8,7 @@ export class ContactDraftService {
 
   emptyValues(): ContactForm {
     return {
-      firstname: '',
-      lastname: '',
+      name: '',
       email: '',
       projectType: '',
       budget: '',
