@@ -241,23 +241,6 @@ section[id],
   margin-top: 1rem;
 }
 
-.hero-description,
-.section-description,
-.lead,
-.offer-description,
-.scope-note,
-.plan-description,
-.plan-note,
-.maintenance-terms p,
-#faq details p,
-.consent-description,
-.form-help,
-.legal-content p,
-.legal-content li {
-  text-align: justify;
-  hyphens: auto;
-}
-
 .legal-content ul {
   padding-left: 1.5rem;
   list-style: disc;
