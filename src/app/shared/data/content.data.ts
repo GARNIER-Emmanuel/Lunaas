@@ -41,19 +41,9 @@ export const PROFILE_DATA: Profile = {
 };
 export const FAQ_DATA: readonly FaqItem[] = [
   {
-    question: 'Comment créer un site professionnel avec un petit budget ?',
-    answer:
-      'Pour démarrer avec un budget maîtrisé, un site d’une page peut suffire à présenter votre activité, vos prestations et vos coordonnées. Le forfait à 800 € couvre une page commerciale jusqu’à six sections. Vous fournissez les textes, les photos et le logo ; nous définissons ensemble les contenus essentiels et le périmètre au devis. Le domaine, l’hébergement, la maintenance et les fonctionnalités supplémentaires sont facturés séparément.',
-  },
-  {
     question: 'Combien de temps faut-il pour créer un site ?',
     answer:
       'Le délai dépend du périmètre et de la disponibilité des contenus. Un calendrier est défini après un premier échange ; aucun délai unique n’est annoncé pour tous les projets.',
-  },
-  {
-    question: 'Le domaine, l’hébergement et la maintenance sont-ils inclus ?',
-    answer:
-      `Non, le domaine, l’hébergement et la maintenance sont séparés du forfait de création. Le fournisseur et les coûts du domaine et de l’hébergement sont définis au cadrage et précisés au devis. La maintenance est facultative et fait l’objet d’un accord distinct ; aucun abonnement n’est souscrit par défaut. ${LEGAL_BUSINESS_DATA.clientInfrastructureNote}`,
   },
   {
     question: 'Qui prépare les textes et les photos ?',
@@ -61,44 +51,29 @@ export const FAQ_DATA: readonly FaqItem[] = [
       'Vous fournissez les textes, les photos, le logo et vos préférences de couleurs. Je vous accompagne dans leur préparation et leur reformulation ; la rédaction complète des contenus est une prestation distincte. Les pages de mentions légales et de confidentialité sont intégrées à partir de textes fournis ou validés par vos soins ; leur rédaction juridique n’est pas incluse.',
   },
   {
-    question: 'Puis-je demander des modifications ?',
+    question: 'Comment prenez-vous en compte la protection des données ?',
     answer:
-      'Deux séries de retouches sont incluses, dans le périmètre défini au devis. Les demandes supplémentaires et les changements de périmètre font l’objet d’un devis.',
+      'Selon les fonctionnalités convenues, je prévois les mesures techniques adaptées, comme des formulaires limités aux informations utiles et un choix de consentement pour les statistiques lorsque nécessaire. J’intègre les textes légaux et de confidentialité fournis ou validés par vos soins ; leur rédaction juridique n’est pas incluse. La conformité dépend aussi des services choisis et de vos pratiques de gestion des données : le site livré ne constitue pas une certification RGPD.',
   },
   {
-    question: 'Pourrai-je faire évoluer mon site ?',
+    question: 'Puis-je gérer mon site après sa création ?',
     answer:
-      'Le site est organisé pour permettre des mises à jour de contenus et de nouvelles pages. Les fonctionnalités supplémentaires sont étudiées selon les besoins et le socle technique du projet.',
+      'La modification autonome des contenus dépend des outils prévus au devis : les forfaits de création n’incluent pas d’espace administrateur par défaut. Si vous souhaitez modifier vous-même les textes ou les images, nous définissons cette possibilité avant le démarrage. Les statistiques de base peuvent être configurées et accessibles sans abonnement ; leur analyse mensuelle fait partie de Suivi.',
+  },
+  {
+    question: 'Que faire si je souhaite modifier mon site après la mise en ligne ?',
+    answer:
+      'Vous pouvez demander des modifications ponctuelles sur devis ou utiliser le temps de modifications simples prévu dans Suivi. Le temps consacré comprend les vérifications et la publication ; il est compté séparément du diagnostic d’incident, et les minutes de modifications non utilisées ne sont pas reportables. Les nouvelles pages, fonctionnalités et refontes sont étudiées et chiffrées séparément avant votre accord.',
+  },
+  {
+    question: 'Qui gère le domaine, l’hébergement et leur renouvellement ?',
+    answer:
+      'Le domaine et l’hébergement sont souscrits sur vos propres comptes, avec mon accompagnement pour leur création et leur configuration. Vous gérez leurs renouvellements et leur paiement auprès du fournisseur ; le renouvellement automatique, les échéances et les coûts dépendent du service choisi et sont à vérifier dans votre compte. Vous conservez votre site conformément au contrat de création et la maîtrise de vos comptes après la livraison ou la résiliation de la maintenance.',
   },
   {
     id: 'maintenance-faq',
-    question: 'Comment souscrire et démarrer un abonnement de maintenance ?',
+    question: 'Comment fonctionne l’assistance après la livraison ?',
     answer:
-      'La souscription passe par un échange et un accord distinct ; envoyer le formulaire ne souscrit aucun abonnement. L’abonnement commence à la date convenue, après accord et réception du premier paiement. Aucun abonnement n’est inclus par défaut dans la création du site.',
-  },
-  {
-    question: 'Puis-je résilier et conserver mon site ?',
-    answer:
-      'Oui. Les abonnements sont sans engagement de durée. Vous pouvez résilier par e-mail à tout moment ; l’arrêt prend effet à la fin de la période payée. Vous conservez votre site conformément au contrat de création et la maîtrise de vos comptes de domaine et d’hébergement.',
-  },
-  {
-    question: 'Comment demander une intervention et sous quel délai ?',
-    answer:
-      'Envoyez votre demande par e-mail à l’adresse professionnelle figurant dans les mentions légales. L’assistance est assurée les jours ouvrés, avec un accusé de réception sous deux jours ouvrés pour Essentiel et un jour ouvré pour Suivi. Ce délai concerne la prise en compte de votre demande ; le délai de résolution dépend de l’incident.',
-  },
-  {
-    question: 'Comment les minutes d’intervention sont-elles comptées ?',
-    answer:
-      'Le temps réellement consacré à une demande comprend les vérifications et la publication. Le diagnostic d’incident et les modifications de contenu de Suivi sont comptés séparément. Les minutes de modifications non utilisées ne sont pas reportables ; les nouvelles pages, fonctionnalités et refontes font l’objet d’un devis.',
-  },
-  {
-    question: 'Que se passe-t-il si un incident dépasse le forfait ?',
-    answer:
-      'Une intervention hors forfait est proposée après votre validation, sans correction illimitée ni garantie de disponibilité à 100 %. Les contrôles mensuels, le diagnostic et les modifications de contenu sont des prestations distinctes. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement.',
-  },
-  {
-    question: 'Faut-il un abonnement pour consulter les statistiques de mon site ?',
-    answer:
-      'Non, les statistiques de base peuvent être configurées et accessibles dès la livraison de votre site, sans abonnement. Suivi apporte leur analyse et un bilan mensuel. Son suivi basique de Google consiste à consulter la visibilité du site dans les résultats disponibles ; il ne garantit aucun positionnement.',
+      'Un abonnement commence à la date convenue, après accord et réception du premier paiement ; envoyer le formulaire ne souscrit aucun abonnement. Les demandes se font par e-mail, les jours ouvrés : l’accusé de réception est prévu sous deux jours ouvrés pour Essentiel et un jour ouvré pour Suivi, sans délai de résolution garanti. Toute intervention hors forfait est proposée après votre validation, sans correction illimitée ni garantie de disponibilité à 100 % ; le suivi de Google ne garantit aucun positionnement. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement.',
   },
 ];
