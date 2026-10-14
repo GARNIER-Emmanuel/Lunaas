@@ -7,8 +7,6 @@
   --halo-light: #eceaf8;
   --halo-color: #e0ddf2;
   --halo-border: #958ca8;
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -31,23 +29,6 @@
   --halo-light: #fff0cb;
   --halo-color: #ffe5ad;
   --halo-border: #c39425;
-}
-
-/* Un fond coloré, révélé uniquement autour du pointeur. Le contenu reste au-dessus. */
-.offer-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--halo-light), var(--halo-color));
-  mask-image: radial-gradient(circle 550px at var(--halo-x, 50%) var(--halo-y, 50%),
-      #000 0%,
-      #0009 95%,
-      transparent 100%);
-  opacity: var(--halo-opacity, 0);
-  transition: opacity 300ms ease;
 }
 
 .offer-card:hover {
@@ -196,14 +177,6 @@ summary:focus-visible {
 @media (max-width: 480px) {
   .offer-card {
     padding: 1.5rem;
-  }
-}
-
-@media (hover: none),
-(pointer: coarse),
-(prefers-reduced-motion: reduce) {
-  .offer-card::before {
-    display: none;
   }
 }
 

@@ -7,16 +7,21 @@ import { ImageTrail } from './image-trail';
   template: '<section [appImageTrail]="image()" [trailOptions]="options()">Contenu</section>',
 })
 class TrailHost {
-  readonly image = signal('/images/hero-background.jpg');
+  readonly image = signal<string | { colors: readonly [string, string] }>(
+    '/images/hero-background.jpg',
+  );
   readonly options = signal<Partial<{ size: number; duration: number; opacity: number }>>({});
 }
 
 function drawingContext(): CanvasRenderingContext2D {
-  return Object.fromEntries(
-    ['clearRect', 'fillRect', 'beginPath', 'moveTo', 'lineTo', 'stroke', 'drawImage'].map(
-      (method) => [method, vi.fn()],
+  return {
+    ...Object.fromEntries(
+      ['clearRect', 'fillRect', 'beginPath', 'moveTo', 'lineTo', 'stroke', 'drawImage'].map(
+        (method) => [method, vi.fn()],
+      ),
     ),
-  ) as unknown as CanvasRenderingContext2D;
+    createLinearGradient: vi.fn(() => ({ addColorStop: vi.fn() })),
+  } as unknown as CanvasRenderingContext2D;
 }
 
 describe('Shared image trail', () => {
@@ -200,5 +205,38 @@ describe('Shared image trail', () => {
     move();
     tick(132);
     expect(contexts[1].moveTo).toHaveBeenLastCalledWith(55, 185);
+  });
+
+  it('reveals the existing CSS palette without creating or downloading an image', async () => {
+    root.style.setProperty('--halo-light', '#fae1d4');
+    root.style.setProperty('--halo-color', '#f9d4be');
+    fixture.componentInstance.image.set({ colors: ['--halo-light', '--halo-color'] });
+    await fixture.whenStable();
+    move();
+    const gradient = vi.mocked(contexts[0].createLinearGradient).mock.results[0].value;
+    expect(gradient.addColorStop).toHaveBeenNthCalledWith(1, 0, '#fae1d4');
+    expect(gradient.addColorStop).toHaveBeenNthCalledWith(2, 1, '#f9d4be');
+    expect(images).toHaveLength(0);
+    tick(116);
+    expect(contexts[0].fillRect).toHaveBeenCalledWith(0, 0, 1000, 700);
+    expect(contexts[0].drawImage).toHaveBeenCalledOnce();
+    tick(1800);
+    expect(pending.size).toBe(0);
+  });
+
+  it('switches from a gradient to a photo and cleans up either source identically', async () => {
+    fixture.componentInstance.image.set({ colors: ['#eceaf8', '#e0ddf2'] });
+    await fixture.whenStable();
+    move();
+    fixture.componentInstance.image.set('/images/contact-mars.webp');
+    await fixture.whenStable();
+    expect(pending.size).toBe(0);
+    move();
+    tick(116);
+    expect(images).toHaveLength(1);
+    expect(contexts[2].drawImage).toHaveBeenCalledTimes(2);
+    fixture.destroy();
+    expect(root.querySelector('canvas')).toBeNull();
+    expect(pending.size).toBe(0);
   });
 });

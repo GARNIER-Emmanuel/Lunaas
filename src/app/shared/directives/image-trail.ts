@@ -3,6 +3,7 @@ import { afterRenderEffect, Directive, ElementRef, inject, input } from '@angula
 // Réglages communs ; surcharge possible avec [trailOptions] sur une section.
 const TRAIL_DEFAULTS = { size: 400, softness: 80, fade: 300, duration: 1600, opacity: 0.5 };
 type TrailOptions = typeof TRAIL_DEFAULTS;
+type TrailSource = string | { readonly colors: readonly [string, string] };
 interface Point {
   x: number;
   y: number;
@@ -10,7 +11,7 @@ interface Point {
 
 @Directive({ selector: '[appImageTrail]', host: { class: 'image-trail-host' } })
 export class ImageTrail {
-  readonly appImageTrail = input.required<string>();
+  readonly appImageTrail = input.required<TrailSource>();
   readonly trailOptions = input<Partial<TrailOptions>>({});
 
   constructor() {
@@ -49,13 +50,14 @@ export class ImageTrail {
 
 function paintTrail(
   root: HTMLElement,
-  source: string,
+  source: TrailSource,
   options: TrailOptions,
   initial: PointerEvent,
 ) {
   const document = root.ownerDocument;
   const browser = document.defaultView!;
   const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 0;
   const mask = document.createElement('canvas');
   const context = canvas.getContext('2d');
   const brush = mask.getContext('2d');
@@ -65,7 +67,8 @@ function paintTrail(
   canvas.style.opacity = String(options.opacity);
   root.append(canvas);
 
-  const image = document.createElement('img');
+  const image = typeof source === 'string' ? document.createElement('img') : undefined;
+  let background: string | CanvasGradient = '#fff';
   let bounds = root.getBoundingClientRect();
   let frame = 0,
     lastFrame = 0,
@@ -74,12 +77,26 @@ function paintTrail(
   let firstStroke = false;
   let maskScale = 1;
   let crop: [number, number, number, number] = [0, 0, 0, 0];
-  const fitImage = () => {
-    if (!image.naturalWidth) return;
-    const cover = Math.max(canvas.width / image.naturalWidth, canvas.height / image.naturalHeight);
-    const width = image.naturalWidth * cover,
-      height = image.naturalHeight * cover;
-    crop = [(canvas.width - width) / 2, (canvas.height - height) / 2, width, height];
+  const fitSurface = () => {
+    if (typeof source !== 'string') {
+      const styles = browser.getComputedStyle(root);
+      const gradient = context.createLinearGradient(0, 0, canvas.width, canvas.height);
+      source.colors.forEach((color, index) =>
+        gradient.addColorStop(
+          index,
+          color.startsWith('--') ? styles.getPropertyValue(color).trim() : color,
+        ),
+      );
+      background = gradient;
+    } else if (image?.naturalWidth) {
+      const cover = Math.max(
+        canvas.width / image.naturalWidth,
+        canvas.height / image.naturalHeight,
+      );
+      const width = image.naturalWidth * cover,
+        height = image.naturalHeight * cover;
+      crop = [(canvas.width - width) / 2, (canvas.height - height) / 2, width, height];
+    }
   };
   const clear = () => {
     if (!frame && !position) return;
@@ -104,7 +121,7 @@ function paintTrail(
     brush.lineCap = 'round';
     brush.lineWidth = options.size * maskScale;
     brush.strokeStyle = brush.shadowColor = '#fff';
-    fitImage();
+    fitSurface();
   };
   const draw = (now: number) => {
     frame = 0;
@@ -135,13 +152,17 @@ function paintTrail(
     position = next;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalCompositeOperation = 'source-over';
-    context.drawImage(image, ...crop);
+    if (image) context.drawImage(image, ...crop);
+    else {
+      context.fillStyle = background;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+    }
     context.globalCompositeOperation = 'destination-in';
     context.drawImage(mask, 0, 0, canvas.width, canvas.height);
     frame = browser.requestAnimationFrame(draw);
   };
   const start = () => {
-    if (!frame && position && image.complete && image.naturalWidth > 0)
+    if (!frame && position && (!image || (image.complete && image.naturalWidth > 0)))
       frame = browser.requestAnimationFrame(draw);
   };
   const move = (event: PointerEvent) => {
@@ -161,12 +182,14 @@ function paintTrail(
   const observer = new ResizeObserver(resize);
   resize();
   observer.observe(root);
-  image.onload = () => {
-    fitImage();
-    start();
-  };
-  image.onerror = clear;
-  image.src = source;
+  if (image && typeof source === 'string') {
+    image.onload = () => {
+      fitSurface();
+      start();
+    };
+    image.onerror = clear;
+    image.src = source;
+  }
   root.addEventListener('pointermove', move, { passive: true });
   root.addEventListener('pointerleave', leave);
   root.addEventListener('pointercancel', clear);
@@ -176,7 +199,7 @@ function paintTrail(
   return () => {
     clear();
     observer.disconnect();
-    image.onload = image.onerror = null;
+    if (image) image.onload = image.onerror = null;
     root.removeEventListener('pointermove', move);
     root.removeEventListener('pointerleave', leave);
     root.removeEventListener('pointercancel', clear);
