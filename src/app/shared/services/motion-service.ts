@@ -45,9 +45,35 @@ export class MotionService {
           });
         }
 
+        for (const section of root.querySelectorAll<HTMLElement>(
+          '[data-reveal="left"], [data-reveal="right"]',
+        )) {
+          const content = section.querySelector<HTMLElement>(':scope > .page-container');
+          if (!content) continue;
+          // Le cadre reste fixe ; tout le contenu de la section entre ensemble.
+          gsap.from(content, {
+            x: () =>
+              (section.dataset['reveal'] === 'left' ? -1 : 1) *
+              Math.min(160, browser.innerWidth * 0.12),
+            opacity: 0,
+            duration: 1.05,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 88%',
+              once: true,
+              fastScrollEnd: true,
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+
         for (const element of root.querySelectorAll<HTMLElement>(
           '[data-motion]:not([data-motion="hero"])',
         )) {
+          // Une section animée en bloc ne cumule pas les entrées de ses enfants.
+          if (element.closest('[data-reveal="left"], [data-reveal="right"]')) continue;
           // Le texte reste visible ; seule sa position change à l'entrée dans l'écran.
           gsap.from(element, {
             y: element.matches('h1, h2') ? 40 : 24,

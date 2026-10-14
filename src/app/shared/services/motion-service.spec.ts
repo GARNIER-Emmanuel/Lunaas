@@ -94,4 +94,44 @@ describe('Optional page motion', () => {
     expect(root.querySelector('h2')?.textContent).toBe('Un contenu toujours présent');
     expect(root.querySelector('h2')?.style.visibility).toBe('');
   });
+
+  it('slides only opted-in sections as a group and preserves other vertical entrances', async () => {
+    root.innerHTML = `
+      <h2 id="ordinary" data-motion>Entrée habituelle</h2>
+      <section data-reveal="left"><div class="page-container">
+        <h2 data-motion>Maintenance</h2><article data-motion>Carte</article>
+      </div></section>
+      <section data-reveal="right"><div class="page-container">
+        <h2 data-motion>Méthode</h2>
+      </div></section>`;
+    const dispose = await service.enhance(root, () => false);
+    const left = root.querySelector('[data-reveal="left"] .page-container');
+    const right = root.querySelector('[data-reveal="right"] .page-container');
+    expect(animation.from).toHaveBeenCalledTimes(3);
+    expect(animation.from).toHaveBeenCalledWith(
+      root.querySelector('#ordinary'),
+      expect.objectContaining({ y: 40, duration: 0.9, clearProps: 'transform' }),
+    );
+    for (const [content, direction] of [
+      [left, -1],
+      [right, 1],
+    ] as const) {
+      const vars = animation.from.mock.calls.find(([element]) => element === content)?.[1] as {
+        x: () => number;
+      };
+      expect(Math.sign(vars.x())).toBe(direction);
+      expect(animation.from).toHaveBeenCalledWith(
+        content,
+        expect.objectContaining({
+          opacity: 0,
+          clearProps: 'transform,opacity',
+          scrollTrigger: expect.objectContaining({ trigger: content?.parentElement, once: true }),
+        }),
+      );
+      vi.stubGlobal('innerWidth', 360);
+      expect(Math.abs(vars.x())).toBeLessThan(50);
+    }
+    dispose();
+    expect(animation.media.revert).toHaveBeenCalledOnce();
+  });
 });

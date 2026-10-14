@@ -200,6 +200,12 @@ main:focus-visible {
   overflow: clip;
 }
 
+/* Les entrées latérales restent dans le cadre de leur section. */
+[data-reveal='left'],
+[data-reveal='right'] {
+  overflow-x: clip;
+}
+
 .image-trail-canvas {
   position: absolute;
   inset: 0;
