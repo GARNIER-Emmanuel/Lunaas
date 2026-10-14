@@ -16,7 +16,7 @@
   background: url('/images/hero-background.jpg') center / cover no-repeat;
   mask-image: radial-gradient(circle 300px at var(--reveal-x, 50%) var(--reveal-y, 50%),
       #000 0%,
-      #0009 65%,
+      #0009 90%,
       transparent 100%);
   opacity: var(--reveal-opacity, 0);
   transition: opacity 250ms ease;
@@ -47,6 +47,7 @@ h1 {
   margin-block: 2rem 1.5rem;
   font-weight: 400;
 }
+
 .hero-title {
   max-width: 21ch;
   font-size: clamp(3rem, 5.7vw, 5.6rem);
@@ -54,6 +55,7 @@ h1 {
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
+
 .hero-signature {
   display: flex;
   align-items: baseline;
@@ -64,6 +66,7 @@ h1 {
   font-size: 1rem;
   line-height: 1.6;
 }
+
 .hero-signature .font-script {
   color: var(--color-accent);
   font-size: clamp(1.5rem, 2.4vw, 2.2rem);
