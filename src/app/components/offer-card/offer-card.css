@@ -4,9 +4,6 @@
 }
 
 .offer-card {
-  --halo-light: #eceaf8;
-  --halo-color: #e0ddf2;
-  --halo-border: #958ca8;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -17,18 +14,6 @@
   background: linear-gradient(135deg, #fff, #f3f4f7);
   box-shadow: 0 12px 40px rgb(27 33 72 / 3%);
   transition: border-color 300ms ease;
-}
-
-.offer-card[data-halo='mars'] {
-  --halo-light: #fae1d4;
-  --halo-color: #f9d4be;
-  --halo-border: #cb7048;
-}
-
-.offer-card[data-halo='sun'] {
-  --halo-light: #fff0cb;
-  --halo-color: #ffe5ad;
-  --halo-border: #c39425;
 }
 
 .offer-card:hover {

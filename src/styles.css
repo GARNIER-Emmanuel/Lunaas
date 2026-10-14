@@ -209,6 +209,25 @@ main:focus-visible {
   pointer-events: none;
 }
 
+/* Palettes communes aux cartes de création et de maintenance. */
+[data-halo='moon'] {
+  --halo-light: #eceaf8;
+  --halo-color: #e0ddf2;
+  --halo-border: #958ca8;
+}
+
+[data-halo='mars'] {
+  --halo-light: #fae1d4;
+  --halo-color: #f9d4be;
+  --halo-border: #cb7048;
+}
+
+[data-halo='sun'] {
+  --halo-light: #fff0cb;
+  --halo-color: #ffe5ad;
+  --halo-border: #c39425;
+}
+
 section[id],
 #main-content {
   scroll-margin-top: var(--anchor-offset);

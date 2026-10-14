@@ -11,7 +11,10 @@
 
     <div class="maintenance-grid">
       @for (plan of plans; track plan.id) {
-        <article class="maintenance-card" [attr.aria-labelledby]="plan.id + '-title'" data-motion>
+        <article class="maintenance-card" [attr.aria-labelledby]="plan.id + '-title'" data-motion
+          [attr.data-halo]="halos[plan.id]"
+          [appImageTrail]="{ colors: ['--halo-light', '--halo-color'] }"
+          [trailOptions]="{ size: 240, opacity: 1 }">
           <div>
             <p class="plan-category">Abonnement facultatif</p>
             <h3 [id]="plan.id + '-title'">{{ plan.name }}</h3>

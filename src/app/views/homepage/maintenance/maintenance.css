@@ -10,6 +10,7 @@
 }
 
 .maintenance-card {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -18,6 +19,11 @@
   border-radius: 1.25rem;
   background: linear-gradient(135deg, #fff, #f3f4f7);
   box-shadow: 0 12px 40px rgb(27 33 72 / 3%);
+  transition: border-color 300ms ease;
+}
+
+.maintenance-card:hover {
+  border-color: var(--halo-border);
 }
 
 .plan-category {
@@ -147,4 +153,10 @@ li > span:first-child {
 }
 .section-description {
   max-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maintenance-card {
+    transition: none;
+  }
 }
