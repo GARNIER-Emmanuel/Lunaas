@@ -12,14 +12,10 @@
 .hero-reveal {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  background: url('/images/hero-background.jpg') center / cover no-repeat;
-  mask-image: radial-gradient(circle 300px at var(--reveal-x, 50%) var(--reveal-y, 50%),
-      #000 0%,
-      #0009 90%,
-      transparent 100%);
-  opacity: var(--reveal-opacity, 0);
-  transition: opacity 250ms ease;
+  opacity: 0.5;
 }
 
 .hero-layout {

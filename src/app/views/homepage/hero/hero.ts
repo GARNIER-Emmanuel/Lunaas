@@ -1,5 +1,14 @@
-﻿import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  viewChild,
+} from '@angular/core';
 import { SITE_DATA } from '../../../shared/data';
+import { mountHeroImageTrail } from './hero-image-trail';
 
 @Component({
   selector: 'app-hero',
@@ -9,20 +18,15 @@ import { SITE_DATA } from '../../../shared/data';
 })
 export class Hero {
   protected readonly site = SITE_DATA;
+  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly reveal = viewChild.required<ElementRef<HTMLCanvasElement>>('reveal');
 
-  protected revealImage(event: PointerEvent): void {
-    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
-    const hero = event.currentTarget as HTMLElement;
-    const bounds = hero.getBoundingClientRect();
-
-    // Position de la souris dans le hero, transmise au masque CSS.
-    hero.style.setProperty('--reveal-x', `${event.clientX - bounds.left}px`);
-    hero.style.setProperty('--reveal-y', `${event.clientY - bounds.top}px`);
-    hero.style.setProperty('--reveal-opacity', '0.5');
-  }
-
-  protected hideImage(event: PointerEvent): void {
-    const hero = event.currentTarget as HTMLElement;
-    hero.style.setProperty('--reveal-opacity', '0');
+  constructor() {
+    afterNextRender(() => {
+      this.destroyRef.onDestroy(
+        mountHeroImageTrail(this.element.nativeElement, this.reveal().nativeElement),
+      );
+    });
   }
 }
