@@ -169,7 +169,7 @@ describe('App', () => {
       );
     }
 
-    expect(cards[2].textContent).toContain('Projet sur mesure');
+    expect(cards[2].textContent).toContain('Un besoin particulier ?');
     expect(cards[2].textContent).not.toMatch(/2[\s\u00a0\u202f]?990/);
     expect(compiled.textContent).not.toContain('2 990');
     const projectChoice = compiled.querySelector<HTMLSelectElement>('#cta-contact-project');
@@ -186,7 +186,7 @@ describe('App', () => {
     ]);
     const dynamicOffer = compiled.querySelector('#offer-site-dynamique')?.closest('app-offer-card');
     expect(dynamicOffer?.querySelector('h4')?.textContent).toContain(
-      'Prestations possibles, sur devis',
+      'Avant de démarrer',
     );
   });
 

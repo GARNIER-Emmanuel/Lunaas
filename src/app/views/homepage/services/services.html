@@ -5,9 +5,8 @@
         class="font-script">Une
         réponse adaptée</span></h2>
     <p class="section-description" data-motion>
-      Une page pour vous lancer, un site pour présenter votre activité ou des fonctionnalités
-      pour aller plus loin.<br />
-      Le périmètre se décide ensemble.<br />
+      Une page pour vous lancer ou quelques pages pour présenter votre activité.<br />
+      Vous avez un autre besoin ? Nous en parlons avant de définir le projet.<br />
       {{ business.audience }}
     </p>
     <div class="offers-grid">
@@ -15,6 +14,10 @@
       <app-offer-card [offer]="offer" (offerSelected)="offerSelected.emit($event)" data-motion />
       }
     </div>
+    <p class="offer-framework">
+      Avant de démarrer, nous définissons les pages, les contenus, le calendrier et le prix final au devis.<br />
+      Vous fournissez vos textes et images. Les deux premières offres incluent deux séries de retours regroupés.
+    </p>
     <div class="offer-actions">
       <a href="#contact" class="button button-secondary">
         Je ne sais pas quelle offre choisir
