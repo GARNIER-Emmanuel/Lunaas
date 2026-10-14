@@ -4,14 +4,12 @@ export const MAINTENANCE_PLAN_DATA: readonly MaintenancePlan[] = [
   {
     id: 'maintenance-essentiel',
     name: 'Essentiel',
-    description: 'Pour garder votre site opérationnel et surveillé.',
+    description: 'Pour surveiller votre site après la mise en ligne.',
     monthlyPrice: 39,
     includesEssential: false,
     features: [
-      'Surveillance automatique de la disponibilité du site',
-      'Vérification technique chaque mois',
-      'Contrôle du HTTPS et du domaine',
-      'Vérification mensuelle du formulaire de contact',
+      'Surveillance automatique de la disponibilité',
+      'Contrôles mensuels : technique, HTTPS, domaine et formulaire',
       'Accès aux statistiques de fréquentation',
     ],
     diagnosticMinutesPerMonth: 15,
@@ -22,7 +20,7 @@ export const MAINTENANCE_PLAN_DATA: readonly MaintenancePlan[] = [
   {
     id: 'maintenance-suivi',
     name: 'Suivi',
-    description: 'Pour faire évoluer régulièrement votre site.',
+    description: 'Pour actualiser vos contenus et suivre votre site.',
     monthlyPrice: 79,
     includesEssential: true,
     features: [
