@@ -144,6 +144,9 @@ describe('App', () => {
     expect(privacyText).toContain('pendant 5 ans');
     expect(privacyText).toContain('10 ans à compter de la clôture');
     expect(privacyText).toContain('conservation du prestataire est distincte');
+    expect(
+      root.querySelector(`#confidentialite a[href="mailto:${LEGAL_BUSINESS_DATA.contactEmail}"]`),
+    ).not.toBeNull();
     expect(privacyText).not.toMatch(/@gmail\.com|messagerie reste à définir|restent à identifier/);
     await router.navigateByUrl('/');
     await fixture.whenStable();
@@ -177,10 +180,7 @@ describe('App', () => {
     expect([...projectChoice!.options].map((option) => option.value).sort()).toEqual([
       '',
       'autre',
-      'donnees-personnelles',
       'landing-page',
-      'maintenance-essentiel',
-      'maintenance-suivi',
       'site-dynamique',
       'site-vitrine',
     ]);

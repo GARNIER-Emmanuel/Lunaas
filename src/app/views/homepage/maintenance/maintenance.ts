@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   LEGAL_BUSINESS_DATA,
   MAINTENANCE_PLAN_DATA,
@@ -16,7 +16,6 @@ import { ImageTrail } from '../../../shared/directives/image-trail';
   styleUrl: './maintenance.css',
 })
 export class Maintenance {
-  readonly offerSelected = output<MaintenancePlanId>();
   protected readonly plans = MAINTENANCE_PLAN_DATA;
   protected readonly terms = MAINTENANCE_TERMS_DATA;
   protected readonly business = LEGAL_BUSINESS_DATA;
@@ -31,11 +30,5 @@ export class Maintenance {
       currency: 'EUR',
       maximumFractionDigits: 0,
     }).format(amount);
-  }
-
-  protected selectPlan(event: MouseEvent, id: MaintenancePlanId): void {
-    if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)
-      return;
-    this.offerSelected.emit(id);
   }
 }

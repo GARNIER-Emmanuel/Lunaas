@@ -110,12 +110,6 @@ li > span:first-child {
   line-height: 1.8;
 }
 
-.maintenance-contact {
-  width: 100%;
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
 .maintenance-terms {
   display: grid;
   gap: 1rem;

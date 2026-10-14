@@ -1,5 +1,4 @@
 import { ContactConfiguration, ContactTopic } from '../interfaces';
-import { MAINTENANCE_PLAN_DATA } from './maintenance-plan.data';
 
 // Clé publique de routage Web3Forms, reprise de la configuration de contact existante.
 // https://docs.web3forms.com/getting-started/faq
@@ -9,7 +8,5 @@ export const CONTACT_CONFIG: ContactConfiguration = {
 };
 
 export const CONTACT_TOPICS: readonly ContactTopic[] = [
-  ...MAINTENANCE_PLAN_DATA.map((plan) => ({ id: plan.id, label: `Maintenance - ${plan.name}` })),
   { id: 'autre', label: 'Autre demande' },
-  { id: 'donnees-personnelles', label: 'Mes données personnelles' },
 ];
