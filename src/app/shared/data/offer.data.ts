@@ -19,7 +19,7 @@ export const OFFER_DATA: readonly Offer[] = [
       'Vente en ligne et espace administrateur non inclus.',
       'Rédaction complète des contenus et rédaction juridique non incluses.',
     ],
-    scopeNote: 'Une page ; sections et contenus convenus au devis.',
+    scopeNote: 'Une page, sections et contenus convenus au devis.',
   },
   {
     id: 'site-vitrine',
