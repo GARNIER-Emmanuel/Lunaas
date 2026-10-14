@@ -9,7 +9,7 @@ export const CONTACT_CONFIG: ContactConfiguration = {
 };
 
 export const CONTACT_TOPICS: readonly ContactTopic[] = [
-  ...MAINTENANCE_PLAN_DATA.map((plan) => ({ id: plan.id, label: `Maintenance — ${plan.name}` })),
+  ...MAINTENANCE_PLAN_DATA.map((plan) => ({ id: plan.id, label: `Maintenance - ${plan.name}` })),
   { id: 'autre', label: 'Autre demande' },
   { id: 'donnees-personnelles', label: 'Mes données personnelles' },
 ];

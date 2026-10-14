@@ -119,8 +119,8 @@ describe('Contact form', () => {
   });
 
   it.each([
-    ['maintenance-essentiel', 'Maintenance — Essentiel'],
-    ['maintenance-suivi', 'Maintenance — Suivi'],
+    ['maintenance-essentiel', 'Maintenance - Essentiel'],
+    ['maintenance-suivi', 'Maintenance - Suivi'],
   ])('selects and sends %s without losing the draft or subscribing automatically', async (planId, label) => {
     transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
     const harness = await page();
