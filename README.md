@@ -13,7 +13,9 @@ Site vitrine de mon activité freelance de création de sites web à Bordeaux, p
 
 ## Technologies
 
-Angular 22 · TypeScript · Tailwind CSS 4 · GSAP · Vitest
+Angular 22 · TypeScript · GSAP · Vitest
+
+Mise en page et responsive en CSS personnalisé, avec quelques utilitaires Tailwind CSS 4.
 
 Les trois pages sont prégénérées au build (SSG), puis Angular gère les interactions dans le navigateur. Hébergement sur Cloudflare Pages.
 
