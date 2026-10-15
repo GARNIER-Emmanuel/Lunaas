@@ -135,7 +135,7 @@ if (sitemapUrls.length !== indexable.length || !indexable.every((url) => sitemap
 await access(resolve(output, '404.html'));
 if ((await readFile(resolve(output, '404.html'), 'utf8')) !== (await readFile(resolve(output, 'index.html'), 'utf8')))
   errors.push('Fallback must contain the same landing, not another page');
-await access(resolve(output, 'images/share.png'));
+await access(resolve(output, 'images/share-logo.png'));
 await access(resolve(output, 'images/hero-background.jpg'));
 for (const image of [
   'contact-mars.avif',

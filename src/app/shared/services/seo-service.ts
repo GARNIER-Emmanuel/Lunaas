@@ -38,13 +38,15 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({ property: 'og:site_name', content: SITE_DATA.name });
     this.meta.updateTag({ property: 'og:locale', content: 'fr_FR' });
-    this.meta.updateTag({ property: 'og:image', content: `${SITE_DATA.url}/images/share.png` });
+    this.meta.updateTag({ property: 'og:image', content: `${SITE_DATA.url}/images/share-logo.png` });
+    this.meta.updateTag({ property: 'og:image:alt', content: 'Logo Lunaas sur fond noir' });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ name: 'twitter:image', content: `${SITE_DATA.url}/images/share.png` });
+    this.meta.updateTag({ name: 'twitter:image', content: `${SITE_DATA.url}/images/share-logo.png` });
+    this.meta.updateTag({ name: 'twitter:image:alt', content: 'Logo Lunaas sur fond noir' });
     let canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
       canonical = this.document.createElement('link');
