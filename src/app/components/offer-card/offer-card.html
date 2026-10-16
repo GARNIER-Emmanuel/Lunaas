@@ -30,10 +30,14 @@
     <summary>
       {{ offer().flexible ? 'Le cadre du projet' : 'Détails de l’offre' }}
     </summary>
+    <h4 class="detail-heading">{{ offer().flexible ? 'Étude du besoin' : 'Inclus dans l’offre' }}</h4>
     <ul class="detail-list">
       @for (detail of offer().details; track detail) {
       <li>{{ detail }}</li>
       }
+    </ul>
+    <h4 class="detail-heading">{{ offer().flexible ? 'Périmètre du devis' : 'Non inclus' }}</h4>
+    <ul class="detail-list">
       @for (exclusion of offer().exclusions; track exclusion) {
       <li>{{ exclusion }}</li>
       }
