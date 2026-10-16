@@ -12,7 +12,7 @@ export const OFFER_DATA: readonly Offer[] = [
     features: [
       'Design personnalisé, adapté aux mobiles',
       'Formulaire de contact et liens utiles',
-      'Intégration de vos textes et images',
+      'Intégration des textes et images que vous fournissez',
       'Bases techniques du référencement',
       'Vérifications et mise en ligne',
     ],
@@ -33,7 +33,7 @@ export const OFFER_DATA: readonly Offer[] = [
     features: [
       'Design personnalisé, adapté aux mobiles',
       'Navigation et formulaire de contact',
-      'Intégration de vos textes et images',
+      'Intégration des textes et images que vous fournissez',
       'Bases techniques du référencement',
       'Vérifications et mise en ligne',
     ],
