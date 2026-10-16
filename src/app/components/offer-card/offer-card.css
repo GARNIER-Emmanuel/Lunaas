@@ -38,22 +38,20 @@ h3 {
   font-synthesis: none;
 }
 
-.offer-description,
-.offer-use-case,
-.scope-note {
+.offer-description {
   color: var(--color-muted);
   font-size: 0.9rem;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
-.offer-use-case {
-  margin-top: 1rem;
+.offer-context {
+  margin-block: 1.25rem;
 }
 
-.offer-use-case strong {
-  display: block;
+.offer-format {
   margin-bottom: 0.35rem;
   color: var(--color-ink);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -81,14 +79,6 @@ h3 {
   color: var(--color-muted);
   font-size: 0.75rem;
   line-height: 1.6;
-}
-
-.offer-description {
-  margin-top: 1rem;
-}
-
-.scope-note {
-  margin-block: 1.1rem 1.5rem;
 }
 
 h4 {
@@ -134,7 +124,7 @@ summary:focus-visible {
   outline-offset: 4px;
 }
 
-.exclusion-list {
+.detail-list {
   display: grid;
   gap: 0.5rem;
   padding: 0.75rem 0 0.4rem 1rem;
