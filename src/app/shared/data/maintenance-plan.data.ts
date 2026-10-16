@@ -42,7 +42,7 @@ export const MAINTENANCE_PLAN_DATA: readonly MaintenancePlan[] = [
 export const MAINTENANCE_TERMS_DATA = {
   cancellation:
     'Sans engagement de durée. Résiliation par e-mail à tout moment, effective à la fin de la période payée.',
-  eligibility: 'Pour les clients professionnels et les sites créés et livrés par Lunaas.',
+  eligibility: 'Abonnements réservés aux professionnels dont j’ai créé et livré le site.',
   payment:
     'Facturation mensuelle, payable à l’avance par virement.',
   extraCosts:

@@ -210,7 +210,7 @@ describe('App', () => {
     expect(section.textContent?.toLowerCase()).toContain('sans engagement de durée');
     expect(section.textContent).toContain('70 €/heure');
     expect(root.querySelector('app-faq')?.textContent).toContain('sans abonnement');
-    expect(section.textContent).toContain('sites créés et livrés par Lunaas');
+    expect(section.textContent).toContain('Abonnements réservés aux professionnels dont j’ai créé et livré le site.');
     expect(section.textContent).toContain('payable à l’avance par virement');
     expect(root.querySelector('#maintenance-faq')?.textContent).toContain('après accord et réception du premier paiement');
     expect(root.querySelector('app-faq')?.textContent).toContain('sans correction illimitée ni garantie de disponibilité à 100 %');
