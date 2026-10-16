@@ -58,7 +58,7 @@ export const FAQ_DATA: readonly FaqItem[] = [
   {
     question: 'Puis-je gérer mon site après sa création ?',
     answer:
-      'La modification autonome des contenus dépend des outils prévus au devis : les forfaits de création n’incluent pas d’espace administrateur par défaut. Si vous souhaitez modifier vous-même les textes ou les images, nous définissons cette possibilité avant le démarrage. Les statistiques de base peuvent être configurées et accessibles sans abonnement ; leur analyse mensuelle fait partie de Suivi.',
+      'La modification autonome des contenus dépend des outils prévus au devis : les forfaits de création n’incluent pas d’espace administrateur par défaut. Si vous souhaitez modifier vous-même les textes ou les images, je définis cette possibilité avec vous avant le démarrage. Les statistiques de base peuvent être configurées et accessibles sans abonnement ; leur analyse mensuelle fait partie de Suivi.',
   },
   {
     question: 'Que faire si je souhaite modifier mon site après la mise en ligne ?',
