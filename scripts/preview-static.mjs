@@ -4,6 +4,18 @@ import { resolve, extname, sep } from 'node:path';
 
 const root = resolve('dist/lunaas/browser');
 const port = Number(process.env.PORT || 4300);
+// Reproduire les en-têtes globaux de Pages pour observer la CSP sur le build local.
+const securityHeaders = {};
+let globalRule = false;
+for (const line of (await readFile(resolve(root, '_headers'), 'utf8')).split(/\r?\n/)) {
+  if (!line.trim() || line.trimStart().startsWith('#')) continue;
+  if (!/^\s/.test(line)) {
+    globalRule = line.trim() === '/*';
+    continue;
+  }
+  const header = line.match(/^\s+([^:]+):\s*(.*)$/);
+  if (globalRule && header) securityHeaders[header[1]] = header[2];
+}
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css',
@@ -38,7 +50,7 @@ createServer(async (request, response) => {
     const body = await readFile(file);
     response.writeHead(status, {
       'Content-Type': types[extname(file)] || 'application/octet-stream',
-      'X-Content-Type-Options': 'nosniff',
+      ...securityHeaders,
     });
     response.end(request.method === 'HEAD' ? undefined : body);
   } catch {

@@ -1,6 +1,7 @@
 import { readFile, access } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { JSDOM } from 'jsdom';
+import { createHash } from 'node:crypto';
 
 const output = resolve('dist/lunaas/browser');
 const { routes } = JSON.parse(
@@ -23,8 +24,38 @@ for (const path of Object.keys(routes)) {
   const dom = new JSDOM(html, { url: new URL(path, origin).href });
   pages.set(path, dom.window.document);
 }
+const headerLines = (await readFile(resolve(output, '_headers'), 'utf8')).split(/\r?\n/);
+const cspLines = headerLines.filter((line) => /^\s*Content-Security-Policy-Report-Only:/i.test(line));
+if (cspLines.length !== 1 || cspLines[0].length > 2000)
+  errors.push('Expected one report-only CSP within the Cloudflare header line limit');
+if (headerLines.some((line) => /^\s*Content-Security-Policy:/i.test(line)))
+  errors.push('CSP must remain in observation mode for this phase');
+if (!headerLines.some((line) => /^\s*Strict-Transport-Security:\s*max-age=\d+/.test(line)))
+  errors.push('Missing HSTS header');
+const policy = (cspLines[0] ?? '').replace(/^\s*Content-Security-Policy-Report-Only:\s*/i, '');
+const directives = new Map(policy.split(';').map((part) => {
+  const [name, ...sources] = part.trim().split(/\s+/);
+  return [name, sources];
+}));
+const scriptSources = directives.get('script-src') ?? [];
+if (scriptSources.includes("'unsafe-inline'") || scriptSources.includes("'unsafe-eval'"))
+  errors.push('Scripts must use hashes instead of unsafe-inline or unsafe-eval');
+if (!scriptSources.includes('https://static.cloudflareinsights.com'))
+  errors.push('Missing consent-controlled Cloudflare analytics script source');
+for (const url of ['https://api.web3forms.com', 'https://cloudflareinsights.com']) {
+  if (!directives.get('connect-src')?.includes(url)) errors.push(`Missing CSP connection source: ${url}`);
+}
 for (const [path, document] of pages) {
   const fail = (message) => errors.push(`${path}: ${message}`);
+  for (const script of document.querySelectorAll('script:not([src])')) {
+    if (!['', 'module', 'text/javascript', 'application/javascript'].includes(script.type)) continue;
+    const hash = createHash('sha256').update(script.textContent, 'utf8').digest('base64');
+    if (!scriptSources.includes(`'sha256-${hash}'`)) fail('inline script not covered by CSP');
+  }
+  for (const element of document.querySelectorAll('*')) {
+    if ([...element.attributes].some((attribute) => /^on/i.test(attribute.name)))
+      fail('inline event handler incompatible with script-src-attr none');
+  }
   const isHome = path === '/';
   if (isHome) {
     if (document.querySelectorAll('form').length !== 1 || !document.querySelector('#contact app-contact-form'))
@@ -147,5 +178,5 @@ for (const image of [
 }
 if (errors.length) throw new Error(errors.join('\n'));
 console.log(
-  `Static QA passed: ${pages.size} pages, unique metadata, internal links, anchors, labels, assets and ${sitemapUrls.length} sitemap URLs.`,
+  `Static QA passed: ${pages.size} pages, unique metadata, internal links, anchors, labels, assets, ${sitemapUrls.length} sitemap URLs and report-only CSP coverage.`,
 );
