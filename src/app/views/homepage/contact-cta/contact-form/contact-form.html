@@ -93,29 +93,22 @@
         }
       </div>
     </div>
-    <details
-      class="extra-details"
-      [open]="extraDetailsOpen()"
-      (toggle)="toggleExtraDetails($event)"
-    >
-      <summary>Précisions supplémentaires <span>(facultatif)</span></summary>
-      <div>
-        <label [for]="fieldId('budget')">Budget indicatif <span>(facultatif)</span></label>
-        <input
-          [id]="fieldId('budget')"
-          [formField]="contactForm.budget"
-          placeholder="À préciser ensemble"
-          [attr.aria-describedby]="fieldId('budget-errors')"
-        />
-        <div [id]="fieldId('budget-errors')" class="field-errors">
-          @if (contactForm.budget().touched()) {
-            @for (error of contactForm.budget().errors(); track error) {
-              <p>{{ error.message }}</p>
-            }
+    <div>
+      <label [for]="fieldId('budget')">Budget indicatif <span>(facultatif)</span></label>
+      <input
+        [id]="fieldId('budget')"
+        [formField]="contactForm.budget"
+        placeholder="À préciser ensemble"
+        [attr.aria-describedby]="fieldId('budget-errors')"
+      />
+      <div [id]="fieldId('budget-errors')" class="field-errors">
+        @if (contactForm.budget().touched()) {
+          @for (error of contactForm.budget().errors(); track error) {
+            <p>{{ error.message }}</p>
           }
-        </div>
+        }
       </div>
-    </details>
+    </div>
   </fieldset>
   <p class="form-help" [id]="fieldId('privacy-help')">
     Lunaas utilise votre e-mail et votre message pour répondre à votre demande, via Web3Forms.<br />

@@ -46,7 +46,9 @@ describe('Contact form', () => {
     transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
     const harness = await page();
     const root = harness.routeNativeElement!;
-    expect(root.querySelector<HTMLDetailsElement>('.extra-details')!.open).toBe(false);
+    const budget = root.querySelector<HTMLInputElement>('#cta-contact-budget')!;
+    expect(budget.closest('details')).toBeNull();
+    expect(budget.required).toBe(false);
     expect(root.querySelector('#cta-contact-firstname')).toBeNull();
     enter(root, 'cta-contact-email', 'atelier@example.com');
     enter(root, 'cta-contact-message', 'Je souhaite discuter de mon projet.');
@@ -59,7 +61,7 @@ describe('Contact form', () => {
     expect(payload.project).toBe('Demande générale');
   });
 
-  it('reveals a budget error when additional details were closed and preserves the draft', async () => {
+  it('shows an invalid budget error and preserves the draft', async () => {
     const harness = await page();
     const root = await fill(harness);
     enter(root, 'cta-contact-budget', 'x'.repeat(101));
@@ -67,7 +69,6 @@ describe('Contact form', () => {
     submit(root);
     await harness.fixture.whenStable();
     harness.detectChanges();
-    expect(root.querySelector<HTMLDetailsElement>('.extra-details')!.open).toBe(true);
     expect(root.querySelector('#cta-contact-budget-errors')?.textContent).toContain(
       '100 caractères',
     );

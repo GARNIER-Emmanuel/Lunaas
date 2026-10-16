@@ -36,7 +36,6 @@ export class ContactFormComponent {
   protected readonly topics = CONTACT_TOPICS;
   protected readonly feedback = signal('');
   protected readonly failed = signal(false);
-  protected readonly extraDetailsOpen = signal(false);
   private readonly contactService = inject(ContactService);
   private readonly draft = inject(ContactDraftService);
   protected readonly model = this.draft.values;
@@ -74,7 +73,6 @@ export class ContactFormComponent {
           try {
             await this.contactService.sendEmail(field().value());
             field().reset(this.draft.emptyValues());
-            this.extraDetailsOpen.set(false);
             this.feedback.set(
               'Votre message a été envoyé. Merci, je reviendrai vers vous pour échanger sur votre projet.',
             );
@@ -86,7 +84,6 @@ export class ContactFormComponent {
           }
         },
         onInvalid: () => {
-          if (this.contactForm.budget().invalid()) this.extraDetailsOpen.set(true);
           this.failed.set(true);
           this.feedback.set('Vérifiez les champs signalés avant d’envoyer votre message.');
         },
@@ -109,10 +106,6 @@ export class ContactFormComponent {
         this.model.update((values) => ({ ...values, projectType: selection.offerId }));
       });
     });
-  }
-
-  protected toggleExtraDetails(event: Event): void {
-    this.extraDetailsOpen.set((event.currentTarget as HTMLDetailsElement).open);
   }
 
   protected fieldId(name: string): string {
