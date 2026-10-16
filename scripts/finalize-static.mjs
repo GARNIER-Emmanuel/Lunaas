@@ -28,7 +28,7 @@ const headerPath = resolve(output, '_headers');
 const headerSource = await readFile(headerPath, 'utf8');
 let policyFound = false;
 const headers = headerSource.replace(
-  /^(\s*Content-Security-Policy-Report-Only: *)([^\r\n]+)$/gim,
+  /^(\s*Content-Security-Policy: *)([^\r\n]+)$/gim,
   (_, prefix, policy) => {
     policyFound = true;
     if (!/(?:^|;\s*)script-src\s/.test(policy)) throw new Error('Missing CSP script-src');
@@ -41,7 +41,7 @@ const headers = headerSource.replace(
     return line;
   },
 );
-if (!policyFound) throw new Error('Missing report-only CSP header');
+if (!policyFound) throw new Error('Missing enforcing CSP header');
 await writeFile(headerPath, headers);
 // Un chemin inconnu affiche la même landing ; Angular le ramène ensuite à la racine.
 await copyFile(resolve(output, 'index.html'), resolve(output, '404.html'));
@@ -54,4 +54,4 @@ await writeFile(
   `User-agent: *\nAllow: /\nSitemap: ${domain}/sitemap.xml\n`,
 );
 console.log(`Static delivery finalized: ${publicPaths.length} sitemap URLs and a landing fallback.`);
-console.log(`Report-only CSP prepared with ${inlineScriptHashes.size} inline script hashes.`);
+console.log(`Enforcing CSP prepared with ${inlineScriptHashes.size} inline script hashes.`);

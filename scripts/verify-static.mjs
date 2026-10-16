@@ -25,14 +25,14 @@ for (const path of Object.keys(routes)) {
   pages.set(path, dom.window.document);
 }
 const headerLines = (await readFile(resolve(output, '_headers'), 'utf8')).split(/\r?\n/);
-const cspLines = headerLines.filter((line) => /^\s*Content-Security-Policy-Report-Only:/i.test(line));
+const cspLines = headerLines.filter((line) => /^\s*Content-Security-Policy:/i.test(line));
 if (cspLines.length !== 1 || cspLines[0].length > 2000)
-  errors.push('Expected one report-only CSP within the Cloudflare header line limit');
-if (headerLines.some((line) => /^\s*Content-Security-Policy:/i.test(line)))
-  errors.push('CSP must remain in observation mode for this phase');
+  errors.push('Expected one enforcing CSP within the Cloudflare header line limit');
+if (headerLines.some((line) => /^\s*Content-Security-Policy-Report-Only:/i.test(line)))
+  errors.push('Expected enforcing CSP instead of observation mode');
 if (!headerLines.some((line) => /^\s*Strict-Transport-Security:\s*max-age=\d+/.test(line)))
   errors.push('Missing HSTS header');
-const policy = (cspLines[0] ?? '').replace(/^\s*Content-Security-Policy-Report-Only:\s*/i, '');
+const policy = (cspLines[0] ?? '').replace(/^\s*Content-Security-Policy:\s*/i, '');
 const directives = new Map(policy.split(';').map((part) => {
   const [name, ...sources] = part.trim().split(/\s+/);
   return [name, sources];
@@ -178,5 +178,5 @@ for (const image of [
 }
 if (errors.length) throw new Error(errors.join('\n'));
 console.log(
-  `Static QA passed: ${pages.size} pages, unique metadata, internal links, anchors, labels, assets, ${sitemapUrls.length} sitemap URLs and report-only CSP coverage.`,
+  `Static QA passed: ${pages.size} pages, unique metadata, internal links, anchors, labels, assets, ${sitemapUrls.length} sitemap URLs and enforcing CSP coverage.`,
 );
