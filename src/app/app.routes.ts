@@ -9,7 +9,7 @@ export const routes: Routes = [
     title: 'Création de sites internet à Bordeaux | Lunaas',
     data: {
       description:
-        'Lunaas conçoit des sites internet à Bordeaux : landing pages, sites vitrines et sites dynamiques. Découvrez les offres et parlons de votre projet.',
+        'Développeur web freelance à Bordeaux, je crée des sites vitrines pour les artisans, indépendants et petites entreprises. Découvrez les offres Lunaas.',
     },
   },
   {
