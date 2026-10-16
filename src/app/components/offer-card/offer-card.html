@@ -15,13 +15,8 @@
     <p class="price-note">Domaine et hébergement non inclus.</p>
   </div>
   <div class="offer-context">
-    @if (offer().description; as description) {
-    <p class="offer-description">{{ description }}</p>
-    }
-    @if (offer().useCase; as useCase) {
-    <p class="offer-use-case"><strong>Pour quel besoin ?</strong>{{ useCase }}</p>
-    }
-    <p class="scope-note">{{ offer().scopeNote }}</p>
+    <p class="offer-format">{{ offer().format }}</p>
+    <p class="offer-description">{{ offer().description }}</p>
   </div>
 
   <h4>{{ offer().flexible ? 'Avant de démarrer' : 'Les essentiels inclus' }}</h4>
@@ -33,9 +28,12 @@
 
   <details>
     <summary>
-      {{ offer().flexible ? 'Le cadre de la proposition' : 'Ce qui n’est pas inclus' }}
+      {{ offer().flexible ? 'Le cadre du projet' : 'Détails de l’offre' }}
     </summary>
-    <ul class="exclusion-list">
+    <ul class="detail-list">
+      @for (detail of offer().details; track detail) {
+      <li>{{ detail }}</li>
+      }
       @for (exclusion of offer().exclusions; track exclusion) {
       <li>{{ exclusion }}</li>
       }
