@@ -7,6 +7,8 @@ export const OFFER_DATA: readonly Offer[] = [
     name: 'Landing page',
     description: 'Une page claire pour présenter votre activité et faciliter la prise de contact.',
     startingPrice: 800,
+    useCase:
+      'Vous lancez votre activité ou souhaitez présenter une offre précise. Une seule page rassemble l’essentiel : votre présentation, vos services et un moyen de vous contacter.',
     flexible: false,
     features: [
       'Design personnalisé, adapté aux mobiles',
@@ -28,6 +30,8 @@ export const OFFER_DATA: readonly Offer[] = [
     description:
       'Quelques pages pour présenter votre entreprise, vos services et vos réalisations.',
     startingPrice: 1400,
+    useCase:
+      'Vous avez plusieurs services à expliquer ou des réalisations à présenter. Des pages distinctes permettent à vos visiteurs de trouver les informations qui les concernent.',
     flexible: false,
     features: [
       'Design personnalisé, adapté aux mobiles',
