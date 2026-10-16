@@ -15,10 +15,13 @@ describe('Page metadata', () => {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl('/?offre=site-vitrine#contact');
     expect(document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.href).toBe('https://lunaas.site/');
-    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('parlons de votre projet');
+    const description = TestBed.inject(Meta).getTag('name="description"')?.content;
+    expect(description).toContain('Développeur web freelance à Bordeaux, je crée des sites vitrines');
+    expect(TestBed.inject(Meta).getTag('property="og:description"')?.content).toBe(description);
+    expect(TestBed.inject(Meta).getTag('name="twitter:description"')?.content).toBe(description);
     await harness.navigateByUrl('/#offres');
     expect(document.querySelectorAll('link[rel="canonical"]')).toHaveLength(1);
-    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toContain('sites dynamiques');
+    expect(TestBed.inject(Meta).getTag('name="description"')?.content).toBe(description);
   });
 
   it('gives legal pages their own canonical and metadata without queries or fragments', async () => {
