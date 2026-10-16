@@ -4,10 +4,10 @@ export const OFFER_DATA: readonly Offer[] = [
   {
     id: 'landing-page',
     halo: 'moon',
-    name: 'Landing page',
+    name: 'Site une page',
     startingPrice: 800,
     format: '1 page',
-    description: 'Pour présenter votre activité ou une offre sur une seule page.',
+    description: 'Présentez votre activité et facilitez la prise de contact sur une seule page.',
     flexible: false,
     features: [
       'Design personnalisé, adapté aux mobiles',
@@ -30,7 +30,8 @@ export const OFFER_DATA: readonly Offer[] = [
     name: 'Site vitrine multipage',
     startingPrice: 1400,
     format: 'Base de 3 pages',
-    description: 'Pour détailler votre entreprise, vos services et vos réalisations.',
+    description:
+      'Aidez vos visiteurs à découvrir vos services et vos réalisations grâce à des pages dédiées.',
     flexible: false,
     features: [
       'Design personnalisé, adapté aux mobiles',

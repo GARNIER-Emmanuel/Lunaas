@@ -53,8 +53,12 @@
     }
   }
 }
+.offer-framework,
 .pricing-note {
-  max-width: none;
+  max-width: 76ch;
+}
+
+.pricing-note {
   margin-top: 0.75rem;
   color: var(--color-muted);
   font-size: 0.85rem;
