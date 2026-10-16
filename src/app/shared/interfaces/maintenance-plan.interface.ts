@@ -7,6 +7,7 @@ export interface MaintenancePlan {
   readonly monthlyPrice: number;
   readonly includesEssential: boolean;
   readonly features: readonly string[];
+  readonly details: readonly string[];
   readonly diagnosticMinutesPerMonth: 15;
   readonly contentMinutesPerMonth: 0 | 30;
   readonly acknowledgementBusinessDays: 1 | 2;

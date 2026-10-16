@@ -151,7 +151,7 @@ describe('App', () => {
     await router.navigateByUrl('/');
     await fixture.whenStable();
     expect(root.querySelector('.pricing-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.vatRegime);
-    expect(root.querySelector('.maintenance-tax-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.pricingTaxNote);
+    expect(root.querySelector('.maintenance-tax-note')?.textContent).toContain(LEGAL_BUSINESS_DATA.vatRegime);
   });
 
   it('shows launch packages and keeps the custom project on quote in the contact form', async () => {

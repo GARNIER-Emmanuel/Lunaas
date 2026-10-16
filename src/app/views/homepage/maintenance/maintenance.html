@@ -6,8 +6,8 @@
       Votre site, dans la durée<br /><span class="font-script">Après la mise en ligne</span>
     </h2>
     <p class="section-description" data-motion>
-      Deux abonnements facultatifs pour surveiller votre site et, selon vos besoins, actualiser
-      ses contenus.<br />Sans engagement de durée.
+      Je vous propose deux abonnements facultatifs pour surveiller votre site et, selon vos besoins,
+      actualiser ses contenus.
     </p>
 
     <div class="maintenance-grid">
@@ -19,11 +19,11 @@
           <div>
             <p class="plan-category">Abonnement facultatif</p>
             <h3 [id]="plan.id + '-title'">{{ plan.name }}</h3>
-            <p class="plan-description">{{ plan.description }}</p>
           </div>
           <p class="plan-price" aria-describedby="maintenance-tax-note">
             <strong>{{ price(plan.monthlyPrice) }}</strong><span>/mois</span>
           </p>
+          <p class="plan-description">{{ plan.description }}</p>
           <div class="plan-features">
             <h4>
               {{ plan.includesEssential ? 'Essentiel, avec en plus :' : 'Les essentiels inclus' }}
@@ -33,7 +33,7 @@
                 <li>
                   <span aria-hidden="true">✓</span>
                   <span>Jusqu’à <strong>{{ plan.contentMinutesPerMonth }} minutes / mois</strong>
-                    de modifications simples : textes, images et coordonnées</span>
+                    de modifications simples</span>
                 </li>
               }
               @for (feature of plan.features; track feature) {
@@ -41,26 +41,47 @@
               }
             </ul>
           </div>
-          <div class="plan-limits">
-            <p>Diagnostic d’incident : jusqu’à
-              <strong>{{ plan.diagnosticMinutesPerMonth }} minutes par mois.</strong>
-            </p>
-            <p>Accusé de réception :
-              <strong>sous {{ plan.acknowledgementBusinessDays }}
-                {{ plan.acknowledgementBusinessDays === 1 ? 'jour ouvré' : 'jours ouvrés' }}.</strong>
-            </p>
-            <p class="plan-note">{{ plan.limitationNote }}</p>
-          </div>
+          <p class="plan-response">Accusé de réception :
+            <strong>sous {{ plan.acknowledgementBusinessDays }}
+              {{ plan.acknowledgementBusinessDays === 1 ? 'jour ouvré' : 'jours ouvrés' }}.</strong>
+          </p>
+          <details>
+            <summary>Détails et limites de l’abonnement</summary>
+            <h4 class="detail-heading">Interventions incluses</h4>
+            @if (plan.includesEssential) {
+              <p class="plan-detail-intro">Toutes les prestations d’Essentiel sont incluses.</p>
+            }
+            <ul class="detail-list">
+              @for (detail of plan.details; track detail) {
+                <li>{{ detail }}</li>
+              }
+              <li>Diagnostic d’incident : jusqu’à
+                <strong>{{ plan.diagnosticMinutesPerMonth }} minutes par mois.</strong>
+              </li>
+            </ul>
+            <h4 class="detail-heading">Limites et hors forfait</h4>
+            <ul class="detail-list">
+              <li>{{ plan.limitationNote }}</li>
+              @if (plan.contentMinutesPerMonth) {
+                <li>Le temps de modification est compté séparément du diagnostic d’incident.</li>
+              }
+              <li>Les nouvelles pages, fonctionnalités et refontes sont sur devis.</li>
+            </ul>
+            <p class="plan-detail-note">L’accusé de réception ne garantit pas un délai de résolution.
+              Les corrections ne sont pas illimitées et la disponibilité à 100 % n’est pas garantie.</p>
+          </details>
         </article>
       }
     </div>
 
     <div class="maintenance-terms" aria-label="Conditions des abonnements">
-      <p id="maintenance-tax-note" class="maintenance-tax-note">{{ business.pricingTaxNote }}</p>
-      <p>{{ terms.eligibility | sentenceLines }}</p>
-      <p>{{ terms.cancellation | sentenceLines }}<br />{{ terms.payment | sentenceLines }}</p>
-      <p>{{ terms.extraCosts | sentenceLines }}</p>
-      <a href="#maintenance-faq" class="text-link">Interventions, statistiques et abonnements : vos questions</a>
+      <p>{{ terms.eligibility }}</p>
+      <p>{{ terms.cancellation }} {{ terms.payment }}</p>
+      <p>{{ terms.extraCosts }}</p>
+      <p id="maintenance-tax-note" class="maintenance-tax-note">{{ business.vatRegime }}.</p>
     </div>
+    <a href="#maintenance-faq" class="button button-secondary maintenance-help">
+      Vos questions sur la maintenance <span aria-hidden="true">→</span>
+    </a>
   </div>
 </section>

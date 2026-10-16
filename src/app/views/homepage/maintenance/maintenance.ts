@@ -5,12 +5,11 @@ import {
   MAINTENANCE_TERMS_DATA,
 } from '../../../shared/data';
 import { MaintenancePlanId } from '../../../shared/interfaces';
-import { SentenceLines } from '../../../shared/pipes/sentence-lines';
 import { ImageTrail } from '../../../shared/directives/image-trail';
 
 @Component({
   selector: 'app-maintenance',
-  imports: [SentenceLines, ImageTrail],
+  imports: [ImageTrail],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './maintenance.html',
   styleUrl: './maintenance.css',
