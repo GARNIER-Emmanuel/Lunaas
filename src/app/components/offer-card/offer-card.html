@@ -4,7 +4,9 @@
   <div class="offer-intro">
     <p class="offer-category">{{ offer().flexible ? 'Étude du besoin' : 'Création de site' }}</p>
     <h3 [id]="'offer-' + offer().id">{{ offer().name }}</h3>
-    <p class="offer-description">{{ offer().description }}</p>
+    @if (offer().description; as description) {
+    <p class="offer-description">{{ description }}</p>
+    }
     @if (offer().useCase; as useCase) {
     <p class="offer-use-case"><strong>Pour quel besoin ?</strong>{{ useCase }}</p>
     }

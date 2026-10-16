@@ -5,7 +5,6 @@ export const OFFER_DATA: readonly Offer[] = [
     id: 'landing-page',
     halo: 'moon',
     name: 'Landing page',
-    description: 'Une page claire pour présenter votre activité et faciliter la prise de contact.',
     startingPrice: 800,
     useCase:
       'Vous lancez votre activité ou souhaitez présenter une offre précise. Une seule page rassemble l’essentiel : votre présentation, vos services et un moyen de vous contacter.',
@@ -27,8 +26,6 @@ export const OFFER_DATA: readonly Offer[] = [
     id: 'site-vitrine',
     halo: 'mars',
     name: 'Site vitrine multipage',
-    description:
-      'Quelques pages pour présenter votre entreprise, vos services et vos réalisations.',
     startingPrice: 1400,
     useCase:
       'Vous avez plusieurs services à expliquer ou des réalisations à présenter. Des pages distinctes permettent à vos visiteurs de trouver les informations qui les concernent.',
