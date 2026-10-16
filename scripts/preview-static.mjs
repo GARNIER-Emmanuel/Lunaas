@@ -4,7 +4,7 @@ import { resolve, extname, sep } from 'node:path';
 
 const root = resolve('dist/lunaas/browser');
 const port = Number(process.env.PORT || 4300);
-// Reproduire les en-têtes globaux de Pages pour observer la CSP sur le build local.
+// Reproduire les en-têtes globaux de Pages pour tester la CSP sur le build local.
 const securityHeaders = {};
 let globalRule = false;
 for (const line of (await readFile(resolve(root, '_headers'), 'utf8')).split(/\r?\n/)) {
