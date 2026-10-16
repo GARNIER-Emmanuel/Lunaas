@@ -39,10 +39,22 @@ h3 {
 }
 
 .offer-description,
+.offer-use-case,
 .scope-note {
   color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.8;
+}
+
+.offer-use-case {
+  margin-top: 1rem;
+}
+
+.offer-use-case strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--color-ink);
+  font-weight: 600;
 }
 
 .offer-price {

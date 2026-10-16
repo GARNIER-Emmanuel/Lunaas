@@ -21,6 +21,20 @@
   gap: 1rem;
   margin-top: 2rem;
 }
+.offer-guidance {
+  max-width: 42rem;
+  margin: 2rem auto 0;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  text-align: center;
+}
+.offer-guidance strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--color-ink);
+  font-weight: 600;
+}
 .offer-actions a {
   border-color: var(--color-accent);
   background: var(--color-lavender);
