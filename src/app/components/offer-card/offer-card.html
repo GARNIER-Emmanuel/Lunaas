@@ -4,12 +4,6 @@
   <div class="offer-intro">
     <p class="offer-category">{{ offer().flexible ? 'Étude du besoin' : 'Création de site' }}</p>
     <h3 [id]="'offer-' + offer().id">{{ offer().name }}</h3>
-    @if (offer().description; as description) {
-    <p class="offer-description">{{ description }}</p>
-    }
-    @if (offer().useCase; as useCase) {
-    <p class="offer-use-case"><strong>Pour quel besoin ?</strong>{{ useCase }}</p>
-    }
   </div>
 
   <div class="offer-price">
@@ -18,8 +12,17 @@
     } @else {
     <span>Après un premier échange</span><strong>Sur devis</strong>
     }
+    <p class="price-note">Domaine et hébergement non inclus.</p>
   </div>
-  <p class="scope-note">{{ offer().scopeNote }}</p>
+  <div class="offer-context">
+    @if (offer().description; as description) {
+    <p class="offer-description">{{ description }}</p>
+    }
+    @if (offer().useCase; as useCase) {
+    <p class="offer-use-case"><strong>Pour quel besoin ?</strong>{{ useCase }}</p>
+    }
+    <p class="scope-note">{{ offer().scopeNote }}</p>
+  </div>
 
   <h4>{{ offer().flexible ? 'Avant de démarrer' : 'Les essentiels inclus' }}</h4>
   <ul class="feature-list" [class.possible-features]="offer().flexible">
