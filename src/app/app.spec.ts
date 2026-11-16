@@ -143,7 +143,8 @@ describe('App', () => {
     expect(privacyText).toContain('12 mois après le dernier échange');
     expect(privacyText).toContain('pendant 5 ans');
     expect(privacyText).toContain('10 ans à compter de la clôture');
-    expect(privacyText).toContain('conservation du prestataire est distincte');
+    expect(privacyText).toContain('supprimer les demandes 12 mois après l’envoi');
+    expect(privacyText).toContain('indépendamment des copies conservées par Lunaas');
     expect(
       root.querySelector(`#confidentialite a[href="mailto:${LEGAL_BUSINESS_DATA.contactEmail}"]`),
     ).not.toBeNull();
