@@ -4,201 +4,188 @@
     <p class="section-label">Vos données</p>
     <h1 id="confidentialite-title">Confidentialité</h1>
     <p class="lead">
-      Cette politique décrit le traitement des demandes de contact et les règles de conservation
-      retenues pour l’activité Lunaas. Mise à jour le 15 octobre 2026.
+      Comment Lunaas utilise vos données lorsque vous consultez le site, envoyez un message ou
+      devenez client. Mise à jour le 16 novembre 2026.
     </p>
   </section>
   <article class="legal-content">
-    <h2>Responsable du traitement</h2>
+    <h2>Qui est responsable de vos données ?</h2>
     <p>
-      Le responsable du traitement est {{ business.legalIdentity }}, pour l’activité
-      {{ business.tradeName }}. Ses coordonnées figurent dans les
-      <a routerLink="/mentions-legales">mentions légales</a>. L’activité est exercée en entreprise
-      individuelle (EI), immatriculée au Registre national des entreprises (RNE).
+      {{ business.legalIdentity }} est responsable du traitement pour l’activité
+      {{ business.tradeName }}. Pour toute question, écrivez à
+      <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a
+      >. Les autres coordonnées figurent dans les
+      <a routerLink="/mentions-legales">mentions légales</a>.
     </p>
-    <h2>Données collectées et champs nécessaires</h2>
+
+    <h2>Quelles données sont utilisées, et pourquoi ?</h2>
     <p>
-      Seuls l’e-mail et le message sont obligatoires : sans eux, le formulaire ne peut pas envoyer
-      la demande et permettre une réponse. Le nom, le sujet et le budget sont
-      facultatifs. Merci de ne pas transmettre de mots de passe, de coordonnées bancaires ou de
-      données sensibles. Le brouillon est conservé uniquement en mémoire, y compris pendant la
-      consultation des pages légales, sans stockage local persistant.
+      Votre e-mail et votre message sont nécessaires pour envoyer votre demande et vous répondre. Le
+      nom, le sujet et le budget sont facultatifs. Ne transmettez pas de mots de passe, de
+      coordonnées bancaires ou de données sensibles.
     </p>
     <p>
-      Les informations sont transmises à Web3Forms au moment de l’envoi. Une confirmation s’affiche
-      uniquement après sa réponse positive. Une erreur conserve la saisie pour permettre de
-      réessayer.
+      La saisie reste en mémoire pendant la navigation, sans stockage local persistant. Elle
+      disparaît après un envoi confirmé ou un rechargement.
     </p>
-    <h2>Finalités et bases légales</h2>
     <ul>
       <li>
-        Préparer un devis demandé par une personne pour son propre contrat : mesures
-        précontractuelles prises à sa demande (article 6, paragraphe 1, b du RGPD).
+        Devis et prestation pour une personne qui contracte en son nom : mesures précontractuelles
+        et exécution du contrat (article 6.1.b du RGPD).
       </li>
       <li>
-        Répondre aux autres messages et aux interlocuteurs d’une entreprise : intérêt légitime à
-        traiter les échanges initiés par le visiteur (article 6, paragraphe 1, f).
+        Autres messages, échanges avec les représentants d’une entreprise et preuves des engagements
+        : intérêt légitime à gérer les échanges et à défendre les droits de Lunaas (article 6.1.f).
       </li>
       <li>
-        Traiter une demande d’exercice des droits : respect des obligations de protection des
-        données (article 6, paragraphe 1, c).
+        Facturation, obligations comptables et demandes d’exercice des droits : obligations légales
+        (article 6.1.c).
+      </li>
+      <li>
+        Fonctionnement et sécurité du site : intérêt légitime à maintenir un site accessible et sûr
+        (article 6.1.f). Les prestataires peuvent traiter des données techniques, notamment
+        l’adresse IP.
       </li>
     </ul>
     <p>
-      Le formulaire n’inscrit pas à une newsletter et ne déclenche pas de prospection automatique.
-      Les données sont utilisées pour traiter les demandes reçues et gérer les relations avec
-      les clients professionnels, ainsi que pour respecter les obligations légales et conserver
-      les justificatifs nécessaires aux engagements contractuels.
+      Le formulaire ne vous inscrit à aucune newsletter et ne déclenche pas de prospection
+      automatique.
     </p>
-    <h2>Destinataires et prestataires</h2>
+
+    <h2>Qui reçoit vos données ?</h2>
+    <p>Les messages sont destinés au responsable de Lunaas, avec l’appui de ces prestataires :</p>
+    <ul>
+      <li>
+        Web3Forms, opéré par Web3Creative, transmet les demandes par e-mail. Ses prestataires
+        d’hébergement, d’envoi et de lutte contre le spam peuvent traiter l’adresse IP et l’e-mail
+        de l’expéditeur.
+      </li>
+      <li>
+        {{ business.hosting.name }} héberge le site. {{ business.emailRoutingProvider }} redirige
+        les messages de l’adresse de contact vers une boîte {{ business.mailProvider }} personnelle
+        utilisée pour l’activité.
+      </li>
+      <li>Shine reçoit les coordonnées et informations nécessaires aux devis et aux factures.</li>
+    </ul>
+
+    <h2>Où vos données sont-elles traitées ?</h2>
     <p>
-      Les demandes sont destinées au responsable de l’activité. Web3Forms, opéré par Web3Creative,
-      les traite pour les acheminer vers la messagerie configurée. Le prestataire utilise des
-      sous-traitants pour l’hébergement, la livraison des e-mails et la lutte contre le spam. Ces
-      traitements peuvent inclure l’adresse IP et l’e-mail de l’expéditeur.
+      Ces services peuvent traiter des données hors de l’Espace économique européen, notamment en
+      Inde et aux États-Unis. Leurs garanties sont décrites dans les documents suivants :
     </p>
-    <p>
-      Le site est hébergé par {{ business.hosting.name }}. Les messages adressés à
-      <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a> sont redirigés
-      par {{ business.emailRoutingProvider }} vers une boîte personnelle {{ business.mailProvider }} utilisée
-      pour gérer les demandes. L’adresse de destination reste privée et n’est pas publiée.
-    </p>
-    <p>
-      Lorsqu’un devis ou une facture est préparé, les coordonnées nécessaires du client et les
-      informations relatives à la prestation sont renseignées dans Shine, l’outil de facturation
-      de Lunaas. L’envoi du formulaire ne crée pas automatiquement de fiche client dans cet outil.
-    </p>
-    <p>
-      UptimeRobot vérifie la disponibilité de l’URL publique du site toutes les cinq minutes et
-      adresse les alertes à Lunaas. Ce moniteur ne reçoit pas le contenu du formulaire et
-      n’utilise pas d’identifiants pour accéder à des pages privées.
-    </p>
-    <h2>Transferts internationaux</h2>
-    <p>
-      Web3Creative est établi en Inde et indique utiliser une infrastructure pouvant traiter les
-      données hors de l’Espace économique européen, notamment aux États-Unis. Son
-      <a href="https://web3forms.com/dpa" target="_blank" rel="noopener noreferrer"
-        >contrat de sous-traitance (DPA)</a
-      >
-      prévoit l’application de clauses contractuelles types pour les transferts concernés.
-      Ce document précise les engagements du prestataire et ses sous-traitants.
-    </p>
-    <p>
-      Cloudflare et Google peuvent également traiter des données hors de l’Espace économique
-      européen. Leurs informations sont consultables dans les
-      <a [href]="business.hosting.privacyPolicy" target="_blank" rel="noopener noreferrer">règles de confidentialité de Cloudflare</a>
-      et les <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener noreferrer">règles de confidentialité de Google</a>.
-      Les garanties applicables dépendent des services et comptes utilisés.
-    </p>
-    <p>
-      La messagerie utilisée est la version grand public de Gmail, régie par les règles de Google,
-      et ne bénéficie pas du contrat de sous-traitance Google Workspace. Vous pouvez écrire à
-      <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a>
-      pour obtenir des précisions sur les destinataires et les garanties de transfert.
-    </p>
-    <h2>Conservation</h2>
-    <p>
-      Dans le navigateur, la saisie est effacée après un envoi confirmé ou le rechargement de la
-      page. Les règles suivantes s’appliquent aux copies conservées par Lunaas dans sa messagerie
-      et ses archives :
-    </p>
+    <ul>
+      <li>
+        Web3Creative, établi en Inde : son
+        <a href="https://web3forms.com/dpa" target="_blank" rel="noopener noreferrer"
+          >contrat de sous-traitance</a
+        >
+        prévoit des clauses contractuelles types pour les transferts concernés.
+      </li>
+      <li>
+        Cloudflare : son
+        <a
+          href="https://www.cloudflare.com/cloudflare-customer-dpa/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >accord de traitement des données</a
+        >
+        prévoit des clauses contractuelles types pour les transferts qui les nécessitent.
+      </li>
+      <li>
+        Google : ses
+        <a
+          href="https://policies.google.com/privacy/frameworks?hl=fr"
+          target="_blank"
+          rel="noopener noreferrer"
+          >cadres légaux pour les transferts</a
+        >
+        décrivent les décisions d’adéquation et clauses contractuelles types utilisées. La
+        messagerie relève des
+        <a
+          href="https://policies.google.com/privacy?hl=fr"
+          target="_blank"
+          rel="noopener noreferrer"
+          >règles de Google</a
+        >
+        pour Gmail grand public.
+      </li>
+    </ul>
+
+    <h2>Combien de temps sont-elles conservées ?</h2>
     <ul class="retention-policy">
-      <li>Simple demande de contact sans suite et sans devis établi :
-        {{ business.dataRetention.unansweredEnquiryMonths }} mois après le dernier échange, puis suppression.</li>
-      <li>Dossier client en cours : pendant la réalisation et le suivi du contrat.</li>
-      <li>Devis, contrats et échanges nécessaires pour prouver les engagements : archivage séparé
-        pendant {{ business.dataRetention.commercialDocumentYears }} ans, selon la nature du document
-        et le délai applicable.</li>
-      <li>Factures et pièces comptables : {{ business.dataRetention.accountingDocumentYears }} ans
-        à compter de la clôture de l’exercice concerné.</li>
+      <li>
+        Demande sans suite et sans devis établi :
+        {{ business.dataRetention.unansweredEnquiryMonths }} mois après le dernier échange.
+      </li>
+      <li>Dossier client actif : pendant la réalisation et le suivi du contrat.</li>
+      <li>
+        Devis, contrats et échanges utiles à la preuve : archivage séparé pendant
+        {{ business.dataRetention.commercialDocumentYears }} ans, selon le document et le délai
+        applicable.
+      </li>
+      <li>
+        Factures et pièces comptables : {{ business.dataRetention.accountingDocumentYears }} ans à
+        compter de la clôture de l’exercice concerné.
+      </li>
     </ul>
     <p>
-      Un tri mensuel permet de supprimer les anciennes demandes sans suite et de séparer les
-      documents contractuels et comptables des échanges courants. Les archives sont réservées
-      aux besoins légaux et à la preuve des engagements. Leur conservation peut être adaptée
-      lorsqu’une obligation particulière ou un litige le justifie.
+      Les données sont ensuite supprimées, sauf obligation particulière ou litige justifiant leur
+      conservation.
     </p>
     <p>
-      La durée de conservation configurée pour le formulaire Web3Forms de Lunaas est de 12 mois
-      après l’envoi. Web3Forms indique que ce réglage entraîne la suppression définitive des
-      soumissions plus anciennes. Sa
-      <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer"
-        >politique de confidentialité</a
-      >
-      décrit les traitements du prestataire. Pour demander une suppression anticipée, contactez
-      Lunaas, qui traite la demande avec le prestataire selon les conditions applicables.
-      La suppression d’un e-mail dans la messagerie ne supprime pas automatiquement la soumission
-      chez Web3Forms. La conservation du prestataire est distincte des délais appliqués par Lunaas.
+      Le formulaire Web3Forms de Lunaas est configuré pour supprimer les demandes 12 mois après
+      l’envoi, indépendamment des copies conservées par Lunaas. Pour une suppression anticipée,
+      contactez Lunaas, qui sollicitera le prestataire selon les conditions applicables.
     </p>
-    <h2>Vos demandes concernant les données</h2>
+
+    <h2>Quels sont vos droits ?</h2>
     <p>
-      Vous pouvez demander l’accès, la rectification, l’effacement ou la limitation du traitement de
-      vos données, selon les conditions prévues par le RGPD. Vous pouvez vous opposer aux
-      traitements fondés sur l’intérêt légitime pour des raisons tenant à votre situation
-      particulière. Le droit à la portabilité s’applique aux traitements automatisés fondés sur un
-      contrat lorsque ses conditions sont réunies.
+      Vous pouvez demander l’accès, la rectification, l’effacement ou la limitation du traitement.
+      Selon les conditions du RGPD, vous pouvez aussi vous opposer aux traitements fondés sur
+      l’intérêt légitime et demander la portabilité des données traitées de façon automatisée sur la
+      base d’un contrat.
     </p>
     <p>
-      Pour exercer vos droits, écrivez à
-      <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a>.
-      Une vérification d’identité proportionnée peut être nécessaire en cas de
-      doute raisonnable. N’envoyez pas spontanément de pièce d’identité.
+      Écrivez à <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a
+      >. Une vérification d’identité peut être nécessaire en cas de doute raisonnable ; n’envoyez
+      pas spontanément de pièce d’identité.
     </p>
     <p>
-      Le délai de réponse prévu par le RGPD est en principe d’un mois à compter de la réception. Une
-      prolongation de deux mois est possible en cas de complexité ou de demandes nombreuses, avec
-      information dans le premier mois. Si vous estimez que vos droits ne sont pas respectés, vous
-      pouvez
+      Le délai de réponse est en principe d’un mois, prolongeable de deux mois pour une demande
+      complexe ou des demandes nombreuses, avec information dans le premier mois. Vous pouvez
+      également
       <a
         href="https://www.cnil.fr/fr/adresser-une-plainte"
         target="_blank"
         rel="noopener noreferrer"
         >adresser une réclamation à la CNIL</a
-      >. Vous pouvez également écrire à
-      <a [href]="'mailto:' + business.contactEmail">{{ business.contactEmail }}</a
       >.
     </p>
-    <h2>Mesure d’audience, cookies et hébergement</h2>
+
+    <h2>Statistiques et préférences de navigation</h2>
     <p>
-      Avec votre accord, Lunaas utilise Cloudflare Web Analytics pour mesurer la fréquentation
-      et les performances du site, y compris pour les visites depuis la France. Le script de
-      mesure est chargé uniquement après votre acceptation. Vous pouvez refuser sans conséquence
-      sur l’accès au site. Les informations portent notamment sur les pages consultées et les temps de
-      chargement. Elles servent à comprendre l’usage du site et à améliorer son fonctionnement.
+      Avec votre accord, Cloudflare Web Analytics mesure les pages consultées et les temps de
+      chargement pour améliorer le site. Cette mesure repose sur votre consentement (article 6.1.a
+      du RGPD) et ne démarre qu’après acceptation. Refuser ne limite pas l’accès au site.
     </p>
     <p>
-      Cette mesure facultative repose sur votre consentement (article 6, paragraphe 1, a du RGPD).
-      Le choix d’accepter ou de refuser est mémorisé dans le stockage local de votre navigateur
-      pendant 180 jours, puis demandé à nouveau. Ce stockage sert uniquement à retenir votre
-      préférence et ne contient pas les informations saisies dans le formulaire de contact.
-      Vous pouvez changer votre choix à tout moment avec « Gérer mes statistiques » dans le pied
-      de page. Retirer votre accord arrête les nouveaux envois de mesure et recharge la page.
-      Cela ne supprime pas les mesures déjà transmises avec votre accord.
+      Votre choix est mémorisé pendant 180 jours dans le stockage local du navigateur, sans les
+      données du formulaire. Modifiez-le à tout moment avec « Gérer mes statistiques » dans le pied
+      de page. Retirer votre accord arrête les nouvelles mesures, sans supprimer celles déjà
+      transmises.
     </p>
     <p>
-      Selon la
-      <a href="https://developers.cloudflare.com/web-analytics/about/" target="_blank" rel="noopener noreferrer">documentation de Cloudflare Web Analytics</a>,
-      ce service ne collecte pas de données personnelles des visiteurs et ne suit pas leur
-      navigation entre différents sites. Les statistiques sont accessibles dans le compte
-      Cloudflare de Lunaas. Cloudflare indique une période de consultation de six mois dans sa
-      <a href="https://developers.cloudflare.com/web-analytics/faq/" target="_blank" rel="noopener noreferrer">documentation</a>.
-      Cette période de consultation ne décrit pas la durée de conservation de l’ensemble des
-      données techniques traitées par Cloudflare pour ses différents services.
-    </p>
-    <p>
-      Aucun outil publicitaire n’est intégré au site. Les polices et les images sont servies
-      localement. Cloudflare et les prestataires peuvent également traiter des données techniques,
-      notamment pour l’hébergement, la sécurité et leurs journaux.
-    </p>
-    <h2>Information</h2>
-    <p>
-      La
+      Les statistiques sont consultables pendant six mois, selon la
       <a
-        href="https://www.cnil.fr/fr/exemples-de-formulaire-de-collecte-de-donnees-caractere-personnel"
+        href="https://developers.cloudflare.com/web-analytics/faq/"
         target="_blank"
         rel="noopener noreferrer"
-        >CNIL explique les informations à fournir lors d’une collecte de données</a
-      >. Ce document sera mis à jour si les traitements ou les services utilisés évoluent.
+        >documentation de Cloudflare</a
+      >. Cette période ne décrit pas la conservation des journaux d’hébergement et de sécurité,
+      présentés dans ses
+      <a [href]="business.hosting.privacyPolicy" target="_blank" rel="noopener noreferrer"
+        >règles de confidentialité</a
+      >. Aucun outil publicitaire n’est intégré au site.
     </p>
   </article>
 </div>
