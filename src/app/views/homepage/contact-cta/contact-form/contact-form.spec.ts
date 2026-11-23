@@ -118,6 +118,36 @@ describe('Contact form', () => {
     expect(transport).not.toHaveBeenCalled();
   });
 
+  it('selects each tech or AI service card in the contact form without losing the draft', async () => {
+    transport.mockResolvedValue(new Response(JSON.stringify({ success: true })));
+    const harness = await page();
+    const root = await fill(harness);
+
+    for (const serviceId of ['outils-numeriques', 'integration-ia']) {
+      const link = root
+        .querySelector<HTMLHeadingElement>(`#tech-service-${serviceId}`)!
+        .closest('article')!
+        .querySelector<HTMLAnchorElement>('.quote-link')!;
+      expect(link.getAttribute('href')).toBe('#contact');
+      link.click();
+      await harness.fixture.whenStable();
+      harness.detectChanges();
+      expect(root.querySelector<HTMLSelectElement>('#cta-contact-project')!.value).toBe(serviceId);
+      expect(root.querySelector<HTMLInputElement>('#cta-contact-email')!.value).toBe(
+        'elodie@example.com',
+      );
+      expect(root.querySelector<HTMLTextAreaElement>('#cta-contact-message')!.value).toContain(
+        'mes créations',
+      );
+    }
+
+    submit(root);
+    await harness.fixture.whenStable();
+    expect(transport).toHaveBeenCalledOnce();
+    const payload = JSON.parse(String(transport.mock.calls[0][1].body));
+    expect(payload.project).toContain('Intégration IA');
+  });
+
   it('offers help without assigning an offer or a budget', async () => {
     const harness = await page();
     const root = harness.routeNativeElement!;

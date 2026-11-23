@@ -4,22 +4,22 @@ export const PROCESS_DATA: readonly ContentItem[] = [
   {
     id: 'echanger',
     title: 'Comprendre',
-    description: 'Votre activité, vos visiteurs et l’objectif du site.',
+    description: 'Votre activité, vos usages et l’objectif concret du projet.',
   },
   {
     id: 'cadrer',
     title: 'Cadrer',
-    description: 'Les contenus, les fonctionnalités, le devis et le calendrier.',
+    description: 'Le périmètre, les outils ou fonctionnalités, le devis et le calendrier.',
   },
   {
     id: 'construire',
-    title: 'Concevoir et développer',
-    description: 'Le design et la réalisation d’un site adapté aux différents écrans.',
+    title: 'Concevoir et mettre en place',
+    description: 'La réalisation de votre site, la configuration de vos outils ou l’intégration IA prévue.',
   },
   {
     id: 'livrer',
     title: 'Vérifier et livrer',
-    description: 'Les contrôles et la mise en ligne prévus dans le devis.',
+    description: 'Les tests, la mise en service et la prise en main prévus dans le devis.',
   },
 ];
 export const PROFILE_DATA: Profile = {
@@ -75,5 +75,15 @@ export const FAQ_DATA: readonly FaqItem[] = [
     question: 'Comment fonctionne l’assistance après la livraison ?',
     answer:
       'Un abonnement commence à la date convenue, après accord et réception du premier paiement ; envoyer le formulaire ne souscrit aucun abonnement. Les demandes se font par e-mail, les jours ouvrés : l’accusé de réception est prévu sous deux jours ouvrés pour Essentiel et un jour ouvré pour Suivi, sans délai de résolution garanti. Toute intervention hors forfait est proposée après votre validation, sans correction illimitée ni garantie de disponibilité à 100 % ; le suivi de Google ne garantit aucun positionnement. Les défauts relevant des obligations de livraison initiales restent traités indépendamment de l’abonnement.',
+  },
+  {
+    question: 'Qui gère les comptes et abonnements pour Bitwarden, Claude ou GPT ?',
+    answer:
+      'Comme pour le domaine et l’hébergement, les outils et services tiers (gestionnaire de mots de passe, abonnements ou crédits API Claude et OpenAI) sont créés directement sur vos propres comptes. Vous gardez la maîtrise de vos accès, de votre facturation et de vos données après mon intervention.',
+  },
+  {
+    question: 'Comment la confidentialité est-elle prise en compte dans une intégration IA ?',
+    answer:
+      'Avant toute mise en place, nous définissons ensemble les données concernées ainsi que les outils et réglages adaptés à votre activité. Les usages sensibles, comme la préparation de réponses aux e-mails, peuvent fonctionner en mode brouillon avec votre validation avant envoi. Comme pour un site, cette mise en place technique ne constitue pas une certification ni un audit juridique RGPD.',
   },
 ];

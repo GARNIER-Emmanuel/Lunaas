@@ -8,6 +8,6 @@ export const SITE_DATA: Site = {
     title: 'Création de sites internet à Bordeaux',
     highlight: 'Votre nouvelle dimension',
     description:
-      'Développeur web freelance à Bordeaux, je crée des sites pour les artisans, indépendants et petites entreprises.\nSite une page dès 800 €, site vitrine dès 1 400 €.',
+      'Développeur web freelance à Bordeaux, je crée des sites pour les artisans, indépendants et petites entreprises, et je vous accompagne sur vos outils numériques et l’intégration de l’IA.\nSite une page dès 800 €, site vitrine dès 1 400 €.',
   },
 };

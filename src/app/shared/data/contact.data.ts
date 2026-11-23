@@ -8,5 +8,7 @@ export const CONTACT_CONFIG: ContactConfiguration = {
 };
 
 export const CONTACT_TOPICS: readonly ContactTopic[] = [
+  { id: 'outils-numeriques', label: 'Outils numériques & sécurité (Bitwarden, organisation…)' },
+  { id: 'integration-ia', label: 'Intégration IA & automatisation (Claude, GPT…)' },
   { id: 'autre', label: 'Autre demande' },
 ];

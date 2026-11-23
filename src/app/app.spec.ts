@@ -75,6 +75,7 @@ describe('App', () => {
       'app-hero',
       'app-services',
       'app-maintenance',
+      'app-tech-services',
       'app-process-section',
       'app-faq',
       'app-contact-cta',
@@ -84,7 +85,7 @@ describe('App', () => {
     expect(compiled.querySelector('a[href$="#realisations"], a[href$="#a-propos"], a[href$="#confiance"]')).toBeNull();
     expect(
       [...compiled.querySelectorAll('#site-navigation a')].map((link) => link.textContent?.trim()),
-    ).toEqual(['Tarifs', 'Maintenance', 'Méthode', 'FAQ', 'Contact']);
+    ).toEqual(['Tarifs', 'Maintenance', 'Outils & IA', 'Méthode', 'FAQ', 'Contact']);
     expect(approach?.querySelectorAll('ol > li')).toHaveLength(4);
     expect(compiled.querySelector('#methode')?.contains(approach)).toBe(true);
   });
@@ -181,7 +182,9 @@ describe('App', () => {
     expect([...projectChoice!.options].map((option) => option.value).sort()).toEqual([
       '',
       'autre',
+      'integration-ia',
       'landing-page',
+      'outils-numeriques',
       'site-dynamique',
       'site-vitrine',
     ]);
@@ -218,6 +221,28 @@ describe('App', () => {
     expect(root.querySelector('footer a[href="/#maintenance"]')).not.toBeNull();
     expect(root.querySelector('#maintenance-faq')).not.toBeNull();
     expect(root.querySelectorAll('form')).toHaveLength(1);
+  });
+
+  it('presents digital tools and AI integration services on quote with clear limits', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/');
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    const section = root.querySelector('#outils-ia')!;
+    const cards = section.querySelectorAll('article');
+    expect(cards).toHaveLength(2);
+    expect(cards[0].textContent).toContain('Outils numériques & sécurité');
+    expect(cards[0].textContent).toContain('Bitwarden');
+    expect(cards[0].textContent).toContain('Sur devis');
+    expect(cards[1].textContent).toContain('Intégration IA dans vos projets');
+    expect(cards[1].textContent).toContain('Claude');
+    expect(cards[1].textContent).toContain('GPT');
+    expect(cards[1].textContent).toContain('Sur devis');
+    expect(section.querySelector('.tech-services-tax-note')?.textContent).toContain(
+      LEGAL_BUSINESS_DATA.vatRegime,
+    );
+    expect(root.querySelector('footer a[href="/#outils-ia"]')).not.toBeNull();
+    expect(root.querySelector('app-faq')?.textContent).toContain('Bitwarden, Claude ou GPT');
   });
 
   it('links the menu to landing sections and closes it after choosing one', async () => {

@@ -12,7 +12,7 @@ Ces documents décrivent le travail prévu. Ne pas annoncer leurs fonctionnalit�
 
 ## Périmètre
 
-Site vitrine Angular pour la création de sites web freelance à Bordeaux, en français au lancement. Pas de backend Spring Boot, CMS, store global ou base de données sans besoin nouveau explicite. Pas d'offres d'automatisation ou d'agents IA. Ne pas inventer de clients, avis, résultats ou informations légales.
+Site vitrine Angular pour la création de sites web freelance à Bordeaux, en français au lancement. Pas de backend Spring Boot, CMS, store global ou base de données sans besoin nouveau explicite. Sur la branche `addOfferIA`, le périmètre inclut l'accompagnement sur les outils numériques (ex. Bitwarden) et l'intégration IA / automatisation sur devis. Ne pas inventer de clients, avis, résultats ou informations légales.
 
 ## Architecture et organisation du code
 

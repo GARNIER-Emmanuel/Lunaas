@@ -9,7 +9,7 @@ export const routes: Routes = [
     title: 'Création de sites internet à Bordeaux | Lunaas',
     data: {
       description:
-        'Développeur web freelance à Bordeaux, je crée des sites vitrines pour les artisans, indépendants et petites entreprises. Découvrez les offres Lunaas.',
+        'Développeur web freelance à Bordeaux, je crée des sites vitrines, mets en place vos outils numériques et intègre l’IA dans vos projets.',
     },
   },
   {

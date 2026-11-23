@@ -1,0 +1,84 @@
+<section id="outils-ia" class="content-section tech-services-section" aria-labelledby="tech-services-title">
+  <div class="page-container">
+    <p class="section-label" data-motion>Outils numériques et IA</p>
+    <h2 id="tech-services-title" class="section-title section-title--compact" data-motion>
+      Aller plus loin au quotidien<br /><span class="font-script">Outils et intégration IA</span>
+    </h2>
+    <p class="section-description" data-motion>
+      Au-delà de votre site, je vous accompagne dans la mise en place d’outils fiables et
+      l’intégration concrète de l’IA pour simplifier vos tâches répétitives.<br />
+      {{ business.audience }}
+    </p>
+
+    <div class="tech-services-grid">
+      @for (service of services; track service.id) {
+        <article
+          class="tech-service-card"
+          [attr.aria-labelledby]="'tech-service-' + service.id"
+          [attr.data-halo]="service.halo"
+          [appImageTrail]="{ colors: ['--halo-light', '--halo-color'] }"
+          [trailOptions]="{ size: 240, opacity: 1 }"
+          data-motion
+        >
+          <div class="service-intro">
+            <p class="service-category">{{ service.category }}</p>
+            <h3 [id]="'tech-service-' + service.id">{{ service.name }}</h3>
+          </div>
+
+          <div class="service-price" aria-describedby="tech-services-tax-note">
+            <span>{{ service.priceSubtitle }}</span>
+            <strong>{{ service.priceLabel }}</strong>
+            <p class="price-note">{{ service.priceNote }}</p>
+          </div>
+
+          <div class="service-context">
+            <p class="service-summary">{{ service.summary }}</p>
+            <p class="service-description">{{ service.description }}</p>
+          </div>
+
+          <div class="service-features">
+            <h4>{{ service.examplesHeading }}</h4>
+            <ul>
+              @for (example of service.examples; track example) {
+                <li><span aria-hidden="true">•</span><span>{{ example }}</span></li>
+              }
+            </ul>
+          </div>
+
+          <details>
+            <summary>Détails et cadre de l’accompagnement</summary>
+            <h4 class="detail-heading">{{ service.detailsHeading }}</h4>
+            <ul class="detail-list">
+              @for (detail of service.details; track detail) {
+                <li>{{ detail }}</li>
+              }
+            </ul>
+            <h4 class="detail-heading">{{ service.limitsHeading }}</h4>
+            <ul class="detail-list">
+              @for (limit of service.limits; track limit) {
+                <li>{{ limit }}</li>
+              }
+            </ul>
+          </details>
+
+          <a
+            href="#contact"
+            class="button button-primary quote-link"
+            [attr.aria-label]="service.ctaLabel + ' : ' + service.name"
+            (click)="selectService($event, service.id)"
+          >
+            {{ service.ctaLabel }}
+          </a>
+        </article>
+      }
+    </div>
+
+    <div class="tech-services-notes">
+      <p>
+        Chaque accompagnement fait l’objet d’un premier échange, d’un cadrage concret et d’un devis
+        avant tout démarrage.
+      </p>
+      <p id="tech-services-tax-note" class="tech-services-tax-note">{{ business.vatRegime }}.</p>
+    </div>
+  </div>
+</section>

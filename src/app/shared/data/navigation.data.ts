@@ -2,6 +2,7 @@ export const PRIMARY_NAVIGATION_DATA = [
   // { label: 'Réalisations', fragment: 'realisations' },
   { label: 'Tarifs', fragment: 'offres' },
   { label: 'Maintenance', fragment: 'maintenance' },
+  { label: 'Outils & IA', fragment: 'outils-ia' },
   { label: 'Méthode', fragment: 'methode' },
   { label: 'FAQ', fragment: 'faq' },
 ] as const;
